@@ -1,0 +1,17 @@
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\WinFormsApp1example_.Form1.resources
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\WinFormsApp1example_.Properties.Resources.resources
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\WinFormsApp1example_.csproj.GenerateResource.cache
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\WinFormsApp1example_.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\WinFormsApp1example_.AssemblyInfoInputs.cache
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\WinFormsApp1example_.AssemblyInfo.cs
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\WinFormsApp1example_.csproj.CoreCompileInputs.cache
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\bin\Debug\net8.0-windows\WinFormsApp1example_.exe
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\bin\Debug\net8.0-windows\WinFormsApp1example_.deps.json
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\bin\Debug\net8.0-windows\WinFormsApp1example_.runtimeconfig.json
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\bin\Debug\net8.0-windows\WinFormsApp1example_.dll
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\bin\Debug\net8.0-windows\WinFormsApp1example_.pdb
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\WinFormsApp1example_.dll
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\refint\WinFormsApp1example_.dll
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\WinFormsApp1example_.pdb
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\WinFormsApp1example_.genruntimeconfig.cache
+C:\Users\wspc7\source\repos\surname_wfApp\WinFormsApp1example_\obj\Debug\net8.0-windows\ref\WinFormsApp1example_.dll

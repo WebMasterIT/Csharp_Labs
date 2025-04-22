@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfGraphicsCard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GraphicsCard>
+    <Name>цвфвф</Name>
+    <Manufacturer>1цвфцв</Manufacturer>
+    <Price>1231</Price>
+    <MemorySize>12</MemorySize>
+    <Type>цвцв</Type>
+    <Cores>12</Cores>
+  </GraphicsCard>
+</ArrayOfGraphicsCard>

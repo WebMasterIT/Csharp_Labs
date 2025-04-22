@@ -1,0 +1,100 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4E45D86B-B030-4945-AA0F-49183EBA4E64}|WinFormsApp1example_\\WinFormsApp1example_.csproj|c:\\users\\wspc7\\source\\repos\\surname_wfapp\\winformsapp1example_\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E45D86B-B030-4945-AA0F-49183EBA4E64}|WinFormsApp1example_\\WinFormsApp1example_.csproj|solutionrelative:winformsapp1example_\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E45D86B-B030-4945-AA0F-49183EBA4E64}|WinFormsApp1example_\\WinFormsApp1example_.csproj|C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\winformsapp1example_\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4E45D86B-B030-4945-AA0F-49183EBA4E64}|WinFormsApp1example_\\WinFormsApp1example_.csproj|solutionrelative:winformsapp1example_\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E45D86B-B030-4945-AA0F-49183EBA4E64}|WinFormsApp1example_\\WinFormsApp1example_.csproj|c:\\users\\wspc7\\source\\repos\\surname_wfapp\\winformsapp1example_\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E45D86B-B030-4945-AA0F-49183EBA4E64}|WinFormsApp1example_\\WinFormsApp1example_.csproj|solutionrelative:winformsapp1example_\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E45D86B-B030-4945-AA0F-49183EBA4E64}|WinFormsApp1example_\\WinFormsApp1example_.csproj|c:\\users\\wspc7\\source\\repos\\surname_wfapp\\winformsapp1example_\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E45D86B-B030-4945-AA0F-49183EBA4E64}|WinFormsApp1example_\\WinFormsApp1example_.csproj|solutionrelative:winformsapp1example_\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E45D86B-B030-4945-AA0F-49183EBA4E64}|WinFormsApp1example_\\WinFormsApp1example_.csproj|c:\\users\\wspc7\\source\\repos\\surname_wfapp\\winformsapp1example_\\classess\\component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E45D86B-B030-4945-AA0F-49183EBA4E64}|WinFormsApp1example_\\WinFormsApp1example_.csproj|solutionrelative:winformsapp1example_\\classess\\component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\WinFormsApp1example_\\Form1.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1example_\\Form1.cs",
+              "ToolTip": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\WinFormsApp1example_\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "WinFormsApp1example_\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T08:12:18.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\WinFormsApp1example_\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1example_\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\WinFormsApp1example_\\Form1.Designer.cs",
+              "RelativeToolTip": "WinFormsApp1example_\\Form1.Designer.cs",
+              "ViewState": "AgIAAAQEAAAAAAAAAAAwwBsEAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T08:11:56.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\WinFormsApp1example_\\Program.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1example_\\Program.cs",
+              "ToolTip": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\WinFormsApp1example_\\Program.cs",
+              "RelativeToolTip": "WinFormsApp1example_\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T07:08:49.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Component.cs",
+              "DocumentMoniker": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\WinFormsApp1example_\\Classess\\Component.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1example_\\Classess\\Component.cs",
+              "ToolTip": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\WinFormsApp1example_\\Classess\\Component.cs",
+              "RelativeToolTip": "WinFormsApp1example_\\Classess\\Component.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T15:34:16.744Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\WinFormsApp1example_\\Form1.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1example_\\Form1.cs",
+              "ToolTip": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\WinFormsApp1example_\\Form1.cs",
+              "RelativeToolTip": "WinFormsApp1example_\\Form1.cs",
+              "ViewState": "AgIAAGUCAAAAAAAAAAAMwHoCAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:59:34.841Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

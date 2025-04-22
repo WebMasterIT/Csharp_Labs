@@ -1,0 +1,10 @@
+C:\Users\wspc7\source\repos\surname_wfApp\WindowsFormsApp1example\bin\Debug\WindowsFormsApp1example.exe.config
+C:\Users\wspc7\source\repos\surname_wfApp\WindowsFormsApp1example\bin\Debug\WindowsFormsApp1example.exe
+C:\Users\wspc7\source\repos\surname_wfApp\WindowsFormsApp1example\bin\Debug\WindowsFormsApp1example.pdb
+C:\Users\wspc7\source\repos\surname_wfApp\WindowsFormsApp1example\obj\Debug\WindowsFormsApp1example.csproj.AssemblyReference.cache
+C:\Users\wspc7\source\repos\surname_wfApp\WindowsFormsApp1example\obj\Debug\WindowsFormsApp1example.Form1.resources
+C:\Users\wspc7\source\repos\surname_wfApp\WindowsFormsApp1example\obj\Debug\WindowsFormsApp1example.Properties.Resources.resources
+C:\Users\wspc7\source\repos\surname_wfApp\WindowsFormsApp1example\obj\Debug\WindowsFormsApp1example.csproj.GenerateResource.cache
+C:\Users\wspc7\source\repos\surname_wfApp\WindowsFormsApp1example\obj\Debug\WindowsFormsApp1example.csproj.CoreCompileInputs.cache
+C:\Users\wspc7\source\repos\surname_wfApp\WindowsFormsApp1example\obj\Debug\WindowsFormsApp1example.exe
+C:\Users\wspc7\source\repos\surname_wfApp\WindowsFormsApp1example\obj\Debug\WindowsFormsApp1example.pdb

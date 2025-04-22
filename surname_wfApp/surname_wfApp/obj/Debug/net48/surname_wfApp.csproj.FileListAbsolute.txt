@@ -1,0 +1,12 @@
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.csproj.AssemblyReference.cache
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.Forms.Components_form.resources
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.Forms.GraphicsCards.resources
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.Forms.Processors.resources
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.Forms.RAMs.resources
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.MainForm.resources
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.Properties.Resources.resources
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.csproj.GenerateResource.cache
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.AssemblyInfoInputs.cache
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.AssemblyInfo.cs
+C:\Users\wspc7\source\repos\surname_wfApp\surname_wfApp\obj\Debug\net48\surname_wfApp.csproj.CoreCompileInputs.cache

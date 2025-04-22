@@ -1,0 +1,12 @@
+C:\Users\User\source\repos\surname_lab1\Components_Classes\bin\Debug\Components_Classes.dll
+C:\Users\User\source\repos\surname_lab1\Components_Classes\bin\Debug\Components_Classes.pdb
+C:\Users\User\source\repos\surname_lab1\Components_Classes\obj\Debug\Components_Classes.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\surname_lab1\Components_Classes\obj\Debug\Components_Classes.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\surname_lab1\Components_Classes\obj\Debug\Components_Classes.dll
+C:\Users\User\source\repos\surname_lab1\Components_Classes\obj\Debug\Components_Classes.pdb
+D:\Преподавание\Программирование_Кущий_Масленников\surname_lab1\Components_Classes\bin\Debug\Components_Classes.dll
+D:\Преподавание\Программирование_Кущий_Масленников\surname_lab1\Components_Classes\bin\Debug\Components_Classes.pdb
+D:\Преподавание\Программирование_Кущий_Масленников\surname_lab1\Components_Classes\obj\Debug\Components_Classes.csproj.AssemblyReference.cache
+D:\Преподавание\Программирование_Кущий_Масленников\surname_lab1\Components_Classes\obj\Debug\Components_Classes.csproj.CoreCompileInputs.cache
+D:\Преподавание\Программирование_Кущий_Масленников\surname_lab1\Components_Classes\obj\Debug\Components_Classes.dll
+D:\Преподавание\Программирование_Кущий_Масленников\surname_lab1\Components_Classes\obj\Debug\Components_Classes.pdb
