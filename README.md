@@ -1,1 +1,1 @@
-[ссылка на курс](https://sdo.npi-tu.ru/course/view.php?id=1909)
+[Курс](https://sdo.npi-tu.ru/course/view.php?id=1909)
