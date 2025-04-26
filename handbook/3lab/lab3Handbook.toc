@@ -10,6 +10,5 @@
 \contentsline {subsubsection}{\hbox to\@tempdima {3.2.2\hfil }\leftprotrusion КЛАССЫ: PRODUCT.CS, ORDER.CS, ORDERITEM.CS}{11}{section*.4}%
 \contentsline {subsection}{\numberline {3.3}ШАГ 3: РЕАЛИЗАЦИЯ ИНТЕРФЕЙСА}{13}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}ШАГ 4: РЕАЛИЗАЦИЯ ЛОГИКИ}{16}{subsection.3.4}%
-\contentsline {section}{\numberline {4}ШАГ 5: ВНЕШНИЙ ВИД ИНТЕРФЕЙСА \ \faBrush }{21}{section.4}%
-\contentsline {section}{\numberline {5}ШАГ 6: ДЕМОНСТРАЦИЯ РАБОТЫ \ \faGlasses }{21}{section.5}%
-\contentsline {section}{\numberline {6}ВОПРОСЫ ДЛЯ ЗАЩИТЫ~\fontspec {UbuntuNerdFont}[Extension = .ttf, Path = /nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/, UprightFont = *-Regular, BoldFont = *-Bold] }{22}{section.6}%
+\contentsline {section}{\numberline {4}ШАГ 5: ДЕМОНСТРАЦИЯ РАБОТЫ \ \faGlasses }{31}{section.4}%
+\contentsline {section}{\numberline {5}ВОПРОСЫ ДЛЯ ЗАЩИТЫ~\fontspec {UbuntuNerdFont}[Extension = .ttf, Path = /nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/, UprightFont = *-Regular, BoldFont = *-Bold] }{41}{section.5}%

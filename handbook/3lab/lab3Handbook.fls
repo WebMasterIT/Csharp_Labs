@@ -1,4 +1,4 @@
-PWD /home/replica/Desktop/ProjectManager/Code/Csharp/handbook/Csharp_Labs/handbook/3lab
+PWD /home/replica/Desktop/ProjectManager/Code/Csharp/Csharp_Labs/handbook/3lab
 INPUT /nix/store/ch7h3j2zn6c044i3i3qpcz5fq6y2q9xs-texlive-combined-full-2024-final/share/texmf-var/web2c/luahbtex/lualatex.fmt
 INPUT ./lab3Handbook.tex
 OUTPUT lab3Handbook.log
@@ -243,6 +243,26 @@ INPUT ./fig/net8.0.png
 INPUT ./fig/net8.0.png
 INPUT /nix/store/lavaqw85ixs41sv6hv8qfzksj8n12r3w-texlive-combined-full-2024-final-texmfdist/tex/latex/listings/lstlang1.sty
 INPUT /nix/store/lavaqw85ixs41sv6hv8qfzksj8n12r3w-texlive-combined-full-2024-final-texmfdist/fonts/tfm/adobe/helvetic/phvr8r.tfm
+INPUT ./fig/image 26.png
+INPUT ./fig/image 26.png
+INPUT ./fig/image 27.png
+INPUT ./fig/image 27.png
+INPUT ./fig/image 60.png
+INPUT ./fig/image 60.png
+INPUT ./fig/image 61.png
+INPUT ./fig/image 61.png
+INPUT ./fig/image 62.png
+INPUT ./fig/image 62.png
+INPUT ./fig/image 63.png
+INPUT ./fig/image 63.png
+INPUT ./fig/image 64.png
+INPUT ./fig/image 64.png
+INPUT ./fig/image 65.png
+INPUT ./fig/image 65.png
+INPUT ./fig/image 66.png
+INPUT ./fig/image 66.png
+INPUT ./fig/image 67.png
+INPUT ./fig/image 67.png
 INPUT ./lab3Handbook.aux
 INPUT ./lab3Handbook.out
 INPUT /nix/store/lavaqw85ixs41sv6hv8qfzksj8n12r3w-texlive-combined-full-2024-final-texmfdist/fonts/type1/urw/helvetic/uhvr8a.pfb
