@@ -1,0 +1,434 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{StoreManager.Models}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Windows}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Windows.Controls}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Windows.Input}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Windows.Media}\PYG{p}{;}
+
+\PYG{k}{namespace}\PYG{+w}{ }\PYG{n+nn}{StoreManager}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Главное окно приложения для управления товарами и заказами}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{partial}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{MainWindow}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Window}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{c+c1}{// Список всех товаров}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Product}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{products}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Product}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{c+c1}{// Список всех заказов}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{orders}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{c+c1}{// Следующий ID для нового товара}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nextProductId}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{c+c1}{// Следующий ID для нового заказа}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nextOrderId}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{c+c1}{// Список выбранных товаров для текущего заказа}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{OrderItem}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{selectedProductsForOrder}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{OrderItem}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Конструктор окна}
+\PYG{+w}{        }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{MainWindow}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{InitializeComponent}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Инициализация UI}
+\PYG{+w}{            }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{   }\PYG{c+c1}{// Обновление списка товаров}
+\PYG{+w}{            }\PYG{n}{UpdateOrderList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{    }\PYG{c+c1}{// Обновление списка заказов}
+\PYG{+w}{            }\PYG{n}{UpdateSelectedProductsList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Обновление списка выбранных товаров}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обновляет отображение списка товаров}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{ProductsList}\PYG{p}{.}\PYG{n}{ItemsSource}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{ProductsList}\PYG{p}{.}\PYG{n}{ItemsSource}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{products}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обновляет отображение списка заказов}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{UpdateOrderList}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{OrdersList}\PYG{p}{.}\PYG{n}{ItemsSource}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{OrdersList}\PYG{p}{.}\PYG{n}{ItemsSource}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{orders}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обновляет отображение списка выбранных товаров}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{UpdateSelectedProductsList}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{SelectedProductsList}\PYG{p}{.}\PYG{n}{ItemsSource}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{SelectedProductsList}\PYG{p}{.}\PYG{n}{ItemsSource}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{selectedProductsForOrder}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик нажатия кнопки \PYGZdq{}Добавить товар\PYGZdq{}}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{AddProduct\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RoutedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Проверка корректности введённых данных}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{ProductName}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{o}{!}\PYG{k+kt}{decimal}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{ProductPrice}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{decimal}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{o}{!}\PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{ProductStock}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{stock}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{n}{stock}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, введите корректные данные о товаре. Остаток не может быть отрицательным.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                    }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Error}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Создание нового товара}
+\PYG{+w}{            }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{product}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Product}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{nextProductId}\PYG{o}{++}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{Name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ProductName}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{Price}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{stock}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{n}{products}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{product}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Добавление товара в список}
+\PYG{+w}{            }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{    }\PYG{c+c1}{// Обновление UI}
+\PYG{+w}{            }\PYG{n}{ClearProductFields}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{   }\PYG{c+c1}{// Очистка полей ввода}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик нажатия кнопки \PYGZdq{}Обновить товар\PYGZdq{}}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{UpdateProduct\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RoutedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{ProductsList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Проверка корректности введённых данных}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{ProductName}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                    }\PYG{o}{!}\PYG{k+kt}{decimal}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{ProductPrice}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{decimal}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                    }\PYG{o}{!}\PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{ProductStock}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{stock}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                    }\PYG{n}{stock}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, введите корректные данные о товаре. Остаток не может быть отрицательным.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                        }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Error}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{c+c1}{// Обновление свойств выбранного товара}
+\PYG{+w}{                }\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ProductName}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Price}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{stock}\PYG{p}{;}
+
+\PYG{+w}{                }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{  }\PYG{c+c1}{// Обновление UI}
+\PYG{+w}{                }\PYG{n}{ClearProductFields}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Очистка полей ввода}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{else}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, выберите товар для обновления.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик нажатия кнопки \PYGZdq{}Удалить товар\PYGZdq{}}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{DeleteProduct\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RoutedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{ProductsList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Проверка, используется ли товар в заказах}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{orders}\PYG{p}{.}\PYG{n}{Any}\PYG{p}{(}\PYG{n}{order}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{order}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{.}\PYG{n}{Any}\PYG{p}{(}\PYG{n}{item}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Id}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Нельзя удалить товар, используемый в заказах.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{c+c1}{// Подтверждение удаления}
+\PYG{+w}{                }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{result}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdl{}\PYGZdq{}Вы уверены, что хотите удалить товар \PYGZsq{}\PYGZob{}selectedProduct.Name\PYGZcb{}\PYGZsq{}?\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                    }\PYG{l+s}{\PYGZdq{}Подтверждение удаления\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{YesNo}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Question}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{result}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{MessageBoxResult}\PYG{p}{.}\PYG{n}{Yes}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{RemoveAll}\PYG{p}{(}\PYG{n}{item}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Id}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Удаление из текущего заказа}
+\PYG{+w}{                    }\PYG{n}{products}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{selectedProduct}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Удаление из списка товаров}
+\PYG{+w}{                    }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{UpdateSelectedProductsList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{ClearProductFields}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{else}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, выберите товар для удаления.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик изменения выделения в списке товаров}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{ProductsList\PYGZus{}SelectionChanged}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{SelectionChangedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{ProductsList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Заполнение полей ввода данными выбранного товара}
+\PYG{+w}{                }\PYG{n}{ProductName}\PYG{p}{.}\PYG{n}{Text}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Name}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{ProductPrice}\PYG{p}{.}\PYG{n}{Text}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Price}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{ProductStock}\PYG{p}{.}\PYG{n}{Text}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Stock}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{AddToOrder\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RoutedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{ProductsList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Товара больше нет на складе.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{existingItem}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{FirstOrDefault}\PYG{p}{(}\PYG{n}{item}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Id}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{existingItem}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{existingItem}\PYG{p}{.}\PYG{n}{Quantity}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{k}{else}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{k}{new}\PYG{+w}{ }\PYG{n}{OrderItem}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{selectedProduct}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Quantity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{n}{selectedProduct}\PYG{p}{.}\PYG{n}{Stock}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// \PYGZlt{}=== уменьшение запаса}
+\PYG{+w}{                }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{UpdateSelectedProductsList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{else}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, выберите товар для добавления в заказ.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик нажатия кнопки \PYGZdq{}Создать заказ\PYGZdq{}}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{AddOrder\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RoutedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Проверка имени клиента}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{CustomerName}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, введите имя клиента.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Error}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Проверка наличия товаров в заказе}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{Any}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, выберите хотя бы один товар для заказа.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Создание нового заказа}
+\PYG{+w}{            }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{order}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Order}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{nextOrderId}\PYG{o}{++}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{CustomerName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{CustomerName}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{OrderDate}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DateTime}\PYG{p}{.}\PYG{n}{Now}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{Items}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{OrderItem}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{selectedProductsForOrder}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{n}{orders}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{order}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Добавление заказа в список}
+\PYG{+w}{            }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{UpdateOrderList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{ClearOrderFields}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Очистка полей заказа}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик нажатия кнопки \PYGZdq{}Обновить заказ\PYGZdq{}}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{UpdateOrder\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RoutedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{OrdersList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{Order}\PYG{+w}{ }\PYG{n}{selectedOrder}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Проверка имени клиента}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{CustomerName}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, введите имя клиента.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Error}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{c+c1}{// Проверка наличия товаров}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{Any}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, выберите хотя бы один товар для заказа.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{c+c1}{// Обновление заказа}
+\PYG{+w}{                }\PYG{n}{selectedOrder}\PYG{p}{.}\PYG{n}{CustomerName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{CustomerName}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{selectedOrder}\PYG{p}{.}\PYG{n}{OrderDate}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DateTime}\PYG{p}{.}\PYG{n}{Now}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{selectedOrder}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{selectedOrder}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{.}\PYG{n}{AddRange}\PYG{p}{(}\PYG{n}{selectedProductsForOrder}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }
+
+\PYG{+w}{                }\PYG{c+c1}{// Проверка доступности перед применением изменений}
+\PYG{+w}{                }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{item}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{selectedProductsForOrder}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{availableStock}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{                        }\PYG{n}{selectedOrder}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{.}\PYG{n}{Where}\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Id}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Sum}\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{.}\PYG{n}{Quantity}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// учитываем старый заказ}
+
+\PYG{+w}{                    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{item}\PYG{p}{.}\PYG{n}{Quantity}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{availableStock}\PYG{p}{)}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdl{}\PYGZdq{}Недостаточно товара \PYGZsq{}\PYGZob{}item.Product.Name\PYGZcb{}\PYGZsq{} на складе для обновления заказа.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                            }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Error}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{                        }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{UpdateOrderList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{ClearOrderFields}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{else}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, выберите заказ для обновления.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик нажатия кнопки \PYGZdq{}Удалить заказ\PYGZdq{}}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{DeleteOrder\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RoutedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{OrdersList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{Order}\PYG{+w}{ }\PYG{n}{selectedOrder}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Подтверждение удаления}
+\PYG{+w}{                }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{result}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdl{}\PYGZdq{}Вы уверены, что хотите удалить заказ для клиента \PYGZsq{}\PYGZob{}selectedOrder.CustomerName\PYGZcb{}\PYGZsq{}?\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                    }\PYG{l+s}{\PYGZdq{}Подтверждение удаления\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{YesNo}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Question}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{result}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{MessageBoxResult}\PYG{p}{.}\PYG{n}{Yes}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{c+c1}{// Возврат запасов}
+\PYG{+w}{                    }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{item}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{selectedOrder}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{)}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Quantity}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                    }\PYG{n}{orders}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{selectedOrder}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Удаление заказа}
+\PYG{+w}{                    }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{UpdateOrderList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{ClearOrderFields}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{else}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, выберите заказ для удаления.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик нажатия кнопки \PYGZdq{}Удалить товар из заказа\PYGZdq{}}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{RemoveProductFromOrder\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RoutedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{SelectedProductsList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{OrderItem}\PYG{+w}{ }\PYG{n}{selectedItem}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Проверка: это последний товар в заказе?}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{Count}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{OrdersList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{Order}\PYG{+w}{ }\PYG{n}{selectedOrder}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{result}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}
+\PYG{+w}{                        }\PYG{l+s}{\PYGZdl{}\PYGZdq{}Удаление последнего товара приведёт к удалению заказа клиента \PYGZsq{}\PYGZob{}selectedOrder.CustomerName\PYGZcb{}\PYGZsq{}. Продолжить?\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                        }\PYG{l+s}{\PYGZdq{}Подтверждение удаления\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                        }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{YesNo}\PYG{p}{,}
+\PYG{+w}{                        }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{                    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{result}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{n}{MessageBoxResult}\PYG{p}{.}\PYG{n}{Yes}\PYG{p}{)}
+\PYG{+w}{                        }\PYG{k}{return}\PYG{p}{;}
+
+\PYG{+w}{                    }\PYG{c+c1}{// Удаляем товар и возвращаем остаток}
+\PYG{+w}{                    }\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{selectedItem}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{selectedItem}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{n}{selectedItem}\PYG{p}{.}\PYG{n}{Quantity}\PYG{p}{;}
+
+\PYG{+w}{                    }\PYG{c+c1}{// Удаляем сам заказ}
+\PYG{+w}{                    }\PYG{n}{orders}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{selectedOrder}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{UpdateOrderList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{ClearOrderFields}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{k}{else}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{c+c1}{// Обычное удаление товара}
+\PYG{+w}{                    }\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{selectedItem}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{selectedItem}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{n}{selectedItem}\PYG{p}{.}\PYG{n}{Quantity}\PYG{p}{;}
+
+\PYG{+w}{                    }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{UpdateSelectedProductsList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{else}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Пожалуйста, выберите товар для удаления из заказа.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик нажатия кнопки \PYGZdq{}+\PYGZdq{} для увеличения количества}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{IncreaseQuantity\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RoutedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sender}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{Button}\PYG{+w}{ }\PYG{n}{button}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{button}\PYG{p}{.}\PYG{n}{Tag}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{OrderItem}\PYG{+w}{ }\PYG{n}{item}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{item}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Товара больше нет на складе.\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButton}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxImage}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Quantity}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Stock}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// резерв}
+\PYG{+w}{                }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{UpdateSelectedProductsList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик нажатия кнопки \PYGZdq{}\PYGZhy{}\PYGZdq{} для уменьшения количества}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{DecreaseQuantity\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RoutedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sender}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{Button}\PYG{+w}{ }\PYG{n}{button}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{button}\PYG{p}{.}\PYG{n}{Tag}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{OrderItem}\PYG{+w}{ }\PYG{n}{item}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{item}\PYG{p}{.}\PYG{n}{Quantity}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Quantity}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Уменьшение количества}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{k}{else}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{item}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Удаление товара}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Stock}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{UpdateProductList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{UpdateSelectedProductsList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик изменения выделения в списке заказов}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{OrdersList\PYGZus{}SelectionChanged}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{SelectionChangedEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{OrdersList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{Order}\PYG{+w}{ }\PYG{n}{selectedOrder}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Заполнение полей данными выбранного заказа}
+\PYG{+w}{                }\PYG{n}{CustomerName}\PYG{p}{.}\PYG{n}{Text}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{selectedOrder}\PYG{p}{.}\PYG{n}{CustomerName}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{AddRange}\PYG{p}{(}\PYG{n}{selectedOrder}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{UpdateSelectedProductsList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Очистка полей ввода для товаров}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{ClearProductFields}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{ProductName}\PYG{p}{.}\PYG{n}{Text}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{ProductPrice}\PYG{p}{.}\PYG{n}{Text}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{ProductStock}\PYG{p}{.}\PYG{n}{Text}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{ProductsList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сброс выделения}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Очистка полей ввода для заказов}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{ClearOrderFields}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{CustomerName}\PYG{p}{.}\PYG{n}{Text}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{selectedProductsForOrder}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{UpdateSelectedProductsList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{OrdersList}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сброс выделения}
+\PYG{+w}{            }\PYG{c+c1}{// Выделение в ProductsList не сбрасывается}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик клика мышью по списку товаров}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{ProductsList\PYGZus{}MouseLeftButtonDown}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MouseButtonEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{listBox}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{sender}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n}{ListBox}\PYG{p}{;}
+\PYG{+w}{            }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{hitTestResult}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{VisualTreeHelper}\PYG{p}{.}\PYG{n}{HitTest}\PYG{p}{(}\PYG{n}{listBox}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{.}\PYG{n}{GetPosition}\PYG{p}{(}\PYG{n}{listBox}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{hitTestResult}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Проверка, попал ли клик на ListBoxItem}
+\PYG{+w}{                }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{element}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{hitTestResult}\PYG{p}{.}\PYG{n}{VisualHit}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{element}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{o}{!}\PYG{p}{(}\PYG{n}{element}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{ListBoxItem}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{element}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{VisualTreeHelper}\PYG{p}{.}\PYG{n}{GetParent}\PYG{p}{(}\PYG{n}{element}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{element}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{listBox}\PYG{p}{.}\PYG{n}{SelectedItem}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сброс выделения при клике по пустому месту}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

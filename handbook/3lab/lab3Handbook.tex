@@ -1,23 +1,35 @@
 %! TeX program = lualatex
-
 \documentclass[12pt]{article}
 
+\usepackage[most]{tcolorbox}
+
 \usepackage{cmap}
+\usepackage{minted}
+
+\floatname{listing}{Листинг}
+\setminted{
+    linenos,                % показывать номера строк
+    breaklines,             % переносить длинные строки
+    breakanywhere=true,     % переносить в любом месте
+    tabsize=2,              % размер табуляции
+    fontsize=\scriptsize,        % размер шрифта
+    frame=lines,            % рамка сверху и снизу
+    framesep=2mm,           % расстояние текста от рамки
+    baselinestretch=1.1,    % межстрочный интервал
+    autogobble=true,        % автоудаление общего отступа
+    % xleftmargin=10pt,       % отступ слева
+    % numbersep=5pt,          % расстояние между номерами и кодом
+}
 
 \usepackage[english, russian]{babel}
 
-\usepackage{microtype}
+\usepackage[nopatch=footnote]{microtype}
 
 \usepackage{float}
 \usepackage{fontspec}
 \usepackage[pdfborder={0 0 0}]{hyperref}
 
-\usepackage{lipsum}
-
 \usepackage{enumitem}
-% \usepackage{libertinus}
-
-% \setmainfont{Ubuntu}
 
 \setmainfont{TimesNewerRoman}[
   Extension = .otf,
@@ -25,48 +37,35 @@
   UprightFont = *-Regular,
   BoldFont = *-Bold
 ]
-\setmonofont{Source Code Pro}
+\setmonofont{Ubuntu Mono}
 
-\newcommand{\icon}[1]{\fontspec{UbuntuNerdFont}[Extension = .ttf, 
+\newcommand{\icon}[1]{\fontspec{UbuntuNerdFont}[Extension = .ttf,
   Path = /nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/,
-  UprightFont = *-Regular, 
+  UprightFont = *-Regular,
 BoldFont = *-Bold] #1}
 
 \newcommand{\iicon}[1]{{\icon{#1}}}
 
 \usepackage{graphicx}
-\usepackage{multicol}
-\usepackage{xcolor} % Цвета
-
 \usepackage{fontawesome5} % Для иконок
 
 \usepackage[left=2.0cm, right=2.0cm, top=1.0cm, bottom=1.0cm, includeheadfoot]{geometry}
 
-% \usepackage[mocha, textcolor=true, pagecolor=true]{catppuccinpalette}
-\usepackage[latte, textcolor=true, pagecolor=true]{catppuccinpalette}
+\usepackage[mocha, textcolor=true, pagecolor=true]{catppuccinpalette} \usemintedstyle{catppuccin-mocha}
+% \usepackage[latte, textcolor=true, pagecolor=true]{catppuccinpalette} \usemintedstyle{catppuccin-latte}
 
-% \usepackage[\jobname,styleAll]{catppuccinpalet}
-
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{listings}
-
-% NOTE: включить при компиляции
-% \usepackage{setspace}
-% \onehalfspacing
+\usepackage{setspace}
+\onehalfspacing
 
 \usepackage{fancyhdr}
-
 \fancyhf{}
 
-% \renewcommand{\sectionmark}[1]{\markboth{#1}}{\rightmark}
-\renewcommand{\subsectionmark}[1]{\markright{#1}{\leftmark}}
-\renewcommand{\sectionmark}[1]{\markright{#1}{\leftmark}}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
 
 % Настройка колонтитулов
-\fancyhead[RO]{\rightmark}  % section (справа)
-\fancyhead[LO]{\leftmark}   % subsection (слева)
+\fancyhead[RO]{\rightmark}
+\fancyhead[LO]{\leftmark}
 
 \fancyfoot[L]{\hspace{8pt} \rule{\textwidth}{0.4pt}}
 \fancyfoot[R]{\LARGE{\thepage}}
@@ -80,91 +79,11 @@ BoldFont = *-Bold] #1}
 }
 
 \newcommand{\colorURL}[1]{\textcolor{CtpBlue}{#1}}
-\newcommand{\colorGIT}[1]{\textcolor{CtpGreen}{#1}}
-
-\lstdefinestyle{csharp_catppuccin}{
-    language={[Sharp]C},
-    breaklines=true,
-    literate={*}{{\char42}}1
-               {-}{{\char45}}1
-               {\ }{{\copyablespace}}1,
-               % {``}{{``}}1
-               % {''}{{''}}1
-               % {“}{{``}}1
-               % {”}{{''}}1
-               % {"}{{\textquotedbl}}1,
-    inputencoding=utf8,
-    extendedchars=true,
-    captionpos=b,
-    frame=tb,
-    texcl=true,
-    keepspaces=true,
-    columns=fullflexible,
-    showstringspaces=false,
-    breakatwhitespace=true,
-    morecomment=[l]{//}, %use comment-line-style!
-    morecomment=[s]{/*}{*/}, %for multiline comments
-    stringstyle={\color{CtpGreen}},
-    moredelim=[s][\color{CtpGreen}]{"""}{"""},
-    % moredelim=[s][\color{CtpGreen}]{"}{"},
-    commentstyle={\color{CtpOverlay1}},
-    basicstyle={\scriptsize\color{CtpText}\ttfamily},
-    keywordstyle={\color{CtpMauve}},         % Основные ключевые слова
-    keywordstyle=[2]{\color{CtpMauve}},      % Модификаторы доступа
-    keywordstyle=[3]{\color{CtpYellow}},    % Типы данных
-    keywordstyle=[4]{\color{CtpLavender}},  % Литералы и значения
-    keywordstyle=[5]{\color{CtpMauve}},     % Объявления структур
-    keywordstyle=[6]{\color{CtpTeal}},      % Операторы и методы
-    otherkeywords={?, ??, ?., =>, @, $, &}, % Специальные операторы
-    % NOTE: включить при компиляции 
-    % keywords={}, 
-    % deletekeywords={*},
-    % morekeywords={
-    %     abstract, as, async, await, base, break, case, catch, 
-    %     checked, continue, default, do, else, explicit, false, 
-    %     finally, fixed, for, foreach, goto, if, implicit, in, 
-    %     lock, operator, out, params, ref, return, switch, 
-    %     this, throw, true, try, unchecked, using, while, yield
-    % },
-    % morekeywords=[2]{   % Модификаторы
-    %     public, private, protected, internal, 
-    %     virtual, override, sealed, static, 
-    %     readonly, extern, volatile, const, 
-    %     partial, unsafe, protected internal
-    % },
-    % morekeywords=[3]{   % Типы данных
-    %     bool, byte, char, decimal, double, 
-    %     dynamic, float, int, long, object, 
-    %     sbyte, short, string, uint, ulong, 
-    %     ushort, void, var, DateTime, List,
-    %     string, decimal
-    % },
-    % morekeywords=[4]{   % Литералы и значения
-    %     null, true, false, value, get, set
-    % },
-    % morekeywords=[5]{   % Объявления структур
-    %     class, struct, interface, enum, 
-    %     delegate, event, namespace, using
-    % },
-    % morekeywords=[6]{   % Операторы и методы
-    %     new, is, as, sizeof, typeof, 
-    %     nameof, stackalloc, checked, 
-    %     unchecked, from, where, select, 
-    %     group, into, orderby, join, let, 
-    %     ascending, descending, partial
-    % },
-}
-
-\usepackage[space=true]{accsupp}
-\newcommand{\copyablespace}{\BeginAccSupp{method=hex,unicode,ActualText=00A0}\hphantom{x}\EndAccSupp{}}
+\newcommand{\colorGIT}[1]{\textcolor{CtpLavender}{#1}}
+\renewcommand{\texttt}[1]{{\small\ttfamily #1}}
 
 \setlength{\headheight}{15.2pt}
 
-% TODO:
-% 1. Заменить все изображения до демонстрации
-% 2. Сделать фатомные оглавления 
-% 3. улучшить подстветку синтаксиса (не работает "")
-% 4. Мб поменять цвет для GIT на оранжевый  
 \begin{document}
 
 \pagestyle{empty}
@@ -172,25 +91,13 @@ BoldFont = *-Bold] #1}
 \lablogo
 
 \tableofcontents
-\lstlistoflistings
+\newpage
+\renewcommand\listoflistingscaption{Листинг}
+\listoflistings
 
 \newpage
 
 \pagestyle{fancy}
-
-\lablogo
-
-\pagestyle{fancy}
-
-\begin{center}
-	\section{КАК ЭТО ЧИТАТЬ? \ \texorpdfstring{\faBookOpen}{}}
-\end{center}
-
-\lipsum[1-3]
-
-Также \textcolor{CtpLavender}{\hyperref[sect:task]{дополнительные задания}} выполняются по желанию и не подлежат проверке на зачёте.
-
-% \newpage
 %
 % \section {I really \textcolor{CtpRed}{ }\colorGIT{}}
 %
@@ -224,20 +131,18 @@ BoldFont = *-Bold] #1}
 	\section{ЗАДАНИЕ \ \texorpdfstring{\faScroll}{}}
 \end{center}
 
-\vspace{4pt}
-
 % \begin{center}
 % \begin{minipage}{0.85\linewidth}
 \noindent Система управления заказами для онлайн-магазина:
 \begin{enumerate}
-	\item Реализовать CRUD-приложение (WPF)\footnote{CRUD-приложение — это программа, которая позволяет вам выполнять четыре основных действия с данными (например, товарами или заказами): Создавать новые записи, Читать (просматривать) существующие, Обновлять (редактировать) их и Удалять ненужные.}.
-	\item Реализовать визуальное отображение списка товаров и списка заказов
-	\item Реализовать функционал добавления, редактирования, удаления, конкретных товаров, а также учет их количества. Реализовать функции уменьшения количества товаров при добавлении их в заказ.
+	\item Реализовать \texttt{CRUD}-приложение (\texttt{WPF})\footnote{\texttt{CRUD}-приложение -- это программа, которая позволяет вам выполнять четыре основных действия с данными (например, товарами или заказами): Создавать новые записи, Читать (просматривать) существующие, Обновлять (редактировать) их и Удалять ненужные.}.
+	\item Реализовать визуальное отображение списка товаров и списка заказов.
+	\item Реализовать функционал добавления, редактирования, удаления конкретных товаров, а также учёт их количества. Реализовать функции уменьшения количества товаров при добавлении их в заказ.
 	\item Реализовать функционал добавления, редактирования, удаления заказов, а также возможность редактирования количества товаров, добавленных в заказ.
 	\item В списке заказов отобразить информацию о названии, дате (времени) заказа, общей сумме заказа и список входящих в него товаров и их количества.
-	\item Реализовать функцию расчета остатков товара (при уменьшении количества товара в заказе, должно увеличиваться количество товара на складе (возвращаться). При удалении товара из заказа, также  количество остатков должно увеличиваться (если было куплено 6 единиц товара и заказ удален (отменен) на складе должно стать на 6 единиц товара больше (вернуться))
+	\item Реализовать функцию расчёта остатков товара (при уменьшении количества товара в заказе, должно увеличиваться количество товара на складе (возвращаться). При удалении товара из заказа также количество остатков должно увеличиваться (если было куплено 6 единиц товара и заказ удален (отменен), на складе должно стать на 6 единиц товара больше (вернуться))).
 \end{enumerate}
-Весь код доступен в \colorURL{\href{https://github.com/WebMasterIT/Csharp_Labs/tree/ec375afd16c0647b337cf3d8a79c8bef904fc1be}{репозитории на GitHub}\ \faGithub}\footnote{Ссылки, выделенные \colorURL{голубым} цветом, ведут на внешние ресурсы; ссылки, выделенные \colorGIT{зелёным} цветом, указывают на исходный код в репозитории GitHub \ \faGithub.}
+Весь код доступен в \colorURL{\href{https://github.com/WebMasterIT/Csharp_Labs/tree/main}{репозитории на GitHub}\ \faGithub}\footnote{Ссылки, выделенные \colorURL{голубым} цветом, ведут на внешние ресурсы; ссылки, выделенные \colorGIT{светло-синим} цветом, указывают на исходный код в репозитории GitHub \ \faGithub.}
 % \end{minipage}
 % \end{center}
 
@@ -252,16 +157,16 @@ BoldFont = *-Bold] #1}
 \begin{enumerate}
 	\item Музыкальный магазин
 	      \begin{itemize}
-		      \item Товары: гитары, синтезаторы, барабаны (поля: Name, Price, Stock, Id)
+		      \item Товары: гитары, синтезаторы, барабаны (поля: \texttt{Name}, \texttt{Price}, \texttt{Stock}, \texttt{Id})
 		      \item Заказы: имя клиента, дата, список инструментов
 		      \item Создать раздел «Инструменты», добавить поле «Тип» (например, струнные, клавишные)
 	      \end{itemize}
 
 	\item Книжный магазин
 	      \begin{itemize}
-		      \item Товары: книги (поля: Name — название, Price, Stock, Id)
+		      \item Товары: книги (поля: \texttt{Name} -- название, \texttt{Price}, \texttt{Stock}, \texttt{Id})
 		      \item Заказы: имя клиента, дата, список книг
-		      \item Создать раздел «Книги», добавить поле «Автор» в Product
+		      \item Создать раздел «Книги», добавить поле «Автор» в \texttt{Product}
 	      \end{itemize}
 
 	\item Магазин электроники
@@ -288,7 +193,7 @@ BoldFont = *-Bold] #1}
 
 	\item Цветочный магазин
 	      \begin{itemize}
-		      \item Товары: розы, тюльпаны, орхиведи.
+		      \item Товары: розы, тюльпаны, орхидеи.
 		      \item Заказы: имя клиента, дата, список букетов
 		      \item Создать раздел \guillemotleft Цветы\guillemotright , добавить поле \guillemotleft Тип\guillemotright \ (букет, горшок)
 	      \end{itemize}
@@ -299,14 +204,14 @@ BoldFont = *-Bold] #1}
 	      \begin{itemize}
 		      \item Товары: конструкторы, куклы, машинки.
 		      \item Заказы: имя клиента, дата, список игрушек.
-		      \item Создать раздел \guillemotleft Игрушкеи\guillemotright, добавить поле \guillemotleft Возраст\guillemotright.
+		      \item Создать раздел \guillemotleft Игрушки\guillemotright, добавить поле \guillemotleft Возраст\guillemotright.
 	      \end{itemize}
 
 	\item Магазин бытовой техники
 	      \begin{itemize}
-		      \item Товары: холодильники, вылесосы, микроволновки.
+		      \item Товары: холодильники, пылесосы, микроволновки.
 		      \item Заказы: имя клиента, дата, список техники.
-		      \item Создать: раздел \guillemotleft Техника\guillemotright, добавить поле \guillemotleft Мощность\guillemotright
+		      \item Создать раздел \guillemotleft Техника\guillemotright, добавить поле \guillemotleft Мощность\guillemotright
 	      \end{itemize}
 
 	\item Магазин косметики
@@ -464,14 +369,18 @@ BoldFont = *-Bold] #1}
 
 \end{enumerate}
 
-\subsection{ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ ~\texorpdfstring{\faLightbulb\ }{}}\label{sect:task}
+\subsection
+[ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ~\texorpdfstring{\faLightbulb}{}]
+{ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ~\texorpdfstring{\faLightbulb}{}\protect\footnotemark}
 
 \begin{enumerate}
 	\item[\faTrash] Реализовать удаление единственного товара в заказе. Если в заказе присутствует только один товар, то при его удалении должен удаляться и сам заказ. Количество данного товара должно возвращаться в остаток.
 
-	\item[\faHighlighter] Добавить функционал снятия выделения товара (в списке выбранных для добавления в заказ) и снятие выделения с заказа при клике по пустому полю (внутри listBox).
+	\item[\faBroom] Добавить функционал снятия выделения товара (в списке выбранных для добавления в заказ) и снятие выделения с заказа при клике по пустому полю (внутри \texttt{listBox}).
 
 \end{enumerate}
+
+\footnotetext{Дополнительные задания выполняются по желанию и не подлежат проверке на зачёте.}
 
 \newpage
 
@@ -483,21 +392,21 @@ BoldFont = *-Bold] #1}
 \begin{enumerate}
 	\item Создать проект
 	      % \item Приложение WPF (Майкрософт)
-	\item Приложение WPF (Майкрософт) (Рисунок \ref{fig:projectcreate})
+	\item Приложение \texttt{WPF} (Майкрософт) (Рисунок \ref{fig:projectcreate})
 
 	      \begin{figure}[H]
 		      \centering
-		      \includegraphics[width=0.6\textwidth]{fig/projectCreate.png}
+		      \includegraphics[width=0.55\textwidth]{fig/image 2.png}
 		      \caption{Создание проекта}
 		      \label{fig:projectcreate}
 	      \end{figure}
 
 	      % \item Далее задать имя проекта: StoreManager
-	\item Далее задать имя проекта: StoreManager (Рисунок \ref{fig:createnameproject})
+	\item Далее задать имя проекта: \texttt{StoreManager} (Рисунок \ref{fig:createnameproject})
 
 	      \begin{figure}[H]
 		      \centering
-		      \includegraphics[width=0.6\textwidth]{fig/createNameProject.png}
+		      \includegraphics[width=0.55\textwidth]{fig/image 3.png}
 		      \caption{Задание имени проекта}
 		      \label{fig:createnameproject}
 	      \end{figure}
@@ -505,12 +414,12 @@ BoldFont = *-Bold] #1}
 	      \newpage
 
 	      % \item Выбрать платформу (пример выполненн на .net 8.0)
-	\item Выбрать платформу (пример выполненн на .net 8.0) (Рисунок \ref{fig:net8})
+	\item Выбрать платформу (пример выполнен на .net 8.0) (Рисунок \ref{fig:net8})
 
 	      \begin{figure}[H]
 		      \centering
-		      \includegraphics[width=0.8\textwidth]{fig/net8.0.png}
-		      \caption{Задание имени проекта.}
+		      \includegraphics[width=0.8\textwidth]{fig/image 4.png}
+		      \caption{Выбор платформы.}
 		      \label{fig:net8}
 	      \end{figure}
 
@@ -519,11 +428,16 @@ BoldFont = *-Bold] #1}
 Структура проекта состоит из следующих файлов:
 
 \begin{itemize}
-	\item App.xaml — конфигурация приложения. Определяет основной класс приложения, наследуемый от Application. В нём задаются стили, шаблоны приложения и стартовая точка\footnote{Обычно указывается начальное окно в свойстве StartupUri}.
-	\item App.xaml.cs — логика приложения Содержит класс App, который может переопределять методы, такие как OnStartup, для настройки поведения при запуске, или обрабатывать события приложения.
-	\item ainWindow.xaml — разметка и структура UI (интерфейса) главного окна.
-	\item ainWindow.xaml.cs — логика и обработчики событий окна.
+	\item \texttt{App.xaml} -- конфигурация приложения. Определяет основной класс приложения, наследуемый от \texttt{Application}. В нём задаются стили, шаблоны приложения и стартовая точка\footnotemark.
+	\item \texttt{App.xaml.cs} -- логика приложения. Содержит класс \texttt{App}, который может переопределять методы, такие как \texttt{OnStartup}, для настройки поведения при запуске, или обрабатывать события приложения.
+	\item \texttt{MainWindow.xaml} -- разметка и структура \texttt{UI} (интерфейса) главного окна.
+	\item \texttt{MainWindow.xaml.cs} -- логика и обработчики событий окна.
 \end{itemize}
+
+\begingroup
+\renewcommand{\texttt}[1]{{\scriptsize\ttfamily #1}}
+\footnotetext{Обычно указывается начальное окно в свойстве \texttt{StartupUri}}
+\endgroup
 
 
 
@@ -531,1111 +445,368 @@ BoldFont = *-Bold] #1}
 
 \subsection{ШАГ 2: ДОБАВЛЕНИЕ ФАЙЛОВ}
 
+\begingroup
+\renewcommand{\texttt}[1]{{\normalsize\ttfamily #1}}
 \stepcounter{subsubsection}
 \phantomsection
-\addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection}СОЗДАНИЕ ПАПКИ MODELS}
+\addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection}СОЗДАНИЕ ПАПКИ \texttt{Models}}
+\endgroup
 
 Необходимо добавить следующие файлы и папки:
 \begin{itemize}
-	\item В корне проекта создать папку Models
-	\item В папке Models добавить два новых файла классов: Product.cs и Order.cs.
+	\item В корне проекта создать папку \texttt{Models}
+	\item В папке \texttt{Models} добавить два новых файла классов: \texttt{Product.cs} и \texttt{Order.cs}.
 \end{itemize}
 
-\noindent Код для файла Order.cs приведен в листинге \ref{lst:OrderCs}
+\noindent Код для файла \texttt{Order.cs} приведён в листинге \ref{lst:OrderCs}
 
-\begin{lstlisting}[style=csharp_catppuccin, label={lst:OrderCs}, caption=Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Order.cs\#L1-L27}{Order.cs}}]
-namespace StoreManager.Models
-{
-    // Модель заказа, содержащая информацию о клиенте и товарах
-    public class Order
-    {
-        // Уникальный идентификатор заказа
-        public int Id { get; set; }
+\begin{listing}[H]
+	\inputminted{csharp}{../../3lab/StoreManager/Models/Order.cs}
+	\caption{Класс {\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Order.cs\#L1-L27}{Order.cs}}}}
+	\label{lst:OrderCs}
+\end{listing}
 
-        // Список элементов заказа (товар + количество)
-        public List<OrderItem> Items { get; set; }
+Данный файл отвечает за создание нового объекта заказа. Может содержать уникальные поля, не такие как в примере (в соответствии с вариантом).
 
-        // Имя клиента
-        public string CustomerName { get; set; }
+\begingroup
+\renewcommand{\texttt}[1]{{\normalsize\ttfamily #1}}
+\stepcounter{subsubsection}
+\phantomsection
+\addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection}КЛАССЫ: \texttt{PRODUCT.CS}, \texttt{ORDER.CS}, \texttt{ORDERITEM.CS}}
+\endgroup
 
-        // Дата создания заказа
-        public DateTime OrderDate { get; set; }
+Также необходим класс, позволяющий связать товар и его количество в заказе. Пример созданного класса \texttt{OrderItem} и объявления его свойств приведён в листинге \ref{lst:OrderItem}
 
-        // Общая сумма заказа, вычисляемая как сумма цен товаров умноженная на их количество
-        public decimal TotalPrice => Items.Sum(item => item.Product.Price * item.Quantity);
 
-        // Конструктор, инициализирующий пустой список товаров
-        public Order()
-        {
-            Items = new List<OrderItem>();
-        }
-    }
-}
-\end{lstlisting}
+\begin{listing}[H]
+	\inputminted{csharp}{../../3lab/StoreManager/Models/OrderItem.cs}
+	\caption{Класс {\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Order.cs\#L1-L27}{Order.cs}}}}
+	\label{lst:OrderItem}
+\end{listing}
 
-Данный файл отвечает за создание нового объекта заказа. Может содержать уникальные поля не такие как в примере (в соответствии с вариантом).
+Также необходимо создать файл \texttt{Product.cs}. Данный файл отвечает за создание нового объекта товара. Пример класса \texttt{Product} приведён в листинге \ref{lst:Product.cs}.
 
-% \newpage
+\begin{listing}[H]
+	\inputminted{csharp}{../../3lab/StoreManager/Models/Product.cs}
+	\caption{Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Product.cs\#L1-L18}{Product.cs}}}
+	\label{lst:Product.cs}
+\end{listing}
 
 \stepcounter{subsubsection}
 \phantomsection
-\addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection}КЛАССЫ: PRODUCT.CS, ORDER.CS, ORDERITEM.CS}
+\addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection}ДОБАВЛЕНИЕ КОНВЕРТЕРА}
 
-Также необходим класс позволяющий связать товар и его количество в заказе. Пример, созданного класса OrderItem И объявления его свойств приведен в листинге \ref{lst:OrderItem}
+Также необходимо создать папку \texttt{Converters}. Она будет нужна для создания конвертера. В данной папке нужно создать класс \texttt{BooleanToVisibilityConverter}. Пример кода для данного класса приведён в листинге \ref{lst:BooleanToVisibilityConverter}.
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/OrderItem.cs\#L1-L12}{OrderItem}}, label=lst:OrderItem]
-namespace StoreManager.Models
-{
-    // Модель элемента заказа, связывающая товар и его количество
-    public class OrderItem
-    {
-        // Ссылка на товар
-        public Product Product { get; set; }
+\begin{listing}[H]
+	\inputminted{csharp}{../../3lab/StoreManager/Converters/BooleanToVisibilityConverter.cs}
+	\caption{Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Converters/BooleanToVisibilityConverter.cs\#L1-L23}{BooleanToVisibilityConverter}}}
+	\label{lst:BooleanToVisibilityConverter}
+\end{listing}
 
-        // Количество единиц товара в заказе
-        public int Quantity { get; set; }
-    }
-}
-\end{lstlisting}
-
-Также необходимо создать файл Product.cs. Данный файл отвечает за создание нововго объекта товараю Пример, класса Product приведен в листинге \ref{lst:Product.cs}.
-
-\newpage
-
-\begin{lstlisting}[style=csharp_catppuccin, caption=Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Product.cs\#L1-L18}{Product.cs}}, label=lst:Product.cs]
-namespace StoreManager.Models
-{
-    {
-    // Модель товара, представляющая продукт в магазине
-    public class Product
-    {
-        // Уникальный идентификатор товара
-        public int Id { get; set; }
-
-        // Название товара
-        public string Name { get; set; }
-
-        // Цена товара
-        public decimal Price { get; set; }
-
-        // Количество товара на складе
-        public int Stock { get; set; }
-    }
-}   
-\end{lstlisting}
-
-% \newpage
-
-Также необходимо создать папку Converters. Она будет нужна для создания конвертера. В данной папке нужно создать класс BooleanToVisibilityConverter. Пример разметки для данного класса приведен в листинге \ref{lst:BooleanToVisibilityConverter}.
-\begin{lstlisting}[style=csharp_catppuccin, caption=Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Converters/BooleanToVisibilityConverter.cs\#L1-L23}{BooleanToVisibilityConverter}}, label=lst:BooleanToVisibilityConverter]
-using System;
-using System.Globalization;
-using System.Windows;
-using System.Windows.Data;
-
-namespace StoreManager.Converters
-{
-    // Конвертер для отображения placeholder'ов в TextBox
-    public class BooleanToVisibilityConverter : IValueConverter
-    {
-        // Преобразует boolean (IsEmpty) в Visibility для TextBlock
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return value is bool isEmpty && isEmpty ? Visibility.Visible : Visibility.Collapsed;
-        }
-
-        // Обратное преобразование не используется
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
-\end{lstlisting}
-
-Этот класс реализует интерфейс IValueConverter, который используется для
-преобразования данных при привязке (Data Binding)
+Этот класс реализует интерфейс \texttt{IValueConverter}, который используется для
+преобразования данных при привязке (\texttt{Data Binding})
 \begin{itemize}
-	\item Метод Convert преобразует значение типа bool в Visibility (перечисление WPF для управления видимостью элементов)
-	\item true {\icon{}} Visibility.Visible (элемент виден)
-	\item false {\icon{}} Visibility.Collapsed (элемент скрыт, не занимает место
-	\item Метод ConvertBack не реализован, так как обратное преобразование не требуется.
+	\item Метод \texttt{Convert} преобразует значение типа \texttt{bool} в \texttt{Visibility} (перечисление \texttt{WPF} для управления видимостью элементов)
+	\item \texttt{true} {\small{{\icon{}}}} \texttt{Visible} (элемент виден)
+	\item \texttt{false} {\small{{\icon{}}}} \texttt{Collapsed} (элемент скрыт, не занимает место)
+	\item Метод \texttt{ConvertBack} не реализован, так как обратное преобразование не требуется.
 \end{itemize}
 
-\newpage
-Конвертеры в WPF используются для преобразования данных между источником
-(моделью) и целью (элементом UI). Например, конвертер позволяет адаптировать
+Конвертеры в \texttt{WPF} используются для преобразования данных между источником
+(моделью) и целью (элементом \texttt{UI}). Например, конвертер позволяет адаптировать
 значение свойства модели к формату, подходящему для отображения. В данном
-случае конвертер применяется для реализации эффекта placeholder (подсказки в
-текстовых полях), показывая текст, когда поле пустое (Text.IsEmpty).
+случае конвертер применяется для реализации эффекта \texttt{placeholder} (подсказки в
+текстовых полях), показывая текст, когда поле пустое (\texttt{Text.IsEmpty}).
 
-Свойство Visibility в WPF имеет три значения
+Свойство \texttt{Visibility} в \texttt{WPF} имеет три значения:
 \begin{itemize}
-	\item Visible -- элемент отображается
-	\item Collapsed -- элемент скрыт и не занимает места
-	\item Hidden -- элемент скрыт, но занимает место в макете.
+	\item \texttt{Visible} -- элемент отображается
+	\item \texttt{Collapsed} -- элемент скрыт и не занимает места
+	\item \texttt{Hidden} -- элемент скрыт, но занимает место в макете.
 \end{itemize}
+
+\pagebreak
 
 \subsection{ШАГ 3: РЕАЛИЗАЦИЯ ИНТЕРФЕЙСА}
 
-Для того чтобы реализовать внешний вид приложения необходимо добавить
-соответствующую разметку в файл MainWindow.xaml
-Пример разметки для данного файла будет представлен ниже в листинге \ref{lst:MainWindow}
+Для того, чтобы реализовать внешний вид приложения, необходимо добавить
+соответствующую разметку в файл \texttt{MainWindow.xaml}.
+Пример разметки для данного файла представлен ниже в листинге~\ref{lst:MainWindow}
 
-% TODO:
-% 1. покрасить код
-% 2. спросить, что делать с эти листингом, мб тпропнуть его?
-
-\begin{lstlisting}[style=csharp_catppuccin, caption=Пример разметки главного окна \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml\#L1-L200}{MainWindow}}, label=lst:MainWindow, basicstyle=\tiny]
-<Window x:Class="StoreManager.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:converters="clr-namespace:StoreManager.Converters"
-        Title="Управление магазином" Height="650" Width="950"
-        WindowStartupLocation="CenterScreen" Background="#F5F5F5">
-
-    <!-- Ресурсы окна: конвертеры и стили -->
-    <Window.Resources>
-        <!-- Конвертер для преобразования bool в Visibility -->
-        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-
-        <!-- Общий стиль кнопок -->
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="#FF6200EE"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Padding" Value="10,5"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor" Value="Hand"/>
-        </Style>
-
-        <!-- Специальный стиль кнопок изменения количества -->
-        <Style x:Key="QuantityButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF6200EE"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Width" Value="25"/>
-            <Setter Property="Height" Value="25"/>
-            <Setter Property="Margin" Value="5,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor" Value="Hand"/>
-        </Style>
-
-        <!-- Стиль для полей ввода -->
-        <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="#FFCCCCCC"/>
-        </Style>
-
-        <!-- Стиль текста-заглушки (placeholder) -->
-        <Style TargetType="TextBlock" x:Key="PlaceholderStyle">
-            <Setter Property="Foreground" Value="Gray"/>
-            <Setter Property="FontStyle" Value="Italic"/>
-            <Setter Property="Margin" Value="8,5,0,0"/>
-            <Setter Property="IsHitTestVisible" Value="False"/>
-        </Style>
-    </Window.Resources>
-
-    <!-- Основная сетка, задаёт структуру окна -->
-    <Grid Margin="-16,0,0,-35">
-        <Grid.ColumnDefinitions>
-            <!-- Колонки для панели товаров и заказов -->
-            <ColumnDefinition Width="107*"/>
-            <ColumnDefinition Width="344*"/>
-            <ColumnDefinition Width="450*"/>
-        </Grid.ColumnDefinitions>
-
-        <!-- Панель товаров -->
-        <Border Grid.Column="0" Margin="10" Background="White" CornerRadius="10" Padding="10" Grid.ColumnSpan="2">
-            <StackPanel>
-                <TextBlock Text="Товары" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
-
-                <!-- Список товаров -->
-                <ListBox x:Name="ProductsList" Height="250" BorderBrush="#FFCCCCCC" 
-                         SelectionChanged="ProductsList_SelectionChanged" 
-                         MouseLeftButtonDown="ProductsList_MouseLeftButtonDown">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <!-- Название -->
-                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="0,0,10,0"/>
-                                <!-- Цена -->
-                                <TextBlock Text="{Binding Price, StringFormat={}{0:C}}"/>
-                                <!-- Остаток -->
-                                <TextBlock Text=" (Остаток: " FontStyle="Italic"/>
-                                <TextBlock Text="{Binding Stock}">
-                                    <!-- Подсветка остатка -->
-                                    <TextBlock.Style>
-                                        <Style TargetType="TextBlock">
-                                            <Style.Triggers>
-                                                <!-- Если 0 - красным -->
-                                                <DataTrigger Binding="{Binding Stock}" Value="0">
-                                                    <Setter Property="Foreground" Value="Red"/>
-                                                </DataTrigger>
-                                                <!-- Если меньше 5 - оранжевым -->
-                                                <DataTrigger Binding="{Binding Stock, ConverterParameter=5}" Value="True">
-                                                    <Setter Property="Foreground" Value="Orange"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
-                                <TextBlock Text=")"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-
-                <!-- Кнопка добавления в заказ -->
-                <Button x:Name="AddToOrderButton" Content="Добавить в заказ" Click="AddToOrder_Click" HorizontalAlignment="Right"/>
-
-                <!-- Поля ввода нового товара -->
-                <Grid>
-                    <TextBox x:Name="ProductName"/>
-                    <TextBlock Text="Название товара" Style="{StaticResource PlaceholderStyle}"
-                               Visibility="{Binding ElementName=ProductName, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                </Grid>
-                <Grid>
-                    <TextBox x:Name="ProductPrice"/>
-                    <TextBlock Text="Цена" Style="{StaticResource PlaceholderStyle}"
-                               Visibility="{Binding ElementName=ProductPrice, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                </Grid>
-                <Grid>
-                    <TextBox x:Name="ProductStock"/>
-                    <TextBlock Text="Остаток" Style="{StaticResource PlaceholderStyle}"
-                               Visibility="{Binding ElementName=ProductStock, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                </Grid>
-
-                <!-- Кнопки управления товарами -->
-                <StackPanel HorizontalAlignment="Right" Width="222">
-                    <Button Content="Добавить товар" Click="AddProduct_Click"/>
-                    <Button Content="Обновить товар" Click="UpdateProduct_Click"/>
-                    <Button Content="Удалить товар" Click="DeleteProduct_Click"/>
-                </StackPanel>
-            </StackPanel>
-        </Border>
-
-        <!-- Панель заказов -->
-        <Border Grid.Column="2" Margin="10" Background="White" CornerRadius="10" Padding="10">
-            <StackPanel>
-                <TextBlock Text="Заказы" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
-
-                <!-- Список заказов -->
-                <ListBox x:Name="OrdersList" Height="150" BorderBrush="#FFCCCCCC"
-                         SelectionChanged="OrdersList_SelectionChanged"
-                         MouseLeftButtonDown="ProductsList_MouseLeftButtonDown">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock Text="{Binding CustomerName}" FontWeight="Bold"/>
-                                <TextBlock Text="{Binding OrderDate, StringFormat={}{0:dd.MM.yyyy HH:mm}}"/>
-                                <TextBlock Text="{Binding TotalPrice, StringFormat=Итого: {0:C}}"/>
-                                <!-- Список товаров в заказе -->
-                                <ItemsControl ItemsSource="{Binding Items}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Product.Name}" Margin="0,0,10,0"/>
-                                                <TextBlock Text="{Binding Product.Price, StringFormat={}{0:C}}"/>
-                                                <TextBlock Text=" x " FontStyle="Italic"/>
-                                                <TextBlock Text="{Binding Quantity}"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-
-                <!-- Список выбранных товаров для нового заказа -->
-                <TextBlock Text="Выбранные товары для заказа" FontSize="14" FontWeight="Bold" Margin="0,10,0,5"/>
-                <ListBox x:Name="SelectedProductsList" Height="100" BorderBrush="#FFCCCCCC" MouseLeftButtonDown="ProductsList_MouseLeftButtonDown">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Product.Name}" FontWeight="Bold" Margin="0,0,10,0"/>
-                                <TextBlock Text="{Binding Product.Price, StringFormat={}{0:C}}"/>
-                                <TextBlock Text=" x " FontStyle="Italic"/>
-                                <TextBlock Text="{Binding Quantity}" Margin="0,0,10,0"/>
-                                <!-- Кнопки изменения количества -->
-                                <Button Content="+" Style="{StaticResource QuantityButtonStyle}" Click="IncreaseQuantity_Click" Tag="{Binding}"/>
-                                <Button Content="-" Style="{StaticResource QuantityButtonStyle}" Click="DecreaseQuantity_Click" Tag="{Binding}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-
-                <!-- Кнопка удаления товара из заказа -->
-                <Button Content="Удалить товар из заказа" Click="RemoveProductFromOrder_Click" HorizontalAlignment="Right"/>
-
-                <!-- Поле ввода имени клиента -->
-                <Grid>
-                    <TextBox x:Name="CustomerName"/>
-                    <TextBlock Text="Имя клиента" Style="{StaticResource PlaceholderStyle}"
-                               Visibility="{Binding ElementName=CustomerName, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                </Grid>
-
-                <!-- Кнопки управления заказами -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="Создать заказ" Click="AddOrder_Click"/>
-                    <Button Content="Обновить заказ" Click="UpdateOrder_Click"/>
-                    <Button Content="Удалить заказ" Click="DeleteOrder_Click"/>
-                </StackPanel>
-            </StackPanel>
-        </Border>
-    </Grid>
-</Window>
-\end{lstlisting}
+\begin{listing}[H]
+	\inputminted[firstline=8, lastline=51]{xml}{../../3lab/StoreManager/MainWindow.xaml}
+	% \begin{center}
+	% 	\textcolor{gray}{[... пропущено ...]}
+	% \end{center}
+	% \inputminted[firstline=62, lastline=68]{xml}{../../3lab/StoreManager/MainWindow.xaml}
+	\caption{Пример разметки главного окна \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml\#L1-L200}{MainWindow}}}
+	\label{lst:MainWindow}
+\end{listing}
 
 \newpage
 
 \subsection{ШАГ 4: РЕАЛИЗАЦИЯ ЛОГИКИ}
 
-Файл MainWindow.xaml.cs -- это code-behind для главного окна приложения. Он содержит логику взаимодействия пользовательского интерфейса (UI) с данными, обрабатывает события (например, нажатия кнопок) и управляет состоянием приложения. Приложение представляет собой систему управления магазином, где пользователь может.
+Файл \texttt{MainWindow.xaml.cs} -- это \texttt{code-behind} для главного окна приложения. Он содержит логику взаимодействия пользовательского интерфейса (\texttt{UI}) с данными, обрабатывает события (например, нажатия кнопок) и управляет состоянием приложения. Приложение представляет собой систему управления магазином, где пользователь может.
 
-Структура кода состоит из следующих элементов
+Структура кода состоит из следующих элементов:
 \begin{enumerate}
-	\item Объявления класса и полей -- определение данных, используемых в приложении
-	\item Конструктора -- инициализация окна и начальных данных
-	\item Методов обновления UI -- синхронизация списков товаров и заказов с UI
-	\item Обработчиков событий -- реакция на действия пользователя (нажатия кнопок, выбор элементов)
+	\item Объявления класса и полей -- определение данных, используемых в приложении.
+	\item Конструктора -- инициализация окна и начальных данных.
+	\item Методов обновления \texttt{UI} -- синхронизация списков товаров и заказов с \texttt{UI}.
+	\item Обработчиков событий -- реакция на действия пользователя (нажатия кнопок, выбор элементов).
 	\item Вспомогательных методов -- очистка полей ввода.
 \end{enumerate}
-В листинге \ref{lst:Main} представлен пример кода для класса MainWindow.
+В листинге \ref{lst:Main} представлен пример кода для класса \texttt{MainWindow}.
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=Пример кода для класса \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L1-L21}{Main}}, label=lst:Main]
-using StoreManager.Models;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
+\begin{listing}[H]
+	\inputminted[firstline=1, lastline=21]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{Пример кода для класса \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L1-L21}{MainWindow}}}
+	\label{lst:Main}
+\end{listing}
 
-namespace StoreManager
-{
-    // Главное окно приложения для управления товарами и заказами
-    public partial class MainWindow : Window
-    {
-        // Список всех товаров
-        private List<Product> products = new List<Product>();
-        // Список всех заказов
-        private List<Order> orders = new List<Order>();
-        // Следующий ID для нового товара
-        private int nextProductId = 1;
-        // Следующий ID для нового заказа
-        private int nextOrderId = 1;
-        // Список выбранных товаров для текущего заказа
-        private List<OrderItem> selectedProductsForOrder = new List<OrderItem>();
-\end{lstlisting}
+Класс \texttt{MainWindow} наследуется от \texttt{Window}, так как это главное окно \texttt{WPF}-приложения. Ключевое слово \texttt{partial} указывает, что класс разделён между \texttt{MainWindow.xaml.cs} (логика) и \texttt{MainWindow\-.xaml} (разметка, сгенерированная часть).
 
-Класс MainWindow наследуется от Window, так как это главное окно WPF-приложения. Ключевое слово partial указывает, что класс разделён между MainWindow.xaml.cs (логика) и MainWindow\-.xaml (разметка, сгенерированная часть).
-
-Поля:
+\noindent Поля:
 \begin{itemize}
-	\item products: Хранит список всех товаров (экземпляры класса Product). Это основная коллекция для управления ассортиментом магазина
-	\item orders: Хранит список заказов (экземпляры класса Order). Каждый заказ содержит имя клиента, дату и список товаров
-	\item nextProductId: Счётчик для генерации уникальных идентификаторов товаров.
+	\item \texttt{products}: Хранит список всех товаров (экземпляры класса \texttt{Product}). Это основная коллекция для управления ассортиментом магазина.
+	\item \texttt{orders}: Хранит список заказов (экземпляры класса \texttt{Order}). Каждый заказ содержит имя клиента, дату и список товаров.
+	\item \texttt{nextProductId}: Счётчик для генерации уникальных идентификаторов товаров.
 \end{itemize}
 
-\pagebreak
-
-Начинается с 1 и увеличивается при добавлении нового товара
+\noindent Начинается с 1 и увеличивается при добавлении нового товара:
 \begin{itemize}
-	\item nextOrderId: Аналогичный счётчик для заказов
-	\item selectedProductsForOrder: Временное хранилище товаров (OrderItem), которые пользователь выбрал при формировании нового заказа.
+	\item \texttt{nextOrderId}: Аналогичный счётчик для заказов.
+	\item \texttt{selectedProductsForOrder}: Временное хранилище товаров (\texttt{OrderItem}), которые пользователь выбрал при формировании нового заказа.
 \end{itemize}
 
-Эти поля представляют состояние приложения. Они хранят данные в памяти (вместо базы данных) и используются для отображения в UI и обработки пользовательских действий. Использование List<T> означает, что данные не обновляют UI автоматически (в отличие от ObservableCollection), поэтому код вручную обновляет списки. Далее необходимо объявить основной метод MainWindow.
+Эти поля представляют состояние приложения. Они хранят данные в памяти (вместо базы данных) и используются для отображения в \texttt{UI} и обработки пользовательских действий. Использование \texttt{List<T>} означает, что данные не обновляют \texttt{UI} автоматически (в отличие от \texttt{Observable\-Collection}), поэтому код вручную обновляет списки.
+
+\stepcounter{subsubsection}
+\phantomsection
+\addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection}КОНСТРУКТОР}
+Далее необходимо объявить основной метод (конструктор) \texttt{MainWindow}.
 Пример кода для данного метода представлен в листинге \ref{lst:Main2}
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=Пример кода для класса \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L24-L30}{Main}}, label=lst:Main2]
-        public MainWindow()
-        {
-            InitializeComponent(); // Инициализация UI
-            UpdateProductList();   // Обновление списка товаров
-            UpdateOrderList();    // Обновление списка заказов
-            UpdateSelectedProductsList(); // Обновление списка выбранных товаров
-        }
-\end{lstlisting}
+\begin{listing}[H]
+	\inputminted[firstline=24, lastline=30]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{Пример кода для конструктора класса \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L24-L30}{MainWindow}}}
+	\label{lst:Main2}
+\end{listing}
 
-InitializeComponent() — метод, автоматически сгенерированный WPF, который загружает разметку из MainWindow.xaml, инициализирует элементы интерфейса (такие как кнопки, списки и текстовые поля) и устанавливает необходимые привязки. Без его вызова пользовательский интерфейс не будет отображён.
+\texttt{InitializeComponent()} -- метод, автоматически сгенерированный \texttt{WPF}, который загружает разметку из \texttt{MainWindow.xaml}, инициализирует элементы интерфейса (такие как кнопки, списки и текстовые поля) и устанавливает необходимые привязки. Без его вызова пользовательский интерфейс не будет отображён.
 
-Вызовы методов обновления:
+\noindent Вызовы методов обновления:
 \begin{itemize}
-	\item UpdateProductList() — устанавливает ItemsSource для ListBox с товарами, чтобы отобразить начальный список (пустой на старте)
-	\item UpdateOrderList() — аналогично предыдущему методу, только для списка заказов (OrdersList)
-	\item UpdateSelectedProductsList() -- обновляет список выбранных товаров для заказа (Selected\-Products\-List).
+	\item \texttt{UpdateProductList()} -- устанавливает \texttt{ItemsSource} для \texttt{ListBox} с товарами, чтобы отобразить начальный список (пустой на старте).
+	\item \texttt{UpdateOrderList()} -- аналогично предыдущему методу, только для списка заказов (\texttt{Or\-dersList}).
+	\item \texttt{UpdateSelectedProductsList()} -- обновляет список выбранных товаров для заказа (\texttt{Sel\-ected\-ProductsList}).
 \end{itemize}
 
-Назначение:
+\noindent Назначение:
 \begin{itemize}
-	\item Конструктор подготавливает приложение к работе, загружая UI и синхронизируя данные с элементами управления
+	\item Конструктор подготавливает приложение к работе, загружая \texttt{UI} и синхронизируя данные с элементами управления.
 	\item Поскольку списки изначально пусты, вызовы обновления предотвращают ошибки отображения.
 \end{itemize}
-
-\pagebreak
 
 Методы для обновления списков товаров, заказов и выбранных товаров для заказа
 представлены в листинге \ref{lst:Method}
 
+\begin{listing}[H]
+	\inputminted[firstline=32, lastline=51]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L32-L51}{Методы}} обновления данных}
+	\label{lst:Method}
+\end{listing}
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L32-L51}{Методы}} обновления данных, label=lst:Method]
-        // Обновляет отображение списка товаров
-        private void UpdateProductList()
-        {
-            ProductsList.ItemsSource = null;
-            ProductsList.ItemsSource = products;
-        }
+Метод \texttt{UpdateProductList} Сбрасывает \texttt{ItemsSource} в \texttt{null}, чтобы очистить привязку. Устанавливает \texttt{ItemsSource} в \texttt{products}, чтобы \texttt{ListBox} (\texttt{ProductsList}) отобразил текущий список товаров. Остальные методы работают аналогично. \texttt{Null} используется для предотвращения проблемы с кэшированием данных в \texttt{WPF}, обеспечивая корректное обновление интерфейса.
 
-        // Обновляет отображение списка заказов
-        private void UpdateOrderList()
-        {
-            OrdersList.ItemsSource = null;
-            OrdersList.ItemsSource = orders;
-        }
-
-        // Обновляет отображение списка выбранных товаров
-        private void UpdateSelectedProductsList()
-        {
-            SelectedProductsList.ItemsSource = null;
-            SelectedProductsList.ItemsSource = selectedProductsForOrder;
-        }
-\end{lstlisting}
-
-Метод UpdateProductList Сбрасывает ItemsSource в null, чтобы очистить привязку. Устанавливает ItemsSource в products, чтобы ListBox (ProductsList) отобразил текущий список товаров. Остальные методы работают аналогично. Null используется для предотвращения проблемы с кэшированием данных в WPF, обеспечивая корректное обновление интерфейса.
-
-\newpage
+\stepcounter{subsubsection}
+\phantomsection
+\addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection}РАБОТА С ТОВАРАМИ (ДОБАВЛЕНИЕ, ОБНОВЛЕНИЯ, УДАЛЕНИЕ)}
 
 Далее рассмотрим методы для работы с конкретными товарами. Эти методы реагируют на действия пользователя с товарами (кнопки «Добавить», «Обновить», «Удалить», выбор в списке). Метод добавления нового товара представлен в листинге \ref{lst:MethodAdd}
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L53-L80}{Метод}} добавления нового товара, label=lst:MethodAdd]
-        // Обработчик нажатия кнопки "Добавить товар"
-        private void AddProduct_Click(object sender, RoutedEventArgs e)
-        {
-            // Проверка корректности введённых данных
-            if (string.IsNullOrWhiteSpace(ProductName.Text) ||
-                !decimal.TryParse(ProductPrice.Text, out decimal price) ||
-                !int.TryParse(ProductStock.Text, out int stock) ||
-                stock < 0)
-            {
-                MessageBox.Show(
-                    """
-                    Пожалуйста, введите корректные данные о товаре.
-                    Остаток не может быть отрицательным.
-                    """
-                    "Ошибка",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error
-                );
 
-                return;
-            }
-
-            // Создание нового товара
-            var product = new Product
-            {
-                Id = nextProductId++,
-                Name = ProductName.Text,
-                Price = price,
-                Stock = stock
-            };
-
-            products.Add(product); // Добавление товара в список
-            UpdateProductList();    // Обновление UI
-            ClearProductFields();   // Очистка полей ввода
-        }
-\end{lstlisting}
+\begin{listing}[H]
+	\inputminted[firstline=53, lastline=80]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L53-L80}{Метод}} добавления нового товара}
+	\label{lst:MethodAdd}
+\end{listing}
 
 \noindent Данный метод проверяет валидность ввода:
 \begin{itemize}
-	\item productName.Text не пустое.
-	\item Проверка productPrice.Text (что цена корректна (decimal), количество -- неотрицательное число).
-	\item productStock.Text преобразуется в int.
+	\item \texttt{ProductName.Text} не пустое.
+	\item Проверяет \texttt{ProductPrice.Text} (что цена корректна (\texttt{decimal})), количество -- неотрицательное число (\texttt{int}).
+	\item \texttt{ProductStock.Text} преобразуется в \texttt{int}.
 \end{itemize}
 
-Если валидация не пройдена, показывает сообщение об ошибке. Создаёт новый объект Product с уникальным Id (из nextProductId), именем, ценой и запасом из полей ввода. Далее добавляет товар в список products, обновляет UI (UpdateProductList) и очищает поля ввода (ClearProductFields).
+Если валидация не пройдена, показывает сообщение об ошибке. Создаёт новый объект \texttt{Product} с уникальным \texttt{Id} (из \texttt{nextProductId}), именем, ценой и запасом из полей ввода. Добавляет товар в список \texttt{products}, обновляет \texttt{UI} (\texttt{Update\-ProductList}) и очищает поля ввода (\texttt{Clear\-ProductFields}).
 
-\newpage
+Следующий метод позволяет обновить (редактировать) информацию о конкретном товаре. Реализация метода обновления представлена в листинге \ref{lst:MethodUpdate}
 
-Следующий метод позволяет обновить (редактировать) информацию о конкретном товаре. Реализация метода обновления представлен в листинге \ref{lst:MethodUpdate}
+\begin{listing}[H]
+	\inputminted[firstline=82, lastline=110]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L82-L110}{Метод}} обновления товара}
+	\label{lst:MethodUpdate}
+\end{listing}
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L82-L110}{Метод}} обновления нового товара, label=lst:MethodUpdate]
-        // Обработчик нажатия кнопки "Обновить товар"
-        private void UpdateProduct_Click(object sender, RoutedEventArgs e)
-        {
-            if (ProductsList.SelectedItem is Product selectedProduct)
-            {
-                // Проверка корректности введённых данных
-                if (string.IsNullOrWhiteSpace(ProductName.Text) ||
-                    !decimal.TryParse(ProductPrice.Text, out decimal price) ||
-                    !int.TryParse(ProductStock.Text, out int stock) ||
-                    stock < 0)
-                {
-                    MessageBox.Show(
-                        "Пожалуйста, введите корректные данные о товаре. " +
-                        "Остаток не может быть отрицательным.",
-                        "Ошибка",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Error
-                    );
-                        "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-
-                // Обновление свойств выбранного товара
-                selectedProduct.Name = ProductName.Text;
-                selectedProduct.Price = price;
-                selectedProduct.Stock = stock;
-
-                UpdateProductList();  // Обновление UI
-                ClearProductFields(); // Очистка полей ввода
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Пожалуйста, выберите товар для обновления.",
-                    "Ошибка",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning
-                );
-            }
-        }
-\end{lstlisting}
-
-
-\noindent Данный метод проверяет, выбран ли товар в списке ProductsList.
+\noindent Данный метод проверяет, выбран ли товар в списке \texttt{ProductsList}.
 \begin{itemize}
-	\item Проводит валидацию ввода (аналогично AddProduct\_Click)
-	\item Если товар выбран и данные валидны, обновляет свойства выбранного объекта Product (Name, Price, Stock)
-	\item Обновляет UI и очищает поля
+	\item Проводит валидацию ввода (аналогично методу \texttt{AddProduct\_Click}).
+	\item Если товар выбран и данные валидны, обновляет свойства выбранного объекта \texttt{Product} (\texttt{Name}, \texttt{Price}, \texttt{Stock}).
+	\item Обновляет \texttt{UI} и очищает поля.
 	\item Если товар не выбран, показывает предупреждение.
 \end{itemize}
 
-\pagebreak
+Для того, чтобы исключить конкретный товар из общего списка, используется метод \texttt{Delete\-Product} из листинга \ref{lst:MethodDelete}.
 
-Для того, чтобы исключить конкретный товар из общего списка, используется метод Delete\-Product из листинга \ref{lst:MethodDelete}.
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L112-L141}{Метод}} удаления товара, label=lst:MethodDelete]
-        // Обработчик нажатия кнопки "Удалить товар"
-        private void DeleteProduct_Click(object sender, RoutedEventArgs e)
-        {
-            if (ProductsList.SelectedItem is Product selectedProduct)
-            {
-                // Проверка, используется ли товар в заказах
-                if (orders.Any(order => order.Items.Any(item => item.Product.Id == selectedProduct.Id)))
-                {
-                    MessageBox.Show(
-                        "Нельзя удалить товар, используемый в заказах.",
-                        "Ошибка",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning
-                    );
-                    return;
-                }
-
-                // Подтверждение удаления
-                var result = MessageBox.Show($"Вы уверены, что хотите удалить товар '{selectedProduct.Name}'?", 
-                    "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    selectedProductsForOrder.RemoveAll(item => item.Product.Id == selectedProduct.Id); // Удаление из текущего заказа
-                    products.Remove(selectedProduct); // Удаление из списка товаров
-                    UpdateProductList();
-                    UpdateSelectedProductsList();
-                    ClearProductFields();
-                }
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Пожалуйста, выберите товар для удаления.",
-                    "Ошибка",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning
-                );
-            }
-        }
-\end{lstlisting}
-
+\begin{listing}[H]
+	\inputminted[firstline=112, lastline=141]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L112-L141}{Метод}} удаления товара}
+	\label{lst:MethodDelete}
+\end{listing}
 
 \noindent Данный метод выполняет следующие функции:
 \begin{itemize}
-	\item Удаляет товар из списка, если он не используется в заказах
-	\item Если товар выбран и не связан с заказами, запрашивает подтверждение и удаляет его
-	\item Также удаляет его из текущего заказа (если он там есть)
-	\item Если товар используется в заказах — показывает предупреждение
-	\item Обновляет UI и очищает поля.
+	\item Удаляет товар из списка, если он не используется в заказах.
+	\item Если товар выбран и не связан с заказами, запрашивает подтверждение и удаляет его.
+	\item Также удаляет его из текущего заказа (если он там есть).
+	\item Если товар используется в заказах -- показывает предупреждение.
+	\item Обновляет \texttt{UI} и очищает поля.
 \end{itemize}
 
-\pagebreak
 
-Далее рассмотрим методы ProductsList\_SelectionChanged и AddToOrder. Когда пользователь выбирает товар в списке ProductsList, метод ProductsList\_SelectionChanged заполняет поля Product\-Name, ProductPrice, ProductStock данными выбранного товара. Используется также для редактирования информации о товаре (листинг \ref{lst:MethodEdit})
+\begin{listing}[H]
+	\inputminted[firstline=143, lastline=184]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L143-L184}{Методы}} редактирования товара и добавления в список выбранных товаров для заказа}
+	\label{lst:MethodEdit}
+\end{listing}
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L143-L184}{Методы}} редактирования товара и добавления в список выбранных товаров для заказа, label=lst:MethodEdit]
-        // Обработчик изменения выделения в списке товаров
-        private void ProductsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ProductsList.SelectedItem is Product selectedProduct)
-            {
-                // Заполнение полей ввода данными выбранного товара
-                ProductName.Text = selectedProduct.Name;
-                ProductPrice.Text = selectedProduct.Price.ToString();
-                ProductStock.Text = selectedProduct.Stock.ToString();
-            }
-        }
+Далее рассмотрим методы \texttt{ProductsList\_SelectionChanged} и \texttt{AddToOrder}. Когда пользователь выбирает товар в списке \texttt{ProductsList}, метод \texttt{ProductsList\_SelectionChanged} заполняет поля \texttt{Product\-Name}, \texttt{ProductPrice}, \texttt{ProductStock} данными выбранного товара. Используется также для редактирования информации о товаре (листинг \ref{lst:MethodEdit}).
 
-        private void AddToOrder_Click(object sender, RoutedEventArgs e)
-        {
-            if (ProductsList.SelectedItem is Product selectedProduct)
-            {
-                if (selectedProduct.Stock <= 0)
-                {
-                    MessageBox.Show(
-                        "Товара больше нет на складе.",
-                        "Ошибка",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning
-                    );
-                    return;
-                }
-
-                var existingItem = selectedProductsForOrder.FirstOrDefault(
-                    item => item.Product.Id == selectedProduct.Id
-                );
-
-                if (existingItem != null)
-                {
-                    existingItem.Quantity++;
-                }
-                else
-                {
-                    selectedProductsForOrder.Add(
-                        new OrderItem 
-                        { 
-                            Product = selectedProduct, 
-                            Quantity = 1 
-                        }
-                    );
-                }
-
-                selectedProduct.Stock--; // <=== уменьшение запаса
-                UpdateProductList();
-                UpdateSelectedProductsList();
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Товара больше нет на складе.",
-                    "Ошибка",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning
-                );
-            }
-        }
-\end{lstlisting}
-
-\pagebreak
-
-Метод AddToOrder добавляет выбранный товар из списка в текущий заказ.
+Метод \texttt{AddToOrder} добавляет выбранный товар из списка в текущий заказ.
 Если товар уже добавлен -- увеличивает его количество.
 Если нет -- создаёт новую позицию.
 Также уменьшает остаток товара на складе.
-Обновляет UI.
+Обновляет \texttt{UI}.
 Если товар не выбран или нет в наличии -- показывает предупреждение.
+
+\stepcounter{subsubsection}
+\phantomsection
+\addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection} РАБОТА С ЗАКАЗАМИ (ДОБАВЛЕНИЕ, ОБНОВЛЕНИЕ, УДАЛЕНИЕ)}
+
 Далее рассмотрим метод создания нового заказа. Пример кода для данного метода
-представлен в листинге \ref{lst:MethodAddInList}.
+представлен в листинге~\ref{lst:MethodAddInList}.
 
-
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L186-L216}{Метод}} добавления товара в список выбранных товаров для заказа, label=lst:MethodAddInList]
-        // Обработчик нажатия кнопки "Создать заказ"
-        private void AddOrder_Click(object sender, RoutedEventArgs e)
-        {
-            // Проверка имени клиента
-            if (string.IsNullOrWhiteSpace(CustomerName.Text))
-            {
-                MessageBox.Show(
-                    "Пожалуйста, введите имя клиента.", 
-                    "Ошибка", 
-                    MessageBoxButton.OK, 
-                    MessageBoxImage.Error
-                );
-                return;
-            }
-
-            // Проверка наличия товаров в заказе
-            if (!selectedProductsForOrder.Any())
-            {
-
-                MessageBox.Show(
-                    "Пожалуйста, выберите хотя бы один товар для заказа.", 
-                    "Ошибка", 
-                    MessageBoxButton.OK, 
-                    MessageBoxImage.Warning
-                );
-                return;
-            }
-
-            // Создание нового заказа
-            var order = new Order
-            {
-                Id = nextOrderId++,
-                CustomerName = CustomerName.Text,
-                OrderDate = DateTime.Now,
-                Items = new List<OrderItem>(selectedProductsForOrder)
-            };
-             
-            orders.Add(order); // Добавление заказа в список
-            UpdateProductList();
-            UpdateOrderList();
-            ClearOrderFields(); // Очистка полей заказа
-        }
-
-\end{lstlisting}
+\begin{listing}[H]
+	\inputminted[firstline=186, lastline=216]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L186-L216}{Метод}} добавления заказа}
+	\label{lst:MethodAddInList}
+\end{listing}
 
 \noindent Данный метод выполняет следующие функции:
 \begin{itemize}
-	\item Создаёт новый заказ
-	\item Проверяет, введено ли имя клиента и есть ли хотя бы один товар в заказе
-	\item Если всё в порядке — формирует объект Order, копирует список товаров и добавляет заказ в список orders
-	\item Обновляет UI и очищает поля
-	\item Если что-то не заполнено — показывает ошибку.
+	\item Создаёт новый заказ.
+	\item Проверяет, введено ли имя клиента и есть ли хотя бы один товар в заказе.
+	\item Если всё в порядке -- формирует объект \texttt{Order}, копирует список товаров и добавляет заказ в список \texttt{orders}.
+	\item Обновляет \texttt{UI} и очищает поля.
+	\item Если что-то не заполнено -- показывает ошибку.
 \end{itemize}
-
-\newpage
 
 Следующий метод позволяет обновить информацию о заказе. Пример кода для данного метода представлен в листинге \ref{lst:MethodUpdate2}.
 
-
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L218-L266}{Метод}} обновления заказа, label=lst:MethodUpdate2]
-        // Обработчик нажатия кнопки "Обновить заказ"
-        private void UpdateOrder_Click(object sender, RoutedEventArgs e)
-        {
-            if (OrdersList.SelectedItem is Order selectedOrder)
-            {
-                // Проверка имени клиента
-                if (string.IsNullOrWhiteSpace(CustomerName.Text))
-                {
-                    MessageBox.Show(
-                        "Пожалуйста, введите имя клиента.", 
-                        "Ошибка", 
-                        MessageBoxButton.OK, 
-                        MessageBoxImage.Error
-                    );
-                    return;
-                }
-
-                // Проверка наличия товаров
-                if (!selectedProductsForOrder.Any())
-                {
-                    MessageBox.Show(
-                        "Пожалуйста, выберите хотя бы один товар для заказа.", 
-                        "Ошибка", 
-                        MessageBoxButton.OK, 
-                        MessageBoxImage.Warning
-                    );
-                    return;
-                }
-
-                // Обновление заказа
-                selectedOrder.CustomerName = CustomerName.Text;
-                selectedOrder.OrderDate = DateTime.Now;
-                selectedOrder.Items.Clear();
-                selectedOrder.Items.AddRange(selectedProductsForOrder); 
-
-                // Проверка доступности перед применением изменений
-                foreach (var item in selectedProductsForOrder)
-                {
-                    int availableStock = item.Product.Stock +
-                        var oldQuantity = selectedOrder.Items
-                            .Where(i => i.Product.Id == item.Product.Id)
-                            .Sum(i => i.Quantity); // учитываем старый заказ
-
-                    if (item.Quantity > availableStock)
-                    {
-                        MessageBox.Show(
-                            $"Недостаточно товара '{item.Product.Name}' " +
-                            "на складе для обновления заказа.", 
-                            "Ошибка", 
-                            MessageBoxButton.OK, 
-                            MessageBoxImage.Warning
-                        );
-
-                        return;
-                    }
-                }
-
-                UpdateProductList();
-                UpdateOrderList();
-                ClearOrderFields();
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Пожалуйста, выберите заказ для обновления.", 
-                    "Ошибка", 
-                    MessageBoxButton.OK, 
-                    MessageBoxImage.Warning
-                );
-            }
-        }
-\end{lstlisting}
+\begin{listing}[H]
+	\inputminted[firstline=218, lastline=266]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L218-L266}{Метод}} обновления заказа}
+	\label{lst:MethodUpdate2}
+\end{listing}
 
 \begin{itemize}
-	\item Обновляет выбранный заказ
-	\item Проверяет имя клиента и наличие товаров в заказе
-	\item Если данные валидны — обновляет имя клиента, дату и товары в заказе
-	\item Также проверяет, есть ли достаточный остаток на складе для всех товаров
-	\item Обновляет UI и очищает поля
-	\item Если что-то не так — показывает сообщение об ошибке.
+	\item Обновляет выбранный заказ.
+	\item Проверяет имя клиента и наличие товаров в заказе.
+	\item Если данные валидны -- проверяет, есть ли достаточный остаток на складе для всех добавляемых/увеличиваемых товаров.
+	\item Если проверки пройдены, обновляет имя клиента, дату и товары в заказе, корректируя запасы на складе (возвращая старые и забирая новые).
+	\item Обновляет \texttt{UI} и очищает поля.
+	\item Если что-то не так -- показывает сообщение об ошибке.
 \end{itemize}
-
-\pagebreak
 
 Следующий метод позволяет удалить выбранный заказ. Пример кода для данного метода представлен в листинге \ref{lst:MethodDelete2}.
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L268-L295}{Метод}} удаления заказа, label=lst:MethodDelete2]
-        // Обработчик нажатия кнопки "Удалить заказ"
-        private void DeleteOrder_Click(object sender, RoutedEventArgs e)
-        {
-            if (OrdersList.SelectedItem is Order selectedOrder)
-            {
-                // Подтверждение удаления
-                var result = MessageBox.Show(
-                    $"Вы уверены, что хотите удалить заказ для клиента '{selectedOrder.CustomerName}'?", 
-                    "Подтверждение", 
-                    MessageBoxButton.YesNo, 
-                    MessageBoxImage.Question
-                );
-                    "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    // Возврат запасов
-                    foreach (var item in selectedOrder.Items)
-                    {
-                        item.Product.Stock += item.Quantity;
-                    }
-
-                    orders.Remove(selectedOrder); // Удаление заказа
-                    UpdateProductList();
-                    UpdateOrderList();
-                    ClearOrderFields();
-                }
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Пожалуйста, выберите заказ для удаления.", 
-                    "Ошибка", 
-                    MessageBoxButton.OK, 
-                    MessageBoxImage.Warning
-                );
-            }
-        }
-\end{lstlisting}
-
-\pagebreak
+\begin{listing}[H]
+	\inputminted[firstline=268, lastline=295]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L268-L295}{Метод}} удаления заказа}
+	\label{lst:MethodDelete2}
+\end{listing}
 
 Следующий метод нужен для удаления товара из заказа. Код для данного метода представлен в листинге \ref{lst:MethodDelete3}.
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L297-L338}{Метод}} удаления товара из заказа, label=lst:MethodDelete3]
-        // Обработчик нажатия кнопки "Удалить товар из заказа"
-        private void RemoveProductFromOrder_Click(object sender, RoutedEventArgs e)
-        {
-            if (SelectedProductsList.SelectedItem is OrderItem selectedItem)
-            {
-                // Проверка: это последний товар в заказе?
-                if (selectedProductsForOrder.Count == 1 && 
-                    OrdersList.SelectedItem is Order selectedOrder)
-                {
-                    var result = MessageBox.Show(
-                        $"Удаление последнего товара приведёт к удалению заказа клиента" + 
-                        "'{selectedOrder.CustomerName}'. Продолжить?",
-                        "Подтверждение удаления",
-                        MessageBoxButton.YesNo,
-                        MessageBoxImage.Warning);
-
-                    if (result != MessageBoxResult.Yes)
-                        return;
-
-                    // Удаляем товар и возвращаем остаток
-                    selectedProductsForOrder.Remove(selectedItem);
-                    selectedItem.Product.Stock += selectedItem.Quantity;
-
-                    // Удаляем сам заказ
-                    orders.Remove(selectedOrder);
-                    UpdateProductList();
-                    UpdateOrderList();
-                    ClearOrderFields();
-                }
-                else
-                {
-                    // Обычное удаление товара
-                    selectedProductsForOrder.Remove(selectedItem);
-                    selectedItem.Product.Stock += selectedItem.Quantity;
-
-                    UpdateProductList();
-                    UpdateSelectedProductsList();
-                }
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Пожалуйста, выберите товар для удаления из заказа.", 
-                    "Ошибка", 
-                    MessageBoxButton.OK, 
-                    MessageBoxImage.Warning
-                );
-            }
-        }
-\end{lstlisting}
-
+\begin{listing}[H]
+	\inputminted[firstline=297, lastline=338]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L297-L338}{Метод}} удаления товара из заказа}
+	\label{lst:MethodDelete3}
+\end{listing}
 
 \begin{itemize}
-	\item Метод RemoveProductFromOrder удаляет товар из текущего заказа.
-	\item Если количество больше 1 — уменьшает его.
-	\item Если 1 — полностью удаляет товар из списка.
-	\item Обновляет UI.
-	\item Если товар не выбран — показывает предупреждение.
+	\item Метод \texttt{RemoveProductFromOrder} удаляет товар из текущего заказа (\texttt{selected\-Products\-For\-Order}).
+	\item Если количество выбранного \texttt{OrderItem} больше 1 -- уменьшает его.
+	\item Если товар выбран -- полностью удаляет позицию (\texttt{OrderItem}) из списка \texttt{selected\-Produc\-ts\-ForOrder}.
+	\item Возвращает количество товара на склад.
+	\item Если это был единственный товар в редактируемом заказе (\texttt{OrdersList.SelectedItem}), запрашивает подтверждение и удаляет сам заказ.
+	\item Обновляет \texttt{UI}.
+	\item Если товар не выбран -- показывает предупреждение.
 \end{itemize}
 
-\pagebreak
+\stepcounter{subsubsection}
+\phantomsection
+\addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection}ИЗМЕНЕНИЕ КОЛИЧЕСТВА ТОВАРОВ (КНОПКИ \texttt{<<+>>} И \texttt{<<->>})}
 
 Далее рассмотрим методы, отвечающие за увеличение и уменьшение количества
-товара в заказе (кнопки <<+>> и <<->>). Пример данных методов представлен в листинге \ref{lst:MethodControl}.
+товара в заказе (кнопки \guillemotleft\texttt{+}\guillemotright \ и \guillemotleft\texttt{-}\guillemotright). Пример этих методов представлен в листинге \ref{lst:MethodControl}.
 
+\begin{listing}[H]
+	\inputminted[firstline=342, lastline=377]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L342-L377}{Методы}} управления количеством товара в заказе}
+	\label{lst:MethodControl}
+\end{listing}
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L342-L377}{Методы}} управления количеством товара в заказе, label=lst:MethodControl]
-        // Обработчик нажатия кнопки "+" для увеличения количества
-        private void IncreaseQuantity_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button button && button.Tag is OrderItem item)
-            {
-                if (item.Product.Stock < 1)
-                {
-                    MessageBox.Show(
-                        "Товара больше нет на складе.",
-                        "Ошибка",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning
-                    );
-                    return;
-                }
+Следующий метод позволяет выделить определённый заказ и изменить имя заказчика.
+Реализация метода представлена в листинге \ref{lst:MethodUpdate3}.
 
-                item.Quantity++;
-                item.Product.Stock--; // резерв
-                UpdateProductList();
-                UpdateSelectedProductsList();
-            }
-        }
-
-        // Обработчик нажатия кнопки "-" для уменьшения количества
-        private void DecreaseQuantity_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button button && button.Tag is OrderItem item)
-            {
-                if (item.Quantity > 1)
-                {
-                    item.Quantity--; // Уменьшение количества
-                }
-                else
-                {
-                    selectedProductsForOrder.Remove(item); // Удаление товара
-                }
-                item.Product.Stock++;
-                UpdateProductList();
-                UpdateSelectedProductsList();
-            }
-        }
-\end{lstlisting}
-
-\newpage
-
-Данный метод позволяет выделить определенный заказ и изменить имя заказчика.
-Реадизация метода представлена в листинге \ref{lst:MethodUpdate3}.
-
-
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L82-L110}{Метод}} обновления нового товара, label=lst:MethodUpdate3]
-        // Обработчик изменения выделения в списке заказов
-        private void OrdersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (OrdersList.SelectedItem is Order selectedOrder)
-            {
-                // Заполнение полей данными выбранного заказа
-                CustomerName.Text = selectedOrder.CustomerName;
-                selectedProductsForOrder.Clear();
-                selectedProductsForOrder.AddRange(selectedOrder.Items);
-                UpdateSelectedProductsList();
-            }
-        }
-\end{lstlisting}
+\begin{listing}[H]
+	\inputminted[firstline=379, lastline=390]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{Метод изменения выделения в списке заказов \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L379-L391}{OrdersList\_SelectionChanged}}}
+	\label{lst:MethodUpdate3}
+\end{listing}
 
 \begin{itemize}
-	\item Срабатывает при выборе заказа из списка
-	\item Заполняет поле имени клиента
-	\item Загружает список товаров из заказа в текущий список selectedProductsForOrder
-	\item Обновляет UI.
+	\item Срабатывает при выборе заказа из списка.
+	\item Заполняет поле имени клиента.
+	\item Загружает список товаров из заказа в текущий список \texttt{selectedProductsForOrder}.
+	\item Обновляет \texttt{UI}.
 \end{itemize}
 
-\pagebreak
+\stepcounter{subsubsection}
+\phantomsection
+\addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection}СБРОС ВЫДЕЛЕНИЯ В СПИСКАХ}
 
-Далее рассмотрим методы очищения полей ClearProductFields и ClearOrderFields. Они позволяют очистить текстовые поля для добавления и редактирования товара и снимают выделение в списке товаров. ClearOrderFields очищает поле имени клиента и список выбранных товаров, снимает выделение в списке заказов, при этом не трогает список товаров (оставляет выделение). Листинг данных методов приведен в листинге \ref{lst:MethodClear}.
+Далее рассмотрим методы очищения полей \texttt{ClearProductFields} и \texttt{ClearOrderFields}. Они позволяют очистить текстовые поля для добавления и редактирования товара и снять выделение в списке товаров. \texttt{ClearOrderFields} очищает поле имени клиента и список выбранных товаров, снимает выделение в списке заказов, при этом не трогает список товаров (оставляя выделение). Листинг этих методов приведён в листинге \ref{lst:MethodClear}.
 
+\begin{listing}[H]
+	\inputminted[firstline=379, lastline=432]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L379-L432}{Методы}} очистки полей и сброса выделения товара}
+	\label{lst:MethodClear}
+\end{listing}
 
-\begin{lstlisting}[style=csharp_catppuccin, caption=\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L379-L432}{Методы}} очистки полей и сброса выделения товара, label=lst:MethodClear]
-        // Очистка полей ввода для товаров
-        private void ClearProductFields()
-        {
-            ProductName.Text = "";
-            ProductPrice.Text = "";
-            ProductStock.Text = "";
-            ProductsList.SelectedItem = null; // Сброс выделения
-        }
-
-        // Очистка полей ввода для заказов
-        private void ClearOrderFields()
-        {
-            CustomerName.Text = "";
-            selectedProductsForOrder.Clear();
-            UpdateSelectedProductsList();
-            OrdersList.SelectedItem = null; // Сброс выделения
-            // Выделение в ProductsList не сбрасывается
-        }
-
-        // Обработчик клика мышью по списку товаров
-        private void ProductsList_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var listBox = sender as ListBox;
-            var hitTestResult = VisualTreeHelper.HitTest(listBox, e.GetPosition(listBox));
-            if (hitTestResult != null)
-            {
-                // Проверка, попал ли клик на ListBoxItem
-                var element = hitTestResult.VisualHit;
-                while (element != null && !(element is ListBoxItem))
-                {
-                    element = VisualTreeHelper.GetParent(element);
-                }
-
-                if (element == null)
-                {
-                    listBox.SelectedItem = null; // Сброс выделения при клике по пустому месту
-                }
-            }
-        }
-    }
-}
-\end{lstlisting}
-
-Метод ProductsList\_MouseLeftButtonDown используется, если пользователь кликнул мышью по пустому месту в списке товаров. В этом случае метод сбрасывает выделение. Применяется для удобства работы -- чтобы можно было "отменить" выбор.
+Метод \texttt{ProductsList\_MouseLeftButtonDown} используется, если пользователь кликнул мышью по пустому месту в списке товаров. В этом случае метод сбрасывает выделение. Применяется для удобства работы -- чтобы можно было "отменить" выбор.
 
 \pagebreak
 
 % \section{ШАГ 5: ВНЕШНИЙ ВИД ИНТЕРФЕЙСА \ \texorpdfstring{\faBrush}{}}
 
-\section{ШАГ 5: ДЕМОНСТРАЦИЯ РАБОТЫ \ \texorpdfstring{\faGlasses}{}}
+\section{ДЕМОНСТРАЦИЯ РАБОТЫ \ \texorpdfstring{\faGlasses}{}}
+
+\subsection{ДОБАВЛЕНИЕ ТОВАРОВ}
 
 В итоговом варианте внешний вид приложения представлен на Рисунке \ref{fig:demo1}
 
@@ -1648,6 +819,9 @@ InitializeComponent() — метод, автоматически сгенери�
 
 \pagebreak
 
+
+\subsection{ДОБАВЛЕНИЕ ТОВАРОВ В ЗАКАЗ}
+
 В качестве примера отображения информации в приложении, введены данные о товарах и заказе. Пример интерфейса приложения с введенными данными приведен на Рисунке \ref{fig:demo2}
 
 \begin{figure}[ht]
@@ -1657,9 +831,11 @@ InitializeComponent() — метод, автоматически сгенери�
 	\label{fig:demo2}
 \end{figure}
 
-\newpage
+\pagebreak
 
-Далее по наажтию кнопки "Добавить товар", товар добавляеться в общий список. Таким образом может добавить группу товаров (Рисунок \ref{fig:demo3})
+\subsection{СОЗДАНИЕ ЗАКАЗА}
+
+Далее по нажатию кнопки "Добавить товар", товар добавляется в общий список. Таким образом можно добавить группу товаров (Рисунок \ref{fig:demo3}).
 
 \begin{figure}[ht]
 	\centering
@@ -1670,29 +846,35 @@ InitializeComponent() — метод, автоматически сгенери�
 
 \pagebreak
 
-Далее необходимо выбрать конкретный товар из списка, по нажатию кнопки доабвить его в список выбранных товаров. В данном списке помощью кнопки <<+>> и <<->> можно отредактировать количество товаров для добавления в заказ (Рисунок \ref{fig:demo4})
+\subsection{ПРОСМОТР СОДЕРЖИМОГО ЗАКАЗА}
+
+Далее необходимо выбрать конкретный товар из списка, по нажатию кнопки добавить его в список выбранных товаров. В данном списке с помощью кнопки \guillemotleft\texttt{+}\guillemotright \ и \guillemotleft\texttt{-}\guillemotright \ можно отредактировать количество товаров для добавления в заказ (Рисунок \ref{fig:demo4}).
 
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=1.0\textwidth]{fig/image 61.png}
-	\caption{Пример добавления группы товаров}
+	\caption{Пример добавления товаров в заказ} % Updated caption
 	\label{fig:demo4}
 \end{figure}
 
 \pagebreak
 
-Далее необходимо ввести имя клиента (название заказа) и нажать кнопку <<Создать заказ>> для добавления нового заказа в список заказов (Рисунок \ref{fig:demo5}).
+\subsection{УДАЛЕНИЕ ТОВАРОВ ИЗ ЗАКАЗА}
+
+Далее необходимо ввести имя клиента (название заказа) и нажать кнопку \guillemotleft Создать заказ\guillemotright \ для добавления нового заказа в список заказов (Рисунок \ref{fig:demo5}).
 
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=1.0\textwidth]{fig/image 62.png}
-	\caption{Пример добавления группы товаров}
+	\caption{Пример создания заказа} % Updated caption
 	\label{fig:demo5}
 \end{figure}
 
 \pagebreak
+
+\subsection{ОБНОВЛЕНИЕ И УДАЛЕНИЕ ЗАКАЗОВ}
 
 При нажатии на конкретный заказ можно вывести список товаров (Рисунок \ref{fig:demo6}).
 
@@ -1706,7 +888,7 @@ InitializeComponent() — метод, автоматически сгенери�
 \pagebreak
 
 
-При нажатии кнопки «Удалить товар из заказа» можно удалить конкретный товар добавленный в заказ (Рисунок \ref{fig:demo7}).
+При нажатии кнопки «Удалить товар из заказа» можно удалить конкретный товар, добавленный в заказ (Рисунок \ref{fig:demo7}).
 
 \begin{figure}[ht]
 	\centering
@@ -1717,7 +899,7 @@ InitializeComponent() — метод, автоматически сгенери�
 
 \pagebreak
 
-Кнопка «Обновить заказ» позволяет обновить информацию о заказе удалить конкретный товар добавленный в заказ (Рисунок \ref{fig:demo8}).
+Кнопка «Обновить заказ» позволяет обновить информацию о заказе и удалить конкретный товар, добавленный в заказ (Рисунок \ref{fig:demo8}).
 
 \begin{figure}[ht]
 	\centering
@@ -1733,20 +915,20 @@ InitializeComponent() — метод, автоматически сгенери�
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=1.0\textwidth]{fig/image 66.png}
-	\caption{Удаление товара из заказа}
+	\caption{Удаление заказа} % Updated caption
 	\label{fig:demo9}
 \end{figure}
 
 \pagebreak
 
 
-При нажатии кнопки «Удалить товар из заказа» можно удалить конкретный товар добавленный в заказ (Рисунок \ref{fig:demo10}).
+При нажатии кнопки «Удалить товар из заказа» можно удалить конкретный товар, добавленный в заказ (Рисунок \ref{fig:demo10}).
 
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=1.0\textwidth]{fig/image 67.png}
-	\caption{Вывод списка товаров в заказе}
+	\caption{Удаление товара из списка выбранных товаров для заказа} % Updated caption
 	\label{fig:demo10}
 \end{figure}
 
@@ -1766,7 +948,5 @@ InitializeComponent() — метод, автоматически сгенери�
 	\item Вопрос
 	\item Вопрос
 \end{enumerate}
-
-\lipsum[4-7]
 
 \end{document}

@@ -1,0 +1,29 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{namespace}\PYG{+w}{ }\PYG{n+nn}{StoreManager.Models}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Модель заказа, содержащая информацию о клиенте и товарах}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{Order}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{c+c1}{// Уникальный идентификатор заказа}
+\PYG{+w}{        }\PYG{k}{public}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{Id}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Список элементов заказа (товар + количество)}
+\PYG{+w}{        }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{OrderItem}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Items}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Имя клиента}
+\PYG{+w}{        }\PYG{k}{public}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{CustomerName}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Дата создания заказа}
+\PYG{+w}{        }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{DateTime}\PYG{+w}{ }\PYG{n}{OrderDate}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Общая сумма заказа, вычисляемая как сумма цен товаров умноженная на их количество}
+\PYG{+w}{        }\PYG{k}{public}\PYG{+w}{ }\PYG{k+kt}{decimal}\PYG{+w}{ }\PYG{n}{TotalPrice}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Items}\PYG{p}{.}\PYG{n}{Sum}\PYG{p}{(}\PYG{n}{item}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{.}\PYG{n}{Price}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{item}\PYG{p}{.}\PYG{n}{Quantity}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Конструктор, инициализирующий пустой список товаров}
+\PYG{+w}{        }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{Order}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{Items}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{OrderItem}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

@@ -1,0 +1,25 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Globalization}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Windows}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Windows.Data}\PYG{p}{;}
+
+\PYG{k}{namespace}\PYG{+w}{ }\PYG{n+nn}{StoreManager.Converters}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Конвертер для отображения placeholder\PYGZsq{}ов в TextBox}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{BooleanToVisibilityConverter}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{IValueConverter}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{c+c1}{// Преобразует boolean (IsEmpty) в Visibility для TextBlock}
+\PYG{+w}{        }\PYG{k}{public}\PYG{+w}{ }\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n+nf}{Convert}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Type}\PYG{+w}{ }\PYG{n}{targetType}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{parameter}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CultureInfo}\PYG{+w}{ }\PYG{n}{culture}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{return}\PYG{+w}{ }\PYG{k}{value}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{isEmpty}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{isEmpty}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{n}{Visibility}\PYG{p}{.}\PYG{n}{Visible}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Visibility}\PYG{p}{.}\PYG{n}{Collapsed}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обратное преобразование не используется}
+\PYG{+w}{        }\PYG{k}{public}\PYG{+w}{ }\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n+nf}{ConvertBack}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Type}\PYG{+w}{ }\PYG{n}{targetType}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{parameter}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CultureInfo}\PYG{+w}{ }\PYG{n}{culture}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{throw}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n+nf}{NotImplementedException}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
