@@ -1,0 +1,25 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}ЗАДАНИЕ}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}ВАРИАНТЫ ЗАДАНИЙ}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ~}{8}{subsection.1.2}%
+\contentsline {section}{\numberline {2}ШАГИ ПО СОЗДАНИЮ ПРИЛОЖЕНИЯ}{9}{section.2}%
+\contentsline {subsection}{\numberline {2.1}ШАГ 1: СОЗДАНИЕ ПРОЕКТА}{9}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}ШАГ 2: ДОБАВЛЕНИЕ ФАЙЛОВ}{11}{subsection.2.2}%
+\contentsline {subsubsection}{\hbox to\@tempdima {2.2.1\hfil }\leftprotrusion СОЗДАНИЕ ПАПКИ {\normalsize \ttfamily Models}}{11}{section*.4}%
+\contentsline {subsubsection}{\hbox to\@tempdima {2.2.2\hfil }\leftprotrusion КЛАССЫ: {\normalsize \ttfamily PRODUCT.CS}, {\normalsize \ttfamily ORDER.CS}, {\normalsize \ttfamily ORDERITEM.CS}}{11}{section*.6}%
+\contentsline {subsubsection}{\hbox to\@tempdima {2.2.3\hfil }\leftprotrusion ДОБАВЛЕНИЕ КОНВЕРТЕРА}{12}{section*.9}%
+\contentsline {subsection}{\numberline {2.3}ШАГ 3: РЕАЛИЗАЦИЯ ИНТЕРФЕЙСА}{14}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}ШАГ 4: РЕАЛИЗАЦИЯ ЛОГИКИ}{17}{subsection.2.4}%
+\contentsline {subsubsection}{\hbox to\@tempdima {2.4.1\hfil }\leftprotrusion КОНСТРУКТОР}{18}{section*.12}%
+\contentsline {subsubsection}{\hbox to\@tempdima {2.4.2\hfil }\leftprotrusion РАБОТА С ТОВАРАМИ (ДОБАВЛЕНИЕ, ОБНОВЛЕНИЯ, УДАЛЕНИЕ)}{19}{section*.15}%
+\contentsline {subsubsection}{\hbox to\@tempdima {2.4.3\hfil }\leftprotrusion РАБОТА С ЗАКАЗАМИ (ДОБАВЛЕНИЕ, ОБНОВЛЕНИЕ, УДАЛЕНИЕ)}{23}{section*.20}%
+\contentsline {subsubsection}{\hbox to\@tempdima {2.4.4\hfil }\leftprotrusion ИЗМЕНЕНИЕ КОЛИЧЕСТВА ТОВАРОВ (КНОПКИ {\small \ttfamily <<+>>} И {\small \ttfamily <<->>})}{29}{section*.25}%
+\contentsline {subsubsection}{\hbox to\@tempdima {2.4.5\hfil }\leftprotrusion СБРОС ВЫДЕЛЕНИЯ В СПИСКАХ}{30}{section*.28}%
+\contentsline {section}{\numberline {3}ДЕМОНСТРАЦИЯ РАБОТЫ}{32}{section.3}%
+\contentsline {subsection}{\numberline {3.1}ДОБАВЛЕНИЕ ТОВАРОВ}{32}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}ДОБАВЛЕНИЕ ТОВАРОВ В ЗАКАЗ}{33}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}СОЗДАНИЕ ЗАКАЗА}{34}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}ПРОСМОТР СОДЕРЖИМОГО ЗАКАЗА}{35}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}УДАЛЕНИЕ ТОВАРОВ ИЗ ЗАКАЗА}{36}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}ОБНОВЛЕНИЕ И УДАЛЕНИЕ ЗАКАЗОВ}{37}{subsection.3.6}%
+\contentsline {section}{\numberline {4}ВОПРОСЫ ДЛЯ ЗАЩИТЫ}{42}{section.4}%

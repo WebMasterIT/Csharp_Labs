@@ -10,7 +10,6 @@ namespace surname_wfApp.Models
 {
     public class Component
     {
-
         private List<Component> components = new List<Component>();
  
         public string Name { get; set; }
@@ -26,10 +25,5 @@ namespace surname_wfApp.Models
             Manufacturer = manufacturer; // Устанавливаем производителя
             Price = price; // Устанавливаем цену
         }
-
-
     }
-
 }
-
-

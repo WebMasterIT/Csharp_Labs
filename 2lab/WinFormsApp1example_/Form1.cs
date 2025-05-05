@@ -97,6 +97,14 @@ namespace WinFormsApp1example_
 
         }
 
+        private void HideAllPanels()
+        {
+            componentsPanel.Visible = false;
+            graphicsCardPanel.Visible = false;
+            processorsPanel.Visible = false;
+            ramPanel.Visible = false;
+        }
+
         //Кнопки переключения вкладок
         private void componentTabBtn_Click(object sender, EventArgs e)
         {
@@ -142,12 +150,9 @@ namespace WinFormsApp1example_
             groupBox12.ForeColor = this.BackColor; // Цвет рамки в цвет формы
             groupBoxGC.ForeColor = this.BackColor; // Цвет рамки в цвет формы
 
-
             //связывают кнопки сохранения/загрузки с DataGridView, к которому они относятся.
             cmponentSave.Tag = dataGridView1;
             componentLoad.Tag = dataGridView1;
-
-   
 
             // Устанавливаем привязку столбцов к свойствам объекта Processor
             dataGridView4.Columns["Name"].DataPropertyName = "Name";
@@ -155,7 +160,6 @@ namespace WinFormsApp1example_
             dataGridView4.Columns["Price"].DataPropertyName = "Price";
             dataGridView4.Columns["Frequency"].DataPropertyName = "Frequency";
             dataGridView4.Columns["Cores"].DataPropertyName = "Cores";
-
         }
          
         // Список компонентов (например, процессоры, видеокарты и т.д.)
@@ -358,17 +362,6 @@ namespace WinFormsApp1example_
             UpdateDataGrid(); // Обновляем таблицу
         }
          
-        
-
-        private void HideAllPanels()
-        {
-            componentsPanel.Visible = false;
-            graphicsCardPanel.Visible = false;
-            processorsPanel.Visible = false;
-            ramPanel.Visible = false;
-        }
-        
-
         private List<GraphicsCard> graphicsCardList = new List<GraphicsCard>();
 
         private void button9_Click(object sender, EventArgs e)

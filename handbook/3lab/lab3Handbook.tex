@@ -1,12 +1,10 @@
 %! TeX program = lualatex
 \documentclass[12pt]{article}
 
-\usepackage[most]{tcolorbox}
-
 \usepackage{cmap}
 \usepackage{minted}
+\usepackage{caption}
 
-\floatname{listing}{Листинг}
 \setminted{
     linenos,                % показывать номера строк
     breaklines,             % переносить длинные строки
@@ -51,8 +49,8 @@ BoldFont = *-Bold] #1}
 
 \usepackage[left=2.0cm, right=2.0cm, top=1.0cm, bottom=1.0cm, includeheadfoot]{geometry}
 
-\usepackage[mocha, textcolor=true, pagecolor=true]{catppuccinpalette} \usemintedstyle{catppuccin-mocha}
-% \usepackage[latte, textcolor=true, pagecolor=true]{catppuccinpalette} \usemintedstyle{catppuccin-latte}
+% \usepackage[mocha, textcolor=true, pagecolor=true]{catppuccinpalette} \usemintedstyle{catppuccin-mocha}
+\usepackage[latte, textcolor=true, pagecolor=true]{catppuccinpalette} \usemintedstyle{catppuccin-latte}
 
 \usepackage{setspace}
 \onehalfspacing
@@ -84,6 +82,19 @@ BoldFont = *-Bold] #1}
 
 \setlength{\headheight}{15.2pt}
 
+\DeclareCaptionLabelFormat{gostfigure}{Рисунок #2}
+\captionsetup[figure]{labelformat=gostfigure, labelsep=endash}
+
+\DeclareCaptionLabelFormat{gostlisting}{Листинг #2}
+\captionsetup[listing]{labelformat=gostlisting, labelsep=endash}
+
+\usepackage{amsmath}
+\numberwithin{listing}{section}
+\numberwithin{figure}{section}
+
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
 \begin{document}
 
 \pagestyle{empty}
@@ -98,30 +109,6 @@ BoldFont = *-Bold] #1}
 \newpage
 
 \pagestyle{fancy}
-%
-% \section {I really \textcolor{CtpRed}{ }\colorGIT{}}
-%
-% Берём \colorURL{}, потом \textcolor{CtpTeal}{\LaTeXe}, охапку \textcolor{CtpLavender}{} и \textcolor{CtpPeach}{󰍳} -- готов
-%
-% \vspace{12pt}
-%
-% \noindent Верстаем \textcolor{CtpOverlay0}{} и кодим \textcolor{CtpMauve}{} через \textcolor{CtpYellow}{}
-%
-% \vspace{12pt}
-%
-% \noindent Арсений \textcolor{CtpRosewater}{ 󰠜} из чата
-%
-% \vspace{12pt}
-%
-% \noindent {\Huge{󰄛}}   big cat   микробыч {\tiny{󱎶}}
-%
-%
-% {
-% \Huge{
-% 	$$
-% 		\cos(󰇷) \cdot \int_{󰣨}^{󰣭} x^ \cdot 
-% 	$$
-% }}
 
 \newpage
 
@@ -135,7 +122,7 @@ BoldFont = *-Bold] #1}
 % \begin{minipage}{0.85\linewidth}
 \noindent Система управления заказами для онлайн-магазина:
 \begin{enumerate}
-	\item Реализовать \texttt{CRUD}-приложение (\texttt{WPF})\footnote{\texttt{CRUD}-приложение -- это программа, которая позволяет вам выполнять четыре основных действия с данными (например, товарами или заказами): Создавать новые записи, Читать (просматривать) существующие, Обновлять (редактировать) их и Удалять ненужные.}.
+	\item Реализовать \texttt{WPF} приложение.
 	\item Реализовать визуальное отображение списка товаров и списка заказов.
 	\item Реализовать функционал добавления, редактирования, удаления конкретных товаров, а также учёт их количества. Реализовать функции уменьшения количества товаров при добавлении их в заказ.
 	\item Реализовать функционал добавления, редактирования, удаления заказов, а также возможность редактирования количества товаров, добавленных в заказ.
@@ -391,7 +378,6 @@ BoldFont = *-Bold] #1}
 Для создания проекта необходимо выбрать:
 \begin{enumerate}
 	\item Создать проект
-	      % \item Приложение WPF (Майкрософт)
 	\item Приложение \texttt{WPF} (Майкрософт) (Рисунок \ref{fig:projectcreate})
 
 	      \begin{figure}[H]
@@ -401,7 +387,6 @@ BoldFont = *-Bold] #1}
 		      \label{fig:projectcreate}
 	      \end{figure}
 
-	      % \item Далее задать имя проекта: StoreManager
 	\item Далее задать имя проекта: \texttt{StoreManager} (Рисунок \ref{fig:createnameproject})
 
 	      \begin{figure}[H]
@@ -413,7 +398,6 @@ BoldFont = *-Bold] #1}
 
 	      \newpage
 
-	      % \item Выбрать платформу (пример выполненн на .net 8.0)
 	\item Выбрать платформу (пример выполнен на .net 8.0) (Рисунок \ref{fig:net8})
 
 	      \begin{figure}[H]
@@ -534,15 +518,19 @@ BoldFont = *-Bold] #1}
 соответствующую разметку в файл \texttt{MainWindow.xaml}.
 Пример разметки для данного файла представлен ниже в листинге~\ref{lst:MainWindow}
 
-\begin{listing}[H]
-	\inputminted[firstline=8, lastline=51]{xml}{../../3lab/StoreManager/MainWindow.xaml}
-	% \begin{center}
-	% 	\textcolor{gray}{[... пропущено ...]}
-	% \end{center}
-	% \inputminted[firstline=62, lastline=68]{xml}{../../3lab/StoreManager/MainWindow.xaml}
-	\caption{Пример разметки главного окна \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml\#L1-L200}{MainWindow}}}
-	\label{lst:MainWindow}
-\end{listing}
+% \begin{listing}[H]
+
+
+% TODO: пофиксить листинг
+% \captionsetup{type=listing}
+\inputminted[firstline=1, lastline=130]{xml}{../../3lab/StoreManager/MainWindow.xaml}
+\captionof{listing}{Пример разметки главного окна \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml\#L1-L200}{MainWindow}}}
+\label{lst:MainWindow}
+
+
+
+% \caption{Пример разметки главного окна \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml\#L1-L200}{MainWindow}}}
+% \end{listing}
 
 \newpage
 
@@ -683,6 +671,8 @@ BoldFont = *-Bold] #1}
 	\label{lst:MethodEdit}
 \end{listing}
 
+% NOTE 
+
 Далее рассмотрим методы \texttt{ProductsList\_SelectionChanged} и \texttt{AddToOrder}. Когда пользователь выбирает товар в списке \texttt{ProductsList}, метод \texttt{ProductsList\_SelectionChanged} заполняет поля \texttt{Product\-Name}, \texttt{ProductPrice}, \texttt{ProductStock} данными выбранного товара. Используется также для редактирования информации о товаре (листинг \ref{lst:MethodEdit}).
 
 Метод \texttt{AddToOrder} добавляет выбранный товар из списка в текущий заказ.
@@ -739,6 +729,45 @@ BoldFont = *-Bold] #1}
 	\label{lst:MethodDelete2}
 \end{listing}
 
+Данный метод позволяет удалить выбранный заказ и вернуть товары на склад при подтверждении действия пользователем.
+Параметры:
+\begin{itemize}
+	\item \texttt{object sender} — источник события (обычно кнопка).
+	\item \texttt{RoutedEventArgs} — аргументы события нажатия.
+\end{itemize}
+Основная логика:
+\begin{enumerate}
+	\item Проверка выбора заказа:
+	      \begin{itemize}
+		      \item Метод сначала проверяет, выбран ли заказ в списке \texttt{OrdersList}.
+	      \end{itemize}
+	\item Подтверждение действия:
+	      \begin{itemize}
+		      \item Пользователю выводится диалоговое окно с вопросом, действительно ли он хочет удалить заказ клиента.
+		      \item Если пользователь нажимает "Да"\ (\texttt{MessageBoxResult.Yes}), продолжается выполнение.
+	      \end{itemize}
+	\item Возврат товаров на склад:
+	      \begin{itemize}
+		      \item Проходит по каждому элементу заказа (\texttt{selectedOrder.Items}) и возвращает соответствующее количество товара на склад (увеличивает \texttt{item.Product.Stock} на \texttt{item.Quantity}).
+	      \end{itemize}
+	\item Удаление заказа:
+	      \begin{itemize}
+		      \item Удаляет заказ из списка заказов (\texttt{orders.Remove(selectedOrder)}).
+		      \item Обновляет список товаров и заказов, а также очищает поля заказа:
+		            \begin{itemize}
+			            \item \texttt{UpdateProductList()}
+			            \item \texttt{UpdateOrderList()}
+			            \item \texttt{ClearOrderFields()}
+		            \end{itemize}
+	      \end{itemize}
+	\item Обработка случая, если заказ не выбран:
+	      \begin{itemize}
+		      \item Выводит предупреждающее сообщение, прося пользователя выбрать заказ перед удалением.
+	      \end{itemize}
+
+\end{enumerate}
+
+
 Следующий метод нужен для удаления товара из заказа. Код для данного метода представлен в листинге \ref{lst:MethodDelete3}.
 
 \begin{listing}[H]
@@ -770,12 +799,11 @@ BoldFont = *-Bold] #1}
 	\label{lst:MethodControl}
 \end{listing}
 
-Следующий метод позволяет выделить определённый заказ и изменить имя заказчика.
-Реализация метода представлена в листинге \ref{lst:MethodUpdate3}.
+Данный метод позволяет выделить определенный заказ и изменить имя заказчика. Реализация метода представлена на рисунке~\ref{lst:MethodUpdate3}.
 
 \begin{listing}[H]
 	\inputminted[firstline=379, lastline=390]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
-	\caption{Метод изменения выделения в списке заказов \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L379-L391}{OrdersList\_SelectionChanged}}}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L379-L390}{Метод}} обновления нового товара }
 	\label{lst:MethodUpdate3}
 \end{listing}
 
@@ -790,19 +818,19 @@ BoldFont = *-Bold] #1}
 \phantomsection
 \addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection}СБРОС ВЫДЕЛЕНИЯ В СПИСКАХ}
 
-Далее рассмотрим методы очищения полей \texttt{ClearProductFields} и \texttt{ClearOrderFields}. Они позволяют очистить текстовые поля для добавления и редактирования товара и снять выделение в списке товаров. \texttt{ClearOrderFields} очищает поле имени клиента и список выбранных товаров, снимает выделение в списке заказов, при этом не трогает список товаров (оставляя выделение). Листинг этих методов приведён в листинге \ref{lst:MethodClear}.
+% NOTE
+
+Далее рассмотрим методы очищения полей \texttt{ClearProductFields} и \texttt{ClearOrderFields}. Листинг этих методов приведён в листинге \ref{lst:MethodClear}.
 
 \begin{listing}[H]
-	\inputminted[firstline=379, lastline=432]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
+	\inputminted[firstline=392, lastline=432]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L379-L432}{Методы}} очистки полей и сброса выделения товара}
 	\label{lst:MethodClear}
 \end{listing}
 
-Метод \texttt{ProductsList\_MouseLeftButtonDown} используется, если пользователь кликнул мышью по пустому месту в списке товаров. В этом случае метод сбрасывает выделение. Применяется для удобства работы -- чтобы можно было "отменить" выбор.
+Метод \texttt{ClearProductFields} позволяют очистить текстовые поля для добавления и редактирования товара и снимают выделение в списке товаров. Метод \texttt{ClearOrderFields} очищает поле имени клиента и список выбранных товаров, снимает выделение в списке заказов, при этом не трогает список товаров (оставляет выделение). Метод \texttt{ProductsList\_MouseLeftButtonDown} используется, если пользователь кликнул мышью по пустому месту в списке товаров. В этом случае метод сбрасывает выделение. Применяется для удобства работы — чтобы можно было "отменить"\ выбор.
 
 \pagebreak
-
-% \section{ШАГ 5: ВНЕШНИЙ ВИД ИНТЕРФЕЙСА \ \texorpdfstring{\faBrush}{}}
 
 \section{ДЕМОНСТРАЦИЯ РАБОТЫ \ \texorpdfstring{\faGlasses}{}}
 

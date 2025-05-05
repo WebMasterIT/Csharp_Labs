@@ -1,7 +1,7 @@
 {
   "jobname": "lab3Handbook",
   "md5": "75543EBAA87A90477040A7F1CFD7A6ED",
-  "timestamp": "19800101030000",
+  "timestamp": "20250430214022",
   "cachefiles": [
     "302970CA2489605154F554E8957312F9.highlight.minted",
     "5CF03304E553DE71450E872645202DA1.highlight.minted",
@@ -10,6 +10,6 @@
     "C7D7D9B7FE4E34624774CDEED966B201.highlight.minted",
     "F43296B242FC59981C1CDDB19EA9AA53.highlight.minted",
     "_75543EBAA87A90477040A7F1CFD7A6ED.index.minted",
-    "catppuccin-mocha.style.minted"
+    "catppuccin-latte.style.minted"
   ]
 }

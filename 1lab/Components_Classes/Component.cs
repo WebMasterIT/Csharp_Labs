@@ -25,8 +25,5 @@ namespace Components_Classes // Определяем пространство и
             // Вывод информации о комплектующем в консоль
             Console.WriteLine($"Комплектующее: {Name}, Производитель: {Manufacturer}, Цена: {Price} руб.");
         }
-        
-
-
     }
 }

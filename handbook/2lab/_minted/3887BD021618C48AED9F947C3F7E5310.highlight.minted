@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Предположим, нас есть BindingList\PYGZlt{}MyObject\PYGZgt{} bindingList[0].SomeProperty =}
+\PYG{l+s}{\PYGZdq{}Новое значение\PYGZdq{}}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{dataGridView1}\PYG{p}{.}\PYG{n}{Refresh}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{c+c1}{// Принудительно обновляем DataGridView}
+\end{MintedVerbatim}

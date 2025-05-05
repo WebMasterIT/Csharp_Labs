@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Получаем доступ к DataTable}
+\PYG{n}{DataTable}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{DataTable}\PYG{p}{)}\PYG{n}{dataGridView1}\PYG{p}{.}\PYG{n}{DataSource}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Изменяем данные в нужной строке и столбце}
+\PYG{n}{dt}\PYG{p}{.}\PYG{n}{Rows}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}НазваниеСтолбца\PYGZdq{}}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Новое значение\PYGZdq{}}\PYG{p}{;}
+\end{MintedVerbatim}

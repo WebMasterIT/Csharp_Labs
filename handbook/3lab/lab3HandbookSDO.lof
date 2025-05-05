@@ -1,0 +1,32 @@
+\babel@toc {russian}{}\relax 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Создание проекта}}{9}{figure.caption.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Задание имени проекта}}{9}{figure.caption.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Выбор платформы.}}{10}{figure.caption.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Класс {\textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Order.cs\#L1-L27}{Order.cs}}}}}{11}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Класс {\textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Order.cs\#L1-L27}{Order.cs}}}}}{12}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Класс \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Product.cs\#L1-L18}{Product.cs}}}}{12}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Класс \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Converters/BooleanToVisibilityConverter.cs\#L1-L23}{BooleanToVisibilityConverter}}}}{13}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Пример кода для класса \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L1-L21}{MainWindow}}}}{17}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Пример кода для конструктора класса \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L24-L30}{MainWindow}}}}{18}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L32-L51}{Методы}} обновления данных}}{19}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L53-L80}{Метод}} добавления нового товара}}{20}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L82-L110}{Метод}} обновления товара}}{21}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L112-L141}{Метод}} удаления товара}}{22}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L143-L184}{Методы}} редактирования товара и добавления в список выбранных товаров для заказа}}{23}{figure.caption.19}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L186-L216}{Метод}} добавления заказа}}{24}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L218-L266}{Метод}} обновления заказа}}{25}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.17}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L268-L295}{Метод}} удаления заказа}}{26}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.18}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L297-L338}{Метод}} удаления товара из заказа}}{28}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.19}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L342-L377}{Методы}} управления количеством товара в заказе}}{29}{figure.caption.26}%
+\contentsline {figure}{\numberline {2.20}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L379-L390}{Метод}} обновления нового товара }}{30}{figure.caption.27}%
+\contentsline {figure}{\numberline {2.21}{\ignorespaces \textbf {\href {https://github.com/WebMasterIT/Csharp_Labs/blob=ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L379-L432}{Методы}} очистки полей и сброса выделения товара}}{31}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Интерфейс приложения}}{32}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Пример заполнения информации в приложении}}{33}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Пример добавления группы товаров}}{34}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Пример добавления товаров в заказ}}{35}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Пример создания заказа}}{36}{figure.caption.34}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Вывод списка товаров в заказе}}{37}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Удаление товара из заказа}}{38}{figure.caption.36}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Обновление списка товаров в заказе}}{39}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Удаление заказа}}{40}{figure.caption.38}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Удаление товара из списка выбранных товаров для заказа}}{41}{figure.caption.39}%

@@ -1,0 +1,646 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{surname\PYGZus{}wfApp.Models}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Data}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Diagnostics}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Globalization}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Runtime.InteropServices}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Windows.Forms}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Xml.Serialization}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{static}\PYG{+w}{ }\PYG{n}{System}\PYG{p}{.}\PYG{n}{Windows}\PYG{p}{.}\PYG{n}{Forms}\PYG{p}{.}\PYG{n}{VisualStyles}\PYG{p}{.}\PYG{n}{VisualStyleElement}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{static}\PYG{+w}{ }\PYG{n}{System}\PYG{p}{.}\PYG{n}{Windows}\PYG{p}{.}\PYG{n}{Forms}\PYG{p}{.}\PYG{n}{VisualStyles}\PYG{p}{.}\PYG{n}{VisualStyleElement}\PYG{p}{.}\PYG{n}{Button}\PYG{p}{;}
+
+\PYG{k}{namespace}\PYG{+w}{ }\PYG{n+nn}{WinFormsApp1example\PYGZus{}}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{partial}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{Form1}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Form}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Новые поля для отфильтрованных списков}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{IEnumerable}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{object}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{filteredComponentList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{IEnumerable}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{object}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{filteredGraphicsCardList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{IEnumerable}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{object}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{filteredProcessorsList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Флаги для реализации перемещения формы}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{dragging}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{false}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Состояние перетаскивания (активно/неактивно)}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{Point}\PYG{+w}{ }\PYG{n}{startPoint}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Point}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Начальные координаты клика мыши}
+
+\PYG{+w}{        }\PYG{c+c1}{// Импорт функции CreateRoundRectRgn для создания закругленных углов формы}
+\PYG{+w}{        }\PYG{n+na}{[DllImport(\PYGZdq{}Gdi32.dll\PYGZdq{}, EntryPoint = \PYGZdq{}CreateRoundRectRgn\PYGZdq{})]}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{static}\PYG{+w}{ }\PYG{k}{extern}\PYG{+w}{ }\PYG{n}{IntPtr}\PYG{+w}{ }\PYG{n+nf}{CreateRoundRectRgn}\PYG{p}{(}
+\PYG{+w}{            }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nLeftRect}\PYG{p}{,}\PYG{+w}{    }\PYG{c+c1}{// X\PYGZhy{}координата левого верхнего угла}
+\PYG{+w}{            }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nTopRect}\PYG{p}{,}\PYG{+w}{     }\PYG{c+c1}{// Y\PYGZhy{}координата левого верхнего угла}
+\PYG{+w}{            }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nRightRect}\PYG{p}{,}\PYG{+w}{   }\PYG{c+c1}{// X\PYGZhy{}координата правого нижнего угла}
+\PYG{+w}{            }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nBottomRect}\PYG{p}{,}\PYG{+w}{  }\PYG{c+c1}{// Y\PYGZhy{}координата правого нижнего угла}
+\PYG{+w}{            }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nWidthEllipse}\PYG{p}{,}\PYG{c+c1}{// Ширина эллипса для закругления углов}
+\PYG{+w}{            }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nHeightEllipse}\PYG{c+c1}{// Высота эллипса для закругления углов}
+\PYG{+w}{        }\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Импорт функций для перетаскивания формы}
+\PYG{+w}{        }\PYG{n+na}{[DllImport(\PYGZdq{}user32.dll\PYGZdq{})]}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{static}\PYG{+w}{ }\PYG{k}{extern}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{ReleaseCapture}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сброс захвата мыши}
+
+\PYG{+w}{        }\PYG{n+na}{[DllImport(\PYGZdq{}user32.dll\PYGZdq{})]}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{static}\PYG{+w}{ }\PYG{k}{extern}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{SendMessage}\PYG{p}{(}\PYG{n}{IntPtr}\PYG{+w}{ }\PYG{n}{hWnd}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{msg}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{wp}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{lp}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{WM\PYGZus{}NCLBUTTONDOWN}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0xA1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сообщение о нажатии кнопки мыши в незакрашенной области окна}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{HTCAPTION}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0x2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Идентификатор области заголовка окна}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик события нажатия мыши на форме}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{Form1\PYGZus{}MouseDown}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MouseEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Включаем режим перетаскивания формы}
+\PYG{+w}{            }\PYG{n}{dragging}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{true}\PYG{p}{;}
+\PYG{+w}{            }\PYG{c+c1}{// Запоминаем начальные координаты клика относительно формы}
+\PYG{+w}{            }\PYG{n}{startPoint}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Point}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик события движения мыши над формой}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{Form1\PYGZus{}MouseMove}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MouseEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Проверяем, активировано ли перетаскивание}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dragging}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Преобразуем текущие координаты мыши в экранные координаты}
+\PYG{+w}{                }\PYG{n}{Point}\PYG{+w}{ }\PYG{n}{newPosition}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{PointToScreen}\PYG{p}{(}\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Point}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{c+c1}{// Обновляем позицию формы с учетом начальной точки клика}
+\PYG{+w}{                }\PYG{c+c1}{// Это позволяет перемещать форму за точку, где был совершен клик}
+\PYG{+w}{                }\PYG{k}{this}\PYG{p}{.}\PYG{n}{Location}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Point}\PYG{p}{(}
+\PYG{+w}{                    }\PYG{n}{newPosition}\PYG{p}{.}\PYG{n}{X}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{startPoint}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,}
+\PYG{+w}{                    }\PYG{n}{newPosition}\PYG{p}{.}\PYG{n}{Y}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{startPoint}\PYG{p}{.}\PYG{n}{Y}
+\PYG{+w}{                }\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обработчик события отпускания кнопки мыши}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{Form1\PYGZus{}MouseUp}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MouseEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Выключаем режим перетаскивания}
+\PYG{+w}{            }\PYG{n}{dragging}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{false}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+
+\PYG{+w}{        }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{Form1}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{InitializeComponent}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{n}{dataGridView4}\PYG{p}{.}\PYG{n}{AutoGenerateColumns}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{false}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{k}{this}\PYG{p}{.}\PYG{n}{FormBorderStyle}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{FormBorderStyle}\PYG{p}{.}\PYG{n}{None}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Убираем стандартную границу формы}
+\PYG{+w}{            }\PYG{k}{this}\PYG{p}{.}\PYG{n}{Region}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Region}\PYG{p}{.}\PYG{n}{FromHrgn}\PYG{p}{(}\PYG{n}{CreateRoundRectRgn}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n}{Width}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n}{Height}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{30}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{30}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+
+
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{c+c1}{//Закрытие окна формы}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{extBtn\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+
+\PYG{+w}{            }\PYG{k}{this}\PYG{p}{.}\PYG{n}{Close}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{HideAllPanels}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{componentsPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{false}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{graphicsCardPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{false}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{processorsPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{false}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{ramPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{false}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{//Кнопки переключения вкладок}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{componentTabBtn\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{HideAllPanels}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{componentsPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{true}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{GraphicsCardTabBtn\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{HideAllPanels}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{graphicsCardPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{true}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{ramTabBtn\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{HideAllPanels}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{ramPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{true}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{processorsTabBtn\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{HideAllPanels}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{processorsPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{true}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{c+c1}{//Кнопки переключения вкладок}
+
+\PYG{+w}{        }\PYG{c+c1}{//Стилизация: смена цвета label внутри groupbox }
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{ChangeControlsForeColor}\PYG{p}{(}\PYG{n}{System}\PYG{p}{.}\PYG{n}{Windows}\PYG{p}{.}\PYG{n}{Forms}\PYG{p}{.}\PYG{n}{GroupBox}\PYG{+w}{ }\PYG{n}{groupBox}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Color}\PYG{+w}{ }\PYG{n}{color}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{Control}\PYG{+w}{ }\PYG{n}{control}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{groupBox}\PYG{p}{.}\PYG{n}{Controls}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{p}{(}\PYG{n}{control}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{System}\PYG{p}{.}\PYG{n}{Windows}\PYG{p}{.}\PYG{n}{Forms}\PYG{p}{.}\PYG{n}{TextBox}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{o}{!}\PYG{p}{(}\PYG{n}{control}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{System}\PYG{p}{.}\PYG{n}{Windows}\PYG{p}{.}\PYG{n}{Forms}\PYG{p}{.}\PYG{n}{Button}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Исключаем TextBox и Button}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{control}\PYG{p}{.}\PYG{n}{ForeColor}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{color}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{Form1\PYGZus{}Load}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Стилизация GroupBox}
+\PYG{+w}{            }\PYG{n}{ChangeControlsForeColor}\PYG{p}{(}\PYG{n}{groupBoxGC}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Color}\PYG{p}{.}\PYG{n}{White}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{groupBox12}\PYG{p}{.}\PYG{n}{ForeColor}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n}{BackColor}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Цвет рамки в цвет формы}
+\PYG{+w}{            }\PYG{n}{groupBoxGC}\PYG{p}{.}\PYG{n}{ForeColor}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n}{BackColor}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Цвет рамки в цвет формы}
+
+\PYG{+w}{            }\PYG{c+c1}{//связывают кнопки сохранения/загрузки с DataGridView, к которому они относятся.}
+\PYG{+w}{            }\PYG{n}{cmponentSave}\PYG{p}{.}\PYG{n}{Tag}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dataGridView1}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{componentLoad}\PYG{p}{.}\PYG{n}{Tag}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dataGridView1}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Устанавливаем привязку столбцов к свойствам объекта Processor}
+\PYG{+w}{            }\PYG{n}{dataGridView4}\PYG{p}{.}\PYG{n}{Columns}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}Name\PYGZdq{}}\PYG{p}{]}\PYG{p}{.}\PYG{n}{DataPropertyName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Name\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{dataGridView4}\PYG{p}{.}\PYG{n}{Columns}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}Manufacturer\PYGZdq{}}\PYG{p}{]}\PYG{p}{.}\PYG{n}{DataPropertyName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Manufacturer\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{dataGridView4}\PYG{p}{.}\PYG{n}{Columns}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}Price\PYGZdq{}}\PYG{p}{]}\PYG{p}{.}\PYG{n}{DataPropertyName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Price\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{dataGridView4}\PYG{p}{.}\PYG{n}{Columns}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}Frequency\PYGZdq{}}\PYG{p}{]}\PYG{p}{.}\PYG{n}{DataPropertyName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Frequency\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{dataGridView4}\PYG{p}{.}\PYG{n}{Columns}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}Cores\PYGZdq{}}\PYG{p}{]}\PYG{p}{.}\PYG{n}{DataPropertyName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Cores\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Список компонентов (например, процессоры, видеокарты и т.д.)}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Component}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{componentList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Component}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{componentAddBtn\PYGZus{}Click\PYGZus{}1}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{dataGridView1}\PYG{p}{.}\PYG{n}{AutoGenerateColumns}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{true}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Проверяем заполненность полей}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{componentNameText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{componentManufactureText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{componentPriceText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Заполните все поля!\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButtons}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxIcon}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Преобразуем строковые значения в необходимые числовые типы}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{k+kt}{decimal}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{componentPriceText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{decimal}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Введите корректное значение цены!\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButtons}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxIcon}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Создаем новый объект Component и добавляем его в List}
+\PYG{+w}{            }\PYG{n}{Component}\PYG{+w}{ }\PYG{n}{newComponent}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Component}\PYG{p}{(}\PYG{n}{componentNameText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{componentManufactureText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{componentList}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{newComponent}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Очистка текстовых полей}
+\PYG{+w}{            }\PYG{n}{componentNameText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{componentManufactureText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{componentPriceText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Обновляем DataGridView}
+\PYG{+w}{            }\PYG{n}{filteredComponentList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр после добавления}
+\PYG{+w}{            }\PYG{n}{UpdateDataGrid}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{FormatPriceCell}\PYG{p}{(}\PYG{n}{DataGridView}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{DataGridViewCellFormattingEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Проверяем, что индекс корректен}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{ColumnIndex}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{.}\PYG{n}{ColumnIndex}\PYG{+w}{ }\PYG{o}{\PYGZgt{}=}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{.}\PYG{n}{Columns}\PYG{p}{.}\PYG{n}{Count}\PYG{p}{)}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Проверяем колонку \PYGZdq{}Price\PYGZdq{} и наличие значения}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dgv}\PYG{p}{.}\PYG{n}{Columns}\PYG{p}{[}\PYG{n}{e}\PYG{p}{.}\PYG{n}{ColumnIndex}\PYG{p}{]}\PYG{p}{.}\PYG{n}{Name}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Price\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{.}\PYG{n}{Value}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{decimal}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{Value}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{decimal}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{e}\PYG{p}{.}\PYG{n}{Value}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}N2\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} ₽\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{e}\PYG{p}{.}\PYG{n}{FormattingApplied}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{true}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{dataGridView1\PYGZus{}CellFormatting}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{DataGridViewCellFormattingEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{FormatPriceCell}\PYG{p}{(}\PYG{n}{dataGridView1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{dataGridView2\PYGZus{}CellFormatting}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{DataGridViewCellFormattingEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{FormatPriceCell}\PYG{p}{(}\PYG{n}{dataGridView2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{dataGridView4\PYGZus{}CellFormatting}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{DataGridViewCellFormattingEventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{FormatPriceCell}\PYG{p}{(}\PYG{n}{dataGridView4}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{UpdateDataGrid}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}\PYG{+w}{ }
+\PYG{+w}{            }\PYG{c+c1}{// Переменные для хранения активного DataGridView и списка данных}
+\PYG{+w}{            }\PYG{n}{DataGridView}\PYG{+w}{ }\PYG{n}{activeGridView}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{IEnumerable}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{object}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{activeList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Определяем, какой DataGridView и список данных использовать}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{componentsPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Панель компонентов}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{activeGridView}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dataGridView1}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{activeList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{filteredComponentList}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{n}{componentList}\PYG{p}{;}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{c+c1}{// Используем отфильтрованный список, если он существует}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{else}\PYG{+w}{ }\PYG{n+nf}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{graphicsCardPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Панель видеокарт}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{activeGridView}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dataGridView2}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{activeList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{filteredGraphicsCardList}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{n}{graphicsCardList}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{else}\PYG{+w}{ }\PYG{n+nf}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{processorsPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Панель процессоров}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{activeGridView}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dataGridView4}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{activeList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{filteredProcessorsList}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{n}{processorsList}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Если активный DataGridView и список определены}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{activeGridView}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{activeList}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Сбрасываем привязку данных}
+\PYG{+w}{                }\PYG{n}{activeGridView}\PYG{p}{.}\PYG{n}{DataSource}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+
+\PYG{+w}{                }\PYG{c+c1}{// Присваиваем обновленный список данных DataGridView}
+\PYG{+w}{                }\PYG{n}{activeGridView}\PYG{p}{.}\PYG{n}{DataSource}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{activeList}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Преобразуем в список, если это не List\PYGZlt{}T\PYGZgt{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{c+c1}{// Очистить все строки, чтобы избежать дублирования данных}
+\PYG{+w}{            }\PYG{n}{dataGridView4}\PYG{p}{.}\PYG{n}{DataSource}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Добавляем новые строки вручную для каждого объекта в списке}
+\PYG{+w}{            }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{processor}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{processorsList}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Добавляем строку и указываем значения для каждого столбца}
+\PYG{+w}{                }\PYG{n}{dataGridView4}\PYG{p}{.}\PYG{n}{Rows}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{processor}\PYG{p}{.}\PYG{n}{Name}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{processor}\PYG{p}{.}\PYG{n}{Manufacturer}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                    }\PYG{n}{processor}\PYG{p}{.}\PYG{n}{Price}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{processor}\PYG{p}{.}\PYG{n}{Frequency}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{processor}\PYG{p}{.}\PYG{n}{Cores}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{componentSearchBtn\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{query}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{Empty}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Объявляем переменную для хранения поискового запроса}
+
+\PYG{+w}{            }\PYG{c+c1}{// Определяем активную панель и берём текст из соответствующего поля ввода}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{componentsPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если активна панель компонентов}
+\PYG{+w}{                }\PYG{n}{query}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{componentSearchText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Получаем текст из поля поиска компонентов,}
+\PYG{+w}{                                                                   }\PYG{c+c1}{// убираем пробелы и приводим к нижнему регистру}
+\PYG{+w}{            }\PYG{k}{else}\PYG{+w}{ }\PYG{n+nf}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{graphicsCardPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если активна панель видеокарт}
+\PYG{+w}{                }\PYG{n}{query}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{GCSearchText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Получаем текст из поля поиска видеокарт,}
+\PYG{+w}{                                                            }\PYG{c+c1}{// убираем пробелы и приводим к нижнему регистру}
+\PYG{+w}{            }\PYG{k}{else}\PYG{+w}{ }\PYG{n+nf}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{processorsPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если активна панель процессоров}
+\PYG{+w}{                }\PYG{n}{query}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{processorSearchText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Получаем текст из поля поиска процессоров,}
+\PYG{+w}{                                                                   }\PYG{c+c1}{// убираем пробелы и приводим к нижнему регистру}
+\PYG{+w}{            }\PYG{k}{else}\PYG{+w}{ }\PYG{c+c1}{// Если ни одна панель не активна}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Завершаем выполнение метода}
+
+\PYG{+w}{            }\PYG{c+c1}{// Проверяем, пустой ли запрос}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrEmpty}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если запрос пустой}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{filteredComponentList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр для компонентов}
+\PYG{+w}{                }\PYG{n}{filteredGraphicsCardList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр для видеокарт}
+\PYG{+w}{                }\PYG{n}{filteredProcessorsList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр для процессоров}
+\PYG{+w}{                }\PYG{n}{UpdateDataGrid}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Обновляем таблицу для отображения полного списка}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Завершаем выполнение метода}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Выполняем фильтрацию в зависимости от активной панели}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{componentsPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если активна панель компонентов}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{filteredComponentList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{componentList}\PYG{p}{.}\PYG{n}{Where}\PYG{p}{(}\PYG{n}{comp}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{c+c1}{// Фильтруем список компонентов}
+\PYG{+w}{                    }\PYG{n}{comp}\PYG{p}{.}\PYG{n}{Name}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по имени (без учёта регистра)}
+\PYG{+w}{                    }\PYG{n}{comp}\PYG{p}{.}\PYG{n}{Manufacturer}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по производителю (без учёта регистра)}
+\PYG{+w}{                    }\PYG{n}{comp}\PYG{p}{.}\PYG{n}{Price}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Поиск по цене (как строке)}
+\PYG{+w}{                }\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Преобразуем результат в список}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{else}\PYG{+w}{ }\PYG{n+nf}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{graphicsCardPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если активна панель видеокарт}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}\PYG{+w}{ }
+
+\PYG{+w}{                }\PYG{n}{filteredGraphicsCardList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{graphicsCardList}\PYG{p}{.}\PYG{n}{Where}\PYG{p}{(}\PYG{n}{gc}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{c+c1}{// Фильтруем список видеокарт}
+\PYG{+w}{                    }\PYG{n}{gc}\PYG{p}{.}\PYG{n}{Name}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по имени (без учёта регистра)}
+\PYG{+w}{                    }\PYG{n}{gc}\PYG{p}{.}\PYG{n}{Manufacturer}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по производителю (без учёта регистра)}
+\PYG{+w}{                    }\PYG{n}{gc}\PYG{p}{.}\PYG{n}{Price}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по цене (как строке)}
+\PYG{+w}{                    }\PYG{n}{gc}\PYG{p}{.}\PYG{n}{MemorySize}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по объёму памяти (как строке)}
+\PYG{+w}{                    }\PYG{n}{gc}\PYG{p}{.}\PYG{n}{Type}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по типу памяти (без учёта регистра)}
+\PYG{+w}{                    }\PYG{n}{gc}\PYG{p}{.}\PYG{n}{BusWidth}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Поиск по ширине шины (как строке)}
+\PYG{+w}{                }\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Преобразуем результат в список}
+
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{else}\PYG{+w}{ }\PYG{n+nf}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{processorsPanel}\PYG{p}{.}\PYG{n}{Visible}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если активна панель процессоров}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{filteredProcessorsList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{processorsList}\PYG{p}{.}\PYG{n}{Where}\PYG{p}{(}\PYG{n}{proc}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{c+c1}{// Фильтруем список процессоров}
+\PYG{+w}{                    }\PYG{n}{proc}\PYG{p}{.}\PYG{n}{Name}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по имени (без учёта регистра)}
+\PYG{+w}{                    }\PYG{n}{proc}\PYG{p}{.}\PYG{n}{Manufacturer}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по производителю (без учёта регистра)}
+\PYG{+w}{                    }\PYG{n}{proc}\PYG{p}{.}\PYG{n}{Price}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по цене (как строке)}
+\PYG{+w}{                    }\PYG{n}{proc}\PYG{p}{.}\PYG{n}{Frequency}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Поиск по частоте (как строке)}
+\PYG{+w}{                    }\PYG{n}{proc}\PYG{p}{.}\PYG{n}{Cores}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Поиск по количеству ядер (как строке)}
+\PYG{+w}{                }\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Преобразуем результат в список}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{n}{UpdateDataGrid}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Обновляем таблицу для отображения отфильтрованных данных}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }
+
+
+
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{componentDeleteBtn\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dataGridView1}\PYG{p}{.}\PYG{n}{SelectedRows}\PYG{p}{.}\PYG{n}{Count}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Выберите элемент для удаления!\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButtons}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxIcon}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Получаем выбранную строку из DataGridView}
+\PYG{+w}{            }\PYG{n}{DataGridViewRow}\PYG{+w}{ }\PYG{n}{selectedRow}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dataGridView1}\PYG{p}{.}\PYG{n}{SelectedRows}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{;}
+\PYG{+w}{            }\PYG{c+c1}{// Получаем объект Component из DataSource строки}
+\PYG{+w}{            }\PYG{n}{Component}\PYG{+w}{ }\PYG{n}{selectedComponent}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{Component}\PYG{p}{)}\PYG{n}{selectedRow}\PYG{p}{.}\PYG{n}{DataBoundItem}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Удаляем объект из основного списка}
+\PYG{+w}{            }\PYG{n}{componentList}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{selectedComponent}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{filteredComponentList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр}
+\PYG{+w}{            }\PYG{n}{UpdateDataGrid}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Обновляем таблицу}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{GraphicsCard}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{graphicsCardList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{GraphicsCard}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{button9\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Проверяем заполненность полей}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{graphicsCardMemorySizeText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{graphicsCardTypeText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{graphicsCardBusWidthText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Заполните все поля!\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButtons}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxIcon}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Преобразуем строковые значения в необходимые числовые типы}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{graphicsCardMemorySizeText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{memorySize}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{o}{!}\PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{graphicsCardBusWidthText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{busWidth}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{o}{!}\PYG{k+kt}{decimal}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{graphicsCardPrice}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Replace}\PYG{p}{(}\PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}.\PYGZdq{}}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{NumberStyles}\PYG{p}{.}\PYG{n}{Any}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CultureInfo}\PYG{p}{.}\PYG{n}{InvariantCulture}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{decimal}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Некорректные числовые значения!\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButtons}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxIcon}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Создаем новый объект GraphicsCard и добавляем его в List}
+\PYG{+w}{            }\PYG{n}{GraphicsCard}\PYG{+w}{ }\PYG{n}{newGraphicsCard}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{GraphicsCard}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MemorySize}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{memorySize}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{Type}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{graphicsCardTypeText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{BusWidth}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{busWidth}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{graphicsCardList}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{newGraphicsCard}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Очищаем поля ввода}
+\PYG{+w}{            }\PYG{n}{graphicsCardName}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{graphicsCardManufacturer}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{graphicsCardPrice}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{graphicsCardMemorySizeText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{graphicsCardTypeText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{graphicsCardBusWidthText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Обновляем DataGridView}
+\PYG{+w}{            }\PYG{n}{filteredGraphicsCardList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр после добавления}
+\PYG{+w}{            }\PYG{c+c1}{//UpdateDataGrid();}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+
+
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Processor}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{processorsList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Processor}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{processorAddBtn\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Проверка на заполненность всех полей}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{processorNameText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{processorManufacturerText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{processorPriceText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{processorFrequencyText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{processorCoresText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Заполните все поля!\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButtons}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxIcon}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Парсим числовые значения}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{k+kt}{decimal}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{processorPriceText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{decimal}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{c+c1}{// Price должен быть decimal}
+\PYG{+w}{                }\PYG{o}{!}\PYG{k+kt}{double}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{processorFrequencyText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Replace}\PYG{p}{(}\PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}.\PYGZdq{}}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{NumberStyles}\PYG{p}{.}\PYG{n}{Any}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CultureInfo}\PYG{p}{.}\PYG{n}{InvariantCulture}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{frequency}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{                }\PYG{o}{!}\PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{processorCoresText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{cores}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Проверьте числовые значения!\PYGZbs{}n\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{                                }\PYG{l+s}{\PYGZdl{}\PYGZdq{}Цена: \PYGZob{}processorPriceText.Text\PYGZcb{}\PYGZbs{}n\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{                                }\PYG{l+s}{\PYGZdl{}\PYGZdq{}Частота: \PYGZob{}processorFrequencyText.Text\PYGZcb{}\PYGZbs{}n\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{                                }\PYG{l+s}{\PYGZdl{}\PYGZdq{}Ядра: \PYGZob{}processorCoresText.Text\PYGZcb{}\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                                }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButtons}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxIcon}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Создаём объект процессора}
+\PYG{+w}{            }\PYG{n}{Processor}\PYG{+w}{ }\PYG{n}{newProcessor}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Processor}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{Name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{processorNameText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{Manufacturer}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{processorManufacturerText}\PYG{p}{.}\PYG{n}{Text}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{Price}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// Теперь decimal}
+\PYG{+w}{                }\PYG{n}{Frequency}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{frequency}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{Cores}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{cores}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Добавляем в список}
+\PYG{+w}{            }\PYG{n}{processorsList}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{newProcessor}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Очищаем поля}
+\PYG{+w}{            }\PYG{n}{processorNameText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{processorManufacturerText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{processorPriceText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{processorFrequencyText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{processorCoresText}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Сбрасываем фильтр и обновляем DataGridView}
+\PYG{+w}{            }\PYG{n}{filteredProcessorsList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр, чтобы новый элемент отобразился}
+\PYG{+w}{            }\PYG{n}{UpdateDataGrid}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{LoadDataGridView}\PYG{p}{(}\PYG{n}{DataGridView}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Метод для загрузки данных из XML\PYGZhy{}файла в список,}
+\PYG{+w}{                                                        }\PYG{c+c1}{// привязанный к переданному DataGridView}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{OpenFileDialog}\PYG{+w}{ }\PYG{n}{openFileDialog}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{OpenFileDialog}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Создаём диалог для выбора файла пользователем}
+\PYG{+w}{            }\PYG{n}{openFileDialog}\PYG{p}{.}\PYG{n}{Filter}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}XML Files (*.xml)|*.xml|All Files (*.*)|*.*\PYGZdq{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Устанавливаем фильтр:}
+\PYG{+w}{                                                                                   }\PYG{c+c1}{// XML\PYGZhy{}файлы по умолчанию, с опцией \PYGZdq{}все файлы\PYGZdq{}}
+
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{openFileDialog}\PYG{p}{.}\PYG{n}{ShowDialog}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{DialogResult}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Открываем диалог и проверяем, выбрал ли пользователь файл}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{filePath}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{openFileDialog}\PYG{p}{.}\PYG{n}{FileName}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Получаем путь к выбранному файлу (например, \PYGZdq{}C:\PYGZbs{}data.xml\PYGZdq{})}
+
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dgv}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Проверяем, передан ли действительный DataGridView}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Передан некорректный DataGridView для загрузки данных.\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Если dgv null, показываем ошибку}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Завершаем выполнение}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{c+c1}{// Загружаем данные в соответствующий список в зависимости от переданного DataGridView}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dgv}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{dataGridView1}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если передан DataGridView для компонентов}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{XmlSerializer}\PYG{+w}{ }\PYG{n}{serializer}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{XmlSerializer}\PYG{p}{(}\PYG{k}{typeof}\PYG{p}{(}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Component}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Создаём сериализатор для List\PYGZlt{}Component\PYGZgt{}}
+\PYG{+w}{                    }\PYG{k}{using}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{TextReader}\PYG{+w}{ }\PYG{n}{reader}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{StreamReader}\PYG{p}{(}\PYG{n}{filePath}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Открываем поток чтения из файла}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{componentList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Component}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{n}{serializer}\PYG{p}{.}\PYG{n}{Deserialize}\PYG{p}{(}\PYG{n}{reader}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Десериализуем XML в componentList}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                    }\PYG{n}{filteredComponentList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр для отображения полного списка}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{k}{else}\PYG{+w}{ }\PYG{n+nf}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dgv}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{dataGridView2}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если передан DataGridView для видеокарт}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{XmlSerializer}\PYG{+w}{ }\PYG{n}{serializer}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{XmlSerializer}\PYG{p}{(}\PYG{k}{typeof}\PYG{p}{(}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{GraphicsCard}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Создаём сериализатор для List\PYGZlt{}GraphicsCard\PYGZgt{}}
+\PYG{+w}{                    }\PYG{k}{using}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{TextReader}\PYG{+w}{ }\PYG{n}{reader}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{StreamReader}\PYG{p}{(}\PYG{n}{filePath}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Открываем поток чтения}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{graphicsCardList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{GraphicsCard}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{n}{serializer}\PYG{p}{.}\PYG{n}{Deserialize}\PYG{p}{(}\PYG{n}{reader}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Десериализуем XML в graphicsCardList}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                    }\PYG{n}{filteredGraphicsCardList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{k}{else}\PYG{+w}{ }\PYG{n+nf}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dgv}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{dataGridView4}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если передан DataGridView для процессоров}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{XmlSerializer}\PYG{+w}{ }\PYG{n}{serializer}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{XmlSerializer}\PYG{p}{(}\PYG{k}{typeof}\PYG{p}{(}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Processor}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Создаём сериализатор для List\PYGZlt{}Processor\PYGZgt{}}
+\PYG{+w}{                    }\PYG{k}{using}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{TextReader}\PYG{+w}{ }\PYG{n}{reader}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{StreamReader}\PYG{p}{(}\PYG{n}{filePath}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Открываем поток чтения}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{processorsList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Processor}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{n}{serializer}\PYG{p}{.}\PYG{n}{Deserialize}\PYG{p}{(}\PYG{n}{reader}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Десериализуем XML в processorsList}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                    }\PYG{n}{filteredProcessorsList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{k}{else}\PYG{+w}{ }\PYG{c+c1}{// Если передан неизвестный DataGridView}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Неизвестный DataGridView для загрузки данных.\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сообщаем об ошибке}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Завершаем выполнение}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{n}{UpdateDataGrid}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Обновляем активный DataGridView с новыми данными}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Данные успешно загружены.\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сообщаем об успехе}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{componentLoad\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sender}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{System}\PYG{p}{.}\PYG{n}{Windows}\PYG{p}{.}\PYG{n}{Forms}\PYG{p}{.}\PYG{n}{Button}\PYG{+w}{ }\PYG{n}{btn}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{btn}\PYG{p}{.}\PYG{n}{Tag}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{DataGridView}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{LoadDataGridView}\PYG{p}{(}\PYG{n}{dgv}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{SaveDataGridView}\PYG{p}{(}\PYG{n}{DataGridView}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{SaveFileDialog}\PYG{+w}{ }\PYG{n}{saveFileDialog}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{SaveFileDialog}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Создаём объект SaveFileDialog для выбора пользователем пути и имени файла}
+\PYG{+w}{            }\PYG{n}{saveFileDialog}\PYG{p}{.}\PYG{n}{Filter}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}XML Files (*.xml)|*.xml|All Files (*.*)|*.*\PYGZdq{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Устанавливаем фильтр для отображения}
+\PYG{+w}{                                                                                   }\PYG{c+c1}{// XML\PYGZhy{}файлов по умолчанию и опции \PYGZdq{}все файлы\PYGZdq{}}
+
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{saveFileDialog}\PYG{p}{.}\PYG{n}{ShowDialog}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{DialogResult}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Открываем диалог сохранения и проверяем, выбрал ли пользователь файл (нажал \PYGZdq{}ОК\PYGZdq{})}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{filePath}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{saveFileDialog}\PYG{p}{.}\PYG{n}{FileName}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Получаем полный путь к файлу, выбранному пользователем (например, \PYGZdq{}C:\PYGZbs{}data.xml\PYGZdq{})}
+
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dgv}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Проверяем, был ли передан действительный DataGridView (не null)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Нет доступных DataGridView для сохранения.\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Если DataGridView не передан, показываем сообщение об ошибке}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Завершаем выполнение метода}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                }\PYG{c+c1}{// Выбираем, какой список сериализовать в зависимости от переданного DataGridView}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dgv}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{dataGridView1}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если передан DataGridView для компонентов (dataGridView1)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{componentList}\PYG{p}{.}\PYG{n}{Count}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Проверяем, содержит ли список componentList данные}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Нет данных для сохранения.\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Если список пуст, показываем сообщение}
+\PYG{+w}{                        }\PYG{k}{return}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Завершаем выполнение метода}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                    }\PYG{n}{XmlSerializer}\PYG{+w}{ }\PYG{n}{serializer}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{XmlSerializer}\PYG{p}{(}\PYG{k}{typeof}\PYG{p}{(}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Component}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Создаём XmlSerializer для сериализации}
+\PYG{+w}{                                                                                           }\PYG{c+c1}{// списка List\PYGZlt{}Component\PYGZgt{} в XML}
+\PYG{+w}{                    }\PYG{k}{using}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{TextWriter}\PYG{+w}{ }\PYG{n}{writer}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{StreamWriter}\PYG{p}{(}\PYG{n}{filePath}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Создаём TextWriter (StreamWriter) для записи данных в файл}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{serializer}\PYG{p}{.}\PYG{n}{Serialize}\PYG{p}{(}\PYG{n}{writer}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{componentList}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сериализуем componentList в XML и записываем в файл}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{c+c1}{// Автоматически закрываем writer благодаря using}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Данные успешно сохранены.\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сообщаем пользователю об успешном сохранении}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{k}{else}\PYG{+w}{ }\PYG{n+nf}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dgv}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{dataGridView2}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если передан DataGridView для видеокарт (dataGridView2)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{graphicsCardList}\PYG{p}{.}\PYG{n}{Count}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Проверяем, содержит ли список graphicsCardList данные}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Нет данных для сохранения.\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Если список пуст, показываем сообщение}
+\PYG{+w}{                        }\PYG{k}{return}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Завершаем выполнение}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                    }\PYG{n}{Debug}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{\PYGZdl{}\PYGZdq{}Graphics cards count: \PYGZob{}graphicsCardList.Count\PYGZcb{}\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{                    }\PYG{n}{XmlSerializer}\PYG{+w}{ }\PYG{n}{serializer}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{XmlSerializer}\PYG{p}{(}\PYG{k}{typeof}\PYG{p}{(}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{GraphicsCard}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Создаём XmlSerializer для сериализации}
+\PYG{+w}{                                                                                              }\PYG{c+c1}{// списка List\PYGZlt{}GraphicsCard\PYGZgt{} в XML}
+\PYG{+w}{                    }\PYG{k}{using}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{TextWriter}\PYG{+w}{ }\PYG{n}{writer}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{StreamWriter}\PYG{p}{(}\PYG{n}{filePath}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Создаём TextWriter для записи данных в файл}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{serializer}\PYG{p}{.}\PYG{n}{Serialize}\PYG{p}{(}\PYG{n}{writer}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{graphicsCardList}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сериализуем graphicsCardList в XML и записываем в файл}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{c+c1}{// Закрываем writer}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Данные успешно сохранены.\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сообщаем об успешном сохранении}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{k}{else}\PYG{+w}{ }\PYG{n+nf}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dgv}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{dataGridView4}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Если передан DataGridView для процессоров (dataGridView4)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{processorsList}\PYG{p}{.}\PYG{n}{Count}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Проверяем, содержит ли список processorsList данные}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Нет данных для сохранения.\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Если список пуст, показываем сообщение}
+\PYG{+w}{                        }\PYG{k}{return}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Завершаем выполнение}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                    }\PYG{n}{XmlSerializer}\PYG{+w}{ }\PYG{n}{serializer}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{XmlSerializer}\PYG{p}{(}\PYG{k}{typeof}\PYG{p}{(}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Processor}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Создаём XmlSerializer для сериализации}
+\PYG{+w}{                                                                                           }\PYG{c+c1}{// списка List\PYGZlt{}Processor\PYGZgt{} в XML}
+\PYG{+w}{                    }\PYG{k}{using}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{TextWriter}\PYG{+w}{ }\PYG{n}{writer}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{StreamWriter}\PYG{p}{(}\PYG{n}{filePath}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// Создаём TextWriter для записи данных в файл}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{serializer}\PYG{p}{.}\PYG{n}{Serialize}\PYG{p}{(}\PYG{n}{writer}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{processorsList}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сериализуем processorsList в XML и записываем в файл}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{c+c1}{// Закрываем writer}
+\PYG{+w}{                    }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Данные успешно сохранены.\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сообщаем об успешном сохранении}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{cmponentSave\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sender}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{System}\PYG{p}{.}\PYG{n}{Windows}\PYG{p}{.}\PYG{n}{Forms}\PYG{p}{.}\PYG{n}{Button}\PYG{+w}{ }\PYG{n}{btn}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{btn}\PYG{p}{.}\PYG{n}{Tag}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{DataGridView}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{SaveDataGridView}\PYG{p}{(}\PYG{n}{dgv}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{graphicsCardDeletBtn\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dataGridView2}\PYG{p}{.}\PYG{n}{SelectedRows}\PYG{p}{.}\PYG{n}{Count}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Выберите элемент для удаления!\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ошибка\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButtons}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxIcon}\PYG{p}{.}\PYG{n}{Warning}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Получаем выбранную строку из DataGridView}
+\PYG{+w}{            }\PYG{n}{DataGridViewRow}\PYG{+w}{ }\PYG{n}{selectedRow}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dataGridView2}\PYG{p}{.}\PYG{n}{SelectedRows}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{;}
+\PYG{+w}{            }\PYG{c+c1}{// Получаем объект GraphicsCard из DataSource строки}
+\PYG{+w}{            }\PYG{n}{GraphicsCard}\PYG{+w}{ }\PYG{n}{selectedGraphicsCard}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{GraphicsCard}\PYG{p}{)}\PYG{n}{selectedRow}\PYG{p}{.}\PYG{n}{DataBoundItem}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Удаляем объект из основного списка}
+\PYG{+w}{            }\PYG{n}{graphicsCardList}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{selectedGraphicsCard}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{filteredGraphicsCardList}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Сбрасываем фильтр}
+\PYG{+w}{            }\PYG{n}{UpdateDataGrid}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Обновляем таблицу}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{processorSave}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sender}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{System}\PYG{p}{.}\PYG{n}{Windows}\PYG{p}{.}\PYG{n}{Forms}\PYG{p}{.}\PYG{n}{Button}\PYG{+w}{ }\PYG{n}{btn}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{btn}\PYG{p}{.}\PYG{n}{Tag}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{DataGridView}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{SaveDataGridView}\PYG{p}{(}\PYG{n}{dgv}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{HandleSaveOrLoad\PYGZus{}Click}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{sender}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EventArgs}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Action}\PYG{o}{\PYGZlt{}}\PYG{n}{DataGridView}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{action}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{sender}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{System}\PYG{p}{.}\PYG{n}{Windows}\PYG{p}{.}\PYG{n}{Forms}\PYG{p}{.}\PYG{n}{Button}\PYG{+w}{ }\PYG{n}{btn}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{btn}\PYG{p}{.}\PYG{n}{Tag}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{n}{DataGridView}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{action}\PYG{p}{(}\PYG{n}{dgv}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
