@@ -1,0 +1,1715 @@
+using System;
+using System.Windows.Input;
+
+namespace StoreManager_4lab.ViewModels
+{
+    public class RelayCommand : ICommand
+    {
+        private readonly Action<object> _execute;
+        //private readonly Predicate<object> _canExecute;
+
+        private readonly Func<object, bool> _canExecute;
+
+
+
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        {
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+            _canExecute = canExecute;
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? true;
+
+        public void Execute(object parameter) => _execute(parameter);
+    }
+}
+  
+
+
+
+
+using Microsoft.EntityFrameworkCore;
+using StoreManager_4lab.Models;
+
+namespace StoreManager_4lab.Data
+{
+    public class StoreDbContext : DbContext
+    {
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source=store.db");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.Items)
+                .WithOne()
+                .OnDelete(DeleteBehavior.Cascade);
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoreManager_4lab.Models
+{
+    public class CartItem : INotifyPropertyChanged
+    {
+        private int _quantity;
+        public int Quantity
+        {
+            get => _quantity;
+            set { _quantity = value; OnPropertyChanged(); }
+        }
+
+        public Product Product { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoreManager_4lab.Models
+{
+    public class Order
+    {
+        public int Id { get; set; } // Уникальный идентификатор заказа
+        public string CustomerName { get; set; } // Имя клиента
+        public DateTime OrderDate { get; set; } // Дата оформления
+        public List<OrderItem> Items { get; set; } = new(); // Список позиций заказа
+
+        public decimal TotalPrice => Items.Sum(item => item.Product.Price * item.Quantity); // Общая сумма
+    }
+} 
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoreManager_4lab.Models
+{
+    public class OrderItem
+    {
+        public int Id { get; set; }
+
+        public int ProductId { get; set; }         // 🔹 Внешний ключ
+        public Product Product { get; set; }       // 🔹 Навигационное свойство
+
+        public int Quantity { get; set; }
+    }
+}
+
+
+
+using System;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoreManager_4lab.Models
+{
+    public class Product : INotifyPropertyChanged
+    {
+        private string _name;
+        public string Name
+        {
+            get => _name;
+            set { _name = value; OnPropertyChanged(); }
+        }
+
+        // Повторить для Price, Stock, Category
+
+        private int _id;
+        public int Id
+        {
+            get => _id;
+            set { _id = value; OnPropertyChanged(); }
+        }
+
+        private decimal _price;
+        public decimal Price
+        {
+            get => _price;
+            set { _price = value; OnPropertyChanged(); }
+        }
+
+        private int _stock;
+        public int Stock
+        {
+            get => _stock;
+            set { _stock = value; OnPropertyChanged(); }
+        }
+
+        private string? _category;
+        public string? Category
+        {
+            get => _category;
+            set { _category = value; OnPropertyChanged(); }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+}
+
+
+using Microsoft.Data.Sqlite; 
+using StoreManager_4lab.Models;
+
+namespace StoreManager_4lab.Repositories
+{
+    public class OrderRepository
+    {
+        private const string ConnectionString = "Data Source=store.db";
+
+        public List<Order> GetAll(List<Product> allProducts)
+        {
+            var orders = new List<Order>();
+
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT Id, CustomerName, OrderDate FROM [Order]";
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var order = new Order
+                {
+                    Id = reader.GetInt32(0),
+                    CustomerName = reader.GetString(1),
+                    OrderDate = DateTime.Parse(reader.GetString(2)),
+                    Items = new List<OrderItem>()
+                };
+
+                orders.Add(order);
+            }
+
+            foreach (var order in orders)
+            {
+                var itemCmd = connection.CreateCommand();
+                itemCmd.CommandText = "SELECT ProductId, Quantity FROM OrderItem WHERE OrderId = @orderId";
+                itemCmd.Parameters.AddWithValue("@orderId", order.Id);
+                using var itemReader = itemCmd.ExecuteReader();
+
+                while (itemReader.Read())
+                {
+                    var productId = itemReader.GetInt32(0);
+                    var quantity = itemReader.GetInt32(1);
+                    var product = allProducts.FirstOrDefault(p => p.Id == productId);
+
+                    if (product != null)
+                    {
+                        order.Items.Add(new OrderItem
+                        {
+                            Product = product,
+                            Quantity = quantity
+                        });
+                    }
+                }
+            }
+
+            return orders;
+        }
+
+        public void Add(Order order)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            using var transaction = connection.BeginTransaction();
+
+            var orderCmd = connection.CreateCommand();
+            orderCmd.CommandText = "INSERT INTO [Order] (CustomerName, OrderDate) VALUES (@name, @date); SELECT last_insert_rowid();";
+            orderCmd.Parameters.AddWithValue("@name", order.CustomerName);
+            orderCmd.Parameters.AddWithValue("@date", order.OrderDate.ToString("s"));
+            var orderId = (long)orderCmd.ExecuteScalar();
+
+            foreach (var item in order.Items)
+            {
+                var itemCmd = connection.CreateCommand();
+                itemCmd.CommandText = "INSERT INTO OrderItem (OrderId, ProductId, Quantity) VALUES (@orderId, @productId, @quantity)";
+                itemCmd.Parameters.AddWithValue("@orderId", orderId);
+                itemCmd.Parameters.AddWithValue("@productId", item.ProductId);
+                itemCmd.Parameters.AddWithValue("@quantity", item.Quantity);
+                itemCmd.ExecuteNonQuery();
+            }
+
+            transaction.Commit();
+        }
+
+        public void Delete(int orderId)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = "DELETE FROM [Order] WHERE Id = @id";
+            cmd.Parameters.AddWithValue("@id", orderId);
+            cmd.ExecuteNonQuery();
+        }
+    }
+}
+
+
+
+using Microsoft.Data.Sqlite; 
+using StoreManager_4lab.Models;
+
+namespace StoreManager_4lab.Repositories
+{
+    public class ProductRepository
+    {
+        private const string ConnectionString = "Data Source=store.db";
+
+        public List<Product> GetAll()
+        {
+            var list = new List<Product>();
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Product";
+
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new Product
+                {
+                    Id = reader.GetInt32(0),
+                    Name = reader.GetString(1),
+                    Price = reader.GetDecimal(2),
+                    Stock = reader.GetInt32(3),
+                    Category = reader.IsDBNull(4) ? null : reader.GetString(4)
+                });
+            }
+
+            return list;
+        }
+         
+        public void Add(Product product)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO Product (Name, Price, Stock, Category) VALUES (@name, @price, @stock, @category)";
+            command.Parameters.AddWithValue("@name", product.Name);
+            command.Parameters.AddWithValue("@price", product.Price);
+            command.Parameters.AddWithValue("@stock", product.Stock);
+            command.Parameters.AddWithValue("@category", product.Category ?? (object)DBNull.Value);
+
+            command.ExecuteNonQuery();
+        }
+
+        public void Update(Product product)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "UPDATE Product SET Name=@name, Price=@price, Stock=@stock, Category=@category WHERE Id=@id";
+            command.Parameters.AddWithValue("@id", product.Id);
+            command.Parameters.AddWithValue("@name", product.Name);
+            command.Parameters.AddWithValue("@price", product.Price);
+            command.Parameters.AddWithValue("@stock", product.Stock);
+            command.Parameters.AddWithValue("@category", product.Category ?? (object)DBNull.Value);
+
+            command.ExecuteNonQuery();
+        }
+
+        public void Delete(int id)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "DELETE FROM Product WHERE Id = @id";
+            command.Parameters.AddWithValue("@id", id);
+            command.ExecuteNonQuery();
+        }
+    }
+}
+
+
+
+    using StoreManager_4lab.Data;
+    using StoreManager_4lab.Models;
+    using System.Collections.ObjectModel;
+    using System.ComponentModel;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+    using System.Runtime.CompilerServices; 
+    using Microsoft.EntityFrameworkCore;
+    using System.Windows;
+
+    namespace StoreManager_4lab.ViewModels
+    {
+        public class MainViewModel : INotifyPropertyChanged
+        {
+            private readonly StoreDbContext _context = new();
+
+            // Коллекции
+            public ObservableCollection<Product> Products { get; set; } = new();
+            public ObservableCollection<Order> Orders { get; set; } = new();
+            public ObservableCollection<OrderItem> SelectedOrderItems { get; set; } = new();
+         
+
+            public ObservableCollection<CartItem> CartItems { get; } = new();
+
+
+            private CartItem _selectedCartItem;
+
+            // Категории
+            public ObservableCollection<string> Categories { get; } = new()
+            {
+                "Ноутбуки и ультрабуки", "Комплектующие для ПК", "Периферия и аксессуары", "Мониторы и дисплеи", "Сетевое оборудование"
+            };
+
+            // === Поля товара ===
+            private string _newProductName;
+            public string NewProductName
+            {
+                get => _newProductName;
+                set
+                {
+                    _newProductName = value;
+                    OnPropertyChanged();
+                    CommandManager.InvalidateRequerySuggested();
+                }
+            }
+
+            private decimal _newProductPrice;
+            public decimal NewProductPrice
+            {
+                get => _newProductPrice;
+                set
+                {
+                    _newProductPrice = value;
+                    OnPropertyChanged();
+                    CommandManager.InvalidateRequerySuggested();
+                }
+            }
+
+            private int _newProductStock;
+            public int NewProductStock
+            {
+                get => _newProductStock;
+                set
+                {
+                    _newProductStock = value;
+                    OnPropertyChanged();
+                    CommandManager.InvalidateRequerySuggested();
+                }
+            }
+
+            private string _selectedCategory;
+            public string SelectedCategory
+            {
+                get => _selectedCategory;
+                set
+                {
+                    _selectedCategory = value;
+                    OnPropertyChanged();
+                    CommandManager.InvalidateRequerySuggested();
+                }
+            }
+
+
+
+            public CartItem SelectedCartItem
+            {
+                get => _selectedCartItem;
+                set
+                {
+                    _selectedCartItem = value;
+                    Console.WriteLine($"SelectedCartItem изменен: {(_selectedCartItem != null ? _selectedCartItem.Product.Name : "null")}");
+                    OnPropertyChanged(nameof(SelectedCartItem));
+                    CommandManager.InvalidateRequerySuggested(); // Обновить состояние команд
+                }
+            }
+
+            // === Поля заказа ===
+            private string _customerName;
+            public string CustomerName
+            {
+                get => _customerName;
+                set
+                {
+                    _customerName = value;
+                    OnPropertyChanged();
+                    CommandManager.InvalidateRequerySuggested();
+                }
+            }
+
+            private Order _selectedOrder;
+            public Order SelectedOrder
+            {
+                get => _selectedOrder;
+                set
+                {
+                    _selectedOrder = value;
+                    OnPropertyChanged();
+                    SelectedOrderItems.Clear();
+
+                    if (value != null)
+                    {
+                        foreach (var item in value.Items)
+                        {
+                            SelectedOrderItems.Add(new OrderItem
+                            {
+                                ProductId = item.ProductId,
+                                Quantity = item.Quantity
+                            });
+                        }
+                    }
+                }
+            }
+
+            private Product _selectedProduct;
+            public Product SelectedProduct
+            {
+                get => _selectedProduct;
+                set
+                {
+                    _selectedProduct = value;
+                    OnPropertyChanged();
+
+                    if (value != null)
+                    {
+                        NewProductName = value.Name;
+                        NewProductPrice = value.Price;
+                        NewProductStock = value.Stock;
+                        SelectedCategory = value.Category;
+                    }
+
+                    CommandManager.InvalidateRequerySuggested();
+                }
+            }
+
+            // === Команды ===
+            public ICommand AddProductCommand { get; }
+            public ICommand AddOrderCommand { get; }
+            public ICommand DeleteOrderCommand { get; }
+            public ICommand UpdateProductCommand { get; }
+            public ICommand DeleteProductCommand { get; }
+            public ICommand ClearFieldsCommand { get; }
+            public ICommand AddToOrderCommand { get; }
+            public ICommand IncreaseQuantityCommand { get; }
+            public ICommand DecreaseQuantityCommand { get; }
+            public ICommand RemoveFromOrderCommand { get; }
+         
+            public ICommand AddToCartCommand { get; }
+
+            public ICommand RemoveFromCartCommand { get; }
+
+            public MainViewModel()
+            {
+
+                AddProductCommand = new RelayCommand(_ => AddProduct(), _ => CanAddProduct() && SelectedProduct == null);
+                AddOrderCommand = new RelayCommand(_ => AddOrder());
+                DeleteOrderCommand = new RelayCommand(_ => DeleteOrder(), _ => SelectedOrder != null);
+                UpdateProductCommand = new RelayCommand(_ => UpdateProduct(), _ => SelectedProduct != null);
+                DeleteProductCommand = new RelayCommand(_ => DeleteProduct(), _ => SelectedProduct != null);
+                ClearFieldsCommand = new RelayCommand(_ => ClearProductFields()); 
+
+ 
+                _context = new StoreDbContext();
+                _context.Database.EnsureCreated();
+
+                // Используем лямбда-выражения для согласования сигнатур с RelayCommand    
+                AddToCartCommand = new RelayCommand(_ => AddToCart(), _ => CanAddToCart());
+                RemoveFromCartCommand = new RelayCommand(_ => RemoveFromCart(), _ => CanRemoveFromCart());
+                // Команды с параметрами
+                IncreaseQuantityCommand = new RelayCommand(IncreaseQuantity, CanIncreaseQuantity);
+                DecreaseQuantityCommand = new RelayCommand(DecreaseQuantity, CanDecreaseQuantity);
+
+           
+                _context.Database.EnsureCreated();
+                LoadProducts(); 
+                LoadOrders();
+            }
+
+            private void LoadProducts()
+            {
+                Products.Clear();
+                foreach (var p in _context.Products.ToList())
+                    Products.Add(p);
+            }
+
+
+            private void LoadOrders()
+            {
+                Orders.Clear();
+                var allOrders = _context.Orders
+                    .Include(o => o.Items)
+                    .ThenInclude(i => i.Product)
+                    .ToList();
+
+                foreach (var order in allOrders)
+                    Orders.Add(order);
+            }
+
+            private void AddProduct()
+            {
+                if (string.IsNullOrWhiteSpace(NewProductName))
+                {
+                    MessageBox.Show("Введите название товара.");
+                    return;
+                }
+
+                if (NewProductPrice <= 0)
+                {
+                    MessageBox.Show("Цена должна быть больше 0.");
+                    return;
+                }
+
+                if (NewProductStock <= 0)
+                {
+                    MessageBox.Show("Количество должно быть больше 0.");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(SelectedCategory))
+                {
+                    MessageBox.Show("Выберите категорию.");
+                    return;
+                }
+
+                var product = new Product
+                {
+                    Name = NewProductName,
+                    Price = NewProductPrice,
+                    Stock = NewProductStock,
+                    Category = SelectedCategory
+                };
+
+                _context.Products.Add(product);
+                _context.SaveChanges();
+
+                LoadProducts(); 
+                ClearProductFields();
+            }
+
+         
+
+         
+            private void UpdateProduct()
+            {
+                if (SelectedProduct != null)
+                {
+                    var product = _context.Products.FirstOrDefault(p => p.Id == SelectedProduct.Id);
+                    if (product != null)
+                    {
+                        product.Name = NewProductName;
+                        product.Price = NewProductPrice;
+                        product.Stock = NewProductStock;
+                        product.Category = SelectedCategory;
+
+                        _context.SaveChanges();
+
+                        LoadProducts();         // <== перезагрузи
+                        SelectedProduct = null; // сброси выбор
+                        ClearProductFields();
+                    }
+                }
+            }
+
+            private void DeleteProduct()
+            {
+                if (SelectedProduct != null)
+                {
+                    bool usedInOrder = _context.OrderItems
+                        .Any(oi => oi.Product.Id == SelectedProduct.Id);
+
+                    if (usedInOrder)
+                    {
+                        System.Windows.MessageBox.Show("Нельзя удалить товар, который используется в заказах.");
+                        return;
+                    }
+
+                    var product = _context.Products.FirstOrDefault(p => p.Id == SelectedProduct.Id);
+                    if (product != null)
+                    {
+                        _context.Products.Remove(product);
+                        _context.SaveChanges();
+                        LoadProducts();
+                    }
+
+                    SelectedProduct = null;
+                    ClearProductFields();
+                }
+            }
+
+            private bool CanAddProduct()
+            {
+                return !string.IsNullOrWhiteSpace(NewProductName) && NewProductPrice >= 0 && NewProductStock >= 0;
+            }
+
+
+            private bool CanIncreaseQuantity(object parameter)
+            {
+                return parameter is CartItem item && item.Quantity < item.Product.Stock;
+            }
+
+            private bool CanDecreaseQuantity(object parameter)
+            {
+                return parameter is CartItem item && item.Quantity > 1;
+            }
+
+            private void IncreaseQuantity(object parameter)
+            {
+                if (parameter is CartItem item && item.Quantity < item.Product.Stock)
+                {
+                    item.Quantity++;
+                    item.Product.Stock--;
+                    Console.WriteLine($"Увеличено кол-во: {item.Product.Name}, Кол-во: {item.Quantity}");
+                    OnPropertyChanged(nameof(CartItems));
+                    OnPropertyChanged(nameof(Products));
+                }
+            }
+            private void DecreaseQuantity(object parameter)
+            {
+                if (parameter is CartItem item && item.Quantity > 1)
+                {
+                    item.Quantity--;
+                    item.Product.Stock++;
+                    Console.WriteLine($"Уменьшено кол-во: {item.Product.Name}, Кол-во: {item.Quantity}");
+                    OnPropertyChanged(nameof(CartItems));
+                    OnPropertyChanged(nameof(Products));
+                }
+            }
+
+
+            private bool CanAddToCart()
+            {
+                return SelectedProduct != null && SelectedProduct.Stock > 0;
+            }
+
+            private void RemoveFromCart()
+            {
+                if (SelectedCartItem != null)
+                {
+                    SelectedCartItem.Product.Stock += SelectedCartItem.Quantity;
+                    var itemName = SelectedCartItem.Product.Name;
+                    CartItems.Remove(SelectedCartItem);
+                    Console.WriteLine($"Удален из корзины: {itemName}");
+                    OnPropertyChanged(nameof(CartItems));
+                    SelectedCartItem = null; // Сбросить выбор
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка: SelectedCartItem is null");
+                }
+            }
+
+            private void AddToCart()
+            {  if (SelectedProduct != null && SelectedProduct.Stock > 0)
+                {
+                    var existingItem = CartItems.FirstOrDefault(c => c.Product.Id == SelectedProduct.Id);
+                    if (existingItem == null)
+                    {
+                        CartItems.Add(new CartItem { Product = SelectedProduct, Quantity = 1 });
+                        SelectedProduct.Stock--;
+                        Console.WriteLine($"Добавлен в корзину: {SelectedProduct.Name}, Кол-во: 1");
+                    }
+                    else
+                    {
+                        if (existingItem.Quantity < existingItem.Product.Stock)
+                        {
+                            existingItem.Quantity++;
+                            Console.WriteLine($"Увеличено кол-во в корзине: {SelectedProduct.Name}, Кол-во: {existingItem.Quantity}");
+                        }
+                    }
+                    OnPropertyChanged(nameof(CartItems));
+                }
+            }
+
+
+        
+
+
+            private bool CanRemoveFromCart()
+            {
+                bool canRemove = SelectedCartItem != null;
+                Console.WriteLine($"CanRemoveFromCart: {canRemove}");
+                return canRemove;
+            }
+
+
+
+            private void AddOrder()
+            {
+                if (string.IsNullOrWhiteSpace(CustomerName) || !CartItems.Any())
+                {
+                    MessageBox.Show("Введите имя и добавьте товары в корзину.");
+                    return;
+                }
+
+                var order = new Order
+                {
+                    CustomerName = CustomerName,
+                    OrderDate = DateTime.Now,
+                    Items = CartItems.Select(c => new OrderItem
+                    {
+                        ProductId = c.Product.Id,
+                        Product = c.Product,
+                        Quantity = c.Quantity
+                    }).ToList()
+                };
+
+                _context.Orders.Add(order);
+                _context.SaveChanges();
+
+                MessageBox.Show("Заказ успешно создан!");
+                LoadOrders();
+                LoadProducts();
+
+                CartItems.Clear();
+                CustomerName = "";
+                OnPropertyChanged(nameof(CartItems));
+            }
+
+
+
+            private void DeleteOrder()
+            {
+                if (SelectedOrder != null)
+                {
+                    foreach( var item in SelectedOrder.Items)
+                    {
+                        var product =_context.Products.FirstOrDefault(p => p.Id == item.ProductId);
+                        if (product != null)
+                        {
+                            product.Stock += item.Quantity; // возвращаем товар
+                        }
+                    }
+               
+                    _context.Orders.Remove(SelectedOrder);
+                    _context.SaveChanges();
+                    LoadOrders();
+                    LoadProducts();
+                    SelectedOrderItems.Clear();
+                }
+            }
+
+            public void ClearProductFields()
+            {
+                NewProductName = "";
+                NewProductPrice = 0;
+                NewProductStock = 0;
+                SelectedCategory = null;
+            }
+
+            // INotifyPropertyChanged
+            public event PropertyChangedEventHandler PropertyChanged;
+            protected void OnPropertyChanged([CallerMemberName] string name = null) =>
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+    }
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks; 
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace StoreManager_4lab.ViewModels
+{
+    public class BaseViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (Equals(field, value)) return false;
+            field = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+    }
+}
+
+
+
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Microsoft.EntityFrameworkCore; 
+using StoreManager_4lab.Data;
+using StoreManager_4lab.Models;  
+
+namespace StoreManager_4lab.ViewModels
+{
+    public class OrderViewModel : BaseViewModel
+    {
+        private readonly StoreDbContext _context;
+        private Order _selectedOrder;
+        private string _customerName;
+
+        public ObservableCollection<Order> Orders { get; } = new();
+        public ObservableCollection<Product> AvailableProducts { get; } = new();
+        public ObservableCollection<OrderItem> SelectedItems { get; } = new();
+
+        public string CustomerName
+        {
+            get => _customerName;
+            set => SetProperty(ref _customerName, value);
+        }
+
+        public Order SelectedOrder
+        {
+            get => _selectedOrder;
+            set
+            {
+                if (SetProperty(ref _selectedOrder, value) && value != null)
+                {
+                    CustomerName = value.CustomerName;
+                    SelectedItems.Clear();
+                    foreach (var item in value.Items)
+                        SelectedItems.Add(item);
+                }
+            }
+        }
+
+        public ICommand AddOrderCommand { get; }
+        public ICommand UpdateOrderCommand { get; }
+        public ICommand DeleteOrderCommand { get; }
+
+        public OrderViewModel()
+        {
+            _context = new StoreDbContext();
+            _context.Database.EnsureCreated();
+
+            LoadOrders();
+            LoadAvailableProducts();
+
+            AddOrderCommand = new RelayCommand(_ => AddOrder());
+            UpdateOrderCommand = new RelayCommand(_ => UpdateOrder(), _ => SelectedOrder != null);
+            DeleteOrderCommand = new RelayCommand(_ => DeleteOrder(), _ => SelectedOrder != null);
+        }
+
+        private void LoadOrders()
+        {
+            Orders.Clear();
+            foreach (var order in _context.Orders.Include(o => o.Items).ThenInclude(i => i.Product).ToList())
+                Orders.Add(order);
+        }
+
+        private void LoadAvailableProducts()
+        {
+            AvailableProducts.Clear();
+            foreach (var product in _context.Products.ToList())
+                AvailableProducts.Add(product);
+        }
+
+        private void AddOrder()
+        {
+            if (string.IsNullOrWhiteSpace(CustomerName) || SelectedItems.Count == 0) return;
+
+            var newOrder = new Order
+            {
+                CustomerName = CustomerName,
+                OrderDate = DateTime.Now,
+                Items = SelectedItems.Select(i => new OrderItem
+                {
+                    Product = i.Product,
+                    Quantity = i.Quantity
+                }).ToList()
+            };
+
+            _context.Orders.Add(newOrder);
+            _context.SaveChanges();
+            Orders.Add(newOrder);
+        }
+
+        private void UpdateOrder()
+        {
+            if (SelectedOrder == null) return;
+
+            SelectedOrder.CustomerName = CustomerName;
+            SelectedOrder.Items = SelectedItems.Select(i => new OrderItem
+            {
+                Product = i.Product,
+                Quantity = i.Quantity
+            }).ToList();
+
+            _context.Orders.Update(SelectedOrder);
+            _context.SaveChanges();
+        }
+
+        private void DeleteOrder()
+        {
+            if (SelectedOrder != null)
+            {
+                _context.Orders.Remove(SelectedOrder);
+                _context.SaveChanges();
+                Orders.Remove(SelectedOrder);
+                SelectedOrder = null;
+                SelectedItems.Clear();
+                CustomerName = string.Empty;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+using StoreManager_4lab.Models;
+using StoreManager_4lab.Data;
+using System.Collections.ObjectModel;
+using System.Windows.Input; 
+
+namespace StoreManager_4lab.ViewModels
+{
+ 
+    public class ProductViewModel : BaseViewModel
+    {
+        private Product _selectedProduct;
+        private readonly StoreDbContext _context;
+        private string _filterCategory;
+
+        public ObservableCollection<Product> Products { get; } = new();
+        public ObservableCollection<string> Categories { get; } = new();
+
+        public Product SelectedProduct
+        {
+            get => _selectedProduct;
+            set => SetProperty(ref _selectedProduct, value);
+        }
+
+        public string FilterCategory
+        {
+            get => _filterCategory;
+            set
+            {
+                if (SetProperty(ref _filterCategory, value))
+                {
+                    LoadProducts();
+                }
+            }
+        }
+
+        public ICommand AddProductCommand { get; }
+        public ICommand UpdateProductCommand { get; }
+        public ICommand DeleteProductCommand { get; }
+
+        public ProductViewModel()
+        {
+            _context = new StoreDbContext();
+            _context.Database.EnsureCreated();
+
+            LoadCategories();
+            LoadProducts();
+
+            AddProductCommand = new RelayCommand(_ => AddProduct());
+            UpdateProductCommand = new RelayCommand(_ => UpdateProduct(), _ => SelectedProduct != null);
+            DeleteProductCommand = new RelayCommand(_ => DeleteProduct(), _ => SelectedProduct != null);
+        }
+
+        private void LoadProducts()
+        {
+            Products.Clear();
+            var products = _context.Products.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(FilterCategory))
+                products = products.Where(p => p.Category == FilterCategory);
+
+            foreach (var product in products.ToList())
+                Products.Add(product);
+        }
+
+        private void LoadCategories()
+        {
+            Categories.Clear();
+            var categories = _context.Products.Select(p => p.Category).Distinct().ToList();
+            foreach (var category in categories)
+                Categories.Add(category);
+        }
+
+        private void AddProduct()
+        {
+            var product = new Product { Name = "Новый товар", Price = 0, Stock = 0, Category = "Общая" };
+            _context.Products.Add(product);
+            _context.SaveChanges();
+            Products.Add(product);
+            SelectedProduct = product;
+            LoadCategories();
+        }
+
+        private void UpdateProduct()
+        {
+            _context.Products.Update(SelectedProduct);
+            _context.SaveChanges();
+            LoadProducts();
+        }
+
+        private void DeleteProduct()
+        {
+            if (SelectedProduct != null)
+            {
+                _context.Products.Remove(SelectedProduct);
+                _context.SaveChanges();
+                Products.Remove(SelectedProduct);
+                SelectedProduct = null;
+                LoadCategories();
+            }
+        }
+    }
+    
+}
+using StoreManager_4lab.ViewModels;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace StoreManager_4lab
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent(); 
+        }
+
+        private void ProductsListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Универсально для ListBox и ListView
+            if (sender is not Selector selector) return;
+
+            var result = VisualTreeHelper.HitTest((Visual)sender, e.GetPosition((IInputElement)sender));
+            if (result == null) return;
+
+            DependencyObject obj = result.VisualHit;
+
+            // Поднимаемся по дереву до ListBoxItem или ListViewItem
+            while (obj != null && obj is not ListBoxItem && obj is not ListViewItem)
+            {
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+
+            // Если клик был не по элементу — снимаем выделение
+            if (obj == null)
+            {
+                selector.SelectedItem = null;
+
+                if (DataContext is MainViewModel vm)
+                {
+                    // Очищаем оба — корзину и товар
+                    vm.SelectedProduct = null;
+                    vm.SelectedCartItem = null;
+                    vm.ClearProductFields();
+                }
+
+                e.Handled = true;
+            }
+        }
+
+
+        private void CartListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is not Selector selector) return;
+
+            var result = VisualTreeHelper.HitTest((Visual)sender, e.GetPosition((IInputElement)sender));
+            if (result == null) return;
+
+            DependencyObject obj = result.VisualHit;
+
+            while (obj != null && obj is not ListBoxItem)
+            {
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+
+            if (obj == null)
+            {
+                selector.SelectedItem = null;
+
+                if (DataContext is MainViewModel vm)
+                {
+                    vm.SelectedCartItem = null;
+                }
+
+                e.Handled = true;
+            }
+        }
+
+
+
+        private void ProductsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listView = sender as ListView;
+
+            if (listView?.SelectedItem == null)
+            {
+                if (DataContext is MainViewModel vm)
+                {
+                    vm.ClearProductFields();
+                    vm.SelectedProduct = null;
+                }
+            }
+        }
+
+    }
+
+
+}
+
+<Window x:Class="StoreManager_4lab.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:StoreManager_4lab.ViewModels"
+        xmlns:local="clr-namespace:StoreManager_4lab.Models"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Store Manager"
+        Height="720"
+        Width="1280"
+        Background="#1F1F1F"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <CollectionViewSource x:Key="ProductsCollection" Source="{Binding Products}" />
+        <CollectionViewSource x:Key="CartCollection" Source="{Binding CartItems}" />
+
+
+        <SolidColorBrush x:Key="AccentColor" Color="#FF232323" />
+        <SolidColorBrush x:Key="DarkColor" Color="#1F1F1F" />
+ 
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF272101"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="#F5F5F5"
+                        BorderBrush="#CCCCCC"
+                        BorderThickness="1"
+                        CornerRadius="6">
+                            <ScrollViewer  
+                                  x:Name="PART_ContentHost"
+                                  Foreground="{TemplateBinding Foreground}" 
+                                          />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+            <Border Background="Transparent" Padding="0">
+                <Grid>
+                    <Path VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Data="M 0 0 L 4 4 L 8 0 Z"
+                  Fill="Gray"/>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <!-- Основной контейнер -->
+                            <Border x:Name="Border"
+                            Background="#F5F5F5" 
+                            BorderThickness="1"
+                            CornerRadius="6">
+                                <DockPanel>
+                                    <!-- Выбранный элемент -->
+                                    <ContentPresenter x:Name="ContentSite"
+                                              Margin="10,0,30,0"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left"
+                                                      
+                                              Content="{TemplateBinding SelectionBoxItem}" />
+                                </DockPanel>
+                            </Border>
+
+                            <!-- Кнопка-стрелка -->
+                            <ToggleButton x:Name="ToggleButton"
+              Grid.ZIndex="1"
+              Background="Transparent"
+              BorderThickness="0"
+              IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+              Focusable="False"
+              ClickMode="Press"
+              HorizontalContentAlignment="Stretch">
+                                <Border Background="#F5F5F5"
+            BorderBrush="#CCCCCC"
+            BorderThickness="1"
+            CornerRadius="6"
+            Padding="10,0">
+                                    <Grid>
+                                        <ContentPresenter HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              Margin="0,0,20,0"
+                              Content="{TemplateBinding SelectionBoxItem}"
+                        />
+                                        <Path HorizontalAlignment="Right"
+                  VerticalAlignment="Center"
+                  Margin="0,0,10,0"
+                  Data="M 0 0 L 4 4 L 8 0 Z"
+                  Fill="Gray"/>
+                                    </Grid>
+                                </Border>
+                            </ToggleButton>
+
+
+                            <!-- Выпадающий список -->
+                            <Popup x:Name="PART_Popup"
+                           Placement="Bottom"
+                           IsOpen="{TemplateBinding IsDropDownOpen}"
+                           AllowsTransparency="True"
+                           Focusable="False"
+                                   Width="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                           PopupAnimation="Fade">
+                                <Grid>
+                                    <Border Background="White"
+                                    BorderBrush="#CCCCCC"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    SnapsToDevicePixels="True">
+                                        <ScrollViewer Margin="0" SnapsToDevicePixels="True">
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+
+                        <!-- Триггеры -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="#EEE"/>
+                                <Setter Property="Foreground" Value="#888"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#888"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#FF610F90"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Foreground" Value="DarkSlateGray"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Padding" Value="8,4"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#FF2FA71E"/>
+                                <Setter Property="Foreground" Value="#FF3E0269"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#E3F2FD"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF724FD4"/>
+            <Setter Property="Foreground" Value="#fff"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="2" Opacity="0.2"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        CornerRadius="6"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                                 Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF610F90"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#B0BEC5"/>
+                    <Setter Property="Foreground" Value="#FF191818"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Стили для корзины -->
+        <Style x:Key="HeaderCellStyle" TargetType="TextBlock">
+            <Setter Property="Background" Value="#FF724FD4"/>
+            <Setter Property="Foreground" Value="#FFFDF6F6"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Placeholder Style -->
+        <Style x:Key="PlaceholderStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#888"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="Margin" Value="10,5,0,0"/>
+            <Setter Property="IsHitTestVisible" Value="False"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <DockPanel.Background>
+            <ImageBrush ImageSource="/pc.jpg"/>
+        </DockPanel.Background>
+        <!-- Header -->
+        <StackPanel DockPanel.Dock="Top" Margin="0,10" Height="37" Width="1107">
+            <TextBlock Text="Магазин компьютерной техники" FontSize="24" FontWeight="Bold"
+                       Foreground="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" HorizontalAlignment="Center" Margin="0,10,0,20"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Товары -->
+            <GroupBox Grid.Column="0" Header="Товары" Foreground="White">
+                <StackPanel>
+
+                    <!-- Заголовок таблицы -->
+                    <ListBox SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" Height="200" Margin="0,0,0,10"
+                 PreviewMouseLeftButtonDown="ProductsListBox_PreviewMouseLeftButtonDown">
+                        <ListBox.Resources>
+                            <DataTemplate DataType="{x:Type local:Product}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="110"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="0"   TextWrapping="Wrap" TextTrimming="CharacterEllipsis"/>
+                                    <TextBlock Text="{Binding Price}" Grid.Column="1" Margin="15,0"/>
+                                    <TextBlock Text="{Binding Stock}" Grid.Column="2" Margin="25,0" />
+                                    <TextBlock Text="{Binding Category}" Grid.Column="3"  Margin="4,0"   TextWrapping="Wrap" TextTrimming="CharacterEllipsis"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.Resources>
+
+                        <ListBox.ItemsSource>
+                            <CompositeCollection>
+                                <!-- Заголовок -->
+                                <ListBoxItem>
+                                    <Grid Background="#EEE">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="120"/>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="110"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Название" Grid.Column="0" Style="{StaticResource HeaderCellStyle}"/>
+                                        <TextBlock Text="Цена" Grid.Column="1" Style="{StaticResource HeaderCellStyle}"/>
+                                        <TextBlock Text="Остаток" Grid.Column="2" Style="{StaticResource HeaderCellStyle}"/>
+                                        <TextBlock Text="Категория" Grid.Column="3" Style="{StaticResource HeaderCellStyle}" />
+                                    </Grid>
+                                </ListBoxItem>
+
+                                <!-- Данные из ViewModel -->
+                                <CollectionContainer Collection="{Binding Source={StaticResource ProductsCollection}}" />
+                            </CompositeCollection>
+                        </ListBox.ItemsSource>
+                    </ListBox>
+
+                    <!-- Поля ввода -->
+                    <Grid>
+                        <TextBox x:Name="ProductNameBox" Text="{Binding NewProductName, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="Название">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource PlaceholderStyle}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=ProductNameBox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid>
+                        <TextBox x:Name="ProductPriceBox" Text="{Binding NewProductPrice, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="Цена">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource PlaceholderStyle}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=ProductPriceBox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid>
+                        <TextBox x:Name="ProductStockBox" Text="{Binding NewProductStock, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="Остаток">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource PlaceholderStyle}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=ProductStockBox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid>
+                        <ComboBox x:Name="CategoryComboBox" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" />
+                        <TextBlock Text="Выберите категорию">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource PlaceholderStyle}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedItem, ElementName=CategoryComboBox}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+                    <!-- Кнопки -->
+                    <UniformGrid Columns="3" Margin="0,10,0,0" HorizontalAlignment="Stretch">
+                        <Button Content="Добавить" Command="{Binding AddProductCommand}" />
+                        <Button Content="Обновить" Command="{Binding UpdateProductCommand}" />
+                        <Button Content="Удалить" Command="{Binding DeleteProductCommand}" />
+                    </UniformGrid>
+
+                    <Button Content="В корзину"
+                        Command="{Binding AddToCartCommand}" 
+                        Width="120"
+                        Margin="0,10,0,0"/> 
+                </StackPanel>
+            </GroupBox>
+
+
+
+
+            <!-- Корзина -->
+            <GroupBox Grid.Column="1" Header="Корзина" Foreground="White">
+                <StackPanel>
+                    <ListBox SelectedItem="{Binding SelectedCartItem, Mode=TwoWay}"    PreviewMouseLeftButtonDown="CartListBox_PreviewMouseLeftButtonDown" Height="201" Width="409">
+                        <!-- Явный шаблон -->
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="130"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding Product.Name}" Grid.Column="0" Margin="4,0,0,0"    TextWrapping="Wrap" TextTrimming="CharacterEllipsis"/>
+                                    <TextBlock Text="{Binding Product.Price}" Grid.Column="1" Margin="25,0,0,0" />
+                                    <TextBlock Text="{Binding Product.Category}" Grid.Column="2"  Margin="5,0,0,0"   TextWrapping="Wrap" TextTrimming="CharacterEllipsis"/>
+                                    <StackPanel Orientation="Horizontal" Grid.Column="3"  Margin="25,0,0,0">
+                                        <Button Content="-" Width="20" Height="20" Padding="0"
+                                    Command="{Binding DataContext.DecreaseQuantityCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                    CommandParameter="{Binding}" Foreground="White" Background="#FF1914CC"/>
+                                        <TextBlock Text="{Binding Quantity}" Width="30" TextAlignment="Center" VerticalAlignment="Center"/>
+                                        <Button Content="+" Width="20" Height="20" Padding="0"
+                                    Command="{Binding DataContext.IncreaseQuantityCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                    CommandParameter="{Binding}" Foreground="White" Background="#FF1914CC"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+                        <!-- Источник данных -->
+                        <ListBox.ItemsSource>
+                            <CompositeCollection>
+                                <!-- Заголовок -->
+                                <ListBoxItem>
+                                    <Grid Background="#EEE">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="130"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="Товар" Grid.Column="0" Style="{StaticResource HeaderCellStyle}"   />
+                                        <TextBlock Text="Цена" Grid.Column="1" Style="{StaticResource HeaderCellStyle}"   />
+                                        <TextBlock Text="Категория" Grid.Column="2" Style="{StaticResource HeaderCellStyle}" />
+                                        <TextBlock Text="Кол-во" Grid.Column="3" Style="{StaticResource HeaderCellStyle}"   />
+                                    </Grid>
+                                </ListBoxItem>
+
+                                <!-- Элементы корзины -->
+                                <CollectionContainer Collection="{Binding Source={StaticResource CartCollection}}" />
+                            </CompositeCollection>
+                        </ListBox.ItemsSource>
+                    </ListBox>
+
+                    <!-- Кнопка удаления -->
+                    <Button Content="Удалить из корзины"
+                Command="{Binding RemoveFromCartCommand}"
+                Width="150" Margin="0,10,0,0"
+                Foreground="White"  />
+                </StackPanel>
+            </GroupBox>
+
+
+
+
+
+            <!-- Заказы -->
+            <GroupBox Grid.Column="2" Header="Заказы" Foreground="White">
+                <StackPanel>
+                    <ListBox ItemsSource="{Binding Orders}"    PreviewMouseLeftButtonDown="ProductsListBox_PreviewMouseLeftButtonDown"
+                             SelectedItem="{Binding SelectedOrder}" Height="200" Margin="0,0,0,10">
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                
+                                <StackPanel>
+                                    <TextBlock Text="{Binding CustomerName}" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding OrderDate, StringFormat='dd.MM.yyyy HH:mm'}" FontStyle="Italic"/>
+                                    <ItemsControl ItemsSource="{Binding Items}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock>
+                                                    <Run Text="{Binding Product.Name}"/>
+                                                    <Run Text=" (" />
+                                                    <Run Text="{Binding Quantity}"/>
+                                                    <Run Text=" шт.)"/>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <TextBox Text="{Binding CustomerName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Создать заказ" Command="{Binding AddOrderCommand}" Width="120"  />
+                        <Button Content="Отменить заказ" Command="{Binding DeleteOrderCommand}" Width="120"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </DockPanel>
+</Window>
+
+
+
