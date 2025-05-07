@@ -14,5 +14,7 @@
 
         // Количество товара на складе
         public int Stock { get; set; }
+
+        public string Category { get; set; }
     }
 }

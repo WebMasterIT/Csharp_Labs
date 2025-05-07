@@ -17,11 +17,10 @@
 
         // Общая сумма заказа, вычисляемая как сумма цен товаров умноженная на их количество
         public decimal TotalPrice => Items.Sum(item => item.Product.Price * item.Quantity);
-
+         
         // Конструктор, инициализирующий пустой список товаров
         public Order()
-        {
-            Items = new List<OrderItem>();
+        { 
         }
     }
 }

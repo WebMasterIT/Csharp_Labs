@@ -1,26 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\",
+  "WorkspaceRootPath": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|c:\\users\\wspc7\\source\\repos\\storemanager\\storemanager\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|c:\\users\\wspc7\\source\\repos\\storemanager\\storemanager\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\csharp_labs\\storemanager\\storemanager\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|c:\\users\\wspc7\\source\\repos\\storemanager\\storemanager\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\csharp_labs\\storemanager\\storemanager\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\csharp_labs\\storemanager\\storemanager\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\csharp_labs\\storemanager\\storemanager\\storemanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\storemanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\csharp_labs\\storemanager\\storemanager\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\csharp_labs\\storemanager\\storemanager\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|c:\\users\\wspc7\\source\\repos\\storemanager\\storemanager\\converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\csharp_labs\\storemanager\\storemanager\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|c:\\users\\wspc7\\source\\repos\\storemanager\\storemanager\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\csharp_labs\\storemanager\\storemanager\\converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F094F5AA-4CDA-4AA8-B4F3-811F09FDC836}|StoreManager\\StoreManager.csproj|solutionrelative:storemanager\\converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,51 +42,79 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StoreManager",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\StoreManager.csproj",
+              "RelativeDocumentMoniker": "StoreManager\\StoreManager.csproj",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\StoreManager.csproj",
+              "RelativeToolTip": "StoreManager\\StoreManager.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-30T08:47:20.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "OrderItem.cs",
-              "DocumentMoniker": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\StoreManager\\Models\\OrderItem.cs",
-              "RelativeDocumentMoniker": "StoreManager\\Models\\OrderItem.cs",
-              "ToolTip": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\StoreManager\\Models\\OrderItem.cs",
-              "RelativeToolTip": "StoreManager\\Models\\OrderItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "StoreManager\\Models\\Product.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\Models\\Product.cs",
+              "RelativeToolTip": "StoreManager\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T08:07:24.489Z"
+              "WhenOpened": "2025-04-23T16:22:12.616Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\StoreManager\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "StoreManager\\Models\\Order.cs",
-              "ToolTip": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\StoreManager\\Models\\Order.cs",
-              "RelativeToolTip": "StoreManager\\Models\\Order.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\Models\\OrderItem.cs",
+              "RelativeDocumentMoniker": "StoreManager\\Models\\OrderItem.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\Models\\OrderItem.cs",
+              "RelativeToolTip": "StoreManager\\Models\\OrderItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T08:04:23.955Z"
+              "WhenOpened": "2025-04-16T08:07:24.489Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "StoreManager\\Models\\Order.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\Models\\Order.cs",
+              "RelativeToolTip": "StoreManager\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T08:04:23.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "BooleanToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\StoreManager\\Converters\\BooleanToVisibilityConverter.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\Converters\\BooleanToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "StoreManager\\Converters\\BooleanToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\StoreManager\\Converters\\BooleanToVisibilityConverter.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\Converters\\BooleanToVisibilityConverter.cs",
               "RelativeToolTip": "StoreManager\\Converters\\BooleanToVisibilityConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-16T07:59:10.757Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\StoreManager\\MainWindow.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\MainWindow.xaml",
               "RelativeDocumentMoniker": "StoreManager\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\StoreManager\\MainWindow.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\MainWindow.xaml",
               "RelativeToolTip": "StoreManager\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-04-09T00:08:10.992Z",
@@ -82,15 +122,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\StoreManager\\MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "StoreManager\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\wspc7\\source\\repos\\StoreManager\\StoreManager\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\MainWindow.xaml.cs",
               "RelativeToolTip": "StoreManager\\MainWindow.xaml.cs",
-              "ViewState": "AgIAACQBAAAAAAAAAAAqwEwBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAIwBAAAAAAAAAAAAwKUBAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T00:08:09.061Z"
+              "WhenOpened": "2025-04-09T00:08:09.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "StoreManager\\AssemblyInfo.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\Csharp_Labs\\StoreManager\\StoreManager\\AssemblyInfo.cs",
+              "RelativeToolTip": "StoreManager\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T09:00:18.439Z",
+              "EditorCaption": ""
             }
           ]
         }

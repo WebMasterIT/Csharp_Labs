@@ -112,7 +112,7 @@
                 <Grid>
                     <TextBox x:Name="ProductPrice"/>
                     <TextBlock Text="Цена" Style="{StaticResource PlaceholderStyle}"
-                               Visibility="{Binding ElementName=ProductPrice, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                               Visibility="{Binding ElementName=ProductPrice, Path=Text.IsEmpty}"/>
                 </Grid>
                 <Grid>
                     <TextBox x:Name="ProductStock"/>
