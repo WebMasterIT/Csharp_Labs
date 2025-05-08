@@ -1,0 +1,54 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{OrderRepository}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{ConnectionString}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Data Source=store.db\PYGZdq{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// строка подключения к БД}
+
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{GetAll}\PYG{p}{(}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Product}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{allProducts}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{orders}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// список заказов}
+\PYG{+w}{        }\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{var}\PYG{+w}{ }\PYG{n}{connection}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{SqliteConnection}\PYG{p}{(}\PYG{n}{ConnectionString}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// открытие соединения с базой данных}
+\PYG{+w}{        }\PYG{n}{connection}\PYG{p}{.}\PYG{n}{Open}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выполнение подключения}
+
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{command}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{connection}\PYG{p}{.}\PYG{n}{CreateCommand}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// создание SQL\PYGZhy{}команды}
+\PYG{+w}{        }\PYG{n}{command}\PYG{p}{.}\PYG{n}{CommandText}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}SELECT Id, CustomerName, OrderDate FROM [Order]\PYGZdq{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выборка данных заказов}
+\PYG{+w}{        }\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{var}\PYG{+w}{ }\PYG{n}{reader}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{command}\PYG{p}{.}\PYG{n}{ExecuteReader}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выполнение запроса и чтение результатов}
+
+\PYG{+w}{        }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{reader}\PYG{p}{.}\PYG{n}{Read}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// построчное чтение результата}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{order}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Order}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reader}\PYG{p}{.}\PYG{n}{GetInt32}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// идентификатор заказа}
+\PYG{+w}{                }\PYG{n}{CustomerName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reader}\PYG{p}{.}\PYG{n}{GetString}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// имя клиента}
+\PYG{+w}{                }\PYG{n}{OrderDate}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DateTime}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{reader}\PYG{p}{.}\PYG{n}{GetString}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// дата оформления заказа}
+\PYG{+w}{                }\PYG{n}{Items}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{OrderItem}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// список товаров в заказе}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{orders}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{order}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// добавление заказа в коллекцию}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{order}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{orders}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// обход заказов для загрузки позиций}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{itemCmd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{connection}\PYG{p}{.}\PYG{n}{CreateCommand}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// создание SQL\PYGZhy{}команды для выбора позиций заказа}
+\PYG{+w}{            }\PYG{n}{itemCmd}\PYG{p}{.}\PYG{n}{CommandText}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}SELECT ProductId, Quantity FROM OrderItem WHERE OrderId = @orderId\PYGZdq{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выборка товарных позиций}
+\PYG{+w}{            }\PYG{n}{itemCmd}\PYG{p}{.}\PYG{n}{Parameters}\PYG{p}{.}\PYG{n}{AddWithValue}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}@orderId\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{order}\PYG{p}{.}\PYG{n}{Id}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// параметр: идентификатор заказа}
+\PYG{+w}{            }\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{var}\PYG{+w}{ }\PYG{n}{itemReader}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{itemCmd}\PYG{p}{.}\PYG{n}{ExecuteReader}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выполнение запроса}
+
+\PYG{+w}{            }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{itemReader}\PYG{p}{.}\PYG{n}{Read}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// построчное чтение позиций}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{productId}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{itemReader}\PYG{p}{.}\PYG{n}{GetInt32}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// идентификатор товара}
+\PYG{+w}{                }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{quantity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{itemReader}\PYG{p}{.}\PYG{n}{GetInt32}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// количество товара}
+\PYG{+w}{                }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{product}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{allProducts}\PYG{p}{.}\PYG{n}{FirstOrDefault}\PYG{p}{(}\PYG{n}{p}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{.}\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{productId}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// поиск товара в общем списке}
+
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{product}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{order}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{k}{new}\PYG{+w}{ }\PYG{n}{OrderItem}\PYG{+w}{ }\PYG{c+c1}{// добавление товара в список позиций заказа}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{Product}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{product}\PYG{p}{,}
+\PYG{+w}{                        }\PYG{n}{Quantity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{quantity}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{orders}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// возвращение списка заказов}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

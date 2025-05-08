@@ -1,0 +1,45 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{ProductRepository}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{ConnectionString}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Data Source=store.db\PYGZdq{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// строка подключения к базе данных}
+
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Product}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{GetAll}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{list}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Product}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// список для хранения всех продуктов}
+\PYG{+w}{        }\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{var}\PYG{+w}{ }\PYG{n}{connection}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{SqliteConnection}\PYG{p}{(}\PYG{n}{ConnectionString}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// открытие соединения с базой данных}
+\PYG{+w}{        }\PYG{n}{connection}\PYG{p}{.}\PYG{n}{Open}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выполнение подключения к базе данных}
+
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{command}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{connection}\PYG{p}{.}\PYG{n}{CreateCommand}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// создание SQL\PYGZhy{}команды}
+\PYG{+w}{        }\PYG{n}{command}\PYG{p}{.}\PYG{n}{CommandText}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}SELECT * FROM Product\PYGZdq{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выборка всех записей из таблицы товаров}
+
+\PYG{+w}{        }\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{var}\PYG{+w}{ }\PYG{n}{reader}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{command}\PYG{p}{.}\PYG{n}{ExecuteReader}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выполнение команды и получение результатов}
+\PYG{+w}{        }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{reader}\PYG{p}{.}\PYG{n}{Read}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// построчное чтение результатов}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{list}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{c+c1}{// добавление экземпляра товара в список}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reader}\PYG{p}{.}\PYG{n}{GetInt32}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// идентификатор товара}
+\PYG{+w}{                }\PYG{n}{Name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reader}\PYG{p}{.}\PYG{n}{GetString}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// название товара}
+\PYG{+w}{                }\PYG{n}{Price}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reader}\PYG{p}{.}\PYG{n}{GetDecimal}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// цена товара}
+\PYG{+w}{                }\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reader}\PYG{p}{.}\PYG{n}{GetInt32}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// остаток товара на складе}
+\PYG{+w}{                }\PYG{n}{Category}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reader}\PYG{p}{.}\PYG{n}{IsDBNull}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{k}{null}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{reader}\PYG{p}{.}\PYG{n}{GetString}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// категория товара (может отсутствовать)}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{list}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// возвращение списка всех товаров}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{Add}\PYG{p}{(}\PYG{n}{Product}\PYG{+w}{ }\PYG{n}{product}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{var}\PYG{+w}{ }\PYG{n}{connection}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{SqliteConnection}\PYG{p}{(}\PYG{n}{ConnectionString}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// открытие соединения с базой данных}
+\PYG{+w}{        }\PYG{n}{connection}\PYG{p}{.}\PYG{n}{Open}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выполнение подключения к БД}
+
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{command}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{connection}\PYG{p}{.}\PYG{n}{CreateCommand}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// создание SQL\PYGZhy{}команды}
+\PYG{+w}{        }\PYG{n}{command}\PYG{p}{.}\PYG{n}{CommandText}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}INSERT INTO Product (Name, Price, Stock, Category) VALUES (@name, @price, @stock, @category)\PYGZdq{}}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// вставка нового товара в таблицу Product}
+\PYG{+w}{        }\PYG{n}{command}\PYG{p}{.}\PYG{n}{Parameters}\PYG{p}{.}\PYG{n}{AddWithValue}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}@name\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{product}\PYG{p}{.}\PYG{n}{Name}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// название товара}
+\PYG{+w}{        }\PYG{n}{command}\PYG{p}{.}\PYG{n}{Parameters}\PYG{p}{.}\PYG{n}{AddWithValue}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}@price\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{product}\PYG{p}{.}\PYG{n}{Price}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// цена товара}
+\PYG{+w}{        }\PYG{n}{command}\PYG{p}{.}\PYG{n}{Parameters}\PYG{p}{.}\PYG{n}{AddWithValue}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}@stock\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{product}\PYG{p}{.}\PYG{n}{Stock}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// количество товара на складе}
+\PYG{+w}{        }\PYG{n}{command}\PYG{p}{.}\PYG{n}{Parameters}\PYG{p}{.}\PYG{n}{AddWithValue}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}@category\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{product}\PYG{p}{.}\PYG{n}{Category}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{object}\PYG{p}{)}\PYG{n}{DBNull}\PYG{p}{.}\PYG{n}{Value}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// категория товара (или null)}
+
+\PYG{+w}{        }\PYG{n}{command}\PYG{p}{.}\PYG{n}{ExecuteNonQuery}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выполнение SQL\PYGZhy{}команды}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

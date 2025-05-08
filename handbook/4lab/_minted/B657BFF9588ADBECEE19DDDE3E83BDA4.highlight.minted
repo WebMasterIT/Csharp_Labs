@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{\PYGZlt{}ListBox}\PYG{+w}{ }\PYG{n+na}{ItemsSource=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Products\PYGZcb{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{SelectedItem=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding SelectedProduct\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZlt{}ListBox.ItemTemplate}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}DataTemplate}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}StackPanel}\PYG{+w}{ }\PYG{n+na}{Orientation=}\PYG{l+s}{\PYGZdq{}Horizontal\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Name\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Price\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}/StackPanel\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}/DataTemplate\PYGZgt{}}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZlt{}/ListBox.ItemTemplate\PYGZgt{}}
+\PYG{n+nt}{\PYGZlt{}/ListBox\PYGZgt{}}
+\end{MintedVerbatim}

@@ -1,0 +1,105 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{ProductViewModel}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{BaseViewModel}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{n}{\PYGZus{}selectedProduct}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выбранный товар}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n}{StoreDbContext}\PYG{+w}{ }\PYG{n}{\PYGZus{}context}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// контекст базы данных}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{\PYGZus{}filterCategory}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выбранная категория для фильтрации}
+
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ObservableCollection}\PYG{o}{\PYGZlt{}}\PYG{n}{Product}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Products}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// список всех товаров}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ObservableCollection}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{string}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Categories}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// список доступных категорий}
+
+\PYG{+w}{    }\PYG{c+c1}{// Свойство выбранного товара}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{n}{SelectedProduct}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{get}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{\PYGZus{}selectedProduct}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{SetProperty}\PYG{p}{(}\PYG{k}{ref}\PYG{+w}{ }\PYG{n}{\PYGZus{}selectedProduct}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Свойство фильтрации по категории}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{FilterCategory}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{get}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{\PYGZus{}filterCategory}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{set}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{SetProperty}\PYG{p}{(}\PYG{k}{ref}\PYG{+w}{ }\PYG{n}{\PYGZus{}filterCategory}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{LoadProducts}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// при изменении категории перезагружается список}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Команды управления}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ICommand}\PYG{+w}{ }\PYG{n}{AddProductCommand}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ICommand}\PYG{+w}{ }\PYG{n}{UpdateProductCommand}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ICommand}\PYG{+w}{ }\PYG{n}{DeleteProductCommand}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Конструктор}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{ProductViewModel}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{StoreDbContext}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// инициализация контекста}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Database}\PYG{p}{.}\PYG{n}{EnsureCreated}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// создание базы при необходимости}
+
+\PYG{+w}{        }\PYG{n}{LoadCategories}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// загрузка всех категорий}
+\PYG{+w}{        }\PYG{n}{LoadProducts}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// загрузка всех товаров}
+
+\PYG{+w}{        }\PYG{c+c1}{// инициализация команд}
+\PYG{+w}{        }\PYG{n}{AddProductCommand}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{RelayCommand}\PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{AddProduct}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{UpdateProductCommand}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{RelayCommand}\PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{UpdateProduct}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{SelectedProduct}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{DeleteProductCommand}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{RelayCommand}\PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{DeleteProduct}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{SelectedProduct}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Загрузка всех товаров (с фильтрацией, если указана категория)}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{LoadProducts}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{products}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Products}\PYG{p}{.}\PYG{n}{AsQueryable}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{FilterCategory}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{products}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{products}\PYG{p}{.}\PYG{n}{Where}\PYG{p}{(}\PYG{n}{p}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{.}\PYG{n}{Category}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{FilterCategory}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{product}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{products}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{product}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Загрузка уникальных категорий товаров}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{LoadCategories}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{Categories}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{categories}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Select}\PYG{p}{(}\PYG{n}{p}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{.}\PYG{n}{Category}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Distinct}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{category}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{categories}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{Categories}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Добавление нового товара}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{AddProduct}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{product}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n}{Name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Новый товар\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Price}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Category}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Общая\PYGZdq{}}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{product}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{SaveChanges}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{product}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{SelectedProduct}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{product}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{LoadCategories}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Обновление выбранного товара}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{UpdateProduct}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Update}\PYG{p}{(}\PYG{n}{SelectedProduct}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{SaveChanges}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{LoadProducts}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Удаление выбранного товара}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{DeleteProduct}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{SelectedProduct}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{SelectedProduct}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{SaveChanges}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{SelectedProduct}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{SelectedProduct}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{LoadCategories}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

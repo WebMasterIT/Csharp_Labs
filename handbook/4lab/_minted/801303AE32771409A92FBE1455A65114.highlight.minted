@@ -1,0 +1,107 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{OrderViewModel}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{BaseViewModel}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n}{StoreDbContext}\PYG{+w}{ }\PYG{n}{\PYGZus{}context}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// контекст базы данных}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{n}{Order}\PYG{+w}{ }\PYG{n}{\PYGZus{}selectedOrder}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// выбранный заказ}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{\PYGZus{}customerName}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// имя клиента}
+
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ObservableCollection}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Orders}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// список заказов}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ObservableCollection}\PYG{o}{\PYGZlt{}}\PYG{n}{Product}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{AvailableProducts}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// доступные товары}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ObservableCollection}\PYG{o}{\PYGZlt{}}\PYG{n}{OrderItem}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{SelectedItems}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// позиции текущего заказа}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{CustomerName}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{get}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{\PYGZus{}customerName}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{SetProperty}\PYG{p}{(}\PYG{k}{ref}\PYG{+w}{ }\PYG{n}{\PYGZus{}customerName}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// установка имени клиента}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{Order}\PYG{+w}{ }\PYG{n}{SelectedOrder}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{get}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{\PYGZus{}selectedOrder}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{set}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{SetProperty}\PYG{p}{(}\PYG{k}{ref}\PYG{+w}{ }\PYG{n}{\PYGZus{}selectedOrder}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{k}{value}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{CustomerName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{.}\PYG{n}{CustomerName}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// установка имени из выбранного заказа}
+\PYG{+w}{                }\PYG{n}{SelectedItems}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{item}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{)}
+\PYG{+w}{                    }\PYG{n}{SelectedItems}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{item}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// заполнение списка позиций заказа}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Команды управления заказами}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ICommand}\PYG{+w}{ }\PYG{n}{AddOrderCommand}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ICommand}\PYG{+w}{ }\PYG{n}{UpdateOrderCommand}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ICommand}\PYG{+w}{ }\PYG{n}{DeleteOrderCommand}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Конструктор}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{OrderViewModel}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{StoreDbContext}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Database}\PYG{p}{.}\PYG{n}{EnsureCreated}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{n}{LoadOrders}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// загрузка заказов из БД}
+\PYG{+w}{        }\PYG{n}{LoadAvailableProducts}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// загрузка доступных товаров}
+
+\PYG{+w}{        }\PYG{n}{AddOrderCommand}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{RelayCommand}\PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{AddOrder}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{UpdateOrderCommand}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{RelayCommand}\PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{UpdateOrder}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{SelectedOrder}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{DeleteOrderCommand}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{RelayCommand}\PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{DeleteOrder}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{SelectedOrder}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Загрузка всех заказов с товарами}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{LoadOrders}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{order}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Include}\PYG{p}{(}\PYG{n}{o}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{)}\PYG{p}{.}\PYG{n}{ThenInclude}\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{order}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Загрузка доступных товаров}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{LoadAvailableProducts}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{AvailableProducts}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{product}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Products}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{AvailableProducts}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{product}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Добавление нового заказа}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{AddOrder}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{IsNullOrWhiteSpace}\PYG{p}{(}\PYG{n}{CustomerName}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{SelectedItems}\PYG{p}{.}\PYG{n}{Count}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{newOrder}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Order}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{CustomerName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{CustomerName}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{OrderDate}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DateTime}\PYG{p}{.}\PYG{n}{Now}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{Items}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{SelectedItems}\PYG{p}{.}\PYG{n}{Select}\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{OrderItem}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{Product}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{Quantity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{.}\PYG{n}{Quantity}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{newOrder}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{SaveChanges}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{newOrder}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// добавление заказа в список}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Обновление существующего заказа}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{UpdateOrder}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{SelectedOrder}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{SelectedOrder}\PYG{p}{.}\PYG{n}{CustomerName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{CustomerName}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{SelectedOrder}\PYG{p}{.}\PYG{n}{Items}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{SelectedItems}\PYG{p}{.}\PYG{n}{Select}\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{OrderItem}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{Product}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{Quantity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{.}\PYG{n}{Quantity}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Update}\PYG{p}{(}\PYG{n}{SelectedOrder}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{SaveChanges}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Удаление заказа}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{DeleteOrder}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{SelectedOrder}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{SelectedOrder}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{SaveChanges}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{SelectedOrder}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{SelectedOrder}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{SelectedItems}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{CustomerName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{Empty}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

@@ -1,0 +1,24 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{StoreDbContext}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{DbContext}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Таблица товаров}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{DbSet}\PYG{o}{\PYGZlt{}}\PYG{n}{Product}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Products}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Таблица заказов}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{DbSet}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Orders}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Таблица позиций заказа}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{DbSet}\PYG{o}{\PYGZlt{}}\PYG{n}{OrderItem}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{OrderItems}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Конфигурация подключения к базе данных}
+\PYG{+w}{    }\PYG{k}{protected}\PYG{+w}{ }\PYG{k}{override}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{OnConfiguring}\PYG{p}{(}\PYG{n}{DbContextOptionsBuilder}\PYG{+w}{ }\PYG{n}{optionsBuilder}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{optionsBuilder}\PYG{p}{.}\PYG{n}{UseSqlite}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Data Source=store.db\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// указание строки подключения к SQLite}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// Настройка модели данных}
+\PYG{+w}{    }\PYG{k}{protected}\PYG{+w}{ }\PYG{k}{override}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{OnModelCreating}\PYG{p}{(}\PYG{n}{ModelBuilder}\PYG{+w}{ }\PYG{n}{modelBuilder}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{modelBuilder}\PYG{p}{.}\PYG{n}{Entity}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{.}\PYG{n}{HasMany}\PYG{p}{(}\PYG{n}{o}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// один заказ содержит множество позиций}
+\PYG{+w}{            }\PYG{p}{.}\PYG{n}{WithOne}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{             }\PYG{c+c1}{// без явной обратной связи}
+\PYG{+w}{            }\PYG{p}{.}\PYG{n}{OnDelete}\PYG{p}{(}\PYG{n}{DeleteBehavior}\PYG{p}{.}\PYG{n}{Cascade}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// при удалении заказа удаляются все его позиции}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

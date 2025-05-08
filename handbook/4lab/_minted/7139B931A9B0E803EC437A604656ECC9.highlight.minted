@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{\PYGZlt{}Window.DataContext}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZlt{}vm:MainViewModel}\PYG{+w}{ }\PYG{n+nt}{/\PYGZgt{}}
+\PYG{n+nt}{\PYGZlt{}/Window.DataContext\PYGZgt{}}
+\end{MintedVerbatim}
