@@ -2,15 +2,17 @@
 \documentclass[12pt]{article}
 
 \usepackage{cmap}
-\usepackage{minted}
-\usepackage{caption}
+\usepackage{newfloat}
+\usepackage[newfloat]{minted}
+\usepackage[font=small]{caption}
+\usepackage{indentfirst}
 
 \setminted{
     linenos,                % показывать номера строк
     breaklines,             % переносить длинные строки
     breakanywhere=true,     % переносить в любом месте
     tabsize=2,              % размер табуляции
-    fontsize=\scriptsize,        % размер шрифта
+    fontsize=\footnotesize,        % размер шрифта
     frame=lines,            % рамка сверху и снизу
     framesep=2mm,           % расстояние текста от рамки
     baselinestretch=1.1,    % межстрочный интервал
@@ -28,6 +30,17 @@
 \usepackage[pdfborder={0 0 0}]{hyperref}
 
 \usepackage{enumitem}
+
+\makeatletter
+\renewcommand\@seccntformat[1]{%
+  \csname the#1\endcsname.\quad
+}
+\makeatother
+
+\usepackage{tocloft}
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftsubsubsecaftersnum}{.}
 
 \setmainfont{TimesNewerRoman}[
   Extension = .otf,
@@ -86,7 +99,11 @@ BoldFont = *-Bold] #1}
 \captionsetup[figure]{labelformat=gostfigure, labelsep=endash}
 
 \DeclareCaptionLabelFormat{gostlisting}{Листинг #2}
+\newenvironment{code}{\captionsetup{type=listing}}{}
 \captionsetup[listing]{labelformat=gostlisting, labelsep=endash}
+\DeclareFloatingEnvironment[
+  listname=Листинг,
+]{listing}
 
 \usepackage{amsmath}
 \numberwithin{listing}{section}
@@ -103,7 +120,6 @@ BoldFont = *-Bold] #1}
 
 \tableofcontents
 \newpage
-\renewcommand\listoflistingscaption{Листинг}
 \listoflistings
 
 \newpage
@@ -444,11 +460,11 @@ BoldFont = *-Bold] #1}
 
 \noindent Код для файла \texttt{Order.cs} приведён в листинге \ref{lst:OrderCs}
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted{csharp}{../../3lab/StoreManager/Models/Order.cs}
-	\caption{Класс {\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Order.cs\#L1-L27}{Order.cs}}}}
+	\caption{Класс {\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Order.cs}{Order.cs}}}}
 	\label{lst:OrderCs}
-\end{listing}
+\end{code}
 
 Данный файл отвечает за создание нового объекта заказа. Может содержать уникальные поля, не такие как в примере (в соответствии с вариантом).
 
@@ -462,19 +478,19 @@ BoldFont = *-Bold] #1}
 Также необходим класс, позволяющий связать товар и его количество в заказе. Пример созданного класса \texttt{OrderItem} и объявления его свойств приведён в листинге \ref{lst:OrderItem}
 
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted{csharp}{../../3lab/StoreManager/Models/OrderItem.cs}
-	\caption{Класс {\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Order.cs\#L1-L27}{Order.cs}}}}
+	\caption{Класс {\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/OrderItem.cs}{Order.cs}}}}
 	\label{lst:OrderItem}
-\end{listing}
+\end{code}
 
 Также необходимо создать файл \texttt{Product.cs}. Данный файл отвечает за создание нового объекта товара. Пример класса \texttt{Product} приведён в листинге \ref{lst:Product.cs}.
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted{csharp}{../../3lab/StoreManager/Models/Product.cs}
-	\caption{Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Product.cs\#L1-L18}{Product.cs}}}
+	\caption{Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Models/Product.cs}{Product.cs}}}
 	\label{lst:Product.cs}
-\end{listing}
+\end{code}
 
 \stepcounter{subsubsection}
 \phantomsection
@@ -482,11 +498,11 @@ BoldFont = *-Bold] #1}
 
 Также необходимо создать папку \texttt{Converters}. Она будет нужна для создания конвертера. В данной папке нужно создать класс \texttt{BooleanToVisibilityConverter}. Пример кода для данного класса приведён в листинге \ref{lst:BooleanToVisibilityConverter}.
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted{csharp}{../../3lab/StoreManager/Converters/BooleanToVisibilityConverter.cs}
-	\caption{Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Converters/BooleanToVisibilityConverter.cs\#L1-L23}{BooleanToVisibilityConverter}}}
+	\caption{Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/Converters/BooleanToVisibilityConverter.cs}{BooleanToVisibilityConverter}}}
 	\label{lst:BooleanToVisibilityConverter}
-\end{listing}
+\end{code}
 
 Этот класс реализует интерфейс \texttt{IValueConverter}, который используется для
 преобразования данных при привязке (\texttt{Data Binding})
@@ -518,19 +534,11 @@ BoldFont = *-Bold] #1}
 соответствующую разметку в файл \texttt{MainWindow.xaml}.
 Пример разметки для данного файла представлен ниже в листинге~\ref{lst:MainWindow}
 
-% \begin{listing}[H]
-
-
-% TODO: пофиксить листинг
-% \captionsetup{type=listing}
-\inputminted[firstline=1, lastline=130]{xml}{../../3lab/StoreManager/MainWindow.xaml}
-\captionof{listing}{Пример разметки главного окна \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml\#L1-L200}{MainWindow}}}
-\label{lst:MainWindow}
-
-
-
-% \caption{Пример разметки главного окна \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml\#L1-L200}{MainWindow}}}
-% \end{listing}
+\begin{code}
+	\inputminted[firstline=1, lastline=130]{xml}{../../3lab/StoreManager/MainWindow.xaml}
+	\captionof{listing}{Пример разметки главного окна \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml\#L1-L130}{MainWindow}}}
+	\label{lst:MainWindow}
+\end{code}
 
 \newpage
 
@@ -548,11 +556,11 @@ BoldFont = *-Bold] #1}
 \end{enumerate}
 В листинге \ref{lst:Main} представлен пример кода для класса \texttt{MainWindow}.
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=1, lastline=21]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{Пример кода для класса \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L1-L21}{MainWindow}}}
 	\label{lst:Main}
-\end{listing}
+\end{code}
 
 Класс \texttt{MainWindow} наследуется от \texttt{Window}, так как это главное окно \texttt{WPF}-приложения. Ключевое слово \texttt{partial} указывает, что класс разделён между \texttt{MainWindow.xaml.cs} (логика) и \texttt{MainWindow\-.xaml} (разметка, сгенерированная часть).
 
@@ -577,11 +585,11 @@ BoldFont = *-Bold] #1}
 Далее необходимо объявить основной метод (конструктор) \texttt{MainWindow}.
 Пример кода для данного метода представлен в листинге \ref{lst:Main2}
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=24, lastline=30]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{Пример кода для конструктора класса \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L24-L30}{MainWindow}}}
 	\label{lst:Main2}
-\end{listing}
+\end{code}
 
 \texttt{InitializeComponent()} -- метод, автоматически сгенерированный \texttt{WPF}, который загружает разметку из \texttt{MainWindow.xaml}, инициализирует элементы интерфейса (такие как кнопки, списки и текстовые поля) и устанавливает необходимые привязки. Без его вызова пользовательский интерфейс не будет отображён.
 
@@ -601,11 +609,11 @@ BoldFont = *-Bold] #1}
 Методы для обновления списков товаров, заказов и выбранных товаров для заказа
 представлены в листинге \ref{lst:Method}
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=32, lastline=51]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L32-L51}{Методы}} обновления данных}
 	\label{lst:Method}
-\end{listing}
+\end{code}
 
 Метод \texttt{UpdateProductList} Сбрасывает \texttt{ItemsSource} в \texttt{null}, чтобы очистить привязку. Устанавливает \texttt{ItemsSource} в \texttt{products}, чтобы \texttt{ListBox} (\texttt{ProductsList}) отобразил текущий список товаров. Остальные методы работают аналогично. \texttt{Null} используется для предотвращения проблемы с кэшированием данных в \texttt{WPF}, обеспечивая корректное обновление интерфейса.
 
@@ -615,11 +623,11 @@ BoldFont = *-Bold] #1}
 
 Далее рассмотрим методы для работы с конкретными товарами. Эти методы реагируют на действия пользователя с товарами (кнопки «Добавить», «Обновить», «Удалить», выбор в списке). Метод добавления нового товара представлен в листинге \ref{lst:MethodAdd}
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=53, lastline=80]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L53-L80}{Метод}} добавления нового товара}
 	\label{lst:MethodAdd}
-\end{listing}
+\end{code}
 
 \noindent Данный метод проверяет валидность ввода:
 \begin{itemize}
@@ -632,11 +640,11 @@ BoldFont = *-Bold] #1}
 
 Следующий метод позволяет обновить (редактировать) информацию о конкретном товаре. Реализация метода обновления представлена в листинге \ref{lst:MethodUpdate}
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=82, lastline=110]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L82-L110}{Метод}} обновления товара}
 	\label{lst:MethodUpdate}
-\end{listing}
+\end{code}
 
 \noindent Данный метод проверяет, выбран ли товар в списке \texttt{ProductsList}.
 \begin{itemize}
@@ -649,11 +657,11 @@ BoldFont = *-Bold] #1}
 Для того, чтобы исключить конкретный товар из общего списка, используется метод \texttt{Delete\-Product} из листинга \ref{lst:MethodDelete}.
 
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=112, lastline=141]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L112-L141}{Метод}} удаления товара}
 	\label{lst:MethodDelete}
-\end{listing}
+\end{code}
 
 \noindent Данный метод выполняет следующие функции:
 \begin{itemize}
@@ -665,11 +673,11 @@ BoldFont = *-Bold] #1}
 \end{itemize}
 
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=143, lastline=184]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L143-L184}{Методы}} редактирования товара и добавления в список выбранных товаров для заказа}
 	\label{lst:MethodEdit}
-\end{listing}
+\end{code}
 
 % NOTE 
 
@@ -689,11 +697,11 @@ BoldFont = *-Bold] #1}
 Далее рассмотрим метод создания нового заказа. Пример кода для данного метода
 представлен в листинге~\ref{lst:MethodAddInList}.
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=186, lastline=216]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L186-L216}{Метод}} добавления заказа}
 	\label{lst:MethodAddInList}
-\end{listing}
+\end{code}
 
 \noindent Данный метод выполняет следующие функции:
 \begin{itemize}
@@ -706,11 +714,11 @@ BoldFont = *-Bold] #1}
 
 Следующий метод позволяет обновить информацию о заказе. Пример кода для данного метода представлен в листинге \ref{lst:MethodUpdate2}.
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=218, lastline=266]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L218-L266}{Метод}} обновления заказа}
 	\label{lst:MethodUpdate2}
-\end{listing}
+\end{code}
 
 \begin{itemize}
 	\item Обновляет выбранный заказ.
@@ -723,11 +731,11 @@ BoldFont = *-Bold] #1}
 
 Следующий метод позволяет удалить выбранный заказ. Пример кода для данного метода представлен в листинге \ref{lst:MethodDelete2}.
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=268, lastline=295]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L268-L295}{Метод}} удаления заказа}
 	\label{lst:MethodDelete2}
-\end{listing}
+\end{code}
 
 Данный метод позволяет удалить выбранный заказ и вернуть товары на склад при подтверждении действия пользователем.
 Параметры:
@@ -770,11 +778,11 @@ BoldFont = *-Bold] #1}
 
 Следующий метод нужен для удаления товара из заказа. Код для данного метода представлен в листинге \ref{lst:MethodDelete3}.
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=297, lastline=338]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L297-L338}{Метод}} удаления товара из заказа}
 	\label{lst:MethodDelete3}
-\end{listing}
+\end{code}
 
 \begin{itemize}
 	\item Метод \texttt{RemoveProductFromOrder} удаляет товар из текущего заказа (\texttt{selected\-Products\-For\-Order}).
@@ -793,19 +801,19 @@ BoldFont = *-Bold] #1}
 Далее рассмотрим методы, отвечающие за увеличение и уменьшение количества
 товара в заказе (кнопки \guillemotleft\texttt{+}\guillemotright \ и \guillemotleft\texttt{-}\guillemotright). Пример этих методов представлен в листинге \ref{lst:MethodControl}.
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=342, lastline=377]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L342-L377}{Методы}} управления количеством товара в заказе}
 	\label{lst:MethodControl}
-\end{listing}
+\end{code}
 
 Данный метод позволяет выделить определенный заказ и изменить имя заказчика. Реализация метода представлена на рисунке~\ref{lst:MethodUpdate3}.
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=379, lastline=390]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
 	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L379-L390}{Метод}} обновления нового товара }
 	\label{lst:MethodUpdate3}
-\end{listing}
+\end{code}
 
 \begin{itemize}
 	\item Срабатывает при выборе заказа из списка.
@@ -822,11 +830,11 @@ BoldFont = *-Bold] #1}
 
 Далее рассмотрим методы очищения полей \texttt{ClearProductFields} и \texttt{ClearOrderFields}. Листинг этих методов приведён в листинге \ref{lst:MethodClear}.
 
-\begin{listing}[H]
+\begin{code}
 	\inputminted[firstline=392, lastline=432]{csharp}{../../3lab/StoreManager/MainWindow.xaml.cs}
-	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L379-L432}{Методы}} очистки полей и сброса выделения товара}
+	\caption{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/ec375afd16c0647b337cf3d8a79c8bef904fc1be/3lab/StoreManager/MainWindow.xaml.cs\#L392-L432}{Методы}} очистки полей и сброса выделения товара}
 	\label{lst:MethodClear}
-\end{listing}
+\end{code}
 
 Метод \texttt{ClearProductFields} позволяют очистить текстовые поля для добавления и редактирования товара и снимают выделение в списке товаров. Метод \texttt{ClearOrderFields} очищает поле имени клиента и список выбранных товаров, снимает выделение в списке заказов, при этом не трогает список товаров (оставляет выделение). Метод \texttt{ProductsList\_MouseLeftButtonDown} используется, если пользователь кликнул мышью по пустому месту в списке товаров. В этом случае метод сбрасывает выделение. Применяется для удобства работы — чтобы можно было "отменить"\ выбор.
 
@@ -960,21 +968,5 @@ BoldFont = *-Bold] #1}
 	\label{fig:demo10}
 \end{figure}
 
-
-\pagebreak
-
-\section{ВОПРОСЫ ДЛЯ ЗАЩИТЫ~\texorpdfstring{\icon{}}{}}
-\begin{enumerate}
-	\item Вопрос
-	\item Вопрос
-	\item Вопрос
-	\item Вопрос
-	\item Вопрос
-	\item Вопрос
-	\item Вопрос
-	\item Вопрос
-	\item Вопрос
-	\item Вопрос
-\end{enumerate}
 
 \end{document}

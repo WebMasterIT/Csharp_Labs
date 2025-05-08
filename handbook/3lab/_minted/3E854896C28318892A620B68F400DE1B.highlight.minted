@@ -1,0 +1,202 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{\PYGZlt{}Window}\PYG{+w}{ }\PYG{n+na}{x:Class=}\PYG{l+s}{\PYGZdq{}StoreManager.MainWindow\PYGZdq{}}
+\PYG{+w}{        }\PYG{n+na}{xmlns=}\PYG{l+s}{\PYGZdq{}http://schemas.microsoft.com/winfx/2006/xaml/presentation\PYGZdq{}}
+\PYG{+w}{        }\PYG{n+na}{xmlns:x=}\PYG{l+s}{\PYGZdq{}http://schemas.microsoft.com/winfx/2006/xaml\PYGZdq{}}
+\PYG{+w}{        }\PYG{n+na}{xmlns:converters=}\PYG{l+s}{\PYGZdq{}clr\PYGZhy{}namespace:StoreManager.Converters\PYGZdq{}}
+\PYG{+w}{        }\PYG{n+na}{Title=}\PYG{l+s}{\PYGZdq{}Управление магазином\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Height=}\PYG{l+s}{\PYGZdq{}650\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Width=}\PYG{l+s}{\PYGZdq{}950\PYGZdq{}}
+\PYG{+w}{        }\PYG{n+na}{WindowStartupLocation=}\PYG{l+s}{\PYGZdq{}CenterScreen\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Background=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}F5F5F5\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+
+\PYG{+w}{    }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Ресурсы окна: конвертеры и стили \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZlt{}Window.Resources}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{        }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Конвертер для преобразования bool в Visibility \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}converters:BooleanToVisibilityConverter}\PYG{+w}{ }\PYG{n+na}{x:Key=}\PYG{l+s}{\PYGZdq{}BooleanToVisibilityConverter\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+
+\PYG{+w}{        }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Общий стиль кнопок \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}Style}\PYG{+w}{ }\PYG{n+na}{TargetType=}\PYG{l+s}{\PYGZdq{}Button\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Background\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}FF6200EE\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Foreground\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}White\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}FontSize\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}14\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Padding\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}10,5\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Margin\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}5\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}BorderThickness\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}0\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Cursor\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}Hand\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}/Style\PYGZgt{}}
+
+\PYG{+w}{        }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Специальный стиль кнопок изменения количества \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}Style}\PYG{+w}{ }\PYG{n+na}{x:Key=}\PYG{l+s}{\PYGZdq{}QuantityButtonStyle\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{TargetType=}\PYG{l+s}{\PYGZdq{}Button\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Background\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}FF6200EE\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Foreground\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}White\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}FontSize\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}12\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Width\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}25\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Height\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}25\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Margin\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}5,0\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}BorderThickness\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}0\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Cursor\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}Hand\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}/Style\PYGZgt{}}
+
+\PYG{+w}{        }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Стиль для полей ввода \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}Style}\PYG{+w}{ }\PYG{n+na}{TargetType=}\PYG{l+s}{\PYGZdq{}TextBox\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}FontSize\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}14\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Padding\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}5\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Margin\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}5\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}BorderBrush\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}FFCCCCCC\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}/Style\PYGZgt{}}
+
+\PYG{+w}{        }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Стиль текста\PYGZhy{}заглушки (placeholder) \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}Style}\PYG{+w}{ }\PYG{n+na}{TargetType=}\PYG{l+s}{\PYGZdq{}TextBlock\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{x:Key=}\PYG{l+s}{\PYGZdq{}PlaceholderStyle\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Foreground\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}Gray\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}FontStyle\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}Italic\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Margin\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}8,5,0,0\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}IsHitTestVisible\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}False\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}/Style\PYGZgt{}}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZlt{}/Window.Resources\PYGZgt{}}
+
+\PYG{+w}{    }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Основная сетка, задаёт структуру окна \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZlt{}Grid}\PYG{+w}{ }\PYG{n+na}{Margin=}\PYG{l+s}{\PYGZdq{}\PYGZhy{}16,0,0,\PYGZhy{}35\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}Grid.ColumnDefinitions}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{            }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Колонки для панели товаров и заказов \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}ColumnDefinition}\PYG{+w}{ }\PYG{n+na}{Width=}\PYG{l+s}{\PYGZdq{}107*\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}ColumnDefinition}\PYG{+w}{ }\PYG{n+na}{Width=}\PYG{l+s}{\PYGZdq{}344*\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}ColumnDefinition}\PYG{+w}{ }\PYG{n+na}{Width=}\PYG{l+s}{\PYGZdq{}450*\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}/Grid.ColumnDefinitions\PYGZgt{}}
+
+\PYG{+w}{        }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Панель товаров \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}Border}\PYG{+w}{ }\PYG{n+na}{Grid.Column=}\PYG{l+s}{\PYGZdq{}0\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Margin=}\PYG{l+s}{\PYGZdq{}10\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Background=}\PYG{l+s}{\PYGZdq{}White\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{CornerRadius=}\PYG{l+s}{\PYGZdq{}10\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Padding=}\PYG{l+s}{\PYGZdq{}10\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Grid.ColumnSpan=}\PYG{l+s}{\PYGZdq{}2\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}StackPanel}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}Товары\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontSize=}\PYG{l+s}{\PYGZdq{}20\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontWeight=}\PYG{l+s}{\PYGZdq{}Bold\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Margin=}\PYG{l+s}{\PYGZdq{}0,0,0,10\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+
+\PYG{+w}{                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Список товаров \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}ListBox}\PYG{+w}{ }\PYG{n+na}{x:Name=}\PYG{l+s}{\PYGZdq{}ProductsList\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Height=}\PYG{l+s}{\PYGZdq{}250\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{BorderBrush=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}FFCCCCCC\PYGZdq{}}\PYG{+w}{ }
+\PYG{+w}{                         }\PYG{n+na}{SelectionChanged=}\PYG{l+s}{\PYGZdq{}ProductsList\PYGZus{}SelectionChanged\PYGZdq{}}\PYG{+w}{ }
+\PYG{+w}{                         }\PYG{n+na}{MouseLeftButtonDown=}\PYG{l+s}{\PYGZdq{}ProductsList\PYGZus{}MouseLeftButtonDown\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}ListBox.ItemTemplate}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                        }\PYG{n+nt}{\PYGZlt{}DataTemplate}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                            }\PYG{n+nt}{\PYGZlt{}StackPanel}\PYG{+w}{ }\PYG{n+na}{Orientation=}\PYG{l+s}{\PYGZdq{}Horizontal\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Название \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Name\PYGZcb{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontWeight=}\PYG{l+s}{\PYGZdq{}Bold\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Margin=}\PYG{l+s}{\PYGZdq{}0,0,10,0\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Цена \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Price, StringFormat=\PYGZob{}\PYGZcb{}\PYGZob{}0:C\PYGZcb{}\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Остаток \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{} (Остаток: \PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontStyle=}\PYG{l+s}{\PYGZdq{}Italic\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Stock\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                    }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Подсветка остатка \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                                    }\PYG{n+nt}{\PYGZlt{}TextBlock.Style}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                        }\PYG{n+nt}{\PYGZlt{}Style}\PYG{+w}{ }\PYG{n+na}{TargetType=}\PYG{l+s}{\PYGZdq{}TextBlock\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                            }\PYG{n+nt}{\PYGZlt{}Style.Triggers}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Если 0 \PYGZhy{} красным \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                                                }\PYG{n+nt}{\PYGZlt{}DataTrigger}\PYG{+w}{ }\PYG{n+na}{Binding=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Stock\PYGZcb{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}0\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                                    }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Foreground\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}Red\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                                }\PYG{n+nt}{\PYGZlt{}/DataTrigger\PYGZgt{}}
+\PYG{+w}{                                                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Если меньше 5 \PYGZhy{} оранжевым \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                                                }\PYG{n+nt}{\PYGZlt{}DataTrigger}\PYG{+w}{ }\PYG{n+na}{Binding=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Stock, ConverterParameter=5\PYGZcb{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}True\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                                    }\PYG{n+nt}{\PYGZlt{}Setter}\PYG{+w}{ }\PYG{n+na}{Property=}\PYG{l+s}{\PYGZdq{}Foreground\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Value=}\PYG{l+s}{\PYGZdq{}Orange\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                                }\PYG{n+nt}{\PYGZlt{}/DataTrigger\PYGZgt{}}
+\PYG{+w}{                                            }\PYG{n+nt}{\PYGZlt{}/Style.Triggers\PYGZgt{}}
+\PYG{+w}{                                        }\PYG{n+nt}{\PYGZlt{}/Style\PYGZgt{}}
+\PYG{+w}{                                    }\PYG{n+nt}{\PYGZlt{}/TextBlock.Style\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}/TextBlock\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{})\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                            }\PYG{n+nt}{\PYGZlt{}/StackPanel\PYGZgt{}}
+\PYG{+w}{                        }\PYG{n+nt}{\PYGZlt{}/DataTemplate\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}/ListBox.ItemTemplate\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}/ListBox\PYGZgt{}}
+
+\PYG{+w}{                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Кнопка добавления в заказ \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}Button}\PYG{+w}{ }\PYG{n+na}{x:Name=}\PYG{l+s}{\PYGZdq{}AddToOrderButton\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Content=}\PYG{l+s}{\PYGZdq{}Добавить в заказ\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Click=}\PYG{l+s}{\PYGZdq{}AddToOrder\PYGZus{}Click\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{HorizontalAlignment=}\PYG{l+s}{\PYGZdq{}Right\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+
+\PYG{+w}{                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Поля ввода нового товара \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}Grid}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}TextBox}\PYG{+w}{ }\PYG{n+na}{x:Name=}\PYG{l+s}{\PYGZdq{}ProductName\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}Название товара\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Style=}\PYG{l+s}{\PYGZdq{}\PYGZob{}StaticResource PlaceholderStyle\PYGZcb{}\PYGZdq{}}
+\PYG{+w}{                               }\PYG{n+na}{Visibility=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding ElementName=ProductName, Path=Text.IsEmpty, Converter=\PYGZob{}StaticResource BooleanToVisibilityConverter\PYGZcb{}\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}/Grid\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}Grid}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}TextBox}\PYG{+w}{ }\PYG{n+na}{x:Name=}\PYG{l+s}{\PYGZdq{}ProductPrice\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}Цена\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Style=}\PYG{l+s}{\PYGZdq{}\PYGZob{}StaticResource PlaceholderStyle\PYGZcb{}\PYGZdq{}}
+\PYG{+w}{                               }\PYG{n+na}{Visibility=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding ElementName=ProductPrice, Path=Text.IsEmpty\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}/Grid\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}Grid}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}TextBox}\PYG{+w}{ }\PYG{n+na}{x:Name=}\PYG{l+s}{\PYGZdq{}ProductStock\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}Остаток\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Style=}\PYG{l+s}{\PYGZdq{}\PYGZob{}StaticResource PlaceholderStyle\PYGZcb{}\PYGZdq{}}
+\PYG{+w}{                               }\PYG{n+na}{Visibility=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding ElementName=ProductStock, Path=Text.IsEmpty, Converter=\PYGZob{}StaticResource BooleanToVisibilityConverter\PYGZcb{}\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}/Grid\PYGZgt{}}
+
+\PYG{+w}{                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Кнопки управления товарами \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}StackPanel}\PYG{+w}{ }\PYG{n+na}{HorizontalAlignment=}\PYG{l+s}{\PYGZdq{}Right\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Width=}\PYG{l+s}{\PYGZdq{}222\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}Button}\PYG{+w}{ }\PYG{n+na}{Content=}\PYG{l+s}{\PYGZdq{}Добавить товар\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Click=}\PYG{l+s}{\PYGZdq{}AddProduct\PYGZus{}Click\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}Button}\PYG{+w}{ }\PYG{n+na}{Content=}\PYG{l+s}{\PYGZdq{}Обновить товар\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Click=}\PYG{l+s}{\PYGZdq{}UpdateProduct\PYGZus{}Click\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}Button}\PYG{+w}{ }\PYG{n+na}{Content=}\PYG{l+s}{\PYGZdq{}Удалить товар\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Click=}\PYG{l+s}{\PYGZdq{}DeleteProduct\PYGZus{}Click\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}/StackPanel\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}/StackPanel\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}/Border\PYGZgt{}}
+
+\PYG{+w}{        }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Панель заказов \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}Border}\PYG{+w}{ }\PYG{n+na}{Grid.Column=}\PYG{l+s}{\PYGZdq{}2\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Margin=}\PYG{l+s}{\PYGZdq{}10\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Background=}\PYG{l+s}{\PYGZdq{}White\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{CornerRadius=}\PYG{l+s}{\PYGZdq{}10\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Padding=}\PYG{l+s}{\PYGZdq{}10\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}StackPanel}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}Заказы\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontSize=}\PYG{l+s}{\PYGZdq{}20\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontWeight=}\PYG{l+s}{\PYGZdq{}Bold\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Margin=}\PYG{l+s}{\PYGZdq{}0,0,0,10\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+
+\PYG{+w}{                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Список заказов \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}ListBox}\PYG{+w}{ }\PYG{n+na}{x:Name=}\PYG{l+s}{\PYGZdq{}OrdersList\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Height=}\PYG{l+s}{\PYGZdq{}150\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{BorderBrush=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}FFCCCCCC\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{SelectionChanged=}\PYG{l+s}{\PYGZdq{}OrdersList\PYGZus{}SelectionChanged\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{MouseLeftButtonDown=}\PYG{l+s}{\PYGZdq{}ProductsList\PYGZus{}MouseLeftButtonDown\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}ListBox.ItemTemplate}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                        }\PYG{n+nt}{\PYGZlt{}DataTemplate}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                            }\PYG{n+nt}{\PYGZlt{}StackPanel}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding CustomerName\PYGZcb{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontWeight=}\PYG{l+s}{\PYGZdq{}Bold\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding OrderDate, StringFormat=\PYGZob{}\PYGZcb{}\PYGZob{}0:dd.MM.yyyy HH:mm\PYGZcb{}\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding TotalPrice, StringFormat=Итого: \PYGZob{}0:C\PYGZcb{}\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Список товаров в заказе \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}ItemsControl}\PYG{+w}{ }\PYG{n+na}{ItemsSource=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Items\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                    }\PYG{n+nt}{\PYGZlt{}ItemsControl.ItemTemplate}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                        }\PYG{n+nt}{\PYGZlt{}DataTemplate}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                            }\PYG{n+nt}{\PYGZlt{}StackPanel}\PYG{+w}{ }\PYG{n+na}{Orientation=}\PYG{l+s}{\PYGZdq{}Horizontal\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Product.Name\PYGZcb{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Margin=}\PYG{l+s}{\PYGZdq{}0,0,10,0\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Product.Price, StringFormat=\PYGZob{}\PYGZcb{}\PYGZob{}0:C\PYGZcb{}\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{} x \PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontStyle=}\PYG{l+s}{\PYGZdq{}Italic\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Quantity\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                            }\PYG{n+nt}{\PYGZlt{}/StackPanel\PYGZgt{}}
+\PYG{+w}{                                        }\PYG{n+nt}{\PYGZlt{}/DataTemplate\PYGZgt{}}
+\PYG{+w}{                                    }\PYG{n+nt}{\PYGZlt{}/ItemsControl.ItemTemplate\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}/ItemsControl\PYGZgt{}}
+\PYG{+w}{                            }\PYG{n+nt}{\PYGZlt{}/StackPanel\PYGZgt{}}
+\PYG{+w}{                        }\PYG{n+nt}{\PYGZlt{}/DataTemplate\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}/ListBox.ItemTemplate\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}/ListBox\PYGZgt{}}
+
+\PYG{+w}{                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Список выбранных товаров для нового заказа \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}Выбранные товары для заказа\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontSize=}\PYG{l+s}{\PYGZdq{}14\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontWeight=}\PYG{l+s}{\PYGZdq{}Bold\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Margin=}\PYG{l+s}{\PYGZdq{}0,10,0,5\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}ListBox}\PYG{+w}{ }\PYG{n+na}{x:Name=}\PYG{l+s}{\PYGZdq{}SelectedProductsList\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Height=}\PYG{l+s}{\PYGZdq{}100\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{BorderBrush=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}FFCCCCCC\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{MouseLeftButtonDown=}\PYG{l+s}{\PYGZdq{}ProductsList\PYGZus{}MouseLeftButtonDown\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}ListBox.ItemTemplate}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                        }\PYG{n+nt}{\PYGZlt{}DataTemplate}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                            }\PYG{n+nt}{\PYGZlt{}StackPanel}\PYG{+w}{ }\PYG{n+na}{Orientation=}\PYG{l+s}{\PYGZdq{}Horizontal\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Product.Name\PYGZcb{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontWeight=}\PYG{l+s}{\PYGZdq{}Bold\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Margin=}\PYG{l+s}{\PYGZdq{}0,0,10,0\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Product.Price, StringFormat=\PYGZob{}\PYGZcb{}\PYGZob{}0:C\PYGZcb{}\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{} x \PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{FontStyle=}\PYG{l+s}{\PYGZdq{}Italic\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding Quantity\PYGZcb{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Margin=}\PYG{l+s}{\PYGZdq{}0,0,10,0\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Кнопки изменения количества \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}Button}\PYG{+w}{ }\PYG{n+na}{Content=}\PYG{l+s}{\PYGZdq{}+\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Style=}\PYG{l+s}{\PYGZdq{}\PYGZob{}StaticResource QuantityButtonStyle\PYGZcb{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Click=}\PYG{l+s}{\PYGZdq{}IncreaseQuantity\PYGZus{}Click\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Tag=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                                }\PYG{n+nt}{\PYGZlt{}Button}\PYG{+w}{ }\PYG{n+na}{Content=}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Style=}\PYG{l+s}{\PYGZdq{}\PYGZob{}StaticResource QuantityButtonStyle\PYGZcb{}\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Click=}\PYG{l+s}{\PYGZdq{}DecreaseQuantity\PYGZus{}Click\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Tag=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                            }\PYG{n+nt}{\PYGZlt{}/StackPanel\PYGZgt{}}
+\PYG{+w}{                        }\PYG{n+nt}{\PYGZlt{}/DataTemplate\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}/ListBox.ItemTemplate\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}/ListBox\PYGZgt{}}
+
+\PYG{+w}{                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Кнопка удаления товара из заказа \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}Button}\PYG{+w}{ }\PYG{n+na}{Content=}\PYG{l+s}{\PYGZdq{}Удалить товар из заказа\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Click=}\PYG{l+s}{\PYGZdq{}RemoveProductFromOrder\PYGZus{}Click\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{HorizontalAlignment=}\PYG{l+s}{\PYGZdq{}Right\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+
+\PYG{+w}{                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Поле ввода имени клиента \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}Grid}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}TextBox}\PYG{+w}{ }\PYG{n+na}{x:Name=}\PYG{l+s}{\PYGZdq{}CustomerName\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}TextBlock}\PYG{+w}{ }\PYG{n+na}{Text=}\PYG{l+s}{\PYGZdq{}Имя клиента\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Style=}\PYG{l+s}{\PYGZdq{}\PYGZob{}StaticResource PlaceholderStyle\PYGZcb{}\PYGZdq{}}
+\PYG{+w}{                               }\PYG{n+na}{Visibility=}\PYG{l+s}{\PYGZdq{}\PYGZob{}Binding ElementName=CustomerName, Path=Text.IsEmpty, Converter=\PYGZob{}StaticResource BooleanToVisibilityConverter\PYGZcb{}\PYGZcb{}\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}/Grid\PYGZgt{}}
+
+\PYG{+w}{                }\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Кнопки управления заказами \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}StackPanel}\PYG{+w}{ }\PYG{n+na}{Orientation=}\PYG{l+s}{\PYGZdq{}Horizontal\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{HorizontalAlignment=}\PYG{l+s}{\PYGZdq{}Right\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}Button}\PYG{+w}{ }\PYG{n+na}{Content=}\PYG{l+s}{\PYGZdq{}Создать заказ\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Click=}\PYG{l+s}{\PYGZdq{}AddOrder\PYGZus{}Click\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}Button}\PYG{+w}{ }\PYG{n+na}{Content=}\PYG{l+s}{\PYGZdq{}Обновить заказ\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Click=}\PYG{l+s}{\PYGZdq{}UpdateOrder\PYGZus{}Click\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n+nt}{\PYGZlt{}Button}\PYG{+w}{ }\PYG{n+na}{Content=}\PYG{l+s}{\PYGZdq{}Удалить заказ\PYGZdq{}}\PYG{+w}{ }\PYG{n+na}{Click=}\PYG{l+s}{\PYGZdq{}DeleteOrder\PYGZus{}Click\PYGZdq{}}\PYG{n+nt}{/\PYGZgt{}}
+\PYG{+w}{                }\PYG{n+nt}{\PYGZlt{}/StackPanel\PYGZgt{}}
+\PYG{+w}{            }\PYG{n+nt}{\PYGZlt{}/StackPanel\PYGZgt{}}
+\PYG{+w}{        }\PYG{n+nt}{\PYGZlt{}/Border\PYGZgt{}}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZlt{}/Grid\PYGZgt{}}
+\PYG{n+nt}{\PYGZlt{}/Window\PYGZgt{}}
+\end{MintedVerbatim}

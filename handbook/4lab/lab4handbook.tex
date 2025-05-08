@@ -12,7 +12,7 @@
     breaklines,             % переносить длинные строки
     breakanywhere=true,     % переносить в любом месте
     tabsize=2,              % размер табуляции
-    fontsize=\scriptsize,        % размер шрифта
+    fontsize=\footnotesize,        % размер шрифта
     frame=lines,            % рамка сверху и снизу
     framesep=2mm,           % расстояние текста от рамки
     baselinestretch=1.1,    % межстрочный интервал
@@ -116,6 +116,7 @@ BoldFont = *-Bold] #1}
 \pagestyle{empty}
 \lablogo
 \tableofcontents
+\newpage
 \listoflistings
 \newpage
 
@@ -133,7 +134,9 @@ BoldFont = *-Bold] #1}
 	\item Реализовать команды добавления, редактирования и удаления данных.
 \end{enumerate}
 
-\pagebreak
+\noindent Весь код доступен в \colorURL{\href{https://github.com/WebMasterIT/Csharp_Labs/tree/main}{репозитории на GitHub}\ \faGithub}\footnote{Ссылки, выделенные \colorURL{голубым} цветом, ведут на внешние ресурсы; ссылки, выделенные \colorGIT{светло-синим} цветом, указывают на исходный код в репозитории GitHub \ \faGithub.}
+
+\newpage
 
 \section{Теоретические сведения~\texorpdfstring{\iicon{}}{}}
 StoreManager — это настольное WPF-приложение на платформе .NET, реализующее базовую функциональность управления магазином: добавление/редактирование товаров, формирование заказов, управление корзиной, отображение и удаление заказов. Проект построен по принципам MVVM (Model-View-ViewModel), использует Entity Framework Core для работы с SQLite базой данных.
@@ -182,37 +185,12 @@ StoreManager — это настольное WPF-приложение на пл�
 
 \subsection{\texttt{RelayCommand.cs} — реализация команды MVVM}
 \begin{code}
-	\begin{minted}[linenos, fontsize=\footnotesize, frame=lines]{csharp}
-public class RelayCommand : ICommand
-{
-    private readonly Action<object> _execute; // делегат выполнения команды
-    private readonly Func<object, bool> _canExecute; // делегат проверки возможности выполнения команды
-
-    // Конструктор команды
-    public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
-    {
-        _execute = execute ?? throw new ArgumentNullException(nameof(execute)); // инициализация метода выполнения
-        _canExecute = canExecute; // инициализация метода проверки доступности
-    }
-
-    // Событие, которое вызывается при изменении условий выполнения команды
-    public event EventHandler CanExecuteChanged
-    {
-        add { CommandManager.RequerySuggested += value; }
-        remove { CommandManager.RequerySuggested -= value; }
-    }
-
-    // Проверка, может ли команда быть выполнена
-    public bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? true;
-
-    // Выполнение команды
-    public void Execute(object parameter) => _execute(parameter);
-}
-    \end{minted}
-	\captionof{listing}{Класс RelayCommand}
+	\inputminted[firstline=4]{csharp}{../../4lab/StoreManager_4lab/Commands/RelayCommand.cs}
+	\captionof{listing}{Класс \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/4lab/StoreManager_4lab/Commands/RelayCommand.cs}{RelayCommand}}}
 	\label{lst:RelayCommand}
 \end{code}
 В листинге \ref{lst:RelayCommand} представлен класс \texttt{RelayCommand}. Данный класс реализует интерфейс \texttt{ICommand}, что позволяет привязывать действия в UI к методам ViewModel. Применяется для реализации кнопок и команд.
+
 
 \begin{enumerate}
 	\item \texttt{RelayCommand(...)} — конструктор команды. Принимает делегаты выполнения и условия выполнения. Используется при создании команд в ViewModel.
@@ -222,7 +200,7 @@ public class RelayCommand : ICommand
 
 \subsection{\texttt{StoreDbContext.cs} — контекст базы данных}
 \begin{code}
-	\begin{minted}[linenos, fontsize=\footnotesize, frame=lines]{csharp}
+	\begin{minted}{csharp}
 public class StoreDbContext : DbContext
 {
     // Таблица товаров
@@ -246,7 +224,7 @@ public class StoreDbContext : DbContext
     }
 }
     \end{minted}
-	\captionof{listing}{Контекст базы данных}
+	\captionof{listing}{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/4lab/StoreManager_4lab/Data/StoreDbContext.cs}{Контекст}} базы данных}
 	\label{lst:StoreDbContext}
 \end{code}
 
@@ -258,7 +236,7 @@ public class StoreDbContext : DbContext
 \subsection{\texttt{CartItem.cs} — элемент корзины}
 Далее представлен листинг класса \texttt{CartItem}, отвечающего за временное хранение товаров (Листинг \ref{lst:CartItem}).
 \begin{code}
-	\begin{minted}[linenos, fontsize=\footnotesize, frame=lines]{csharp}
+	\begin{minted}{csharp}
 public class CartItem : INotifyPropertyChanged
 {
     public Product Product { get; set; } // ссылка на продукт
@@ -279,7 +257,7 @@ public class CartItem : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }
     \end{minted}
-	\captionof{listing}{Листинг «Корзины товаров»}
+	\captionof{listing}{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/4lab/StoreManager_4lab/Models/CartItem.cs}{Листинг}} «Корзины товаров»}
 	\label{lst:CartItem}
 \end{code}
 \texttt{CartItem} служит для временного хранения товаров в корзине перед созданием заказа. Используется в \texttt{ObservableCollection<CartItem>}.
@@ -397,7 +375,7 @@ public class MainViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }
     \end{minted}
-	\captionof{listing}{Логика взаимодействия с UI}
+	\captionof{listing}{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/4lab/StoreManager_4lab/ViewModels/MainViewModel.cs}{Логика}} взаимодействия с UI}
 	\label{lst:MainViewModel}
 \end{code}
 В листинге \ref{lst:MainViewModel} представлен код класса \texttt{MainViewModel}. Он связывает данные с пользовательским интерфейсом. В нём реализованы команды для добавления товаров и заказов, загрузка данных из базы и взаимодействие с коллекциями. Этот класс является ядром логики MVVM и предоставляет интерфейс между XAML и данными модели.
@@ -415,7 +393,7 @@ public class MainViewModel : INotifyPropertyChanged
 
 \subsection{Репозиторий \texttt{ProductRepository.cs} — операции с товарами}
 \begin{code}
-	\begin{minted}[linenos, fontsize=\footnotesize, frame=lines]{csharp}
+	\begin{minted}{csharp}
 public class ProductRepository
 {
     private const string ConnectionString = "Data Source=store.db"; // строка подключения к базе данных
@@ -460,8 +438,7 @@ public class ProductRepository
     }
 }
     \end{minted}
-	\captionof{listing}{Основные операции с товарами}
-	\label{lst:ProductRepository}
+	\captionof{listing}{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/4lab/StoreManager_4lab/Repositories/ProductRepository.cs}{Основные}} операции с товарами}
 \end{code}
 Класс \texttt{ProductRepository} предоставляет низкоуровневый доступ к таблице товаров. В нём реализованы методы чтения и добавления продуктов с использованием SQLite.
 
@@ -473,7 +450,7 @@ public class ProductRepository
 
 \subsection{Репозиторий \texttt{OrderRepository.cs} — работа с заказами}
 \begin{code}
-	\begin{minted}[linenos, fontsize=\footnotesize, frame=lines]{csharp}
+	\begin{minted}{csharp}
 public class OrderRepository
 {
     private const string ConnectionString = "Data Source=store.db"; // строка подключения к БД
@@ -527,7 +504,7 @@ public class OrderRepository
     }
 }
     \end{minted}
-	\captionof{listing}{Репозиторий OrderRepository}
+	\captionof{listing}{Репозиторий \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/4lab/StoreManager_4lab/Repositories/OrderRepository.cs}{OrderRepository}}}
 	\label{lst:OrderRepository}
 \end{code}
 В листинге \ref{lst:OrderRepository} представлен код класса \texttt{OrderRepository}, который позволяет загружать заказы с их товарами из базы данных. Используется прямое взаимодействие с SQLite для выборки и объединения данных. Этот репозиторий играет роль интерфейса между бизнес-логикой и хранилищем заказов.
@@ -541,7 +518,7 @@ public class OrderRepository
 
 \subsection{\texttt{ProductViewModel.cs} — управление данными товаров}
 \begin{code}
-	\begin{minted}[linenos, fontsize=\footnotesize, frame=lines]{csharp}
+	\begin{minted}{csharp}
 public class ProductViewModel : BaseViewModel
 {
     private Product _selectedProduct; // выбранный товар
@@ -646,7 +623,7 @@ public class ProductViewModel : BaseViewModel
     }
 }
     \end{minted}
-	\captionof{listing}{Код класса ProductViewModel}
+	\captionof{listing}{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/4lab/StoreManager_4lab/ViewModels/ProductViewModel.cs}{Код}} класса ProductViewModel}
 	\label{lst:ProductViewModel}
 \end{code}
 Листинг \ref{lst:ProductViewModel} отражает код класса \texttt{ProductViewModel}. Эта модель управляет отображением и изменением информации о товарах. Поддерживает добавление, редактирование, удаление и фильтрацию по категориям. Используется для управления интерфейсом раздела «Товары».
@@ -657,7 +634,7 @@ public class ProductViewModel : BaseViewModel
 	\item \texttt{LoadProducts()} — загружает все товары из базы, с учётом установленной категории фильтрации.
 	\item \texttt{LoadCategories()} — извлекает уникальные категории товаров для отображения в выпадающем списке.
 	\item \texttt{AddProduct()} — создаёт новый товар, сохраняет его в базу и обновляет интерфейс.
-	\item \texttt{UpdateProduct()} — сохраняет изменения выбранного товара и обновляет список.
+	\item \texttt{UpdateProduct()} — сохраняет изменения выбранного товара, и обновляет список.
 	\item \texttt{DeleteProduct()} — удаляет выбранный товар из базы и обновляет список, если товар не используется в заказах.
 \end{enumerate}
 
@@ -770,7 +747,7 @@ public class OrderViewModel : BaseViewModel
     }
 }
     \end{minted}
-	\captionof{listing}{Код класса OrderViewModel}
+	\captionof{listing}{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/4lab/StoreManager_4lab/ViewModels/OrderViewModel.cs}{Код}} класса OrderViewModel}
 	\label{lst:OrderViewModel}
 \end{code}
 

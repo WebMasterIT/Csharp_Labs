@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024/nixos.org)  (format=lualatex 1980.1.1)  2 MAY 2025 00:38
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024/nixos.org)  (format=lualatex 1980.1.1)  8 MAY 2025 22:02
  restricted system commands enabled.
  file:line:error style messages enabled.
 **lab3Handbook.tex
@@ -53,7 +53,12 @@ luaotfload | db : Font names database loaded from /home/replica/.texlive2024/tex
 \bibindent=\dimen140
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/cmap/cmap.sty
 Package: cmap 2021/02/06 v1.0j CMap support: searchable PDF
-) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/minted/minted.sty
+) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/newfloat/newfloat.sty
+Package: newfloat 2023/10/01 v1.2 Defining new floating environments (AR)
+ (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/minted/minted.sty
 Package: minted 2025/03/06 v3.6.0 Yet another Pygments shim for LaTeX
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/catchfile/catchfile.sty
 Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
@@ -72,10 +77,6 @@ Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
 Package: fvextra 2025/03/04 v1.12.0 fvextra - extensions and patches for fancyvrb
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
- (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/graphics/keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
-)
 \FV@CodeLineNo=\count269
 \FV@InFile=\read2
 \FV@TabBox=\box52
@@ -92,10 +93,10 @@ Package pdftexcmds Info: \pdfdraftmode found.
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/base/textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
-)) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/lineno/lineno.sty
+))
+(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/lineno/lineno.sty
 Package: lineno 2025/01/29 line numbers on paragraphs v5.4
-
-(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/kvoptions/kvoptions.sty
+ (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
@@ -156,17 +157,12 @@ Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/tools/shellesc.sty
 Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
 Package shellesc Info: Restricted shell escape enabled on input line 77.
-) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count293
-\float@exts=\toks25
-\float@box=\box59
-\@float@everytoks=\toks26
-\@floatcapt=\box60
 )
-\c@minted@FancyVerbLineTemp=\count294
-\@float@every@listing=\toks27
-\c@listing=\count295
+\c@minted@FancyVerbLineTemp=\count293
+Package newfloat Info: New float `listing' with options `fileext=lol,placement=tbp' on input line 1939.
+\c@listing=\count294
+\newfloat@ftype=\count295
+Package newfloat Info: float type `listing'=8 on input line 1939.
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/caption/caption3.sty
@@ -183,7 +179,8 @@ Package caption Info: Standard document class detected.
 )
 \c@caption@flags=\count296
 \c@continuedfloat=\count297
-Package caption Info: float package is loaded.
+) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/babel/babel.sty
 Package: babel 2025/02/14 v25.4 The multilingual framework for pdfLaTeX, LuaLaTeX and XeLaTeX
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/babel/luababel.def
@@ -294,13 +291,13 @@ Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
 (babel)             (\language25). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
 (babel)             (\language25). Reported on input line 108.
-) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/babel-russian/russianb.ldf
+)
+(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/babel-russian/russianb.ldf
 File: russianb.ldf 2021/01/10 1.3m Russian support for the Babel system
 Language: russian 2020/09/09 1.3k Russian support for the Babel system
 Package babel Info: Making " an active character on input line 124.
 Package babel Info: Default for \cyrdash is provided on input line 163.
-
-(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/hyph-utf8/loadhyph/loadhyph-ru.tex UTF-8 Russian hyphenation patterns (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/hyph-utf8/patterns/tex/hyph-ru.tex)))) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/babel/locale/ru/babel-russian.tex
+ (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/hyph-utf8/loadhyph/loadhyph-ru.tex UTF-8 Russian hyphenation patterns (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/hyph-utf8/patterns/tex/hyph-ru.tex)))) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/babel/locale/ru/babel-russian.tex
 Package babel Info: Importing font and identification data for russian
 (babel)             from babel-ru.ini. Reported on input line 11.
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/babel/locale/en/babel-english.tex
@@ -308,12 +305,12 @@ Package babel Info: Importing font and identification data for english
 (babel)             from babel-en.ini. Reported on input line 11.
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/microtype/microtype.sty
 Package: microtype 2025/02/11 v3.2a Micro-typographical refinements (RS)
-\MT@toks=\toks28
-\MT@tempbox=\box61
+\MT@toks=\toks25
+\MT@tempbox=\box59
 \MT@count=\count299
 LaTeX Info: Redefining \noprotrusionifhmode on input line 1087.
 LaTeX Info: Redefining \leftprotrusion on input line 1088.
-\MT@prot@toks=\toks29
+\MT@prot@toks=\toks26
 LaTeX Info: Redefining \rightprotrusion on input line 1107.
 LaTeX Info: Redefining \textls on input line 1449.
 \MT@outer@kern=\dimen161
@@ -333,11 +330,18 @@ Package microtype Info: Loading configuration file microtype.cfg.
 File: microtype.cfg 2025/02/11 v3.2a microtype main configuration file (RS)
 )
 LaTeX Info: Redefining \microtypesetup on input line 3065.
+) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count301
+\float@exts=\toks27
+\float@box=\box60
+\@float@everytoks=\toks28
+\@floatcapt=\box61
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fontspec/fontspec.sty (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/l3packages/xparse/xparse.sty (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2025-01-18 L3 programming layer (loader) 
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2024-05-08 L3 backend support: PDF output (LuaTeX)
-\l__color_backend_stack_int=\count301
+\l__color_backend_stack_int=\count302
 Inserting `l3color' in `luaotfload.parse_color'.
 \l__pdf_internal_box=\box62
 ))
@@ -346,26 +350,26 @@ Package: xparse 2024-08-16 L3 Experimental document command parser
 Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 Lua module: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fontspec/fontspec-luatex.sty
 Package: fontspec-luatex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
-\l__fontspec_script_int=\count302
-\l__fontspec_language_int=\count303
-\l__fontspec_strnum_int=\count304
-\l__fontspec_tmp_int=\count305
-\l__fontspec_tmpa_int=\count306
-\l__fontspec_tmpb_int=\count307
-\l__fontspec_tmpc_int=\count308
-\l__fontspec_em_int=\count309
-\l__fontspec_emdef_int=\count310
-\l__fontspec_strong_int=\count311
-\l__fontspec_strongdef_int=\count312
+\l__fontspec_script_int=\count303
+\l__fontspec_language_int=\count304
+\l__fontspec_strnum_int=\count305
+\l__fontspec_tmp_int=\count306
+\l__fontspec_tmpa_int=\count307
+\l__fontspec_tmpb_int=\count308
+\l__fontspec_tmpc_int=\count309
+\l__fontspec_em_int=\count310
+\l__fontspec_emdef_int=\count311
+\l__fontspec_strong_int=\count312
+\l__fontspec_strongdef_int=\count313
 \l__fontspec_tmpa_dim=\dimen162
 \l__fontspec_tmpb_dim=\dimen163
 \l__fontspec_tmpc_dim=\dimen164
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fontspec/fontspec.cfg))) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/hyperref/hyperref.sty
+)
+(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fontspec/fontspec.cfg))) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
-
-(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+ (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
@@ -378,19 +382,19 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count313
+\c@section@level=\count314
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 \@linkdim=\dimen165
-\Hy@linkcounter=\count314
-\Hy@pagecounter=\count315
+\Hy@linkcounter=\count315
+\Hy@pagecounter=\count316
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count316
+\Hy@SavedSpaceFactor=\count317
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 )
@@ -402,7 +406,7 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count317
+\c@Hy@tempcnt=\count318
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -414,7 +418,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count318
+\Fld@menulength=\count319
 \Field@Width=\dimen167
 \Fld@charsize=\dimen168
 Package hyperref Info: Hyper figures OFF on input line 6042.
@@ -428,21 +432,21 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count319
-\c@Item=\count320
-\c@Hfootnote=\count321
+\Hy@abspage=\count320
+\c@Item=\count321
+\c@Hfootnote=\count322
 )
 Package hyperref Info: Driver (autodetected): hluatex.
- (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/hyperref/hluatex.def
+
+(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/hyperref/hluatex.def
 File: hluatex.def 2024-11-05 v7.01l Hyperref driver for luaTeX
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\Fld@listcount=\count322
-\c@bookmark@seq@number=\count323
-
-(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+\Fld@listcount=\count323
+\c@bookmark@seq@number=\count324
+ (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
@@ -454,10 +458,46 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip54
 \enit@outerparindent=\dimen169
-\enit@toks=\toks30
+\enit@toks=\toks29
 \enit@inbox=\box63
-\enit@count@id=\count324
-\enitdp@description=\count325
+\enit@count@id=\count325
+\enitdp@description=\count326
+) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has section divisions on input line 51.
+\cftparskip=\skip55
+\cftbeforetoctitleskip=\skip56
+\cftaftertoctitleskip=\skip57
+\cftbeforepartskip=\skip58
+\cftpartnumwidth=\skip59
+\cftpartindent=\skip60
+\cftbeforesecskip=\skip61
+\cftsecindent=\skip62
+\cftsecnumwidth=\skip63
+\cftbeforesubsecskip=\skip64
+\cftsubsecindent=\skip65
+\cftsubsecnumwidth=\skip66
+\cftbeforesubsubsecskip=\skip67
+\cftsubsubsecindent=\skip68
+\cftsubsubsecnumwidth=\skip69
+\cftbeforeparaskip=\skip70
+\cftparaindent=\skip71
+\cftparanumwidth=\skip72
+\cftbeforesubparaskip=\skip73
+\cftsubparaindent=\skip74
+\cftsubparanumwidth=\skip75
+\cftbeforeloftitleskip=\skip76
+\cftafterloftitleskip=\skip77
+\cftbeforefigskip=\skip78
+\cftfigindent=\skip79
+\cftfignumwidth=\skip80
+\c@lofdepth=\count327
+\c@lotdepth=\count328
+\cftbeforelottitleskip=\skip81
+\cftafterlottitleskip=\skip82
+\cftbeforetabskip=\skip83
+\cfttabindent=\skip84
+\cfttabnumwidth=\skip85
 )
 
 Package fontspec Info: 
@@ -517,9 +557,10 @@ Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 Package: fontawesome5-utex-helper 2022/05/02 v5.15.4 uTeX helper for fontawesome5
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/luatex/luatexbase/luatexbase.sty
 Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX 
- (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/luatex/ctablestack/ctablestack.sty
+
+(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/luatex/ctablestack/ctablestack.sty
 Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
-\@catcodetablestackcnt=\count326
+\@catcodetablestackcnt=\count329
 )
 \CatcodeTableOther=\catcodetable16
 \CatcodeTableExpl=\catcodetable17
@@ -527,15 +568,14 @@ Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
 LaTeX Font Info:    Trying to load font information for TU+fontawesomefree on input line 69.
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fontawesome5/tufontawesomefree.fd)
 LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on input line 70.
- (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fontawesome5/tufontawesomebrands.fd)))
-(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/geometry/geometry.sty
+ (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fontawesome5/tufontawesomebrands.fd))) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count327
-\Gm@cntv=\count328
-\c@Gm@tempcnt=\count329
+\Gm@cnth=\count330
+\Gm@cntv=\count331
+\c@Gm@tempcnt=\count332
 \Gm@bindingoffset=\dimen172
 \Gm@wd@mp=\dimen173
 \Gm@odd@mp=\dimen174
@@ -544,7 +584,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutheight=\dimen177
 \Gm@layouthoffset=\dimen178
 \Gm@layoutvoffset=\dimen179
-\Gm@dimlist=\toks31
+\Gm@dimlist=\toks30
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/catppuccinpalette/catppuccinpalette.sty
 Package: catppuccinpalette 2024/08/13 v1.1.0 catppuccin xcolor palette
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/xcolor/xcolor.sty
@@ -567,31 +607,78 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
-\f@nch@headwidth=\skip55
-\f@nch@offset@elh=\skip56
-\f@nch@offset@erh=\skip57
-\f@nch@offset@olh=\skip58
-\f@nch@offset@orh=\skip59
-\f@nch@offset@elf=\skip60
-\f@nch@offset@erf=\skip61
-\f@nch@offset@olf=\skip62
-\f@nch@offset@orf=\skip63
-\f@nch@height=\skip64
-\f@nch@footalignment=\skip65
-\f@nch@widthL=\skip66
-\f@nch@widthC=\skip67
-\f@nch@widthR=\skip68
-\@temptokenb=\toks32
-) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amsmath.sty
+\f@nch@headwidth=\skip86
+\f@nch@offset@elh=\skip87
+\f@nch@offset@erh=\skip88
+\f@nch@offset@olh=\skip89
+\f@nch@offset@orh=\skip90
+\f@nch@offset@elf=\skip91
+\f@nch@offset@erf=\skip92
+\f@nch@offset@olf=\skip93
+\f@nch@offset@orf=\skip94
+\f@nch@height=\skip95
+\f@nch@footalignment=\skip96
+\f@nch@widthL=\skip97
+\f@nch@widthC=\skip98
+\f@nch@widthR=\skip99
+\@temptokenb=\toks31
+)
+Package newfloat Info: New float `listing' with options ` listname=Листинг, ' on input line 106.
+Package newfloat Info: \c@listing is already defined on input line 106.
+Package newfloat Info: float type `listing'=4 on input line 106.
+Package newfloat Info: \fnum@listing is already defined on input line 106.
+Package newfloat Info: \listingname is already defined on input line 106.
+Package newfloat Info: \listingautorefname is already defined on input line 106.
+Package newfloat Info: \fleglisting is already defined on input line 106.
+Package newfloat Info: \flegtoclisting is already defined on input line 106.
+
+
+./lab3Handbook.tex:106: LaTeX Error: Command \listing already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.106 ]{listing}
+              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+./lab3Handbook.tex:106: LaTeX Error: Command \listing* already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.106 ]{listing}
+              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+Package newfloat Info: \listoflisting is already defined on input line 106.
+Package newfloat Info: \listoflistings is already defined on input line 106.
+Package newfloat Info: \listoflistinges is already defined on input line 106.
+Package newfloat Info: \newfloat@listoflisting@hook is already defined on input line 106.
+Package newfloat Info: \l@listing is already defined on input line 106.
+Package newfloat Info: \listlistingname is already defined on input line 106.
+Package newfloat Info: \fps@listing is already defined on input line 106.
+Package newfloat Info: \ext@listing is already defined on input line 106.
+Package newfloat Info: \newfloat@env@lol is already defined on input line 106.
+(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
-\@mathmargin=\skip69
+\@mathmargin=\skip100
 
 For additional information on amsmath, use the `?' option.
 (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks33
+\@emptytoks=\toks32
 \ex@=\dimen180
 )) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
@@ -599,14 +686,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count330
+\inf@bad=\count333
 LaTeX Info: Redefining \frac on input line 235.
-\uproot@=\count331
-\leftroot@=\count332
+\uproot@=\count334
+\leftroot@=\count335
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count333
-\DOTSCASE@=\count334
+\classnum@=\count336
+\DOTSCASE@=\count337
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -619,111 +706,77 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen182
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count335
+\macc@depth=\count338
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count336
+\c@MaxMatrixCols=\count339
 \dotsspace@=\muskip18
-\c@parentequation=\count337
-\dspbrk@lvl=\count338
-\tag@help=\toks34
-\row@=\count339
-\column@=\count340
-\maxfields@=\count341
-\andhelp@=\toks35
+\c@parentequation=\count340
+\dspbrk@lvl=\count341
+\tag@help=\toks33
+\row@=\count342
+\column@=\count343
+\maxfields@=\count344
+\andhelp@=\toks34
 \eqnshift@=\dimen183
 \alignsep@=\dimen184
 \tagshift@=\dimen185
 \tagwidth@=\dimen186
 \totwidth@=\dimen187
 \lineht@=\dimen188
-\@envbody=\toks36
-\multlinegap=\skip70
-\multlinetaggap=\skip71
-\mathdisplay@stack=\toks37
+\@envbody=\toks35
+\multlinegap=\skip101
+\multlinetaggap=\skip102
+\mathdisplay@stack=\toks36
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
-\@LN@amsmath@ams@eqpen=\count342
- (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/tocloft/tocloft.sty
-Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
-Package tocloft Info: The document has section divisions on input line 51.
-\cftparskip=\skip72
-\cftbeforetoctitleskip=\skip73
-\cftaftertoctitleskip=\skip74
-\cftbeforepartskip=\skip75
-\cftpartnumwidth=\skip76
-\cftpartindent=\skip77
-\cftbeforesecskip=\skip78
-\cftsecindent=\skip79
-\cftsecnumwidth=\skip80
-\cftbeforesubsecskip=\skip81
-\cftsubsecindent=\skip82
-\cftsubsecnumwidth=\skip83
-\cftbeforesubsubsecskip=\skip84
-\cftsubsubsecindent=\skip85
-\cftsubsubsecnumwidth=\skip86
-\cftbeforeparaskip=\skip87
-\cftparaindent=\skip88
-\cftparanumwidth=\skip89
-\cftbeforesubparaskip=\skip90
-\cftsubparaindent=\skip91
-\cftsubparanumwidth=\skip92
-\cftbeforeloftitleskip=\skip93
-\cftafterloftitleskip=\skip94
-\cftbeforefigskip=\skip95
-\cftfigindent=\skip96
-\cftfignumwidth=\skip97
-\c@lofdepth=\count343
-\c@lotdepth=\count344
-\cftbeforelottitleskip=\skip98
-\cftafterlottitleskip=\skip99
-\cftbeforetabskip=\skip100
-\cfttabindent=\skip101
-\cfttabnumwidth=\skip102
-) (./lab3Handbook.aux)
+\@LN@amsmath@ams@eqpen=\count345
+ (./lab3Handbook.aux)
 \openout1 = lab3Handbook.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+Package newfloat Info: `float' package detected.
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \th on input line 98.
-LaTeX Info: Redefining \microtypecontext on input line 98.
-Package microtype Info: Applying patch `item' on input line 98.
-Package microtype Info: Applying patch `toc' on input line 98.
-Package microtype Info: Applying patch `eqnum' on input line 98.
-Package microtype Info: Applying patch `verbatim' on input line 98.
-LaTeX Info: Redefining \microtypesetup on input line 98.
+LaTeX Info: Redefining \th on input line 115.
+LaTeX Info: Redefining \microtypecontext on input line 115.
+Package microtype Info: Applying patch `item' on input line 115.
+Package microtype Info: Applying patch `toc' on input line 115.
+Package microtype Info: Applying patch `eqnum' on input line 115.
+Package microtype Info: Applying patch `verbatim' on input line 115.
+LaTeX Info: Redefining \microtypesetup on input line 115.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 98.
+LaTeX Info: Redefining \showhyphens on input line 115.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
@@ -738,77 +791,83 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 98.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 98.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 98.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 98.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 98.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 98.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 98.
-LaTeX Font Info:    Redeclaring math accent \check on input line 98.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 98.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 98.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 98.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 98.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 115.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 115.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 115.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 115.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 115.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 115.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 115.
+LaTeX Font Info:    Redeclaring math accent \check on input line 115.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 115.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 115.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 115.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 115.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 115.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 98.
+(Font)              `operators' in the math version `normal' on input line 115.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/TimesNewerRoman(0)/m/n on input line 98.
+(Font)                  OT1/cmr/m/n --> TU/TimesNewerRoman(0)/m/n on input line 115.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 98.
+(Font)              `operators' in the math version `bold' on input line 115.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/TimesNewerRoman(0)/m/n on input line 98.
+(Font)                  OT1/cmr/bx/n --> TU/TimesNewerRoman(0)/m/n on input line 115.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/TimesNewerRoman(0)/m/n --> TU/TimesNewerRoman(0)/m/n on input line 98.
+(Font)                  TU/TimesNewerRoman(0)/m/n --> TU/TimesNewerRoman(0)/m/n on input line 115.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/TimesNewerRoman(0)/m/it on input line 98.
+(Font)                  OT1/cmr/m/it --> TU/TimesNewerRoman(0)/m/it on input line 115.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/TimesNewerRoman(0)/b/n on input line 98.
+(Font)                  OT1/cmr/bx/n --> TU/TimesNewerRoman(0)/b/n on input line 115.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 98.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 115.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/UbuntuMono(0)/m/n on input line 98.
+(Font)                  OT1/cmtt/m/n --> TU/UbuntuMono(0)/m/n on input line 115.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/TimesNewerRoman(0)/m/n --> TU/TimesNewerRoman(0)/b/n on input line 98.
+(Font)                  TU/TimesNewerRoman(0)/m/n --> TU/TimesNewerRoman(0)/b/n on input line 115.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/TimesNewerRoman(0)/b/it on input line 98.
+(Font)                  OT1/cmr/bx/it --> TU/TimesNewerRoman(0)/b/it on input line 115.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 98.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 115.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/UbuntuMono(0)/b/n on input line 98.
-Package hyperref Info: Link coloring OFF on input line 98.
+(Font)                  OT1/cmtt/m/n --> TU/UbuntuMono(0)/b/n on input line 115.
+Package hyperref Info: Link coloring OFF on input line 115.
  (./lab3Handbook.out) (./lab3Handbook.out)
 \@outlinefile=\write4
 
 \openout4 = lab3Handbook.out
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count345
+\scratchcounter=\count346
 \scratchdimen=\dimen189
 \scratchbox=\box66
-\nofMPsegments=\count346
-\nofMParguments=\count347
-\everyMPshowfont=\toks38
-\MPscratchCnt=\count348
+\nofMPsegments=\count347
+\nofMParguments=\count348
+\everyMPshowfont=\toks37
+\MPscratchCnt=\count349
 \MPscratchDim=\dimen190
-\MPnumerator=\count349
-\makeMPintoPDFobject=\count350
-\everyMPtoPDFconversion=\toks39
+\MPnumerator=\count350
+\makeMPintoPDFobject=\count351
+\everyMPtoPDFconversion=\toks38
 ) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+ (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
@@ -855,25 +914,6 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `UbuntuMono' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-Package fontspec Info: 
-(fontspec)             Font family 'UbuntuNerdFont(0)' created for font
-(fontspec)             'UbuntuNerdFont' with options [Extension = .ttf,Path =
-(fontspec)             /nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/,UprightFont
-(fontspec)             = *-Regular,BoldFont = *-Bold].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[/nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Regular.ttf]:mode=node;script=latn;language=dflt;"
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[/nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Bold.ttf]:mode=node;script=latn;language=dflt;"
-
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `UbuntuNerdFont' (encoding: TU).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
 )
 \tf@toc=\write5
 
@@ -901,23 +941,23 @@ Package microtype Info: Loading generic protrusion settings for font family
 [7]
 
 [8]
-<fig/image 2.png, id=271, 517.935pt x 340.27126pt>
+<fig/image 2.png, id=264, 517.935pt x 340.27126pt>
 File: fig/image 2.png Graphic file (type png)
 <use fig/image 2.png>
-Package luatex.def Info: fig/image 2.png  used on input line 385.
+Package luatex.def Info: fig/image 2.png  used on input line 401.
 (luatex.def)             Requested size: 275.26772pt x 180.85173pt.
-<fig/image 3.png, id=273, 370.88562pt x 292.09125pt>
+<fig/image 3.png, id=266, 370.88562pt x 292.09125pt>
 File: fig/image 3.png Graphic file (type png)
 <use fig/image 3.png>
-Package luatex.def Info: fig/image 3.png  used on input line 394.
+Package luatex.def Info: fig/image 3.png  used on input line 410.
 (luatex.def)             Requested size: 275.26772pt x 216.79037pt.
 
 
 [9<./fig/image 2.png><./fig/image 3.png>]
-<fig/image 4.png, id=287, 367.3725pt x 125.46875pt>
+<fig/image 4.png, id=280, 367.3725pt x 125.46875pt>
 File: fig/image 4.png Graphic file (type png)
 <use fig/image 4.png>
-Package luatex.def Info: fig/image 4.png  used on input line 405.
+Package luatex.def Info: fig/image 4.png  used on input line 421.
 (luatex.def)             Requested size: 400.38872pt x 136.75438pt.
 
 
@@ -925,175 +965,184 @@ Package luatex.def Info: fig/image 4.png  used on input line 405.
 \pydata@fh@_75543EBAA87A90477040A7F1CFD7A6ED.data.minted=\write7
 
 \openout7 = _75543EBAA87A90477040A7F1CFD7A6ED.data.minted
-runsystem(latexminted config  --timestamp 20250502003812 75543EBAA87A90477040A7F1CFD7A6ED)...executed.
+runsystem(latexminted config  --timestamp 20250508220240 75543EBAA87A90477040A7F1CFD7A6ED)...executed.
  (./_75543EBAA87A90477040A7F1CFD7A6ED.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20250502003812 75543EBAA87A90477040A7F1CFD7A6ED)...executed.
- (./_minted/catppuccin-latte.style.minted) (./_minted/5CF03304E553DE71450E872645202DA1.highlight.minted)
-Package hyperref Info: bookmark level for unknown listing defaults to 0 on input line 449.
- (./_minted/C7D7D9B7FE4E34624774CDEED966B201.highlight.minted)
+runsystem(latexminted cleanconfig  --timestamp 20250508220240 75543EBAA87A90477040A7F1CFD7A6ED)...executed.
+ (./_minted/catppuccin-latte.style.minted) (./_minted/254D8EA9F73B2D11223534B22B185A57.highlight.minted)
+Package hyperref Info: bookmark level for unknown listing defaults to 0 on input line 465.
+ (./_minted/B20000D529C9F6752B5A702B87CB10F4.highlight.minted
 
-[11] (./_minted/302970CA2489605154F554E8957312F9.highlight.minted) (./_minted/88C9D543E0C230206D9BBD1698768B82.highlight.minted)
+[11]) (./_minted/FFFADF0D6C331D5CBC1CAC7684D600B2.highlight.minted) (./_minted/88C9D543E0C230206D9BBD1698768B82.highlight.minted
 
-[12]
+[12])
 
-[13] (./_minted/9DEC549E7E5968343E4CF3AFE6E22970.highlight.minted
+Package fontspec Info: 
+(fontspec)             Font family 'UbuntuNerdFont(0)' created for font
+(fontspec)             'UbuntuNerdFont' with options [Extension = .ttf,Path =
+(fontspec)             /nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/,UprightFont
+(fontspec)             = *-Regular,BoldFont = *-Bold].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[/nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Regular.ttf]:mode=node;script=latn;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[/nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Bold.ttf]:mode=node;script=latn;language=dflt;"
+
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `UbuntuNerdFont' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+
+[13] (./_minted/3E854896C28318892A620B68F400DE1B.highlight.minted
 
 [14]
 
 [15])
 
-Package caption Warning: \setcaptiontype
-(caption)                outside box or environment on input line 527.
-See the caption package documentation for explanation.
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 527.
-See the caption package documentation for explanation.
-
-
-
 [16] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
 
 [17] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
 
-[18] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[18] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
 
-[19] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[19]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
 
-[20] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[20]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
 
-[21] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[21]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
 
-[22] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[22])
 
 [23] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
 
-[24]
+[24] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
 
-[25] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[25]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
 
-[26] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[26])
 
-[27]
+[27] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
 
-[28] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[28]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
 
-[29] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[29]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
 
-[30]
+[30] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
 
-[31]
-<fig/image 26.png, id=478, 509.905pt x 350.30875pt>
+[31])
+
+[32]
+<fig/image 26.png, id=476, 509.905pt x 350.30875pt>
 File: fig/image 26.png Graphic file (type png)
 <use fig/image 26.png>
-Package luatex.def Info: fig/image 26.png  used on input line 843.
+Package luatex.def Info: fig/image 26.png  used on input line 851.
 (luatex.def)             Requested size: 500.484pt x 343.8508pt.
 
 
-[32<./fig/image 26.png>]
-<fig/image 27.png, id=487, 496.85625pt x 341.275pt>
+[33<./fig/image 26.png>]
+<fig/image 27.png, id=485, 496.85625pt x 341.275pt>
 File: fig/image 27.png Graphic file (type png)
 <use fig/image 27.png>
-Package luatex.def Info: fig/image 27.png  used on input line 857.
+Package luatex.def Info: fig/image 27.png  used on input line 865.
 (luatex.def)             Requested size: 500.484pt x 343.77371pt.
 
 
-[33<./fig/image 27.png>]
-<fig/image 60.png, id=496, 516.93124pt x 357.335pt>
+[34<./fig/image 27.png>]
+<fig/image 60.png, id=494, 516.93124pt x 357.335pt>
 File: fig/image 60.png Graphic file (type png)
 <use fig/image 60.png>
-Package luatex.def Info: fig/image 60.png  used on input line 870.
+Package luatex.def Info: fig/image 60.png  used on input line 878.
 (luatex.def)             Requested size: 500.484pt x 345.9766pt.
 
 
-[34<./fig/image 60.png>]
-<fig/image 61.png, id=505, 507.8975pt x 350.30875pt>
+[35<./fig/image 60.png>]
+<fig/image 61.png, id=503, 507.8975pt x 350.30875pt>
 File: fig/image 61.png Graphic file (type png)
 <use fig/image 61.png>
-Package luatex.def Info: fig/image 61.png  used on input line 884.
+Package luatex.def Info: fig/image 61.png  used on input line 892.
 (luatex.def)             Requested size: 500.484pt x 345.2085pt.
 
 
-[35<./fig/image 61.png>]
-<fig/image 62.png, id=514, 516.93124pt x 355.3275pt>
+[36<./fig/image 61.png>]
+<fig/image 62.png, id=512, 516.93124pt x 355.3275pt>
 File: fig/image 62.png Graphic file (type png)
 <use fig/image 62.png>
-Package luatex.def Info: fig/image 62.png  used on input line 898.
+Package luatex.def Info: fig/image 62.png  used on input line 906.
 (luatex.def)             Requested size: 500.484pt x 344.03288pt.
 
 
-[36<./fig/image 62.png>]
-<fig/image 63.png, id=523, 433.11812pt x 298.11375pt>
+[37<./fig/image 62.png>]
+<fig/image 63.png, id=521, 433.11812pt x 298.11375pt>
 File: fig/image 63.png Graphic file (type png)
 <use fig/image 63.png>
-Package luatex.def Info: fig/image 63.png  used on input line 911.
+Package luatex.def Info: fig/image 63.png  used on input line 919.
 (luatex.def)             Requested size: 500.484pt x 344.49757pt.
 
 
-[37<./fig/image 63.png>]
-<fig/image 64.png, id=533, 516.42938pt x 356.33125pt>
+[38<./fig/image 63.png>]
+<fig/image 64.png, id=531, 516.42938pt x 356.33125pt>
 File: fig/image 64.png Graphic file (type png)
 <use fig/image 64.png>
-Package luatex.def Info: fig/image 64.png  used on input line 923.
+Package luatex.def Info: fig/image 64.png  used on input line 931.
 (luatex.def)             Requested size: 500.484pt x 345.34184pt.
 
 
-[38<./fig/image 64.png>]
-<fig/image 65.png, id=542, 427.5975pt x 293.095pt>
+[39<./fig/image 64.png>]
+<fig/image 65.png, id=540, 427.5975pt x 293.095pt>
 File: fig/image 65.png Graphic file (type png)
 <use fig/image 65.png>
-Package luatex.def Info: fig/image 65.png  used on input line 934.
+Package luatex.def Info: fig/image 65.png  used on input line 942.
 (luatex.def)             Requested size: 500.484pt x 343.05392pt.
 
 
-[39<./fig/image 65.png>]
-<fig/image 66.png, id=551, 484.81125pt x 335.2525pt>
+[40<./fig/image 65.png>]
+<fig/image 66.png, id=549, 484.81125pt x 335.2525pt>
 File: fig/image 66.png Graphic file (type png)
 <use fig/image 66.png>
-Package luatex.def Info: fig/image 66.png  used on input line 945.
+Package luatex.def Info: fig/image 66.png  used on input line 953.
 (luatex.def)             Requested size: 500.484pt x 346.10684pt.
 
 
-[40<./fig/image 66.png>]
-<fig/image 67.png, id=560, 497.86pt x 342.27875pt>
+[41<./fig/image 66.png>]
+<fig/image 67.png, id=559, 497.86pt x 342.27875pt>
 File: fig/image 67.png Graphic file (type png)
 <use fig/image 67.png>
-Package luatex.def Info: fig/image 67.png  used on input line 958.
+Package luatex.def Info: fig/image 67.png  used on input line 966.
 (luatex.def)             Requested size: 500.484pt x 344.09018pt.
 
 
-[41<./fig/image 67.png>]
-
-[42] (./lab3Handbook.aux)
+[42<./fig/image 67.png>] (./lab3Handbook.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `lab3Handbook.out' has not changed.
-(rerunfilecheck)             Checksum: 17BE8324766E5062C947F2B74317F888;6235.
+(rerunfilecheck)             Checksum: 7F684FFE03CC14E4827BB06514CECA30;6041.
 )
 
 Here is how much of LuaTeX's memory you used:
- 26938 strings out of 475512
- 195459,1373583 words of node,token memory allocated
- 807 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 1 local_par, 10 glue, 4 kern, 1 penalty, 3 glyph, 22 attribute, 88 glue_spec, 13 attribute_list, 1 write nodes
-   avail lists: 1:4,2:13235,3:403,4:1576,5:1393,6:147,7:11697,8:3,9:4096,10:135,11:1145
- 49167 multiletter control sequences out of 65536+600000
- 96 fonts using 31258103 bytes
- 85i,11n,99p,1008b,1088s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 27133 strings out of 475512
+ 156362,1373583 words of node,token memory allocated
+ 802 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 10 glue, 4 kern, 1 penalty, 3 glyph, 22 attribute, 87 glue_spec, 13 attribute_list, 1 write nodes
+   avail lists: 1:5,2:8880,3:383,4:1188,5:1538,6:111,7:8712,8:3,9:4346,10:112,11:1355
+ 49359 multiletter control sequences out of 65536+600000
+ 89 fonts using 18210463 bytes
+ 85i,11n,93p,1008b,1088s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 warning  (pdf backend): unreferenced destination with name 'Hfootnote.3'
 
 warning  (pdf backend): unreferenced destination with name 'Hfootnote.2'
 
 warning  (pdf backend): unreferenced destination with name 'Hfootnote.1'
-</nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Regular.ttf></nix/store/bkbr36m8qhq75sbbv5rqzdxqja50ang4-fontawesome5-5.15.4-tex/fonts/opentype/public/fontawesome5/FontAwesome5Brands-Regular-400.otf></nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Bold.ttf></nix/store/5zbz3nfkwqjg6xskcay063qziinzl8ix-ubuntu-classic-0.83-6ubuntu2/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Regular.otf></nix/store/bkbr36m8qhq75sbbv5rqzdxqja50ang4-fontawesome5-5.15.4-tex/fonts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Bold.otf></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on lab3Handbook.pdf (42 pages, 1398516 bytes).
+</nix/store/3ynanjc3b73jmgbm00hc87ywxzaffny7-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Regular.ttf></nix/store/bkbr36m8qhq75sbbv5rqzdxqja50ang4-fontawesome5-5.15.4-tex/fonts/opentype/public/fontawesome5/FontAwesome5Brands-Regular-400.otf></nix/store/5zbz3nfkwqjg6xskcay063qziinzl8ix-ubuntu-classic-0.83-6ubuntu2/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Regular.otf></nix/store/bkbr36m8qhq75sbbv5rqzdxqja50ang4-fontawesome5-5.15.4-tex/fonts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Bold.otf></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+Output written on lab3Handbook.pdf (42 pages, 1386823 bytes).
 
-PDF statistics: 644 PDF objects out of 1000 (max. 8388607)
- 522 compressed objects within 6 object streams
- 162 named destinations out of 1000 (max. 131072)
- 213 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 621 PDF objects out of 1000 (max. 8388607)
+ 502 compressed objects within 6 object streams
+ 150 named destinations out of 1000 (max. 131072)
+ 205 words of extra memory for PDF output out of 10000 (max. 100000000)
 
