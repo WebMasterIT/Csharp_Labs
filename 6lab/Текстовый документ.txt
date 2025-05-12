@@ -1,0 +1,1082 @@
+using System;
+using System.Windows.Input;
+
+namespace StoreManager_6lab.Commands
+{
+    // RelayCommand позволяет привязать действия к кнопкам (MVVM)
+    public class RelayCommand : ICommand
+    {
+        private readonly Action<object> _execute;
+        private readonly Predicate<object> _canExecute;
+
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
+        {
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+            _canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? true;
+        public void Execute(object parameter) => _execute(parameter);
+
+        public event EventHandler CanExecuteChanged
+        {
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
+        }
+    }
+}
+
+
+
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace StoreManager_6lab.Models
+{
+    public class CartItem : INotifyPropertyChanged
+    {
+        private int _quantity;
+
+        public Product Product { get; set; }
+
+        public int Quantity
+        {
+            get => _quantity;
+            set
+            {
+                if (_quantity != value)
+                {
+                    _quantity = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string prop = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoreManager_6lab.Models
+{
+    public class Order
+    {
+        public int Id { get; set; } // Уникальный идентификатор заказа
+        public string CustomerName { get; set; } // Имя клиента
+        public DateTime OrderDate { get; set; } // Дата оформления
+        public List<OrderItem> Items { get; set; } = new(); // Список позиций заказа
+
+        public decimal TotalPrice => Items?.Sum(item => (item.Product?.Price ?? 0) * item.Quantity) ?? 0;
+
+    }
+} 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoreManager_6lab.Models
+{
+    public class OrderItem
+    {
+        public int Id { get; set; }
+
+        public int ProductId { get; set; }         // 🔹 Внешний ключ
+        public Product? Product { get; set; }       // 🔹 Навигационное свойство
+
+        public int Quantity { get; set; }
+        public int OrderId { get; set; } 
+    }
+}
+
+
+
+using System;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoreManager_6lab.Models
+{
+    public class Product : INotifyPropertyChanged
+    {
+        private string _name;
+        public string Name
+        {
+            get => _name;
+            set { _name = value; OnPropertyChanged(); }
+        }
+
+        // Повторить для Price, Stock, Category
+
+        private int _id;
+        public int Id
+        {
+            get => _id;
+            set { _id = value; OnPropertyChanged(); }
+        }
+
+        private decimal _price;
+        public decimal Price
+        {
+            get => _price;
+            set { _price = value; OnPropertyChanged(); }
+        }
+
+        private int _stock;
+        public int Stock
+        {
+            get => _stock;
+            set { _stock = value; OnPropertyChanged(); }
+        }
+
+        private string? _category;
+        public string? Category
+        {
+            get => _category;
+            set { _category = value; OnPropertyChanged(); }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+}
+
+
+
+
+
+
+using Microsoft.Data.Sqlite; 
+using StoreManager_6lab.Models;
+
+namespace StoreManager_6lab.Repositories
+{
+    public class OrderRepository
+    {
+        private const string ConnectionString = "Data Source=store.db";
+
+        public List<Order> GetAll(List<Product> allProducts)
+        {
+            var orders = new List<Order>();
+
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT Id, CustomerName, OrderDate FROM [Order]";
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var order = new Order
+                {
+                    Id = reader.GetInt32(0),
+                    CustomerName = reader.GetString(1),
+                    OrderDate = DateTime.Parse(reader.GetString(2)),
+                    Items = new List<OrderItem>()
+                };
+
+                orders.Add(order);
+            }
+
+            foreach (var order in orders)
+            {
+                var itemCmd = connection.CreateCommand();
+                itemCmd.CommandText = "SELECT ProductId, Quantity FROM OrderItem WHERE OrderId = @orderId";
+                itemCmd.Parameters.AddWithValue("@orderId", order.Id);
+                using var itemReader = itemCmd.ExecuteReader();
+
+                while (itemReader.Read())
+                {
+                    var productId = itemReader.GetInt32(0);
+                    var quantity = itemReader.GetInt32(1);
+                    var product = allProducts.FirstOrDefault(p => p.Id == productId);
+
+                    if (product != null)
+                    {
+                        order.Items.Add(new OrderItem
+                        {
+                            Product = product,
+                            Quantity = quantity
+                        });
+                    }
+                }
+            }
+
+            return orders;
+        }
+
+        public void Add(Order order)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            using var transaction = connection.BeginTransaction();
+
+            var orderCmd = connection.CreateCommand();
+            orderCmd.CommandText = "INSERT INTO [Order] (CustomerName, OrderDate) VALUES (@name, @date); SELECT last_insert_rowid();";
+            orderCmd.Parameters.AddWithValue("@name", order.CustomerName);
+            orderCmd.Parameters.AddWithValue("@date", order.OrderDate.ToString("s"));
+            var orderId = (long)orderCmd.ExecuteScalar();
+
+            foreach (var item in order.Items)
+            {
+                var itemCmd = connection.CreateCommand();
+                itemCmd.CommandText = "INSERT INTO OrderItem (OrderId, ProductId, Quantity) VALUES (@orderId, @productId, @quantity)";
+                itemCmd.Parameters.AddWithValue("@orderId", orderId);
+                itemCmd.Parameters.AddWithValue("@productId", item.ProductId);
+                itemCmd.Parameters.AddWithValue("@quantity", item.Quantity);
+                itemCmd.ExecuteNonQuery();
+            }
+
+            transaction.Commit();
+        }
+
+        public void Delete(int orderId)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = "DELETE FROM [Order] WHERE Id = @id";
+            cmd.Parameters.AddWithValue("@id", orderId);
+            cmd.ExecuteNonQuery();
+        }
+    }
+}
+
+
+
+
+
+using Microsoft.Data.Sqlite; 
+using StoreManager_6lab.Models;
+
+namespace StoreManager_6lab.Repositories
+{
+    public class ProductRepository
+    {
+        private const string ConnectionString = "Data Source=store.db";
+
+        public List<Product> GetAll()
+        {
+            var list = new List<Product>();
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Product";
+
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new Product
+                {
+                    Id = reader.GetInt32(0),
+                    Name = reader.GetString(1),
+                    Price = reader.GetDecimal(2),
+                    Stock = reader.GetInt32(3),
+                    Category = reader.IsDBNull(4) ? null : reader.GetString(4)
+                });
+            }
+
+            return list;
+        }
+         
+        public void Add(Product product)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO Product (Name, Price, Stock, Category) VALUES (@name, @price, @stock, @category)";
+            command.Parameters.AddWithValue("@name", product.Name);
+            command.Parameters.AddWithValue("@price", product.Price);
+            command.Parameters.AddWithValue("@stock", product.Stock);
+            command.Parameters.AddWithValue("@category", product.Category ?? (object)DBNull.Value);
+
+            command.ExecuteNonQuery();
+        }
+
+        public void Update(Product product)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "UPDATE Product SET Name=@name, Price=@price, Stock=@stock, Category=@category WHERE Id=@id";
+            command.Parameters.AddWithValue("@id", product.Id);
+            command.Parameters.AddWithValue("@name", product.Name);
+            command.Parameters.AddWithValue("@price", product.Price);
+            command.Parameters.AddWithValue("@stock", product.Stock);
+            command.Parameters.AddWithValue("@category", product.Category ?? (object)DBNull.Value);
+
+            command.ExecuteNonQuery();
+        }
+
+        public void Delete(int id)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "DELETE FROM Product WHERE Id = @id";
+            command.Parameters.AddWithValue("@id", id);
+            command.ExecuteNonQuery();
+        }
+    }
+}
+
+
+
+
+
+using StoreManager_6lab.Models;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
+using System.Windows;
+
+namespace StoreManager_6lab.Services
+{
+    public class ApiService
+    {
+        private readonly HttpClient _http;
+
+        public ApiService()
+        {
+            var handler = new HttpClientHandler
+            {
+                // ✅ разрешаем подключаться к самоподписанному SSL-сертификату
+                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+            };
+
+            _http = new HttpClient(handler)
+            {
+                // ✅ выбираем, что доступно первым
+                BaseAddress = TryUseHttps()
+                    ? new Uri("https://localhost:7259/api/")
+                    : new Uri("http://localhost:5107/api/")
+            };
+        }
+
+        private bool TryUseHttps()
+        {
+            try
+            {
+                using var testClient = new HttpClient(
+                    new HttpClientHandler { ServerCertificateCustomValidationCallback = (a, b, c, d) => true });
+
+                var response = testClient.GetAsync("https://localhost:7259/api/Product").Result;
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // === Методы API ===
+
+        public async Task<List<Product>> GetProductsAsync()
+        {
+            try
+            {
+                return await _http.GetFromJsonAsync<List<Product>>("Product") ?? new List<Product>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при получении данных: {ex.Message}");
+                return new List<Product>();
+            }
+        }
+
+        public async Task AddProductAsync(Product product) =>
+            await _http.PostAsJsonAsync("Product", product);
+
+        public async Task UpdateProductAsync(Product product) =>
+            await _http.PutAsJsonAsync($"Product/{product.Id}", product);
+
+        public async Task DeleteProductAsync(int id) =>
+            await _http.DeleteAsync($"Product/{id}");
+
+        public async Task<List<Order>> GetOrdersAsync()
+        {
+            try
+            {
+                return await _http.GetFromJsonAsync<List<Order>>("Order") ?? new List<Order>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при получении заказов: {ex.Message}");
+                return new List<Order>();
+            }
+        }
+
+        public async Task AddOrderAsync(Order order) =>
+            await _http.PostAsJsonAsync("Order", order);
+
+        public async Task DeleteOrderAsync(int id) =>
+            await _http.DeleteAsync($"Order/{id}");
+    }
+}
+
+
+
+
+using StoreManager_6lab.Commands;
+using StoreManager_6lab.Models;
+using StoreManager_6lab.Services;
+using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Net.Http;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+
+namespace StoreManager_6lab.ViewModels
+{
+    public class MainViewModel : INotifyPropertyChanged
+    {
+        private readonly ApiService _api = new();
+
+        public ObservableCollection<Product> Products { get; set; } = new();
+        public ObservableCollection<Order> Orders { get; set; } = new();
+        public ObservableCollection<CartItem> CartItems { get; set; } = new();
+
+        // Вводимые данные
+        private string _newProductName;
+        public string NewProductName
+        {
+            get => _newProductName;
+            set { _newProductName = value; OnPropertyChanged(); }
+        }
+
+        private decimal _newProductPrice;
+        public decimal NewProductPrice
+        {
+            get => _newProductPrice;
+            set { _newProductPrice = value; OnPropertyChanged(); }
+        }
+
+        private int _newProductStock;
+        public int NewProductStock
+        {
+            get => _newProductStock;
+            set { _newProductStock = value; OnPropertyChanged(); }
+        }
+
+        private string _selectedCategory;
+        public string SelectedCategory
+        {
+            get => _selectedCategory;
+            set { _selectedCategory = value; OnPropertyChanged(); }
+        }
+
+        private string _customerName;
+        public string CustomerName
+        {
+            get => _customerName;
+            set { _customerName = value; OnPropertyChanged(); }
+        }
+         
+
+        public ObservableCollection<string> Categories { get; } = new()
+        {
+            "Ноутбуки", "Комплектующие", "Аксессуары", "Мониторы", "Сеть"
+        };
+
+        // Выборы из списка
+        private Product _selectedProduct;
+        public Product SelectedProduct
+        {
+            get => _selectedProduct;
+            set
+            {
+                _selectedProduct = value;
+                OnPropertyChanged();
+                if (value != null)
+                {
+                    NewProductName = value.Name;
+                    NewProductPrice = value.Price;
+                    NewProductStock = value.Stock;
+                    SelectedCategory = value.Category;
+                }
+            }
+        }
+
+        private CartItem _selectedCartItem;
+        public CartItem SelectedCartItem
+        {
+            get => _selectedCartItem;
+            set { _selectedCartItem = value; OnPropertyChanged(); }
+        }
+
+        private Order _selectedOrder;
+        public Order SelectedOrder
+        {
+            get => _selectedOrder;
+            set { _selectedOrder = value; OnPropertyChanged(); }
+        }
+
+        // Команды
+        public ICommand AddProductCommand { get; }
+        public ICommand UpdateProductCommand { get; }
+        public ICommand DeleteProductCommand { get; }
+        public ICommand AddToCartCommand { get; }
+        public ICommand RemoveFromCartCommand { get; }
+        public ICommand AddOrderCommand { get; }
+        public ICommand DeleteOrderCommand { get; }
+        public ICommand ClearFieldsCommand { get; }
+        public ICommand IncreaseQuantityCommand { get; }
+        public ICommand DecreaseQuantityCommand { get; }
+
+
+        public MainViewModel()
+        {
+            AddProductCommand = new RelayCommand(async _ => await AddProductAsync(), _ => CanAddProduct());
+            UpdateProductCommand = new RelayCommand(async _ => await UpdateProductAsync(), _ => SelectedProduct != null);
+            DeleteProductCommand = new RelayCommand(async _ => await DeleteProductAsync(), _ => SelectedProduct != null);
+            AddToCartCommand = new RelayCommand(_ => AddToCart(), _ => SelectedProduct != null && SelectedProduct.Stock > 0);
+            RemoveFromCartCommand = new RelayCommand(_ => RemoveFromCart(), _ => SelectedCartItem != null);
+            AddOrderCommand = new RelayCommand(async _ => await AddOrderAsync(), _ => CartItems.Any() && !string.IsNullOrWhiteSpace(CustomerName));
+            DeleteOrderCommand = new RelayCommand(async _ => await DeleteOrderAsync(), _ => SelectedOrder != null);
+            ClearFieldsCommand = new RelayCommand(_ => ClearProductFields());
+            IncreaseQuantityCommand = new RelayCommand(IncreaseQuantity, CanIncreaseQuantity);
+            DecreaseQuantityCommand = new RelayCommand(DecreaseQuantity, CanDecreaseQuantity);
+
+            _ = LoadProductsAsync();
+            _ = LoadOrdersAsync();
+        }
+
+        // ================================
+        // Методы
+        // ================================
+
+        private async Task LoadProductsAsync()
+        {
+            Products.Clear();
+            var products = await _api.GetProductsAsync();
+            foreach (var p in products)
+                Products.Add(p);
+        }
+
+        private async Task LoadOrdersAsync()
+        {
+            try
+            {
+                Orders.Clear();
+                var orders = await _api.GetOrdersAsync();
+
+                if (orders == null || !orders.Any())
+                {
+                    // Нет заказов — это нормально
+                    return;
+                }
+
+                foreach (var order in orders)
+                {
+                    Orders.Add(order);
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Ошибка при получении заказов: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Неизвестная ошибка: {ex.Message}");
+            }
+        }
+
+
+        private void IncreaseQuantity(object parameter)
+        {
+            if (parameter is CartItem item && item.Product.Stock > 0)
+            {
+                item.Quantity++;
+                item.Product.Stock--;
+                OnPropertyChanged(nameof(CartItems));
+                OnPropertyChanged(nameof(Products));
+                CommandManager.InvalidateRequerySuggested();
+            }
+        }
+
+        private void DecreaseQuantity(object parameter)
+        {
+            if (parameter is CartItem item && item.Quantity > 1)
+            {
+                item.Quantity--;
+                item.Product.Stock++;
+                OnPropertyChanged(nameof(CartItems));
+                OnPropertyChanged(nameof(Products));
+                CommandManager.InvalidateRequerySuggested();
+            }
+        }
+
+        private bool CanIncreaseQuantity(object parameter) =>
+            parameter is CartItem item && item.Product.Stock > 0;
+
+        private bool CanDecreaseQuantity(object parameter) =>
+            parameter is CartItem item && item.Quantity > 1;
+
+
+        private async Task AddProductAsync()
+        {
+            var product = new Product
+            {
+                Name = NewProductName,
+                Price = NewProductPrice,
+                Stock = NewProductStock,
+                Category = SelectedCategory
+            };
+
+            await _api.AddProductAsync(product);
+            await LoadProductsAsync();
+            ClearProductFields();
+        }
+
+        private async Task UpdateProductAsync()
+        {
+            if (SelectedProduct == null) return;
+
+            SelectedProduct.Name = NewProductName;
+            SelectedProduct.Price = NewProductPrice;
+            SelectedProduct.Stock = NewProductStock;
+            SelectedProduct.Category = SelectedCategory;
+
+            await _api.UpdateProductAsync(SelectedProduct);
+            await LoadProductsAsync();
+            ClearProductFields();
+            SelectedProduct = null;
+        }
+
+        private async Task DeleteProductAsync()
+        {
+            if (SelectedProduct == null) return;
+
+            await _api.DeleteProductAsync(SelectedProduct.Id);
+            await LoadProductsAsync();
+            ClearProductFields();
+            SelectedProduct = null;
+        }
+
+        private void AddToCart()
+        {
+            var existing = CartItems.FirstOrDefault(x => x.Product.Id == SelectedProduct.Id);
+            if (existing != null)
+                existing.Quantity++;
+            else
+                CartItems.Add(new CartItem { Product = SelectedProduct, Quantity = 1 });
+
+            SelectedProduct.Stock--;
+            OnPropertyChanged(nameof(CartItems));
+        }
+
+        private void RemoveFromCart()
+        {
+            if (SelectedCartItem == null) return;
+
+            SelectedCartItem.Product.Stock += SelectedCartItem.Quantity;
+            CartItems.Remove(SelectedCartItem);
+            SelectedCartItem = null;
+            OnPropertyChanged(nameof(CartItems));
+        }
+
+        private async Task AddOrderAsync()
+        {
+            var order = new Order
+            {
+                CustomerName = CustomerName,
+                OrderDate = DateTime.Now,
+                Items = CartItems.Select(c => new OrderItem
+                {
+                    ProductId = c.Product.Id,
+                    Quantity = c.Quantity,
+                    Product = null,    
+                }).ToList()
+            };
+
+            try
+            {
+                await _api.AddOrderAsync(order); // Отправляем заказ на сервер
+                MessageBox.Show("✅ Заказ успешно создан.");
+
+                // Затем обновляем список заказов
+                await LoadOrdersAsync();
+
+                // Очищаем корзину и форму только после этого
+                CartItems.Clear();
+                CustomerName = "";
+                await LoadProductsAsync(); // обновляем остатки
+                OnPropertyChanged(nameof(CartItems));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Ошибка при создании заказа: " + ex.Message);
+            }
+
+            CommandManager.InvalidateRequerySuggested(); // обновляет состояние кнопок
+        }
+
+
+
+        private async Task DeleteOrderAsync()
+        {
+            if (SelectedOrder == null) return;
+            await _api.DeleteOrderAsync(SelectedOrder.Id);
+            await LoadOrdersAsync();
+        }
+
+        public void ClearProductFields()
+        {
+            NewProductName = "";
+            NewProductPrice = 0;
+            NewProductStock = 0;
+            SelectedCategory = null;
+
+            OnPropertyChanged(nameof(NewProductName));
+            OnPropertyChanged(nameof(NewProductPrice));
+            OnPropertyChanged(nameof(NewProductStock));
+            OnPropertyChanged(nameof(SelectedCategory));
+        }
+
+        private bool CanAddProduct() =>
+            !string.IsNullOrWhiteSpace(NewProductName) &&
+            NewProductPrice > 0 &&
+            NewProductStock > 0 &&
+            !string.IsNullOrWhiteSpace(SelectedCategory);
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+}
+
+
+
+
+
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using StoreManager_6lab.Models;
+using StoreManager_6lab.Commands;
+using StoreManager_6lab.Services;
+using System.Linq;
+using System;
+
+namespace StoreManager_6lab.ViewModels
+{
+    public class OrderViewModel : BaseViewModel
+    {
+        private readonly ApiService _api = new();
+
+        private Order _selectedOrder;
+        private string _customerName;
+
+        public ObservableCollection<Order> Orders { get; } = new();
+        public ObservableCollection<Product> AvailableProducts { get; } = new();
+        public ObservableCollection<OrderItem> SelectedItems { get; } = new();
+
+        public string CustomerName
+        {
+            get => _customerName;
+            set => SetProperty(ref _customerName, value);
+        }
+
+        public Order SelectedOrder
+        {
+            get => _selectedOrder;
+            set
+            {
+                if (SetProperty(ref _selectedOrder, value) && value != null)
+                {
+                    CustomerName = value.CustomerName;
+                    SelectedItems.Clear();
+                    foreach (var item in value.Items)
+                        SelectedItems.Add(new OrderItem
+                        {
+                            ProductId = item.ProductId,
+                            Product = item.Product,
+                            Quantity = item.Quantity
+                        });
+                }
+            }
+        }
+
+        public ICommand AddOrderCommand { get; }
+        public ICommand DeleteOrderCommand { get; }
+
+        public OrderViewModel()
+        {
+            AddOrderCommand = new RelayCommand(async _ => await AddOrder());
+            DeleteOrderCommand = new RelayCommand(async _ => await DeleteOrder(), _ => SelectedOrder != null);
+
+            _ = LoadOrders();
+            _ = LoadAvailableProducts();
+        }
+
+        private async Task LoadOrders()
+        {
+            Orders.Clear();
+            var orders = await _api.GetOrdersAsync();
+            foreach (var order in orders)
+                Orders.Add(order);
+        }
+
+        private async Task LoadAvailableProducts()
+        {
+            AvailableProducts.Clear();
+            var products = await _api.GetProductsAsync();
+            foreach (var p in products)
+                AvailableProducts.Add(p);
+        }
+
+        private async Task AddOrder()
+        {
+            if (string.IsNullOrWhiteSpace(CustomerName) || SelectedItems.Count == 0) return;
+
+            var newOrder = new Order
+            {
+                CustomerName = CustomerName,
+                OrderDate = DateTime.Now,
+                Items = SelectedItems.Select(i => new OrderItem
+                {
+                    ProductId = i.Product.Id,
+                    Quantity = i.Quantity
+                }).ToList()
+            };
+
+            await _api.AddOrderAsync(newOrder);
+            await LoadOrders();
+
+            CustomerName = "";
+            SelectedItems.Clear();
+        }
+
+        private async Task DeleteOrder()
+        {
+            if (SelectedOrder == null) return;
+
+            await _api.DeleteOrderAsync(SelectedOrder.Id);
+            Orders.Remove(SelectedOrder);
+            SelectedOrder = null;
+            SelectedItems.Clear();
+            CustomerName = string.Empty;
+        }
+    }
+}
+
+
+
+
+using StoreManager_6lab.Models;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace StoreManager_6lab.ViewModels
+{
+    public class ProductViewModel : INotifyPropertyChanged
+    {
+        private readonly Product _product;
+
+        public ProductViewModel(Product product)
+        {
+            _product = product;
+        }
+
+        public int Id => _product.Id;
+
+        public string Name
+        {
+            get => _product.Name;
+            set
+            {
+                if (_product.Name != value)
+                {
+                    _product.Name = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public decimal Price
+        {
+            get => _product.Price;
+            set
+            {
+                if (_product.Price != value)
+                {
+                    _product.Price = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public int Stock
+        {
+            get => _product.Stock;
+            set
+            {
+                if (_product.Stock != value)
+                {
+                    _product.Stock = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string Category
+        {
+            get => _product.Category;
+            set
+            {
+                if (_product.Category != value)
+                {
+                    _product.Category = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public Product ToModel() => _product;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+}
+
+
+
+using StoreManager_6lab.ViewModels;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace StoreManager_6lab
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent(); 
+        }
+
+        private void ProductsListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Универсально для ListBox и ListView
+            if (sender is not Selector selector) return;
+
+            var result = VisualTreeHelper.HitTest((Visual)sender, e.GetPosition((IInputElement)sender));
+            if (result == null) return;
+
+            DependencyObject obj = result.VisualHit;
+
+            // Поднимаемся по дереву до ListBoxItem или ListViewItem
+            while (obj != null && obj is not ListBoxItem && obj is not ListViewItem)
+            {
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+
+            // Если клик был не по элементу — снимаем выделение
+            if (obj == null)
+            {
+                selector.SelectedItem = null;
+
+                if (DataContext is MainViewModel vm)
+                {
+                    // Очищаем оба — корзину и товар
+                    vm.SelectedProduct = null;
+                    vm.SelectedCartItem = null;
+                    vm.ClearProductFields();
+                }
+
+                e.Handled = true;
+            }
+        }
+
+
+        private void CartListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is not Selector selector) return;
+
+            var result = VisualTreeHelper.HitTest((Visual)sender, e.GetPosition((IInputElement)sender));
+            if (result == null) return;
+
+            DependencyObject obj = result.VisualHit;
+
+            while (obj != null && obj is not ListBoxItem)
+            {
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+
+            if (obj == null)
+            {
+                selector.SelectedItem = null;
+
+                if (DataContext is MainViewModel vm)
+                {
+                    vm.SelectedCartItem = null;
+                }
+
+                e.Handled = true;
+            }
+        }
+
+
+
+        private void ProductsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listView = sender as ListView;
+
+            if (listView?.SelectedItem == null)
+            {
+                if (DataContext is MainViewModel vm)
+                {
+                    vm.ClearProductFields();
+                    vm.SelectedProduct = null;
+                }
+            }
+        }
+
+    }
+
+
+}
+

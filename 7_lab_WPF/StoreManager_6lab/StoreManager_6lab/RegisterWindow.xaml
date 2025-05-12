@@ -1,0 +1,102 @@
+﻿<Window x:Class="StoreManager_7lab.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:StoreManager_7lab.ViewModels"
+        Title="Регистрация"
+        Height="420"
+        Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#1F1F1F"
+        Foreground="White">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#8703ab"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                            CornerRadius="6"
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    
+    <Window.DataContext>
+        <vm:RegisterViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="Регистрация"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"
+                   Foreground="#8703ab"/>
+
+        <TextBlock Grid.Row="1" Text="Имя пользователя:"/>
+        <TextBox Grid.Row="2"
+                 Margin="0,5,0,10"
+                 Padding="3"
+                 Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                 Background="#2A2A2A"
+                 BorderBrush="#8703ab"
+                 Foreground="White" />
+
+        <TextBlock Grid.Row="3" Text="Пароль:"/>
+        <PasswordBox Grid.Row="4"
+                     Margin="0,5,0,10"
+                     x:Name="PasswordBox"
+                     Padding="3"
+                     PasswordChanged="PasswordBox_PasswordChanged"
+                     Background="#2A2A2A"
+                     BorderBrush="#8703ab"
+                     Foreground="White"/>
+
+        <StackPanel Grid.Row="5" Orientation="Vertical">
+            <ComboBox ItemsSource="{Binding Roles}"
+                      SelectedItem="{Binding SelectedRole}"  
+                      Foreground="#8703ab"
+                      Margin="0,0,0,10"/>
+
+            <!-- Ссылка на регистрацию -->
+            <TextBlock HorizontalAlignment="Left" FontSize="12">
+     <Run Text="Уже зарегистриованы? "/>
+     <Run Text="Войти"
+          Foreground="#8703ab"
+          TextDecorations="Underline"
+          Cursor="Hand"
+          MouseDown="RegisterText_MouseDown"/>
+            </TextBlock>
+
+            <Button Content="Зарегистрироваться"
+                    Command="{Binding RegisterCommand}"
+                    Background="#8703ab"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    Height="35"/>
+        </StackPanel>
+    </Grid>
+</Window>

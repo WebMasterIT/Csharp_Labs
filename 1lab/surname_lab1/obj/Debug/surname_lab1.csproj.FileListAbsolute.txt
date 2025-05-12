@@ -18,3 +18,13 @@ D:\Преподавание\Программирование_Кущий_Масл
 D:\Преподавание\Программирование_Кущий_Масленников\surname_lab1\surname_lab1\obj\Debug\surname_.3884B50B.Up2Date
 D:\Преподавание\Программирование_Кущий_Масленников\surname_lab1\surname_lab1\obj\Debug\surname_lab1.exe
 D:\Преподавание\Программирование_Кущий_Масленников\surname_lab1\surname_lab1\obj\Debug\surname_lab1.pdb
+D:\Преподавание\Программирование_Кущий_Масленников\Лабораторные\Csharp_Labs\1lab\surname_lab1\bin\Debug\surname_lab1.exe.config
+D:\Преподавание\Программирование_Кущий_Масленников\Лабораторные\Csharp_Labs\1lab\surname_lab1\bin\Debug\surname_lab1.exe
+D:\Преподавание\Программирование_Кущий_Масленников\Лабораторные\Csharp_Labs\1lab\surname_lab1\bin\Debug\surname_lab1.pdb
+D:\Преподавание\Программирование_Кущий_Масленников\Лабораторные\Csharp_Labs\1lab\surname_lab1\bin\Debug\Components_Classes.dll
+D:\Преподавание\Программирование_Кущий_Масленников\Лабораторные\Csharp_Labs\1lab\surname_lab1\bin\Debug\Components_Classes.pdb
+D:\Преподавание\Программирование_Кущий_Масленников\Лабораторные\Csharp_Labs\1lab\surname_lab1\obj\Debug\surname_lab1.csproj.AssemblyReference.cache
+D:\Преподавание\Программирование_Кущий_Масленников\Лабораторные\Csharp_Labs\1lab\surname_lab1\obj\Debug\surname_lab1.csproj.CoreCompileInputs.cache
+D:\Преподавание\Программирование_Кущий_Масленников\Лабораторные\Csharp_Labs\1lab\surname_lab1\obj\Debug\surname_.3884B50B.Up2Date
+D:\Преподавание\Программирование_Кущий_Масленников\Лабораторные\Csharp_Labs\1lab\surname_lab1\obj\Debug\surname_lab1.exe
+D:\Преподавание\Программирование_Кущий_Масленников\Лабораторные\Csharp_Labs\1lab\surname_lab1\obj\Debug\surname_lab1.pdb

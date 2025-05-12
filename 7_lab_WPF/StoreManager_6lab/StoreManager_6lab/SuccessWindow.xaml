@@ -1,0 +1,16 @@
+﻿<Window x:Class="StoreManager_7lab.SuccessWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Успех"
+        Height="150" Width="300"
+        WindowStartupLocation="CenterScreen"
+        Background="#8703ab">
+    <Grid>
+        <TextBlock Text="Регистрация успешна!"
+                   Foreground="White"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+    </Grid>
+</Window>

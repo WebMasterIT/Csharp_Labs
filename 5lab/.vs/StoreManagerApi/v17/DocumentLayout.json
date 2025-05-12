@@ -1,0 +1,90 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\StoreManagerApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E991ECC2-3887-49A5-AED5-3FE994F0B30A}|StoreManagerApi\\StoreManagerApi.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\storemanagerapi\\storemanagerapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E991ECC2-3887-49A5-AED5-3FE994F0B30A}|StoreManagerApi\\StoreManagerApi.csproj|solutionrelative:storemanagerapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E991ECC2-3887-49A5-AED5-3FE994F0B30A}|StoreManagerApi\\StoreManagerApi.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\storemanagerapi\\storemanagerapi\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E991ECC2-3887-49A5-AED5-3FE994F0B30A}|StoreManagerApi\\StoreManagerApi.csproj|solutionrelative:storemanagerapi\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E991ECC2-3887-49A5-AED5-3FE994F0B30A}|StoreManagerApi\\StoreManagerApi.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\storemanagerapi\\storemanagerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E991ECC2-3887-49A5-AED5-3FE994F0B30A}|StoreManagerApi\\StoreManagerApi.csproj|solutionrelative:storemanagerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E991ECC2-3887-49A5-AED5-3FE994F0B30A}|StoreManagerApi\\StoreManagerApi.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\storemanagerapi\\storemanagerapi\\models\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E991ECC2-3887-49A5-AED5-3FE994F0B30A}|StoreManagerApi\\StoreManagerApi.csproj|solutionrelative:storemanagerapi\\models\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\Program.cs",
+              "RelativeDocumentMoniker": "StoreManagerApi\\Program.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\Program.cs",
+              "RelativeToolTip": "StoreManagerApi\\Program.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAwwEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T11:44:07.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "StoreManagerApi\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "StoreManagerApi\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T04:38:50.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "StoreManagerApi\\Controllers\\OrderController.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "StoreManagerApi\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAowFsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T04:38:49.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\Models\\LoginDto.cs",
+              "RelativeDocumentMoniker": "StoreManagerApi\\Models\\LoginDto.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\Models\\LoginDto.cs",
+              "RelativeToolTip": "StoreManagerApi\\Models\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T20:29:50.985Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
