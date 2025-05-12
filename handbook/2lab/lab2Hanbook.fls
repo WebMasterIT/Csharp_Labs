@@ -65,6 +65,8 @@ INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-fin
 INPUT /home/replica/.texlive2024/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz
 INPUT /home/replica/.texlive2024/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-regular.luc
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/cmap/cmap.sty
+INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/newfloat/newfloat.sty
+INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/graphics/keyval.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/minted/minted.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/catchfile/catchfile.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/infwarerr/infwarerr.sty
@@ -74,7 +76,6 @@ INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-fin
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/etoolbox/etoolbox.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fvextra/fvextra.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fancyvrb/fancyvrb.sty
-INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/graphics/keyval.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/pdftexcmds/pdftexcmds.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/pdftexcmds/pdftexcmds.lua
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/upquote/upquote.sty
@@ -88,9 +89,9 @@ INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-fin
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/pgfopts/pgfopts.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/tools/shellesc.sty
-INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/float/float.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/caption/caption.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/caption/caption3.sty
+INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/tools/indentfirst.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/babel/babel.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/babel/luababel.def
 INPUT /nix/store/2q3fjn24g7w6m77xjgfj8mr8a3grxdqq-texlive-combined-full-2024-final/share/texmf-var/tex/generic/config/language.dat
@@ -107,6 +108,7 @@ INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-fin
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/microtype/microtype-luatex.def
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/microtype/microtype.lua
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/microtype/microtype.cfg
+INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/float/float.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/fontspec/fontspec.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/l3packages/xparse/xparse.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/l3kernel/expl3.sty
@@ -137,6 +139,7 @@ INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-fin
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/generic/uniquecounter/uniquecounter.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/enumitem/enumitem.sty
+INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/tocloft/tocloft.sty
 INPUT /home/replica/.texlive2024/texmf-var/luatex-cache/generic/fonts/otl/timesnewerroman-regular.luc
 INPUT /home/replica/.texlive2024/texmf-var/luatex-cache/generic/fonts/otl/timesnewerroman-bold.luc
 INPUT /home/replica/.texlive2024/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc
@@ -172,7 +175,6 @@ INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-fin
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amsgen.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amsbsy.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amsopn.sty
-INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/tocloft/tocloft.sty
 INPUT ./lab2Hanbook.aux
 OUTPUT lab2Hanbook.aux
 INPUT ./lab2Hanbook.out
@@ -182,6 +184,7 @@ INPUT ./lab2Hanbook.out
 OUTPUT lab2Hanbook.out
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/grfext/grfext.sty
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT ./lab2Hanbook.toc
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/microtype/mt-TU-empty.cfg
@@ -205,8 +208,8 @@ INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-fin
 INPUT /home/replica/.texlive2024/texmf-var/luatex-cache/generic/fonts/otl/ubuntunerdfont-regular.luc
 INPUT /home/replica/.texlive2024/texmf-var/luatex-cache/generic/fonts/otl/ubuntunerdfont-bold.luc
 OUTPUT lab2Hanbook.toc
-INPUT ./lab2Hanbook.lol
 INPUT /nix/store/2q3fjn24g7w6m77xjgfj8mr8a3grxdqq-texlive-combined-full-2024-final/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./lab2Hanbook.lol
 OUTPUT lab2Hanbook.lol
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/tfm/public/cm/cmmi10.tfm
@@ -236,15 +239,22 @@ INPUT ./fig/image-1.jpg
 INPUT ./fig/image-1.jpg
 INPUT ./fig/image.jpg
 INPUT ./fig/image.jpg
-INPUT ./fig/none.png
-INPUT ./fig/none.png
-INPUT ./fig/none.png
-INPUT ./fig/none.png
-INPUT ./fig/none.png
+INPUT ./fig/100.png
+INPUT ./fig/100.png
+INPUT ./fig/101.png
+INPUT ./fig/101.png
+INPUT ./fig/102.png
+INPUT ./fig/102.png
+INPUT ./fig/103.png
+INPUT ./fig/103.png
 INPUT ./fig/image 58.jpg
 INPUT ./fig/image 58.jpg
 INPUT ./fig/image 37.jpg
 INPUT ./fig/image 37.jpg
+INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/tfm/public/cm/cmmi10.tfm
+INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/tfm/public/cm/cmex10.tfm
+INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/tfm/public/cm/cmr10.tfm
 INPUT ./fig/image 38.jpg
 INPUT ./fig/image 38.jpg
 INPUT ./fig/Group 98.jpg
@@ -259,35 +269,58 @@ INPUT ./_minted/3FF51D59ED647E38EB8296724AE431DE.highlight.minted
 INPUT ./fig/image 31.jpg
 INPUT ./fig/image 31.jpg
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
+INPUT ./_minted/262372DD5556F6D865C063B826B5D6B1.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
-INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ./_minted/E04B1209913BC6083BA071FEE9B9924E.highlight.minted
 INPUT ../../2lab/WinFormsApp1example_/Form1.cs
-INPUT ./_minted/E74FE1DA9AC982F32E71A8ACFCAF0114.highlight.minted
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
+INPUT ../../2lab/WinFormsApp1example_/Form1.cs
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
 INPUT ./_minted/832058FB85189CEBF20A6730ADBC1971.highlight.minted
 INPUT ./_minted/4B030939A2A4668DA8E131CF5855F776.highlight.minted
-INPUT ./_minted/3887BD021618C48AED9F947C3F7E5310.highlight.minted
+INPUT ./_minted/934BEC5540D9C31B878001F4B7902D57.highlight.minted
+INPUT ../../2lab/WinFormsApp1example_/Form1.cs
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
+INPUT ../../2lab/WinFormsApp1example_/Form1.cs
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
+INPUT ../../2lab/WinFormsApp1example_/Form1.cs
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
+INPUT ./fig/image 62.jpg
+INPUT ./fig/image 62.jpg
+INPUT ../../2lab/WinFormsApp1example_/Form1.cs
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
+INPUT ../../2lab/WinFormsApp1example_/Form1.cs
+INPUT ./_minted/94CEDCA68959BBD559323C6C8BE3BE8C.highlight.minted
+INPUT ./fig/image 69.jpg
+INPUT ./fig/image 69.jpg
+INPUT ./fig/image 70.jpg
+INPUT ./fig/image 70.jpg
+INPUT ./fig/image 72.jpg
+INPUT ./fig/image 72.jpg
+INPUT ./fig/image 71.jpg
+INPUT ./fig/image 71.jpg
+INPUT ./fig/image 73.jpg
+INPUT ./fig/image 73.jpg
 INPUT ./lab2Hanbook.aux
 INPUT ./lab2Hanbook.out
 INPUT /nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb

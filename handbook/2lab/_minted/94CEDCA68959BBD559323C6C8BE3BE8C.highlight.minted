@@ -211,7 +211,7 @@
 \PYG{+w}{            }\PYG{p}{\PYGZob{}}
 \PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{decimal}\PYG{p}{.}\PYG{n}{TryParse}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{Value}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{out}\PYG{+w}{ }\PYG{k+kt}{decimal}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{)}\PYG{p}{)}
 \PYG{+w}{                }\PYG{p}{\PYGZob{}}
-\PYG{+w}{                    }\PYG{n}{e}\PYG{p}{.}\PYG{n}{Value}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}N2\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} ₽\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n}{e}\PYG{p}{.}\PYG{n}{Value}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{price}\PYG{p}{.}\PYG{n}{ToString}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}N2\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Ruble\PYGZdq{}}\PYG{p}{;}
 \PYG{+w}{                    }\PYG{n}{e}\PYG{p}{.}\PYG{n}{FormattingApplied}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{true}\PYG{p}{;}
 \PYG{+w}{                }\PYG{p}{\PYGZcb{}}
 \PYG{+w}{            }\PYG{p}{\PYGZcb{}}

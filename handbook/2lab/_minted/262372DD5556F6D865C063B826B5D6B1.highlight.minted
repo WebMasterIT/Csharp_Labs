@@ -1,0 +1,47 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{SaveDataGridView}\PYG{p}{(}\PYG{n}{DataGridView}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Создаем и настраиваем диалог сохранения файла}
+\PYG{+w}{    }\PYG{k}{using}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{SaveFileDialog}\PYG{+w}{ }\PYG{n}{saveFileDialog}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{SaveFileDialog}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n}{Filter}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}XML файлы|*.xml\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Сохранить данные\PYGZdq{}}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{c+c1}{// Проверяем, нажал ли пользователь кнопку \PYGZdq{}Сохранить\PYGZdq{}}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{saveFileDialog}\PYG{p}{.}\PYG{n}{ShowDialog}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{DialogResult}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Создаем DataTable с именем \PYGZdq{}MyTable\PYGZdq{}}
+\PYG{+w}{            }\PYG{n}{DataTable}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{DataTable}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}MyTable\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Добавляем в DataTable колонки из DataGridView}
+\PYG{+w}{            }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{DataGridViewColumn}\PYG{+w}{ }\PYG{n}{column}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{.}\PYG{n}{Columns}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{dt}\PYG{p}{.}\PYG{n}{Columns}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{column}\PYG{p}{.}\PYG{n}{Name}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Перебираем все строки DataGridView}
+\PYG{+w}{            }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{DataGridViewRow}\PYG{+w}{ }\PYG{n}{row}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{.}\PYG{n}{Rows}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{c+c1}{// Пропускаем строку, если она новая (пустая)}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n}{row}\PYG{p}{.}\PYG{n}{IsNewRow}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{c+c1}{// Создаем новую строку для DataTable}
+\PYG{+w}{                    }\PYG{n}{DataRow}\PYG{+w}{ }\PYG{n}{dr}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dt}\PYG{p}{.}\PYG{n}{NewRow}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{                    }\PYG{c+c1}{// Заполняем строку данными из ячеек DataGridView}
+\PYG{+w}{                    }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{dgv}\PYG{p}{.}\PYG{n}{Columns}\PYG{p}{.}\PYG{n}{Count}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+\PYG{+w}{                    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{n}{dr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{row}\PYG{p}{.}\PYG{n}{Cells}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{.}\PYG{n}{Value}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{n}{DBNull}\PYG{p}{.}\PYG{n}{Value}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Если значение null, заменяем его на DBNull.Value}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                    }\PYG{c+c1}{// Добавляем заполненную строку в DataTable}
+\PYG{+w}{                    }\PYG{n}{dt}\PYG{p}{.}\PYG{n}{Rows}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{dr}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{            }\PYG{c+c1}{// Сохраняем DataTable в XML\PYGZhy{}файл с указанием схемы}
+\PYG{+w}{            }\PYG{n}{dt}\PYG{p}{.}\PYG{n}{WriteXml}\PYG{p}{(}\PYG{n}{saveFileDialog}\PYG{p}{.}\PYG{n}{FileName}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{XmlWriteMode}\PYG{p}{.}\PYG{n}{WriteSchema}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{            }\PYG{c+c1}{// Выводим сообщение об успешном сохранении данных}
+\PYG{+w}{            }\PYG{n}{MessageBox}\PYG{p}{.}\PYG{n}{Show}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Данные сохранены!\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Успех\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxButtons}\PYG{p}{.}\PYG{n}{OK}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MessageBoxIcon}\PYG{p}{.}\PYG{n}{Information}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
