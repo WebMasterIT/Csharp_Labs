@@ -1,0 +1,105 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{MainViewModel}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{INotifyPropertyChanged}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Контекст базы данных}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n}{StoreDbContext}\PYG{+w}{ }\PYG{n}{\PYGZus{}context}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Коллекция всех товаров}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ObservableCollection}\PYG{o}{\PYGZlt{}}\PYG{n}{Product}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Products}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Коллекция всех заказов}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ObservableCollection}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Orders}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Коллекция товаров, добавленных в корзину}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ObservableCollection}\PYG{o}{\PYGZlt{}}\PYG{n}{CartItem}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{CartItems}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Команда добавления товара}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ICommand}\PYG{+w}{ }\PYG{n}{AddProductCommand}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Команда создания заказа}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{ICommand}\PYG{+w}{ }\PYG{n}{AddOrderCommand}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Конструктор ViewModel}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{MainViewModel}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{c+c1}{// Инициализация команд}
+\PYG{+w}{        }\PYG{n}{AddProductCommand}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{RelayCommand}\PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{AddProduct}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{CanAddProduct}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{AddOrderCommand}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{RelayCommand}\PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{AddOrder}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Создание базы данных при первом запуске}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Database}\PYG{p}{.}\PYG{n}{EnsureCreated}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Загрузка данных из базы}
+\PYG{+w}{        }\PYG{n}{LoadProducts}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{LoadOrders}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Загрузка всех товаров из базы данных}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{LoadProducts}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{p}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Products}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Загрузка всех заказов с товарами из базы данных}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{LoadOrders}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{allOrders}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Orders}
+\PYG{+w}{            }\PYG{p}{.}\PYG{n}{Include}\PYG{p}{(}\PYG{n}{o}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{.}\PYG{n}{Items}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{.}\PYG{n}{ThenInclude}\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{k}{foreach}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{order}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{allOrders}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{order}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Добавление нового товара}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{AddProduct}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{product}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Product}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{Name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Новый товар\PYGZdq{}}\PYG{p}{,}\PYG{+w}{     }\PYG{c+c1}{// название товара}
+\PYG{+w}{            }\PYG{n}{Price}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{p}{,}\PYG{+w}{              }\PYG{c+c1}{// цена по умолчанию}
+\PYG{+w}{            }\PYG{n}{Stock}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{+w}{               }\PYG{c+c1}{// количество по умолчанию}
+\PYG{+w}{            }\PYG{n}{Category}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Общая\PYGZdq{}}\PYG{+w}{        }\PYG{c+c1}{// категория товара}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Products}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{product}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{     }\PYG{c+c1}{// добавление в базу данных}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{SaveChanges}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{             }\PYG{c+c1}{// сохранение изменений}
+\PYG{+w}{        }\PYG{n}{LoadProducts}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{                     }\PYG{c+c1}{// обновление списка товаров}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Добавление нового заказа}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{AddOrder}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n}{CartItems}\PYG{p}{.}\PYG{n}{Any}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{return}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// проверка наличия товаров в корзине}
+
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{order}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Order}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{CustomerName}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Клиент\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// имя покупателя}
+\PYG{+w}{            }\PYG{n}{OrderDate}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DateTime}\PYG{p}{.}\PYG{n}{Now}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// дата оформления}
+\PYG{+w}{            }\PYG{n}{Items}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{CartItems}\PYG{p}{.}\PYG{n}{Select}\PYG{p}{(}\PYG{n}{c}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{OrderItem}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{Product}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{.}\PYG{n}{Product}\PYG{p}{,}\PYG{+w}{    }\PYG{c+c1}{// товар}
+\PYG{+w}{                }\PYG{n}{Quantity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{.}\PYG{n}{Quantity}\PYG{+w}{   }\PYG{c+c1}{// количество}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{.}\PYG{n}{ToList}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{Orders}\PYG{p}{.}\PYG{n}{Add}\PYG{p}{(}\PYG{n}{order}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{   }\PYG{c+c1}{// добавление заказа в БД}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}context}\PYG{p}{.}\PYG{n}{SaveChanges}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{       }\PYG{c+c1}{// сохранение}
+\PYG{+w}{        }\PYG{n}{LoadOrders}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{                 }\PYG{c+c1}{// обновление списка}
+\PYG{+w}{        }\PYG{n}{CartItems}\PYG{p}{.}\PYG{n}{Clear}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{            }\PYG{c+c1}{// очистка корзины}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Условие доступности команды добавления товара}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n+nf}{CanAddProduct}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{k}{true}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{event}\PYG{+w}{ }\PYG{n}{PropertyChangedEventHandler}\PYG{+w}{ }\PYG{n}{PropertyChanged}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Обработка события изменения свойства}
+\PYG{+w}{    }\PYG{k}{protected}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{OnPropertyChanged}\PYG{p}{(}\PYG{p}{[}\PYG{n}{CallerMemberName}\PYG{p}{]}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}
+\PYG{+w}{        }\PYG{n}{PropertyChanged}\PYG{o}{?.}\PYG{n}{Invoke}\PYG{p}{(}\PYG{k}{this}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{PropertyChangedEventArgs}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

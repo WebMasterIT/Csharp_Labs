@@ -1,0 +1,30 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System}\PYG{p}{;}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n+nn}{System.Windows.Input}\PYG{p}{;}
+
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{RelayCommand}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{ICommand}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n}{Action}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{object}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{\PYGZus{}execute}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// делегат выполнения команды}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n}{Func}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{object}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{\PYGZus{}canExecute}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// делегат проверки возможности выполнения команды}
+
+\PYG{+w}{    }\PYG{c+c1}{// Конструктор команды}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{RelayCommand}\PYG{p}{(}\PYG{n}{Action}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{object}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{execute}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Func}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{object}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{canExecute}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}execute}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{execute}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{k}{throw}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{ArgumentNullException}\PYG{p}{(}\PYG{k}{nameof}\PYG{p}{(}\PYG{n}{execute}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// инициализация метода выполнения}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}canExecute}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{canExecute}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// инициализация метода проверки доступности}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Событие, которое вызывается при изменении условий выполнения команды}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{event}\PYG{+w}{ }\PYG{n}{EventHandler}\PYG{+w}{ }\PYG{n}{CanExecuteChanged}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{add}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n}{CommandManager}\PYG{p}{.}\PYG{n}{RequerySuggested}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{k}{remove}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n}{CommandManager}\PYG{p}{.}\PYG{n}{RequerySuggested}\PYG{+w}{ }\PYG{o}{\PYGZhy{}=}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Проверка, может ли команда быть выполнена}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n+nf}{CanExecute}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{parameter}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{\PYGZus{}canExecute}\PYG{o}{?.}\PYG{n}{Invoke}\PYG{p}{(}\PYG{n}{parameter}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{k}{true}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Выполнение команды}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{Execute}\PYG{p}{(}\PYG{k+kt}{object}\PYG{+w}{ }\PYG{n}{parameter}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{\PYGZus{}execute}\PYG{p}{(}\PYG{n}{parameter}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

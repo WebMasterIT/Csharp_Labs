@@ -1,8 +1,8 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024/nixos.org)  (format=lualatex 1980.1.1)  8 MAY 2025 22:02
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024/nixos.org)  (format=lualatex 1980.1.1)  8 MAY 2025 22:03
  restricted system commands enabled.
  file:line:error style messages enabled.
-**lab3Handbook.tex
-(./lab3Handbook.tex
+**lab4handbook.tex
+(./lab4handbook.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
@@ -633,7 +633,7 @@ Package newfloat Info: \fleglisting is already defined on input line 106.
 Package newfloat Info: \flegtoclisting is already defined on input line 106.
 
 
-./lab3Handbook.tex:106: LaTeX Error: Command \listing already defined.
+./lab4handbook.tex:106: LaTeX Error: Command \listing already defined.
                Or name \end... illegal, see p.192 of the manual.
 
 See the LaTeX manual or LaTeX Companion for explanation.
@@ -647,7 +647,7 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-./lab3Handbook.tex:106: LaTeX Error: Command \listing* already defined.
+./lab4handbook.tex:106: LaTeX Error: Command \listing* already defined.
                Or name \end... illegal, see p.192 of the manual.
 
 See the LaTeX manual or LaTeX Companion for explanation.
@@ -735,8 +735,8 @@ LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
 \@LN@amsmath@ams@eqpen=\count345
- (./lab3Handbook.aux)
-\openout1 = lab3Handbook.aux
+ (./lab4handbook.aux)
+\openout1 = lab4handbook.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 115.
 LaTeX Font Info:    ... okay on input line 115.
@@ -842,10 +842,10 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/UbuntuMono(0)/b/n on input line 115.
 Package hyperref Info: Link coloring OFF on input line 115.
- (./lab3Handbook.out) (./lab3Handbook.out)
+ (./lab4handbook.out) (./lab4handbook.out)
 \@outlinefile=\write4
 
-\openout4 = lab3Handbook.out
+\openout4 = lab4handbook.out
  (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count346
@@ -905,76 +905,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(./lab3Handbook.toc (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/microtype/mt-TU-empty.cfg
-File: mt-TU-empty.cfg 2021/06/22 v1.1 microtype config. file: fonts with nonstandard glyph set (RS)
-)<<oml.cmap>><<oms.cmap>><<omx.cmap>><<ot1.cmap>> (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/microtype/mt-cmr.cfg
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `UbuntuMono' (encoding: TU).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-)
-\tf@toc=\write5
-
-\openout5 = lab3Handbook.toc
-
-
-[1
-
-{/nix/store/2q3fjn24g7w6m77xjgfj8mr8a3grxdqq-texlive-combined-full-2024-final/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./lab3Handbook.lol)
-\tf@lol=\write6
-
-\openout6 = lab3Handbook.lol
-
-
-[2]
-
-[3]
-
-[4]
-
-[5]
-
-[6]
-
-[7]
-
-[8]
-<fig/image 2.png, id=264, 517.935pt x 340.27126pt>
-File: fig/image 2.png Graphic file (type png)
-<use fig/image 2.png>
-Package luatex.def Info: fig/image 2.png  used on input line 401.
-(luatex.def)             Requested size: 275.26772pt x 180.85173pt.
-<fig/image 3.png, id=266, 370.88562pt x 292.09125pt>
-File: fig/image 3.png Graphic file (type png)
-<use fig/image 3.png>
-Package luatex.def Info: fig/image 3.png  used on input line 410.
-(luatex.def)             Requested size: 275.26772pt x 216.79037pt.
-
-
-[9<./fig/image 2.png><./fig/image 3.png>]
-<fig/image 4.png, id=280, 367.3725pt x 125.46875pt>
-File: fig/image 4.png Graphic file (type png)
-<use fig/image 4.png>
-Package luatex.def Info: fig/image 4.png  used on input line 421.
-(luatex.def)             Requested size: 400.38872pt x 136.75438pt.
-
-
-[10<./fig/image 4.png>]
-\pydata@fh@_75543EBAA87A90477040A7F1CFD7A6ED.data.minted=\write7
-
-\openout7 = _75543EBAA87A90477040A7F1CFD7A6ED.data.minted
-runsystem(latexminted config  --timestamp 20250508220240 75543EBAA87A90477040A7F1CFD7A6ED)...executed.
- (./_75543EBAA87A90477040A7F1CFD7A6ED.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20250508220240 75543EBAA87A90477040A7F1CFD7A6ED)...executed.
- (./_minted/catppuccin-latte.style.minted) (./_minted/254D8EA9F73B2D11223534B22B185A57.highlight.minted)
-Package hyperref Info: bookmark level for unknown listing defaults to 0 on input line 465.
- (./_minted/B20000D529C9F6752B5A702B87CB10F4.highlight.minted
-
-[11]) (./_minted/FFFADF0D6C331D5CBC1CAC7684D600B2.highlight.minted) (./_minted/88C9D543E0C230206D9BBD1698768B82.highlight.minted
-
-[12])
+(./lab4handbook.toc
 
 Package fontspec Info: 
 (fontspec)             Font family 'UbuntuNerdFont(0)' created for font
@@ -994,155 +925,137 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `UbuntuNerdFont' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+<<oml.cmap>><<oms.cmap>><<omx.cmap>><<ot1.cmap>> (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `UbuntuMono' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+)
+\tf@toc=\write5
+
+\openout5 = lab4handbook.toc
 
 
-[13] (./_minted/3E854896C28318892A620B68F400DE1B.highlight.minted
+[1
+
+{/nix/store/2q3fjn24g7w6m77xjgfj8mr8a3grxdqq-texlive-combined-full-2024-final/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./lab4handbook.lol)
+\tf@lol=\write6
+
+\openout6 = lab4handbook.lol
+
+
+[2] (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/microtype/mt-TU-empty.cfg
+File: mt-TU-empty.cfg 2021/06/22 v1.1 microtype config. file: fonts with nonstandard glyph set (RS)
+)
+
+[3]
+
+[4]
+
+[5]
+\pydata@fh@_8A6D47D2EFC325692E6A3DDE6BDDC751.data.minted=\write7
+
+\openout7 = _8A6D47D2EFC325692E6A3DDE6BDDC751.data.minted
+runsystem(latexminted config  --timestamp 20250508220302 8A6D47D2EFC325692E6A3DDE6BDDC751)...executed.
+ (./_8A6D47D2EFC325692E6A3DDE6BDDC751.config.minted)
+runsystem(latexminted cleanconfig  --timestamp 20250508220302 8A6D47D2EFC325692E6A3DDE6BDDC751)...executed.
+ (./_minted/catppuccin-latte.style.minted) (./_minted/8F1AD94DD352320C9445A68732F1F642.highlight.minted)
+Package hyperref Info: bookmark level for unknown listing defaults to 0 on input line 189.
+
+
+[6] (./_minted/38E6F4ACB6A11D58482B1D7ED7AC1075.highlight.minted) (./_minted/ECBA84FB53D9C3CBBBA710E71E7A0531.highlight.minted
+
+[7]) (./_minted/976111AFBF0F4A527F4B182BD1C00066.highlight.minted
+
+[8]
+
+[9])
+
+[10] (./_minted/764F06288A2EFDAABE73D2BFF4ACC2D2.highlight.minted
+
+[11]) (./_minted/EE77635183CA43C9A6554DF04CE57730.highlight.minted
+
+[12])
+
+[13] (./_minted/093534C2270CB4E33BCE54CE398026EB.highlight.minted
 
 [14]
 
-[15])
+[15]) (./_minted/801303AE32771409A92FBE1455A65114.highlight.minted
 
-[16] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[16]
 
-[17] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
+[17])
 
-[18] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
+[18]
 
-[19]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
+[19] (./_minted/7139B931A9B0E803EC437A604656ECC9.highlight.minted) (./_minted/B657BFF9588ADBECEE19DDDE3E83BDA4.highlight.minted) (./_minted/97DD9301A217F48F5344974DE5ABABA2.highlight.minted)
 
-[20]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
-
-[21]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
-
-[22])
-
-[23] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
-
-[24] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
-
-[25]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
-
-[26])
-
-[27] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
-
-[28]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
-
-[29]) (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted)
-
-[30] (./_minted/F43296B242FC59981C1CDDB19EA9AA53.highlight.minted
-
-[31])
-
-[32]
-<fig/image 26.png, id=476, 509.905pt x 350.30875pt>
-File: fig/image 26.png Graphic file (type png)
-<use fig/image 26.png>
-Package luatex.def Info: fig/image 26.png  used on input line 851.
-(luatex.def)             Requested size: 500.484pt x 343.8508pt.
+[20]
+<fig/Рисунок 6.1.png, id=312, 953.06062pt x 536.75531pt>
+File: fig/Рисунок 6.1.png Graphic file (type png)
+<use fig/Рисунок 6.1.png>
+Package luatex.def Info: fig/Рисунок 6.1.png  used on input line 821.
+(luatex.def)             Requested size: 400.38872pt x 225.5012pt.
+<fig/Рисунок 6.2.png, id=314, 953.06062pt x 536.75531pt>
+File: fig/Рисунок 6.2.png Graphic file (type png)
+<use fig/Рисунок 6.2.png>
+Package luatex.def Info: fig/Рисунок 6.2.png  used on input line 833.
+(luatex.def)             Requested size: 400.38872pt x 225.5012pt.
 
 
-[33<./fig/image 26.png>]
-<fig/image 27.png, id=485, 496.85625pt x 341.275pt>
-File: fig/image 27.png Graphic file (type png)
-<use fig/image 27.png>
-Package luatex.def Info: fig/image 27.png  used on input line 865.
-(luatex.def)             Requested size: 500.484pt x 343.77371pt.
+[21<./fig/Рисунок 6.1.png>]
+<fig/Рисунок 6.3.png, id=326, 953.06062pt x 536.75531pt>
+File: fig/Рисунок 6.3.png Graphic file (type png)
+<use fig/Рисунок 6.3.png>
+Package luatex.def Info: fig/Рисунок 6.3.png  used on input line 842.
+(luatex.def)             Requested size: 400.38872pt x 225.5012pt.
+<fig/Рисунок 6.4.png, id=328, 953.06062pt x 536.75531pt>
+File: fig/Рисунок 6.4.png Graphic file (type png)
+<use fig/Рисунок 6.4.png>
+Package luatex.def Info: fig/Рисунок 6.4.png  used on input line 851.
+(luatex.def)             Requested size: 400.38872pt x 225.5012pt.
 
 
-[34<./fig/image 27.png>]
-<fig/image 60.png, id=494, 516.93124pt x 357.335pt>
-File: fig/image 60.png Graphic file (type png)
-<use fig/image 60.png>
-Package luatex.def Info: fig/image 60.png  used on input line 878.
-(luatex.def)             Requested size: 500.484pt x 345.9766pt.
+[22<./fig/Рисунок 6.2.png><./fig/Рисунок 6.3.png>]
+<fig/Рисунок 6.5.png, id=339, 953.06062pt x 536.75531pt>
+File: fig/Рисунок 6.5.png Graphic file (type png)
+<use fig/Рисунок 6.5.png>
+Package luatex.def Info: fig/Рисунок 6.5.png  used on input line 860.
+(luatex.def)             Requested size: 400.38872pt x 225.5012pt.
 
 
-[35<./fig/image 60.png>]
-<fig/image 61.png, id=503, 507.8975pt x 350.30875pt>
-File: fig/image 61.png Graphic file (type png)
-<use fig/image 61.png>
-Package luatex.def Info: fig/image 61.png  used on input line 892.
-(luatex.def)             Requested size: 500.484pt x 345.2085pt.
+[23<./fig/Рисунок 6.4.png><./fig/Рисунок 6.5.png>]
 
+[24]
 
-[36<./fig/image 61.png>]
-<fig/image 62.png, id=512, 516.93124pt x 355.3275pt>
-File: fig/image 62.png Graphic file (type png)
-<use fig/image 62.png>
-Package luatex.def Info: fig/image 62.png  used on input line 906.
-(luatex.def)             Requested size: 500.484pt x 344.03288pt.
-
-
-[37<./fig/image 62.png>]
-<fig/image 63.png, id=521, 433.11812pt x 298.11375pt>
-File: fig/image 63.png Graphic file (type png)
-<use fig/image 63.png>
-Package luatex.def Info: fig/image 63.png  used on input line 919.
-(luatex.def)             Requested size: 500.484pt x 344.49757pt.
-
-
-[38<./fig/image 63.png>]
-<fig/image 64.png, id=531, 516.42938pt x 356.33125pt>
-File: fig/image 64.png Graphic file (type png)
-<use fig/image 64.png>
-Package luatex.def Info: fig/image 64.png  used on input line 931.
-(luatex.def)             Requested size: 500.484pt x 345.34184pt.
-
-
-[39<./fig/image 64.png>]
-<fig/image 65.png, id=540, 427.5975pt x 293.095pt>
-File: fig/image 65.png Graphic file (type png)
-<use fig/image 65.png>
-Package luatex.def Info: fig/image 65.png  used on input line 942.
-(luatex.def)             Requested size: 500.484pt x 343.05392pt.
-
-
-[40<./fig/image 65.png>]
-<fig/image 66.png, id=549, 484.81125pt x 335.2525pt>
-File: fig/image 66.png Graphic file (type png)
-<use fig/image 66.png>
-Package luatex.def Info: fig/image 66.png  used on input line 953.
-(luatex.def)             Requested size: 500.484pt x 346.10684pt.
-
-
-[41<./fig/image 66.png>]
-<fig/image 67.png, id=559, 497.86pt x 342.27875pt>
-File: fig/image 67.png Graphic file (type png)
-<use fig/image 67.png>
-Package luatex.def Info: fig/image 67.png  used on input line 966.
-(luatex.def)             Requested size: 500.484pt x 344.09018pt.
-
-
-[42<./fig/image 67.png>] (./lab3Handbook.aux)
+[25] (./lab4handbook.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `lab3Handbook.out' has not changed.
-(rerunfilecheck)             Checksum: 7F684FFE03CC14E4827BB06514CECA30;6041.
+Package rerunfilecheck Info: File `lab4handbook.out' has not changed.
+(rerunfilecheck)             Checksum: CABECC49E7AC1570992AEDE7439781B0;5698.
 )
 
 Here is how much of LuaTeX's memory you used:
- 27133 strings out of 475512
- 156362,1373583 words of node,token memory allocated
- 802 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 1 local_par, 10 glue, 4 kern, 1 penalty, 3 glyph, 22 attribute, 87 glue_spec, 13 attribute_list, 1 write nodes
-   avail lists: 1:5,2:8880,3:383,4:1188,5:1538,6:111,7:8712,8:3,9:4346,10:112,11:1355
- 49359 multiletter control sequences out of 65536+600000
- 89 fonts using 18210463 bytes
- 85i,11n,93p,1008b,1088s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-warning  (pdf backend): unreferenced destination with name 'Hfootnote.3'
-
-warning  (pdf backend): unreferenced destination with name 'Hfootnote.2'
+ 27150 strings out of 475512
+ 156360,1373583 words of node,token memory allocated
+ 776 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 8 glue, 4 kern, 1 penalty, 3 glyph, 18 attribute, 87 glue_spec, 11 attribute_list, 1 write nodes
+   avail lists: 1:3,2:7439,3:354,4:1718,5:1474,6:117,7:9121,8:3,9:4159,10:126,11:1349
+ 49489 multiletter control sequences out of 65536+600000
+ 87 fonts using 25010295 bytes
+ 85i,12n,99p,1008b,1334s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 warning  (pdf backend): unreferenced destination with name 'Hfootnote.1'
-</nix/store/3ynanjc3b73jmgbm00hc87ywxzaffny7-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Regular.ttf></nix/store/bkbr36m8qhq75sbbv5rqzdxqja50ang4-fontawesome5-5.15.4-tex/fonts/opentype/public/fontawesome5/FontAwesome5Brands-Regular-400.otf></nix/store/5zbz3nfkwqjg6xskcay063qziinzl8ix-ubuntu-classic-0.83-6ubuntu2/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Regular.otf></nix/store/bkbr36m8qhq75sbbv5rqzdxqja50ang4-fontawesome5-5.15.4-tex/fonts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Bold.otf></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on lab3Handbook.pdf (42 pages, 1386823 bytes).
+</nix/store/5zbz3nfkwqjg6xskcay063qziinzl8ix-ubuntu-classic-0.83-6ubuntu2/share/fonts/truetype/ubuntu/UbuntuMono-B.ttf></nix/store/bkbr36m8qhq75sbbv5rqzdxqja50ang4-fontawesome5-5.15.4-tex/fonts/opentype/public/fontawesome5/FontAwesome5Brands-Regular-400.otf></nix/store/3ynanjc3b73jmgbm00hc87ywxzaffny7-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Regular.ttf></nix/store/5zbz3nfkwqjg6xskcay063qziinzl8ix-ubuntu-classic-0.83-6ubuntu2/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Regular.otf></nix/store/3ynanjc3b73jmgbm00hc87ywxzaffny7-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Bold.ttf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Bold.otf></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+Output written on lab4handbook.pdf (25 pages, 6505172 bytes).
 
-PDF statistics: 621 PDF objects out of 1000 (max. 8388607)
- 502 compressed objects within 6 object streams
- 150 named destinations out of 1000 (max. 131072)
- 205 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 424 PDF objects out of 1000 (max. 8388607)
+ 348 compressed objects within 4 object streams
+ 113 named destinations out of 1000 (max. 131072)
+ 181 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -1,0 +1,21 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{CartItem}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{INotifyPropertyChanged}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{n}{Product}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{c+c1}{// ссылка на продукт}
+
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{\PYGZus{}quantity}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// поле для хранения количества}
+
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{Quantity}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{get}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{\PYGZus{}quantity}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// получение значения}
+\PYG{+w}{        }\PYG{k}{set}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n}{\PYGZus{}quantity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{value}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{OnPropertyChanged}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{c+c1}{// установка значения и уведомление об изменении}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+c1}{// Событие, уведомляющее об изменении свойства}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{event}\PYG{+w}{ }\PYG{n}{PropertyChangedEventHandler}\PYG{+w}{ }\PYG{n}{PropertyChanged}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Метод вызова события изменения свойства}
+\PYG{+w}{    }\PYG{k}{protected}\PYG{+w}{ }\PYG{k}{void}\PYG{+w}{ }\PYG{n+nf}{OnPropertyChanged}\PYG{p}{(}\PYG{p}{[}\PYG{n}{CallerMemberName}\PYG{p}{]}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}
+\PYG{+w}{        }\PYG{n}{PropertyChanged}\PYG{o}{?.}\PYG{n}{Invoke}\PYG{p}{(}\PYG{k}{this}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{PropertyChangedEventArgs}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
