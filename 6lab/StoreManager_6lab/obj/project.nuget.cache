@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r6W7hB/SVwA=",
+  "dgSpecHash": "Pl4VDSm0LEc=",
   "success": true,
-  "projectFilePath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManager_6lab\\StoreManager_6lab\\StoreManager_6lab.csproj",
+  "projectFilePath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\6lab\\StoreManager_6lab\\StoreManager_6lab.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wspc7\\.nuget\\packages\\microsoft.data.sqlite.core\\9.0.4\\microsoft.data.sqlite.core.9.0.4.nupkg.sha512",
     "C:\\Users\\wspc7\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.4\\microsoft.entityframeworkcore.9.0.4.nupkg.sha512",

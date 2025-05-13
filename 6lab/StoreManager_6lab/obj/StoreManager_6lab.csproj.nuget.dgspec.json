@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManager_6lab\\StoreManager_6lab\\StoreManager_6lab.csproj": {}
+    "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\6lab\\StoreManager_6lab\\StoreManager_6lab.csproj": {}
   },
   "projects": {
-    "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManager_6lab\\StoreManager_6lab\\StoreManager_6lab.csproj": {
+    "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\6lab\\StoreManager_6lab\\StoreManager_6lab.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManager_6lab\\StoreManager_6lab\\StoreManager_6lab.csproj",
+        "projectUniqueName": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\6lab\\StoreManager_6lab\\StoreManager_6lab.csproj",
         "projectName": "StoreManager_6lab",
-        "projectPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManager_6lab\\StoreManager_6lab\\StoreManager_6lab.csproj",
+        "projectPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\6lab\\StoreManager_6lab\\StoreManager_6lab.csproj",
         "packagesPath": "C:\\Users\\wspc7\\.nuget\\packages\\",
-        "outputPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManager_6lab\\StoreManager_6lab\\obj\\",
+        "outputPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\6lab\\StoreManager_6lab\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
-
-<<<<<<< HEAD
+ 
 namespace StoreManager_4lab.ViewModels
 {
     public class RelayCommand : ICommand
@@ -29,9 +28,7 @@ namespace StoreManager_4lab.ViewModels
 
         public void Execute(object parameter) => _execute(parameter);
     }
-}
-  
-=======
+} 
 public class RelayCommand : ICommand
 {
     private readonly Action<object> _execute; // делегат выполнения команды
@@ -56,5 +53,4 @@ public class RelayCommand : ICommand
 
     // Выполнение команды
     public void Execute(object parameter) => _execute(parameter);
-}
->>>>>>> c79e983c4cab3c416e44b6d5f9854b292fdeae26
+} 

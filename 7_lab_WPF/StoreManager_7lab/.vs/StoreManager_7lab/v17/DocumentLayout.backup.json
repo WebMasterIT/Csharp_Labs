@@ -1,0 +1,567 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\7_lab_wpf\\storemanager_7lab\\storemanager_7lab\\services\\appservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|solutionrelative:storemanager_7lab\\services\\appservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\7_lab_wpf\\storemanager_7lab\\storemanager_7lab\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|solutionrelative:storemanager_7lab\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\7_lab_wpf\\storemanager_7lab\\storemanager_7lab\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|solutionrelative:storemanager_7lab\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\7_lab_wpf\\storemanager_7lab\\storemanager_7lab\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|solutionrelative:storemanager_7lab\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\7_lab_wpf\\storemanager_7lab\\storemanager_7lab\\viewmodels\\orderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|solutionrelative:storemanager_7lab\\viewmodels\\orderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\7_lab_wpf\\storemanager_7lab\\storemanager_7lab\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|solutionrelative:storemanager_7lab\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\7_lab_wpf\\storemanager_7lab\\storemanager_7lab\\commands\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|solutionrelative:storemanager_7lab\\commands\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\7_lab_wpf\\storemanager_7lab\\storemanager_7lab\\data\\storedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|solutionrelative:storemanager_7lab\\data\\storedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|d:\\\u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u043A\u0443\u0449\u0438\u0439_\u043C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u043B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\csharp_labs\\7_lab_wpf\\storemanager_7lab\\storemanager_7lab\\models\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C080B54-0095-42A7-AFC0-9D8FA33030B6}|StoreManager_7lab\\StoreManager_7lab.csproj|solutionrelative:storemanager_7lab\\models\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\SuccessWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Services\\AppService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\obj\\Debug\\net8.0-windows\\App.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\LoginWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\RegisterViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\UserRegisterDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\Product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\RegisterWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\RegisterWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Repositories\\ProductRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Repositories\\OrderRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\CartItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Commands\\RelayCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\ProductViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\OrderViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Data\\StoreDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\MainViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\LoginViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\BaseViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\App.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\SuccessWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\LoginWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\OrderItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\Order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\App.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "StoreManager_7lab\\MainWindow.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\MainWindow.xaml",
+              "RelativeToolTip": "StoreManager_7lab\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T07:01:43.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppService.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\Services\\AppService.cs",
+              "RelativeDocumentMoniker": "StoreManager_7lab\\Services\\AppService.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\Services\\AppService.cs",
+              "RelativeToolTip": "StoreManager_7lab\\Services\\AppService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwB0AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T06:55:45.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "StoreManager_7lab\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "StoreManager_7lab\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAA9wC0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T07:01:53.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "StoreManager_7lab\\LoginWindow.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\LoginWindow.xaml",
+              "RelativeToolTip": "StoreManager_7lab\\LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T07:01:25.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrderViewModel.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\ViewModels\\OrderViewModel.cs",
+              "RelativeDocumentMoniker": "StoreManager_7lab\\ViewModels\\OrderViewModel.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\ViewModels\\OrderViewModel.cs",
+              "RelativeToolTip": "StoreManager_7lab\\ViewModels\\OrderViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T07:00:32.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "StoreManager_7lab\\Repositories\\ProductRepository.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "StoreManager_7lab\\Repositories\\ProductRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T06:55:44.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\Commands\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "StoreManager_7lab\\Commands\\RelayCommand.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\Commands\\RelayCommand.cs",
+              "RelativeToolTip": "StoreManager_7lab\\Commands\\RelayCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T06:55:40.023Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "StoreDbContext.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\Data\\StoreDbContext.cs",
+              "RelativeDocumentMoniker": "StoreManager_7lab\\Data\\StoreDbContext.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\Data\\StoreDbContext.cs",
+              "RelativeToolTip": "StoreManager_7lab\\Data\\StoreDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T06:55:31.506Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserRegisterDto.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\Models\\UserRegisterDto.cs",
+              "RelativeDocumentMoniker": "StoreManager_7lab\\Models\\UserRegisterDto.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\Csharp_Labs\\7_lab_WPF\\StoreManager_7lab\\StoreManager_7lab\\Models\\UserRegisterDto.cs",
+              "RelativeToolTip": "StoreManager_7lab\\Models\\UserRegisterDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T06:55:28.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SuccessWindow.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\SuccessWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\SuccessWindow.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\SuccessWindow.xaml.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\SuccessWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T16:57:01.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwFUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T16:56:08.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\LoginWindow.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\LoginWindow.xaml",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-10T16:59:43.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UserRegisterDto.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\UserRegisterDto.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\UserRegisterDto.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\UserRegisterDto.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\UserRegisterDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T17:14:06.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AppService.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Services\\AppService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Services\\AppService.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Services\\AppService.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Services\\AppService.cs",
+              "ViewState": "AgIAANsAAAAAAAAAAAAowP8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T16:55:05.397Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\Product.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\Product.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\Product.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAiwCAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T08:49:57.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RegisterWindow.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\RegisterWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\RegisterWindow.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\RegisterWindow.xaml.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\RegisterWindow.xaml.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwCwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T16:55:59.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RegisterWindow.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\RegisterWindow.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\RegisterWindow.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\RegisterWindow.xaml",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\RegisterWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-10T16:47:41.45Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Repositories\\ProductRepository.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Repositories\\ProductRepository.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAmwE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T08:50:04.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Repositories\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Repositories\\OrderRepository.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Repositories\\OrderRepository.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Repositories\\OrderRepository.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAuwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T08:50:02.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\CartItem.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\CartItem.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\CartItem.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\CartItem.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAiwAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T08:49:39.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Commands\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Commands\\RelayCommand.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Commands\\RelayCommand.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Commands\\RelayCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T08:49:32.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ProductViewModel.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\ProductViewModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\ProductViewModel.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\ProductViewModel.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\ProductViewModel.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAIwEwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T20:13:07.259Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "OrderViewModel.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\OrderViewModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\OrderViewModel.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\OrderViewModel.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\OrderViewModel.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAmwG0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T19:08:19.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "StoreDbContext.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Data\\StoreDbContext.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Data\\StoreDbContext.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Data\\StoreDbContext.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Data\\StoreDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T13:09:27.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAADsBAAAAAAAAAAAIwFwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T19:08:19.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAIwGAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T18:05:35.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "BaseViewModel.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\BaseViewModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\BaseViewModel.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\BaseViewModel.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\ViewModels\\BaseViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T20:37:37.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\App.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\App.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\App.xaml.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T16:54:59.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "SuccessWindow.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\SuccessWindow.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\SuccessWindow.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\SuccessWindow.xaml",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\SuccessWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-10T16:56:44.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\LoginWindow.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\LoginWindow.xaml.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAIwBUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T18:06:37.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\MainWindow.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\MainWindow.xaml",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-10T16:47:28.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAuwHYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T19:43:52.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\OrderItem.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\OrderItem.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\OrderItem.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\OrderItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T08:49:54.534Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\Order.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\Order.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T08:49:42.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\App.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\App.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\App.xaml",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-10T17:03:25.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "App.g.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\obj\\Debug\\net8.0-windows\\App.g.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\obj\\Debug\\net8.0-windows\\App.g.cs",
+              "ToolTip": "D:\\\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u043D\u0438\u0435\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435_\u041A\u0443\u0449\u0438\u0439_\u041C\u0430\u0441\u043B\u0435\u043D\u043D\u0438\u043A\u043E\u0432\\\u041B\u0430\u0431\u043E\u0440\u0430\u0442\u043E\u0440\u043D\u044B\u0435\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\obj\\Debug\\net8.0-windows\\App.g.cs",
+              "RelativeToolTip": "..\\..\\..\\\u041A\u043E\u043F\u0438\u044F\\Csharp_Labs\\7_lab\\StoreManager_6lab\\StoreManager_6lab\\obj\\Debug\\net8.0-windows\\App.g.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T17:38:54.137Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

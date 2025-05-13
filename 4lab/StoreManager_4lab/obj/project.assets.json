@@ -1270,11 +1270,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManager_4lab\\StoreManager_4lab\\StoreManager_4lab.csproj",
+      "projectUniqueName": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\4lab\\StoreManager_4lab\\StoreManager_4lab.csproj",
       "projectName": "StoreManager_4lab",
-      "projectPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManager_4lab\\StoreManager_4lab\\StoreManager_4lab.csproj",
+      "projectPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\4lab\\StoreManager_4lab\\StoreManager_4lab.csproj",
       "packagesPath": "C:\\Users\\wspc7\\.nuget\\packages\\",
-      "outputPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManager_4lab\\StoreManager_4lab\\obj\\",
+      "outputPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\4lab\\StoreManager_4lab\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

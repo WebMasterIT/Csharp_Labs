@@ -199,7 +199,7 @@ namespace StoreManager
                 MessageBox.Show("Пожалуйста, выберите хотя бы один товар для заказа.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
+            
             // Создание нового заказа
             var order = new Order
             {

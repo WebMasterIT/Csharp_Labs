@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\StoreManagerApi.csproj": {}
+    "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\7lab_ASPNET\\StoreManagerApi\\StoreManagerApi.csproj": {}
   },
   "projects": {
-    "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\StoreManagerApi.csproj": {
+    "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\7lab_ASPNET\\StoreManagerApi\\StoreManagerApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\StoreManagerApi.csproj",
+        "projectUniqueName": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\7lab_ASPNET\\StoreManagerApi\\StoreManagerApi.csproj",
         "projectName": "StoreManagerApi",
-        "projectPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\StoreManagerApi.csproj",
+        "projectPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\7lab_ASPNET\\StoreManagerApi\\StoreManagerApi.csproj",
         "packagesPath": "C:\\Users\\wspc7\\.nuget\\packages\\",
-        "outputPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\StoreManagerApi\\StoreManagerApi\\obj\\",
+        "outputPath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\7lab_ASPNET\\StoreManagerApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

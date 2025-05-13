@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0qHxxoyPpu8=",
+  "dgSpecHash": "F7JPV+h5EOg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\wspc7\\source\\repos\\surname_wfApp\\surname_wfApp\\surname_wfApp.csproj",
+  "projectFilePath": "D:\\Преподавание\\Программирование_Кущий_Масленников\\Лабораторные\\Csharp_Labs\\2lab\\surname_wfApp\\surname_wfApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wspc7\\.nuget\\packages\\bunifu.licensing\\6.0.8\\bunifu.licensing.6.0.8.nupkg.sha512",
     "C:\\Users\\wspc7\\.nuget\\packages\\bunifu.ui.winforms\\8.0.0\\bunifu.ui.winforms.8.0.0.nupkg.sha512",

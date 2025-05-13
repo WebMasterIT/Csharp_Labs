@@ -11,7 +11,7 @@ namespace StoreManager.Converters
         // Преобразует boolean (IsEmpty) в Visibility для TextBlock
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value is bool isEmpty && isEmpty ? Visibility.Visible : Visibility.Collapsed;
+            return value is bool isEmpty && isEmpty ? Visibility.Visible : Visibility.Hidden;
         }
 
         // Обратное преобразование не используется

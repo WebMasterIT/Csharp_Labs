@@ -1049,7 +1049,7 @@
             Controls.Add(graphicsCardPanel);
             Controls.Add(componentsPanel);
             Controls.Add(menuPanel);
-            FormBorderStyle = FormBorderStyle.None; 
+            FormBorderStyle = FormBorderStyle.None;
             Text = "Form1";
             Load += Form1_Load;
             MouseDown += Form1_MouseDown;
