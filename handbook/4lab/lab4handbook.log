@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024/nixos.org)  (format=lualatex 1980.1.1)  8 MAY 2025 22:03
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024/nixos.org)  (format=lualatex 1980.1.1)  12 MAY 2025 20:19
  restricted system commands enabled.
  file:line:error style messages enabled.
 **lab4handbook.tex
@@ -622,54 +622,7 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip98
 \f@nch@widthR=\skip99
 \@temptokenb=\toks31
-)
-Package newfloat Info: New float `listing' with options ` listname=Листинг, ' on input line 106.
-Package newfloat Info: \c@listing is already defined on input line 106.
-Package newfloat Info: float type `listing'=4 on input line 106.
-Package newfloat Info: \fnum@listing is already defined on input line 106.
-Package newfloat Info: \listingname is already defined on input line 106.
-Package newfloat Info: \listingautorefname is already defined on input line 106.
-Package newfloat Info: \fleglisting is already defined on input line 106.
-Package newfloat Info: \flegtoclisting is already defined on input line 106.
-
-
-./lab4handbook.tex:106: LaTeX Error: Command \listing already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.106 ]{listing}
-              
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-./lab4handbook.tex:106: LaTeX Error: Command \listing* already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.106 ]{listing}
-              
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-Package newfloat Info: \listoflisting is already defined on input line 106.
-Package newfloat Info: \listoflistings is already defined on input line 106.
-Package newfloat Info: \listoflistinges is already defined on input line 106.
-Package newfloat Info: \newfloat@listoflisting@hook is already defined on input line 106.
-Package newfloat Info: \l@listing is already defined on input line 106.
-Package newfloat Info: \listlistingname is already defined on input line 106.
-Package newfloat Info: \fps@listing is already defined on input line 106.
-Package newfloat Info: \ext@listing is already defined on input line 106.
-Package newfloat Info: \newfloat@env@lol is already defined on input line 106.
-(/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amsmath.sty
+) (/nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
 \@mathmargin=\skip100
 
@@ -958,9 +911,9 @@ File: mt-TU-empty.cfg 2021/06/22 v1.1 microtype config. file: fonts with nonstan
 \pydata@fh@_8A6D47D2EFC325692E6A3DDE6BDDC751.data.minted=\write7
 
 \openout7 = _8A6D47D2EFC325692E6A3DDE6BDDC751.data.minted
-runsystem(latexminted config  --timestamp 20250508220302 8A6D47D2EFC325692E6A3DDE6BDDC751)...executed.
+runsystem(latexminted config  --timestamp 20250512201907 8A6D47D2EFC325692E6A3DDE6BDDC751)...executed.
  (./_8A6D47D2EFC325692E6A3DDE6BDDC751.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20250508220302 8A6D47D2EFC325692E6A3DDE6BDDC751)...executed.
+runsystem(latexminted cleanconfig  --timestamp 20250512201907 8A6D47D2EFC325692E6A3DDE6BDDC751)...executed.
  (./_minted/catppuccin-latte.style.minted) (./_minted/8F1AD94DD352320C9445A68732F1F642.highlight.minted)
 Package hyperref Info: bookmark level for unknown listing defaults to 0 on input line 189.
 
@@ -1051,8 +1004,8 @@ Here is how much of LuaTeX's memory you used:
  85i,12n,99p,1008b,1334s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 warning  (pdf backend): unreferenced destination with name 'Hfootnote.1'
-</nix/store/5zbz3nfkwqjg6xskcay063qziinzl8ix-ubuntu-classic-0.83-6ubuntu2/share/fonts/truetype/ubuntu/UbuntuMono-B.ttf></nix/store/bkbr36m8qhq75sbbv5rqzdxqja50ang4-fontawesome5-5.15.4-tex/fonts/opentype/public/fontawesome5/FontAwesome5Brands-Regular-400.otf></nix/store/3ynanjc3b73jmgbm00hc87ywxzaffny7-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Regular.ttf></nix/store/5zbz3nfkwqjg6xskcay063qziinzl8ix-ubuntu-classic-0.83-6ubuntu2/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Regular.otf></nix/store/3ynanjc3b73jmgbm00hc87ywxzaffny7-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Bold.ttf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Bold.otf></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on lab4handbook.pdf (25 pages, 6505172 bytes).
+</nix/store/5zbz3nfkwqjg6xskcay063qziinzl8ix-ubuntu-classic-0.83-6ubuntu2/share/fonts/truetype/ubuntu/UbuntuMono-B.ttf></nix/store/bkbr36m8qhq75sbbv5rqzdxqja50ang4-fontawesome5-5.15.4-tex/fonts/opentype/public/fontawesome5/FontAwesome5Brands-Regular-400.otf></nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Regular.ttf></nix/store/5zbz3nfkwqjg6xskcay063qziinzl8ix-ubuntu-classic-0.83-6ubuntu2/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Regular.otf></nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/UbuntuNerdFont-Bold.ttf></nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/TimesNewerRoman-Bold.otf></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/i5n783l27h2wn35mp7y39vlmidai2p3i-texlive-combined-full-2024-final-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+Output written on lab4handbook.pdf (25 pages, 6505444 bytes).
 
 PDF statistics: 424 PDF objects out of 1000 (max. 8388607)
  348 compressed objects within 4 object streams
