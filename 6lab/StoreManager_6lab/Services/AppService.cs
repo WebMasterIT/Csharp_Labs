@@ -10,32 +10,30 @@ namespace StoreManager_6lab.Services
 {
     public class ApiService
     {
-        private readonly HttpClient _http;
+        private readonly HttpClient _http; // HTTP-клиент для запросов к API
 
         public ApiService()
         {
             var handler = new HttpClientHandler
             {
-                // ✅ разрешаем подключаться к самоподписанному SSL-сертификату
-                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true // Разрешить самоподписанные сертификаты
             };
 
             _http = new HttpClient(handler)
             {
-                // ✅ выбираем, что доступно первым
                 BaseAddress = TryUseHttps()
                     ? new Uri("https://localhost:7259/api/")
-                    : new Uri("http://localhost:5107/api/")
+                    : new Uri("http://localhost:5107/api/") // Базовый адрес сервера API
             };
         }
 
+        // Попытка проверить доступность HTTPS API
         private bool TryUseHttps()
         {
             try
             {
                 using var testClient = new HttpClient(
                     new HttpClientHandler { ServerCertificateCustomValidationCallback = (a, b, c, d) => true });
-
                 var response = testClient.GetAsync("https://localhost:7259/api/Product").Result;
                 return response.IsSuccessStatusCode;
             }
@@ -45,9 +43,9 @@ namespace StoreManager_6lab.Services
             }
         }
 
-        // === Методы API ===
+        // === Методы работы с товарами ===
 
-        public async Task<List<Product>> GetProductsAsync()
+        public async Task<List<Product>> GetProductsAsync() // Получить список товаров
         {
             try
             {
@@ -60,16 +58,18 @@ namespace StoreManager_6lab.Services
             }
         }
 
-        public async Task AddProductAsync(Product product) =>
+        public async Task AddProductAsync(Product product) => // Добавить новый товар
             await _http.PostAsJsonAsync("Product", product);
 
-        public async Task UpdateProductAsync(Product product) =>
+        public async Task UpdateProductAsync(Product product) => // Обновить товар по ID
             await _http.PutAsJsonAsync($"Product/{product.Id}", product);
 
-        public async Task DeleteProductAsync(int id) =>
+        public async Task DeleteProductAsync(int id) => // Удалить товар по ID
             await _http.DeleteAsync($"Product/{id}");
 
-        public async Task<List<Order>> GetOrdersAsync()
+        // === Методы работы с заказами ===
+
+        public async Task<List<Order>> GetOrdersAsync() // Получить список заказов
         {
             try
             {
@@ -82,10 +82,10 @@ namespace StoreManager_6lab.Services
             }
         }
 
-        public async Task AddOrderAsync(Order order) =>
+        public async Task AddOrderAsync(Order order) => // Добавить новый заказ
             await _http.PostAsJsonAsync("Order", order);
 
-        public async Task DeleteOrderAsync(int id) =>
+        public async Task DeleteOrderAsync(int id) => // Удалить заказ по ID
             await _http.DeleteAsync($"Order/{id}");
     }
 }

@@ -1,0 +1,746 @@
+%! TeX program = lualatex
+\documentclass[12pt]{article}
+
+\usepackage{cmap}
+\usepackage{newfloat}
+\usepackage{tabularx}
+\usepackage[newfloat]{minted}
+\usepackage[font=small]{caption}
+% \usepackage{indentfirst}
+\usepackage{booktabs} % \toprule, \midrule, \bottomrule
+\usepackage[table]{xcolor}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows.meta, positioning, shadows}
+
+\setminted{
+    linenos,                % показывать номера строк
+    breaklines,             % переносить длинные строки
+    breakanywhere=true,     % переносить в любом месте
+    tabsize=2,              % размер табуляции
+    fontsize=\footnotesize,        % размер шрифта
+    frame=lines,            % рамка сверху и снизу
+    framesep=2mm,           % расстояние текста от рамки
+    baselinestretch=1.1,    % межстрочный интервал
+    autogobble=true,        % автоудаление общего отступа
+    % xleftmargin=10pt,       % отступ слева
+    % numbersep=5pt,          % расстояние между номерами и кодом
+}
+
+\usepackage[english, russian]{babel}
+
+\usepackage[nopatch=footnote]{microtype}
+
+\usepackage{float}
+\usepackage{fontspec}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+
+\usepackage{enumitem}
+
+\makeatletter
+\renewcommand\@seccntformat[1]{%
+  \csname the#1\endcsname.\quad
+}
+\makeatother
+
+\usepackage{tocloft}
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftsubsubsecaftersnum}{.}
+
+\setmainfont{TimesNewerRoman}[
+  Extension = .otf,
+  Path = /nix/store/ihdqrn4p54awd89vrday9k53s8i47bbv-times-newer-roman-unstable-2018-09-11/share/fonts/opentype/,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic
+]
+
+\setmonofont{Ubuntu Mono}
+
+\newcommand{\icon}[1]{\fontspec{UbuntuNerdFont}[Extension = .ttf,
+  Path = /nix/store/h721jafy2n74x4k5p0hxbz722h0rncmx-nerd-fonts-ubuntu-3.3.0+0.83/share/fonts/truetype/NerdFonts/Ubuntu/,
+  UprightFont = *-Regular,
+BoldFont = *-Bold] #1}
+
+\newcommand{\iicon}[1]{{\icon{#1}}}
+
+\usepackage{graphicx}
+\usepackage{fontawesome5} % Для иконок
+
+\usepackage[left=2.0cm, right=2.0cm, top=1.0cm, bottom=1.0cm, includeheadfoot]{geometry}
+
+% \usepackage[mocha, textcolor=true, pagecolor=true]{catppuccinpalette} \usemintedstyle{catppuccin-mocha}
+\usepackage[latte, textcolor=true, pagecolor=true]{catppuccinpalette} \usemintedstyle{catppuccin-latte}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{fancyhdr}
+\fancyhf{}
+
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+
+% Настройка колонтитулов
+\fancyhead[RO]{\rightmark}
+\fancyhead[LO]{\leftmark}
+
+\fancyfoot[L]{\hspace{8pt} \rule{\textwidth}{0.4pt}}
+\fancyfoot[R]{\LARGE{\thepage}}
+\fancyfoot[C]{}
+
+\newcommand{\lablogo}
+{
+\begin{center}
+    \huge{\textbf{Лабораторная работа №5}} \\
+\end{center}
+}
+
+\newcommand{\colorURL}[1]{\textcolor{CtpBlue}{#1}}
+\newcommand{\colorGIT}[1]{\textcolor{CtpLavender}{#1}}
+\renewcommand{\texttt}[1]{{\small\ttfamily #1}}
+
+\setlength{\headheight}{15.2pt}
+
+% \DeclareCaptionLabelFormat{gostfigure}{Рисунок #2}
+% \captionsetup[figure]{labelformat=gostfigure, labelsep=endash}
+
+\DeclareCaptionLabelFormat{gostfigure}{Таблица #2}
+\captionsetup[table]{labelformat=gostfigure, labelsep=endash}
+
+\DeclareCaptionLabelFormat{gostlisting}{Листинг #2}
+\newenvironment{code}
+  {\par\captionsetup{type=listing}\noindent}
+  {\par\vspace{\baselineskip}}
+\captionsetup[listing]{labelformat=gostlisting, labelsep=endash}
+% \DeclareFloatingEnvironment[
+%   listname=Листинг,
+% ]{listing}
+
+\usepackage{amsmath}
+\numberwithin{listing}{section}
+\numberwithin{figure}{section}
+
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\begin{document}
+\pagestyle{empty}
+\lablogo
+\begin{center}
+	\Large{Интеграция WPF-приложения с ASP.NET Core Web API.}
+\end{center}
+\vspace{1em}
+\tableofcontents
+\newpage
+\listoflistings
+\newpage
+
+\pagestyle{fancy}
+
+\section{Цель работы~\texorpdfstring{\iicon{}}{}}
+\textbf{Цель:} организовать взаимодействие между клиентским WPF-приложением и серверным REST API, обеспечив обмен данными через HTTP-запросы.
+
+% \begin{table}[H]
+% 	\centering
+% 	\rowcolors{2}{CtpBase}{CtpSurface0}
+% 	\resizebox{\linewidth}{!}{
+% 		% \label{tab:project_structure}
+% 		\begin{tabular}{l|l}
+% 			\toprule
+% 			\textbf{Состав проекта}  & \textbf{Назначение}                                        \\
+% 			\midrule
+% 			StoreManagerApi          & ASP.NET Web API (серверная часть, отвечает за работу с БД) \\
+% 			StoreManager\_4lab (WPF) & WPF-приложение (клиентская часть, UI для пользователя)     \\
+% 			SQLite БД                & База данных, расположенная в store.db                      \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	}
+% 	\caption{Структура проекта}
+% \end{table}
+
+\vspace{12pt}
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[
+		node distance=1cm,
+		every node/.style={
+				font=\small,
+				align=center
+			},
+		block/.style={
+				rectangle,
+				rounded corners=3pt,
+				draw=CtpBlue,
+				fill=CtpMantle,
+				drop shadow={opacity=0.2},
+				minimum width=3.5cm,
+				minimum height=1.2cm,
+				text width=3.2cm,
+				inner sep=5pt
+			},
+		arrow/.style={
+		-{Stealth[length=3mm]},
+		thick,
+		CtpBlue
+		},
+		% title/.style={
+		% 		rectangle,
+		% 		fill=CtpBlue,
+		% 		text=CtpBase,
+		% 		font=\bfseries,
+		% 		minimum width=8cm,
+		% 		inner sep=8pt
+		% 	}
+		]
+
+		% \node[title] (title) {Структура проекта};
+
+		\node[block] (api) {StoreManagerApi \\ \footnotesize ASP.NET Web API};
+		\node[block, left=3.2cm of api] (wpf) {StoreManager\_4lab \\ \footnotesize WPF-приложение};
+		\node[block, right=3.2cm of api] (db) {SQLite БД \\ \footnotesize store.db};
+
+		\draw[arrow] (wpf) -- node[below, sloped] {HTTP запросы} (api);
+		\draw[arrow] (api) -- node[below, sloped] {Данные} (db);
+		\draw[arrow] (db) -- node[above, sloped] {Результаты} (api);
+		\draw[arrow] (api) -- node[above, sloped] {Ответы} (wpf);
+
+		\node[below=1cm of api, text width=8cm, align=center] (desc) {
+			\begin{tabular}{l|c}
+				{\textbf{Компонент}} & {\textbf{Назначение}}        \\
+				\midrule
+				StoreManagerApi      & Серверная часть, работа с БД \\
+				StoreManager\_4lab   & Клиентское WPF-приложение    \\
+				SQLite БД            & Хранение данных в store.db
+			\end{tabular}
+		};
+
+	\end{tikzpicture}
+	\caption{Структура проекта}
+\end{figure}
+
+\noindent \textcolor{CtpRed}{Внимание:} проект ASP.net созданный в лабораторной №5 изменять в ходе данной лабораторной не нужно будет. Необходимо привести проект созданный в лабораторной №4 к тому виду, который будет рассмотрен в данной лабораторной и убедиться, что все функции (кнопки) выполняются без ошибок.
+
+\newpage
+
+\section{Общая информация~\texorpdfstring{\iicon{}}{}}
+\begin{enumerate}
+	\item WPF-приложение — это клиент, т.е. пользовательский интерфейс, установленный на компьютере пользователя.
+	\item ASP.NET Web API — это сервер, который обрабатывает запросы, работает с базой данных и отправляет данные клиенту (например, в формате JSON).
+\end{enumerate}
+
+\subsection{Роли каждого проекта}
+\noindent \textbf{ASP.NET (сервер):}
+\begin{enumerate}
+	\item Отвечает за доступ к базе данных.
+	\item Использует DbContext из Entity Framework, чтобы читать и сохранять данные.
+	\item Предоставляет HTTP API (например, GET, POST, PUT, DELETE), к которым можно обращаться через интернет или локальную сеть.
+\end{enumerate}
+
+\noindent \textbf{WPF (клиент):}
+\begin{enumerate}
+	\item Отображает данные пользователю.
+	\item Отправляет HTTP-запросы к ASP.NET API, чтобы получить или отправить данные.
+	\item Не подключается к базе данных напрямую, а работает через API. Поэтому DbContext здесь не нужен.
+\end{enumerate}
+
+
+\begin{table}[H]
+	\centering
+	\small
+	\rowcolors{2}{CtpBase}{CtpSurface0}
+	\begin{tabularx}{\linewidth}{p{4.2cm}|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X}
+		\toprule
+		\textbf{Компонент}                     & \textbf{Лабораторная №4 (локальная БД)}                     & \textbf{Лабораторная №6 (через API)}              \\
+		\midrule
+		Хранение данных                        & SQLite через Entity\-Framework\-Core прямо в WPF-приложении & ASP.NET Core Web API, клиент обращается к серверу \\
+		Репозитории                            & Прямой доступ к DbContext                                   & Используются Http\-Client и Api\-Service          \\
+		Работа с данными                       & StoreDbContext и LI\-NQ-запросы                             & REST-запросы: GET, POST, PUT, DELETE              \\
+		Добавление / удаление / редактирование & Прямое обращение к базе через EF                            & Отправка данных в контроллеры Web API             \\
+		Обновление интерфейса                  & Автоматически при изменении коллекций                       & После получения данных через HTTP-запрос          \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Архитектурные изменения}
+\end{table}
+
+
+\subsection{Изменения в коде}
+\textbf{Контекст базы данных (StoreDbContext)}
+\begin{enumerate}
+	\item Было: EF Core DbContext создавался и использовался прямо в MainViewModel и других ViewModel.
+	\item Стало: База данных вынесена на сервер в ASP.NET Core Web API, клиент WPF не работает с EF напрямую.
+\end{enumerate}
+Причина изменения: разделение ответственности — клиент занимается только отображением, сервер — бизнес-логикой и хранением.
+
+\noindent В данной таблице приведены ключевые различия в подходе к работе с данными между локальным доступом через DbContext (в лабораторной №4) и использованием Web API через HttpClient (в лабораторной №6).
+
+
+\renewcommand{\texttt}[1]{{\footnotesize\ttfamily #1}}
+\begin{table}[H]
+	\centering
+	\footnotesize
+	\rowcolors{2}{CtpBase}{CtpSurface0}
+	\begin{tabularx}{\linewidth}{X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X}
+		\toprule
+		\textbf{Описание операции} & \textbf{Лабораторная №4 (локально)}             & \textbf{Лабораторная №6 (через Web API)}                    & \textbf{Изменение}              \\
+		\midrule
+		Добавление товара          & \texttt{\_con\-text.\-Products.Add\-(product);} & \texttt{await\_api.Add\-Product\-Async\-(product);}         & Используется API вместо EF Core \\
+		Сохранение изменений       & \texttt{\_context.SaveChanges();}               & Выполняется внутри метода API                               & Уходит внутрь ASP.NET API       \\
+		Загрузка товаров           & \texttt{foreach(varpin\_con\-text.\-Products)}  & \texttt{varproducts=await\_\-api.\-Get\-Products\-Async();} & Получение данных по HTTP        \\
+		Создание заказа            & \texttt{\_context.Orders.Add\-(order);}         & \texttt{await\_api.AddOrder\-Async\-(order);}               & Заказ создается через API       \\
+		Удаление заказа/товара     & \texttt{\_context.Orders.Remove\-(order);}      & \texttt{await \_api.DeleteOrder\-Async\-(order.Id);}        & Операция выполняется на сервере \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Основные изменения в методах используемых в приложении}
+\end{table}
+
+\renewcommand{\texttt}[1]{{\small\ttfamily #1}}
+
+\noindent Таким образом, ключевым отличием лабораторной №6 стало отделение клиентской логики (WPF) от серверной (ASP.NET Core Web API) и переход от прямого доступа к базе данных к REST-взаимодействию через HTTP-запросы.
+
+\newpage
+
+\section{Реализация клиентского сервиса (\texttt{ApiService.cs})~\texorpdfstring{\iicon{}}{}}
+\texttt{ApiService.cs} — клиентский сервис доступа к Web API Класс \texttt{ApiService} реализует клиентскую часть взаимодействия WPF-приложения с серверным Web API. Он инкапсулирует вызовы HTTP-запросов к контроллерам товаров и заказов, используя \texttt{HttpClient}. Это позволяет централизованно управлять всеми запросами к серверу и облегчает сопровождение кода.
+
+\begin{code}
+	\begin{minted}{csharp}
+namespace StoreManager_6lab.Services
+{
+    public class ApiService
+    {
+        private readonly HttpClient _http; // HTTP-клиент для запросов к API
+
+        public ApiService()
+        {
+            var handler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true // Разрешить самоподписанные сертификаты
+            };
+
+            _http = new HttpClient(handler)
+            {
+                BaseAddress = TryUseHttps()
+                    ? new Uri("https://localhost:7259/api/")
+                    : new Uri("http://localhost:5107/api/") // Базовый адрес сервера API
+            };
+        }
+
+        // Попытка проверить доступность HTTPS API
+        private bool TryUseHttps()
+        {
+            try
+            {
+                using var testClient = new HttpClient(
+                    new HttpClientHandler { ServerCertificateCustomValidationCallback = (a, b, c, d) => true });
+                var response = testClient.GetAsync("https://localhost:7259/api/Product").Result;
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // === Методы работы с товарами ===
+
+        public async Task<List<Product>> GetProductsAsync() // Получить список товаров
+        {
+            try
+            {
+                return await _http.GetFromJsonAsync<List<Product>>("Product") ?? new List<Product>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при получении данных: {ex.Message}");
+                return new List<Product>();
+            }
+        }
+
+        public async Task AddProductAsync(Product product) => // Добавить новый товар
+            await _http.PostAsJsonAsync("Product", product);
+
+        public async Task UpdateProductAsync(Product product) => // Обновить товар по ID
+            await _http.PutAsJsonAsync($"Product/{product.Id}", product);
+
+        public async Task DeleteProductAsync(int id) => // Удалить товар по ID
+            await _http.DeleteAsync($"Product/{id}");
+
+        // === Методы работы с заказами ===
+
+        public async Task<List<Order>> GetOrdersAsync() // Получить список заказов
+        {
+            try
+            {
+                return await _http.GetFromJsonAsync<List<Order>>("Order") ?? new List<Order>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при получении заказов: {ex.Message}");
+                return new List<Order>();
+            }
+        }
+
+        public async Task AddOrderAsync(Order order) => // Добавить новый заказ
+            await _http.PostAsJsonAsync("Order", order);
+
+        public async Task DeleteOrderAsync(int id) => // Удалить заказ по ID
+            await _http.DeleteAsync($"Order/{id}");
+    }
+}
+\end{minted}
+	\captionof{listing}{Клиентского \colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/6lab/StoreManager_6lab/Services/AppService.cs}{сервиса}}}
+	\label{lst:api_service}
+\end{code}
+
+\noindent Описание методов (к листингу~\ref{lst:api_service}):
+\begin{enumerate}
+	\item \texttt{GetProductsAsync()} — выполняет GET-запрос на получение всех товаров.
+	\item \texttt{AddProductAsync(product)} — отправляет POST-запрос на добавление нового товара.
+	\item \texttt{UpdateProductAsync(product)} — обновляет данные существующего товара по ID.
+	\item \texttt{DeleteProductAsync(id)} — удаляет товар по указанному ID.
+	\item \texttt{GetOrdersAsync()} — получает все заказы, включая их состав.
+	\item \texttt{AddOrderAsync(order)} — отправляет заказ на сервер для добавления в БД.
+	\item \texttt{DeleteOrderAsync(id)} — удаляет заказ по ID.
+\end{enumerate}
+
+\newpage
+
+\section{Реализация \texttt{MainViewModel.cs}~\texorpdfstring{\iicon{}}{}}
+\texttt{MainViewModel.cs} — основная ViewModel клиентского WPF-приложения Класс \texttt{MainViewModel} реализует основную бизнес-логику WPF-клиента. Он управляет товарами, корзиной, заказами и взаимодействует с \texttt{ApiService} для выполнения операций через Web API. Все команды пользовательского интерфейса (добавление, удаление, обновление) реализованы через команды MVVM-паттерна. В листинге~\ref{lst:main_view_model} представлены методы основной ViewModel разрабатываемого сервиса.
+\begin{code}
+	\begin{minted}{csharp}
+public class MainViewModel : INotifyPropertyChanged
+{
+    private readonly ApiService _api = new(); // Экземпляр сервиса для обращения к Web API
+
+    public ObservableCollection<Product> Products { get; set; } = new(); // Список всех товаров
+    public ObservableCollection<Order> Orders { get; set; } = new(); // Список заказов
+    public ObservableCollection<CartItem> CartItems { get; set; } = new(); // Список товаров в корзине
+
+    // Вводимые пользователем данные о товаре
+    public string NewProductName { get; set; } // Название
+    public decimal NewProductPrice { get; set; } // Цена
+    public int NewProductStock { get; set; } // Количество
+    public string SelectedCategory { get; set; } // Категория
+
+    // Данные покупателя для заказа
+    public string CustomerName { get; set; }
+
+    // Выбранные объекты UI
+    public Product SelectedProduct { get; set; }
+    public CartItem SelectedCartItem { get; set; }
+    public Order SelectedOrder { get; set; }
+
+    // Предустановленные категории для выбора
+    public ObservableCollection<string> Categories { get; } = new()
+    {
+        "Ноутбуки", "Комплектующие", "Аксессуары", "Мониторы", "Сеть"
+    };
+
+    // Команды для привязки к элементам UI
+    public ICommand AddProductCommand { get; }
+    public ICommand UpdateProductCommand { get; }
+    public ICommand DeleteProductCommand { get; }
+    public ICommand AddToCartCommand { get; }
+    public ICommand RemoveFromCartCommand { get; }
+    public ICommand AddOrderCommand { get; }
+    public ICommand DeleteOrderCommand { get; }
+    public ICommand ClearFieldsCommand { get; }
+
+    // Конструктор инициализирует команды и загружает данные
+    public MainViewModel()
+    {
+        AddProductCommand = new RelayCommand(async _ => await AddProductAsync(), _ => CanAddProduct());
+        UpdateProductCommand = new RelayCommand(async _ => await UpdateProductAsync(), _ => SelectedProduct != null);
+        DeleteProductCommand = new RelayCommand(async _ => await DeleteProductAsync(), _ => SelectedProduct != null);
+        AddToCartCommand = new RelayCommand(_ => AddToCart(), _ => SelectedProduct != null && SelectedProduct.Stock > 0);
+        RemoveFromCartCommand = new RelayCommand(_ => RemoveFromCart(), _ => SelectedCartItem != null);
+        AddOrderCommand = new RelayCommand(async _ => await AddOrderAsync(), _ => CartItems.Any() && !string.IsNullOrWhiteSpace(CustomerName));
+        DeleteOrderCommand = new RelayCommand(async _ => await DeleteOrderAsync(), _ => SelectedOrder != null);
+        ClearFieldsCommand = new RelayCommand(_ => ClearProductFields());
+
+        _ = LoadProductsAsync(); // Загрузка списка товаров
+        _ = LoadOrdersAsync();   // Загрузка списка заказов
+    }
+
+    private async Task LoadProductsAsync() // Получение всех товаров с сервера
+    {
+        Products.Clear();
+        var products = await _api.GetProductsAsync();
+        foreach (var p in products)
+            Products.Add(p);
+    }
+
+    private async Task LoadOrdersAsync() // Получение всех заказов с сервера
+    {
+        Orders.Clear();
+        var orders = await _api.GetOrdersAsync();
+        foreach (var order in orders)
+            Orders.Add(order);
+    }
+
+    private async Task AddProductAsync() // Добавление нового товара
+    {
+        var product = new Product
+        {
+            Name = NewProductName,
+            Price = NewProductPrice,
+            Stock = NewProductStock,
+            Category = SelectedCategory
+        };
+
+        await _api.AddProductAsync(product);
+        await LoadProductsAsync();
+        ClearProductFields();
+    }
+
+    private async Task UpdateProductAsync() // Обновление существующего товара
+    {
+        if (SelectedProduct == null) return;
+
+        SelectedProduct.Name = NewProductName;
+        SelectedProduct.Price = NewProductPrice;
+        SelectedProduct.Stock = NewProductStock;
+        SelectedProduct.Category = SelectedCategory;
+
+        await _api.UpdateProductAsync(SelectedProduct);
+        await LoadProductsAsync();
+        ClearProductFields();
+    }
+
+    private async Task DeleteProductAsync() // Удаление выбранного товара
+    {
+        if (SelectedProduct == null) return;
+        await _api.DeleteProductAsync(SelectedProduct.Id);
+        await LoadProductsAsync();
+        ClearProductFields();
+    }
+
+    private void AddToCart() // Добавление товара в корзину
+    {
+        var existing = CartItems.FirstOrDefault(x => x.Product.Id == SelectedProduct.Id);
+        if (existing != null)
+            existing.Quantity++;
+        else
+            CartItems.Add(new CartItem { Product = SelectedProduct, Quantity = 1 });
+
+        SelectedProduct.Stock--; // Уменьшаем остаток на складе
+    }
+
+    private void RemoveFromCart() // Удаление товара из корзины
+    {
+        if (SelectedCartItem == null) return;
+        SelectedCartItem.Product.Stock += SelectedCartItem.Quantity; // Возвращаем остаток
+        CartItems.Remove(SelectedCartItem);
+        SelectedCartItem = null;
+    }
+
+    private async Task AddOrderAsync() // Оформление нового заказа
+    {
+        var order = new Order
+        {
+            CustomerName = CustomerName,
+            OrderDate = DateTime.Now,
+            Items = CartItems.Select(c => new OrderItem
+            {
+                ProductId = c.Product.Id,
+                Quantity = c.Quantity
+            }).ToList()
+        };
+
+        await _api.AddOrderAsync(order);
+        await LoadOrdersAsync();
+
+        CartItems.Clear();
+        CustomerName = "";
+        await LoadProductsAsync(); // Обновление остатков
+    }
+
+    private async Task DeleteOrderAsync() // Удаление существующего заказа
+    {
+        if (SelectedOrder == null) return;
+        await _api.DeleteOrderAsync(SelectedOrder.Id);
+        await LoadOrdersAsync();
+    }
+
+    private void ClearProductFields() // Очистка полей формы ввода товара
+    {
+        NewProductName = "";
+        NewProductPrice = 0;
+        NewProductStock = 0;
+        SelectedCategory = null;
+    }
+
+    private bool CanAddProduct() => // Проверка валидности данных для добавления товара
+        !string.IsNullOrWhiteSpace(NewProductName) &&
+        NewProductPrice > 0 &&
+        NewProductStock > 0 &&
+        !string.IsNullOrWhiteSpace(SelectedCategory);
+
+    public event PropertyChangedEventHandler PropertyChanged; // Событие для INotifyPropertyChanged
+    protected void OnPropertyChanged([CallerMemberName] string name = null) =>
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)); // Уведомление об изменении свойства
+}
+\end{minted}
+	\captionof{listing}{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/6lab/StoreManager_6lab/ViewModels/MainViewModel.cs}{\texttt{MainViewModel.cs}}}}
+	\label{lst:main_view_model}
+\end{code}
+\noindent Описание методов (к листингу~\ref{lst:main_view_model}):
+\begin{enumerate}
+	\item \texttt{LoadProductsAsync()} — загружает список товаров с сервера.
+	\item \texttt{LoadOrdersAsync()} — загружает список заказов с сервера.
+	\item \texttt{AddProductAsync()} — формирует товар и отправляет на сервер.
+	\item \texttt{UpdateProductAsync()} — обновляет выделенный товар на сервере.
+	\item \texttt{DeleteProductAsync()} — удаляет выбранный товар.
+	\item \texttt{AddToCart()} — добавляет товар в корзину.
+	\item \texttt{RemoveFromCart()} — удаляет товар из корзины.
+	\item \texttt{AddOrderAsync()} — создает заказ на основе корзины и отправляет на сервер.
+	\item \texttt{DeleteOrderAsync()} — удаляет выбранный заказ.
+	\item \texttt{ClearProductFields()} — очищает форму ввода товара.
+	\item \texttt{CanAddProduct()} — проверяет, можно ли добавить товар.
+\end{enumerate}
+Класс \texttt{MainViewModel} является связующим звеном между пользовательским интерфейсом и логикой работы с Web API. Все операции реализованы с учётом асинхронности и привязки данных.
+
+\newpage
+
+\section{\texttt{OrderViewModel.cs} — управление заказами~\texorpdfstring{\iicon{}}{}}
+Класс \texttt{OrderViewModel} реализует логику взаимодействия с заказами. Он отвечает за загрузку существующих заказов, создание новых и удаление. Вся логика работает через \texttt{ApiService}, используя команды MVVM.
+\begin{code}
+	\begin{minted}{csharp}
+public class OrderViewModel : BaseViewModel
+{
+    private readonly ApiService _api = new(); // Сервис API для обмена с сервером
+
+    private Order _selectedOrder; // Выбранный заказ в интерфейсе
+    private string _customerName; // Имя покупателя
+
+    public ObservableCollection<Order> Orders { get; } = new(); // Коллекция заказов
+    public ObservableCollection<Product> AvailableProducts { get; } = new(); // Доступные для заказа товары
+    public ObservableCollection<OrderItem> SelectedItems { get; } = new(); // Позиции текущего заказа
+
+    public string CustomerName
+    {
+        get => _customerName;
+        set => SetProperty(ref _customerName, value); // Установка имени покупателя
+    }
+
+    public Order SelectedOrder
+    {
+        get => _selectedOrder;
+        set
+        {
+            if (SetProperty(ref _selectedOrder, value) && value != null)
+            {
+                CustomerName = value.CustomerName; // Заполняем имя клиента из заказа
+                SelectedItems.Clear(); // Очищаем старые позиции
+                foreach (var item in value.Items)
+                {
+                    SelectedItems.Add(new OrderItem // Копируем позиции
+                    {
+                        ProductId = item.ProductId,
+                        Product = item.Product,
+                        Quantity = item.Quantity
+                    });
+                }
+            }
+        }
+    }
+
+    // Команды для кнопок интерфейса
+    public ICommand AddOrderCommand { get; }
+    public ICommand DeleteOrderCommand { get; }
+
+    // Конструктор: инициализация и загрузка данных
+    public OrderViewModel()
+    {
+        AddOrderCommand = new RelayCommand(async _ => await AddOrder());
+        DeleteOrderCommand = new RelayCommand(async _ => await DeleteOrder(), _ => SelectedOrder != null);
+
+        _ = LoadOrders(); // Загрузка заказов
+        _ = LoadAvailableProducts(); // Загрузка товаров
+    }
+
+    private async Task LoadOrders() // Получение списка заказов
+    {
+        Orders.Clear();
+        var orders = await _api.GetOrdersAsync();
+        foreach (var order in orders)
+            Orders.Add(order);
+    }
+
+    private async Task LoadAvailableProducts() // Получение списка всех товаров
+    {
+        AvailableProducts.Clear();
+        var products = await _api.GetProductsAsync();
+        foreach (var p in products)
+            AvailableProducts.Add(p);
+    }
+
+    private async Task AddOrder() // Создание нового заказа
+    {
+        if (string.IsNullOrWhiteSpace(CustomerName) || SelectedItems.Count == 0) return;
+
+        var newOrder = new Order
+        {
+            CustomerName = CustomerName,
+            OrderDate = DateTime.Now,
+            Items = SelectedItems.Select(i => new OrderItem
+            {
+                ProductId = i.Product.Id,
+                Quantity = i.Quantity
+            }).ToList()
+        };
+
+        await _api.AddOrderAsync(newOrder); // Отправка заказа на сервер
+        await LoadOrders(); // Обновление списка
+
+        CustomerName = ""; // Очистка формы
+        SelectedItems.Clear();
+    }
+
+    private async Task DeleteOrder() // Удаление выбранного заказа
+    {
+        if (SelectedOrder == null) return;
+
+        await _api.DeleteOrderAsync(SelectedOrder.Id);
+        Orders.Remove(SelectedOrder);
+        SelectedOrder = null;
+        SelectedItems.Clear();
+        CustomerName = string.Empty;
+    }
+}
+\end{minted}
+	\captionof{listing}{\colorGIT{\href{https://github.com/WebMasterIT/Csharp_Labs/blob/main/6lab/StoreManager_6lab/ViewModels/OrderViewModel.cs}{\texttt{OrderViewModel.cs}}}}
+	\label{lst:order_view_model}
+\end{code}
+\noindent Описание методов (к листингу~\ref{lst:order_view_model}):
+\begin{enumerate}
+	\item \texttt{LoadOrders()} — загружает список всех заказов с сервера.
+	\item \texttt{LoadAvailableProducts()} — загружает товары для формирования нового заказа.
+	\item \texttt{AddOrder()} — создаёт новый заказ и отправляет его на сервер.
+	\item \texttt{DeleteOrder()} — удаляет выбранный заказ.
+\end{enumerate}
+Класс \texttt{OrderViewModel} выполняет функции управления заказами в клиентской части и полностью опирается на Web API. Реализация соответствует шаблону MVVM и позволяет упростить обработку заказов в интерфейсе WPF.
+
+\newpage
+
+\section{Контрольные вопросы~\texorpdfstring{\iicon{}}{}}
+\begin{enumerate}
+	\item В чём заключается основное отличие архитектуры лабораторной работы №6 от №4?
+	\item Какие преимущества даёт использование ASP.NET Core Web API по сравнению с прямым доступом к базе данных?
+	\item Как реализуется добавление товара в лабораторной №6? Чем оно отличается от предыдущей реализации?
+	\item Для чего используется класс \texttt{ApiService}? Какие методы он предоставляет?
+	\item Как происходит удаление заказа в WPF-приложении, работающем с Web API?
+	\item Почему необходимо использовать \texttt{await} при вызовах методов \texttt{ApiService}?
+	\item В каком формате передаются данные между клиентом и сервером?
+	\item Какие классы относятся к слою ViewModel, и как они связаны с моделью?
+	\item Как осуществляется привязка команд в XAML и зачем используются команды MVVM?
+	\item Что делает метод \texttt{LoadOrders()} в \texttt{OrderViewModel} и какие данные он загружает?
+	\item Какие изменения произошли в механизме сохранения заказов в новой архитектуре?
+	\item Почему важно разделение клиентской и серверной логики при разработке приложений?
+\end{enumerate}
+
+\end{document}
