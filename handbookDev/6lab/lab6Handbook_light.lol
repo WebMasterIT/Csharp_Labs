@@ -1,3 +1,0 @@
-\contentsline {listing}{\numberline {3.1}{\ignorespaces Клиентского \textcolor {CtpLavender}{\href {https://github.com/WebMasterIT/Csharp_Labs/blob/main/6lab/StoreManager_6lab/Services/AppService.cs}{сервиса}}}}{7}{listing.caption.4}%
-\contentsline {listing}{\numberline {4.1}{\ignorespaces \textcolor {CtpLavender}{\href {https://github.com/WebMasterIT/Csharp_Labs/blob/main/6lab/StoreManager_6lab/ViewModels/MainViewModel.cs}{{\small \ttfamily MainViewModel.cs}}}}}{12}{listing.caption.5}%
-\contentsline {listing}{\numberline {5.1}{\ignorespaces \textcolor {CtpLavender}{\href {https://github.com/WebMasterIT/Csharp_Labs/blob/main/6lab/StoreManager_6lab/ViewModels/OrderViewModel.cs}{{\small \ttfamily OrderViewModel.cs}}}}}{16}{listing.caption.6}%
