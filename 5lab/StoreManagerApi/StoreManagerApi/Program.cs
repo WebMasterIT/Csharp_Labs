@@ -3,17 +3,17 @@ using StoreManagerApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ¿¿¿¿¿¿¿¿¿¿ ¿¿¿¿¿¿¿¿¿ ¿¿¿¿ ¿¿¿¿¿¿ ¿ ¿¿¿¿¿¿¿¿¿¿¿¿ SQLite
+// Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ğµ ĞºĞ¾Ğ½Ñ‚ĞµĞºÑÑ‚Ğ° Ğ±Ğ°Ğ·Ñ‹ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ… Ğ¸ ĞºĞ¾Ğ½Ñ„Ğ¸Ğ³ÑƒÑ€Ğ°Ñ†Ğ¸Ñ SQLite
 builder.Services.AddDbContext<StoreDbContext>(options =>
-    options.UseSqlite("Data Source=store.db")); // ¿¿¿¿¿¿ ¿¿¿¿¿¿¿¿¿¿¿
+    options.UseSqlite("Data Source=store.db")); // Ğ¡Ñ‚Ñ€Ğ¾ĞºĞ° Ğ¿Ğ¾Ğ´ĞºĞ»ÑÑ‡ĞµĞ½Ğ¸Ñ
 
-builder.Services.AddControllers();           // ¿¿¿¿¿¿¿¿¿¿ ¿¿¿¿¿¿¿¿¿¿¿¿
-builder.Services.AddEndpointsApiExplorer();  // ¿¿¿ Swagger
-builder.Services.AddSwaggerGen();           // ¿¿¿¿¿¿¿¿¿¿¿ Swagger-¿¿¿¿¿¿¿¿¿¿¿¿
+builder.Services.AddControllers();           // Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ğµ ĞºĞ¾Ğ½Ñ‚Ñ€Ğ¾Ğ»Ğ»ĞµÑ€Ğ¾Ğ²
+builder.Services.AddEndpointsApiExplorer();  // Ğ”Ğ»Ñ Swagger
+builder.Services.AddSwaggerGen();           // ĞŸĞ¾Ğ´ĞºĞ»ÑÑ‡ĞµĞ½Ğ¸Ğµ Swagger-Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ°Ñ†Ğ¸Ğ¸
 
 var app = builder.Build();
 
-// === ¿¿¿¿¿¿¿¿ ¿¿ ¿¿¿ ¿¿¿¿¿¿ (¿¿¿¿ ¿¿¿) ===
+// === Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ğµ Ğ‘Ğ” Ğ¿Ñ€Ğ¸ ÑÑ‚Ğ°Ñ€Ñ‚Ğµ (ĞµÑĞ»Ğ¸ Ğ½ĞµÑ‚) ===
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<StoreDbContext>();
@@ -22,14 +22,14 @@ using (var scope = app.Services.CreateScope())
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();     // ¿¿¿¿¿¿¿¿¿ Swagger
-    app.UseSwaggerUI();   // UI ¿¿¿¿¿¿¿¿¿ Swagger
+    app.UseSwagger();     // Ğ’ĞºĞ»ÑÑ‡ĞµĞ½Ğ¸Ğµ Swagger
+    app.UseSwaggerUI();   // UI Ğ¸Ğ½Ñ‚ĞµÑ€Ñ„ĞµĞ¹Ñ Swagger
 }
 
-app.UseHttpsRedirection(); // ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿ ¿¿ HTTPS
+app.UseHttpsRedirection(); // ĞŸĞµÑ€ĞµĞ½Ğ°Ğ¿Ñ€Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ğµ Ğ½Ğ° HTTPS
 
-// app.UseAuthorization(); //   ¿¿¿¿¿¿¿¿¿, ¿¿¿¿ ¿¿¿ ¿¿¿¿¿¿¿¿¿¿¿¿¿¿
+// app.UseAuthorization(); //   ĞÑ‚ĞºĞ»ÑÑ‡ĞµĞ½Ğ¾, ĞµÑĞ»Ğ¸ Ğ½ĞµÑ‚ Ğ°ÑƒÑ‚ĞµĞ½Ñ‚Ğ¸Ñ„Ğ¸ĞºĞ°Ñ†Ğ¸Ğ¸
 
-app.MapControllers();      // ¿¿¿¿¿¿¿¿¿¿¿ ¿¿¿¿¿¿¿¿¿ ¿¿¿¿¿¿¿¿¿¿¿¿
+app.MapControllers();      // ĞŸĞ¾Ğ´ĞºĞ»ÑÑ‡ĞµĞ½Ğ¸Ğµ Ğ¼Ğ°Ñ€ÑˆÑ€ÑƒÑ‚Ğ¾Ğ² ĞºĞ¾Ğ½Ñ‚Ñ€Ğ¾Ğ»Ğ»ĞµÑ€Ğ¾Ğ²
 
-app.Run();                 // ¿¿¿¿¿¿ ¿¿¿¿¿¿¿¿¿¿
+app.Run();                 // Ğ—Ğ°Ğ¿ÑƒÑĞº Ğ¿Ñ€Ğ¸Ğ»Ğ¾Ğ¶ĞµĞ½Ğ¸Ñ

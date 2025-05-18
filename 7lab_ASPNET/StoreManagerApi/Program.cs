@@ -8,7 +8,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 
-// Добавь в builder.Services:
+// Р”РѕР±Р°РІСЊ РІ builder.Services:
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -16,7 +16,7 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    options.RequireHttpsMetadata = false; // отключи на dev
+    options.RequireHttpsMetadata = false; // РѕС‚РєР»СЋС‡Рё РЅР° dev
     options.SaveToken = true;
     options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -25,7 +25,7 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes("THIS_IS_MY_SUPER_SECRET_KEY_1234567890")) // замени на свой ключ
+            Encoding.UTF8.GetBytes("THIS_IS_MY_SUPER_SECRET_KEY_1234567890")) // Р·Р°РјРµРЅРё РЅР° СЃРІРѕР№ РєР»СЋС‡
     };
 });
 
@@ -37,21 +37,21 @@ builder.Services.AddCors(options =>
         policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 }); 
-// Добавление контекста базы данных и конфигурация SQLite
+// Р”РѕР±Р°РІР»РµРЅРёРµ РєРѕРЅС‚РµРєСЃС‚Р° Р±Р°Р·С‹ РґР°РЅРЅС‹С… Рё РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ SQLite
 builder.Services.AddDbContext<StoreDbContext>(options =>
-    options.UseSqlite("Data Source=store.db")); // Строка подключения
+    options.UseSqlite("Data Source=store.db")); // РЎС‚СЂРѕРєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
-    });          // Добавление контроллеров
-builder.Services.AddEndpointsApiExplorer();  // Для Swagger
-builder.Services.AddSwaggerGen();           // Подключение Swagger-документации
+    });          // Р”РѕР±Р°РІР»РµРЅРёРµ РєРѕРЅС‚СЂРѕР»Р»РµСЂРѕРІ
+builder.Services.AddEndpointsApiExplorer();  // Р”Р»СЏ Swagger
+builder.Services.AddSwaggerGen();           // РџРѕРґРєР»СЋС‡РµРЅРёРµ Swagger-РґРѕРєСѓРјРµРЅС‚Р°С†РёРё
 
 var app = builder.Build();
 
-// === Создание БД при старте (если нет) ===
+// === РЎРѕР·РґР°РЅРёРµ Р‘Р” РїСЂРё СЃС‚Р°СЂС‚Рµ (РµСЃР»Рё РЅРµС‚) ===
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<StoreDbContext>();
@@ -61,14 +61,14 @@ using (var scope = app.Services.CreateScope())
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();                        // Включение Swagger
-    app.UseSwaggerUI();                      // UI интерфейс Swagger
+    app.UseSwagger();                        // Р’РєР»СЋС‡РµРЅРёРµ Swagger
+    app.UseSwaggerUI();                      // UI РёРЅС‚РµСЂС„РµР№СЃ Swagger
 }
 
 
 app.UseCors("AllowAll");
-//app.UseHttpsRedirection();                  // Перенаправление на HTTPS
+//app.UseHttpsRedirection();                  // РџРµСЂРµРЅР°РїСЂР°РІР»РµРЅРёРµ РЅР° HTTPS
 app.UseAuthentication();
-app.UseAuthorization();                     // Использование авторизации (не применяется)
-app.MapControllers();                       // Маршрутизация контроллеров
-app.Run();                                  // Запуск приложения
+app.UseAuthorization();                     // РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ Р°РІС‚РѕСЂРёР·Р°С†РёРё (РЅРµ РїСЂРёРјРµРЅСЏРµС‚СЃСЏ)
+app.MapControllers();                       // РњР°СЂС€СЂСѓС‚РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂРѕРІ
+app.Run();                                  // Р—Р°РїСѓСЃРє РїСЂРёР»РѕР¶РµРЅРёСЏ
