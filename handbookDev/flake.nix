@@ -23,7 +23,7 @@
 
           THEME_LIST=("dark" "light")
 
-          for i in {2..7}; do
+          for i in {2..8}; do
               cp -r ./"''${i}"lab/fig .
               for j in "''${THEME_LIST[@]}"; do
                   latexmk --lualatex --shell-escape "./''${i}lab/lab''${i}Handbook_''${j}.tex"
